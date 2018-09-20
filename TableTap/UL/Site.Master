@@ -1,0 +1,45 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="TableTap.UL.Site" %>
+
+<!DOCTYPE html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<link href="../Content/Master.css" rel="stylesheet" />
+<html>
+<head runat="server">
+    <title></title>
+    
+    
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+
+<body>
+<nav background-color: darkgrey;>
+        <div class="btn-group">
+          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            NeedImageHere
+          </button>
+          <div class="dropdown-menu">
+            <asp:HyperLink class="dropdown-item" runat="server" href="Home.aspx">Home</asp:HyperLink>
+            <asp:HyperLink class="dropdown-item" runat="server" href="Map.aspx">Map</asp:HyperLink>
+            <asp:HyperLink class="dropdown-item" runat="server" href="Scan.aspx">Scan</asp:HyperLink>
+            <div class="dropdown-divider"></div>
+            <asp:HyperLink class="dropdown-item" id="loginNav" runat="server" href="Login.aspx">Login</asp:HyperLink>
+            <asp:HyperLink class="dropdown-item" id="accountNav" runat="server" href="Account.aspx">Account</asp:HyperLink>
+            <asp:HyperLink class="dropdown-item" id="logoutNav" runat="server" href="Logout.aspx">Logout</asp:HyperLink>
+          </div>
+        </div>
+
+</nav>
+
+
+    <form id="form1" runat="server">
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>
