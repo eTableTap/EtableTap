@@ -14,7 +14,7 @@
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
                             
-							<asp:DropDownList runat="server" ID="buildingDropdown" onselectedindexchanged="ddlroomDropDown_SelectedIndexChanged" AutoPostback="True" ></asp:DropDownList>
+							<asp:DropDownList runat="server" ID="buildingDropdown" onselectedindexchanged="ddlbuildingDropDown_SelectedIndexChanged" AutoPostback="True" ></asp:DropDownList>
                                 
 						</div>
 					</div>
@@ -30,7 +30,7 @@
                                 
                                     <asp:UpdatePanel ID="upRoomDdl" runat="server">
                                         <ContentTemplate>
-							                <asp:DropDownList runat="server" ID="roomDropdown" onselectedindexchanged="ddltableDropDown_SelectedIndexChanged" AutoPostback="True"></asp:DropDownList>
+							                <asp:DropDownList runat="server" ID="roomDropdown" onselectedindexchanged="ddlroomDropDown_SelectedIndexChanged" AutoPostBack="true" ></asp:DropDownList>
                                         </ContentTemplate>
                                     
                                         <Triggers>
@@ -49,7 +49,7 @@
 							<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
                             <asp:UpdatePanel ID="upTableDdl" runat="server">
                                         <ContentTemplate>
-							<asp:DropDownList runat="server" ID="tableDropdown" ></asp:DropDownList>
+							<asp:DropDownList runat="server" ID="tableDropdown" Autopostback="true" ></asp:DropDownList>
                                         </ContentTemplate>
                                         <Triggers>
                                                 <asp:AsyncPostBackTrigger ControlID="roomDropdown" EventName="SelectedIndexChanged" />  
@@ -58,6 +58,10 @@
 						</div>
 					</div>
 			</div> 
+
+            <div class="form-group ">
+							<asp:Button type="button" Text="Generate QR Code" class="btn btn-primary btn-lg btn-block login-button" id="generateButton" onclick="generateButton_Click" runat="server" />
+						</div>
 
         </div>
     </div>

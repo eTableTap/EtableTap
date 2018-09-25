@@ -1,11 +1,17 @@
-﻿using System;
+﻿using MessagingToolkit.QRCode.Codec;
+using MessagingToolkit.QRCode.Codec.Data;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TableTap.BusinessLayer.Classes;
 using TableTap.Models;
+using System.Drawing.Imaging;
+
 
 namespace TableTap.UL
 {
@@ -27,13 +33,11 @@ namespace TableTap.UL
                 buildingDropdown.DataValueField = "BuildingID";
                 buildingDropdown.DataTextField = "BuildingName";
                 buildingDropdown.DataBind();
-
-                
             }
                 
         }
 
-        protected void ddlroomDropDown_SelectedIndexChanged(object sender, EventArgs e)
+        protected void ddlbuildingDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
 
             BuildingModel bm = new BuildingModel();
@@ -45,6 +49,7 @@ namespace TableTap.UL
 
             rooms = RoomBL.fillRoomsList(id);
 
+            
                 roomDropdown.DataSource = rooms;
                 roomDropdown.DataValueField = "RoomID";
                 roomDropdown.DataTextField = "RoomName";
@@ -52,20 +57,83 @@ namespace TableTap.UL
             
         }
 
-        protected void ddltableDropDown_SelectedIndexChanged(object sender, EventArgs e)
+        protected void ddlroomDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
-           /* TableModel tm = new TableModel();
+            BuildingModel bm = new BuildingModel();
 
-            tm = tables.Where(t => t.TableID == Int32.Parse(tableDropdown.Text)).FirstOrDefault(); //grabs single selected building
+            bm = buildings.Where(b => b.BuildingID == Int32.Parse(buildingDropdown.Text)).FirstOrDefault(); //grabs single selected building
+            int id = bm.BuildingID;
 
-            int id = tm.TableID;
+            rooms = RoomBL.fillRoomsList(id);
 
-            tables = TableBL.fillTableList(id);
+            ///////////////////////////////// currently works but selecting a new building wont change the previous
+
+            RoomModel rm = new RoomModel();
+
+            rm = rooms.Where(r => r.RoomID == Int32.Parse(roomDropdown.Text)).FirstOrDefault(); //grabs single selected building
+            int rid = rm.RoomID;
+
+            tables = TableBL.fillTableList(rid);
 
             tableDropdown.DataSource = tables;
             tableDropdown.DataValueField = "TableID";
             tableDropdown.DataTextField = "TableID";
-            tableDropdown.DataBind();*/
+            tableDropdown.DataBind();
+         
+            
+
+            
+        }
+
+        protected void generateButton_Click(object sender, EventArgs e)
+        {
+
+
+            BuildingModel bm = new BuildingModel();
+
+            bm = buildings.Where(b => b.BuildingID == Int32.Parse(buildingDropdown.Text)).FirstOrDefault(); //grabs single selected building
+            int id = bm.BuildingID;
+
+            rooms = RoomBL.fillRoomsList(id);
+
+            ///////////////////////////////// currently works but selecting a new building wont change the previous
+
+            RoomModel rm = new RoomModel();
+
+            rm = rooms.Where(r => r.RoomID == Int32.Parse(roomDropdown.Text)).FirstOrDefault(); //grabs single selected building
+            int rid = rm.RoomID;
+
+            tables = TableBL.fillTableList(rid);
+
+            tableDropdown.DataSource = tables;
+            tableDropdown.DataValueField = "TableID";
+            tableDropdown.DataTextField = "TableID";
+            tableDropdown.DataBind();
+            ////////////////////
+
+            QRCodeEncoder encoder = new QRCodeEncoder();
+
+            TableModel tm = new TableModel();
+
+            tm = tables.Where(t => t.TableID == Int32.Parse(tableDropdown.Text)).FirstOrDefault(); //grabs single selected building
+
+            int tid = tm.TableID;
+
+            generateButton.Text = tid.ToString();
+
+            
+            string sGeneration = /*ConfigurationManager.AppSettings["UnsecurePath"] + "Table.aspx?id=" + */tid.ToString();
+
+
+            Bitmap img = encoder.Encode(sGeneration);
+
+            Response.ContentType = "image/png";
+            img.Save(Response.OutputStream, System.Drawing.Imaging.ImageFormat.Png);
+
+            //Change to your own location if you want to store a copy-- not needed
+               //     img.Save("C:\\Users\\kepst\\Desktop\\LastQRCodeCreated.png", ImageFormat.Png);
+           // QRImage.ImageUrl = "LastQRCodeCreated.png";
+           
         }
     }
 }
