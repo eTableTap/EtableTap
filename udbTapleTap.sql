@@ -56,7 +56,8 @@ CREATE TABLE tblUser (
 	passcode		NVARCHAR(30) NOT NULL,
 	firstName		NVARCHAR(40),
 	lastName		NVARCHAR(40),
-	adminPermission	BIT NOT NULL DEFAULT 0
+	adminPermission	BIT NOT NULL DEFAULT 0,
+	phoneNum		NVARCHAR(30) NOT NULL
 	)
 
 --CREATE TABLE tblReservation (
@@ -133,9 +134,7 @@ VALUES ( 0001, 6, 'Large'),
 go
 
 INSERT INTO tblUser(emailAddress, passcode, firstName, lastName, adminPermission)
-VALUES ('kepler@uon.edu.au', 'password1', 'Kepler', 'Manu', 0),
-('admin@official.com', 'password2', NULL, NULL, 1),
-('michael@uon.edu.au', 'password3', 'Michael', NULL, 0)
+VALUES ('admin@official.com', 'qwerty1', 'admin', 'admin', 1)
 go
 
 --INSERT INTO tblReservation(userID, tableID, reservationStartTime, reservationFinishTime, groupName)
