@@ -45,6 +45,17 @@
 							</div>
 						</div>
 
+                      <div class="form-group">
+						<label for="email" class="cols-sm-2 control-label">Mobile Phone</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+									<input type="number" class="form-control" name="Phone" id="inPhone"  placeholder="Enter your phone" required="required" runat="server"/>
+								</div>
+							</div>
+						</div>
+
+
 						<div class="form-group">
 							<label for="password" class="cols-sm-2 control-label">Password</label>
 							<div class="cols-sm-10">
@@ -65,8 +76,8 @@
 							</div>
 						</div>
 
-                        <!-- matching passwords validator commented out due to issues-->
-                        <asp:CompareValidator ID="cvPsw" runat="server"
+                        <!-- matching passwords validator commented out due to issues -->
+                      <asp:CompareValidator ID="cvPsw" runat="server"
                             ControlToValidate="inConfirmPassword"
                             ControlToCompare="inPassword" Display="Dynamic"
                             ErrorMessage="Email re-entry" ForeColor="Red">

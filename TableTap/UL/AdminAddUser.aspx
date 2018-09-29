@@ -19,7 +19,6 @@
 							<label for="name" class="cols-sm-2 control-label">User First Name</label>
 							<div class="cols-sm-10">
 								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
 									<input type="text" class="form-control" name="name" id="inADFirstName"  placeholder="Enter user first name" required="required" runat="server"/>
 								</div>
 							</div>
@@ -29,7 +28,6 @@
 							<label for="name" class="cols-sm-2 control-label">User Last Name</label>
 							<div class="cols-sm-10">
 								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
 									<input type="text" class="form-control" name="name" id="inADLastName"  placeholder="Enter user last name" required="required" runat="server"/>
 								</div>
 							</div>
@@ -39,7 +37,6 @@
 							<label for="email" class="cols-sm-2 control-label">Enter Email</label>
 							<div class="cols-sm-10">
 								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
 									<input type="email" class="form-control" name="email" id="inADEmail"  placeholder="Enter the Email" required="required" runat="server"/>
 								</div>
 							</div>
@@ -49,7 +46,6 @@
 							<label for="password" class="cols-sm-2 control-label">Password</label>
 							<div class="cols-sm-10">
 								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
 									<input type="password" class="form-control" name="password" id="inADPassword"  placeholder="Enter the Password" required="required" runat="server"/>
 								</div>
 							</div>
@@ -59,7 +55,6 @@
 							<label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
 							<div class="cols-sm-10">
 								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
 									<input type="password" class="form-control" name="confirm" id="inADConfirmPassword"  placeholder="Confirm the Password" required="required" runat="server"/>
 								</div>
 							</div>
@@ -74,7 +69,9 @@
                         </asp:CompareValidator><br />
 
 						<div class="form-group ">
-							<asp:Button type="button" Text="Submit" class="btn btn-primary btn-lg btn-block login-button" id="submitButton" onclick="submitButton_Click" runat="server" />
+
+
+							<asp:Button type="button" Text="Submit" id="submitButton"  class="btn btn-primary btn-lg btn-block login-button" onclick="submitButton_Click" runat="server" />
 						</div>
 						
 					</form>

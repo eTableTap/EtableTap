@@ -41,9 +41,7 @@ namespace TableTap.UL
             }
             else
             {
-///                 lblStatus.Text = "Email already registered";
-                Initiate(fEmail);
-
+                 lblStatus.Text = "Email already registered, please use our login page";
 
             }
 
@@ -67,15 +65,12 @@ namespace TableTap.UL
                 newUser.FirstName = inFirstName.Value;
                 newUser.LastName = inLastName.Value;
                 newUser.AdminPermission = 0;
+                newUser.phoneNum = inPhone.Value;
 
                 BusinessLayer.UserBL.ProcessAddNewUser(newUser);
 
 
-                // placeholder for future feature
-                string phone = "nope";
-
-
-                NotifyBL.startAccountNotification(fEmail, phone, inFirstName.Value, inLastName.Value);
+                NotifyBL.startAccountNotification(fEmail, inPhone.Value, inFirstName.Value, inLastName.Value);
 
 
                 Response.Redirect("Home.aspx");

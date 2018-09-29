@@ -19,12 +19,14 @@ namespace TableTap.Models
 
         public int AdminPermission { get; set; }
 
+        public string phoneNum { get; set; }
+
         public UserModel()
         {
 
         }
 
-        public UserModel(int id, string email, string psw, string fname, string lname, byte admperm)
+        public UserModel(int id, string email, string psw, string fname, string lname, byte admperm, string ph)
         {
             this.UserID = id;
             this.Email = email;
@@ -32,6 +34,7 @@ namespace TableTap.Models
             this.FirstName = fname;
             this.LastName = lname;
             this.AdminPermission = admperm;
+            this.phoneNum = ph;
         }
     }
 }

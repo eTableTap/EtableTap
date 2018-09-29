@@ -45,7 +45,7 @@ namespace TableTap.UL
         protected void Button2_Click(object sender, EventArgs e)
         {
             string email = inEmail.Value;
-            string phone = phonenum.Value;
+            string phone = inPhone.Value;
             string fName = "testfirstname";
             string sName = "testsurname";
             NotifyBL.startAccountNotification(email, phone, fName, sName);

@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>test</title>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -15,7 +15,8 @@
         </div>
          <p>
             <input type="email" class="form-control" name="email" id="inEmail"  placeholder="Enter your Email" runat="server"/>
-            <input type="text" class="form-control" name="phone" id="phonenum"  placeholder="Enter your phonenumber" runat="server"/>
+
+            <input type="tel" class="form-control" id="inPhone" name="inPhone" placeholder="0427669341" title="Please enter a mobile number" pattern="[0-9]{10}" required="required" runat="server" />
       
             <asp:Button ID="Button2" runat="server" Text="Button" OnClick="Button2_Click" />
         </p>

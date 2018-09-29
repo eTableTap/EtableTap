@@ -35,6 +35,7 @@ namespace TableTap.DataAccessLayer
                         user.FirstName = dr["firstName"].ToString();
                         user.LastName = dr["lastName"].ToString();
                         user.AdminPermission = Convert.ToByte(dr["adminPermission"]);
+                        user.phoneNum = dr["phoneNum"].ToString();
 
                         users.Add(user);
                     }
@@ -72,6 +73,7 @@ namespace TableTap.DataAccessLayer
                     user.FirstName = dr["firstName"].ToString();
                     user.LastName = dr["lastName"].ToString();
                     user.AdminPermission = Convert.ToByte(dr["adminPermission"]);
+                    user.phoneNum = dr["phoneNum"].ToString();
 
 
                     dr.Close();
@@ -95,13 +97,13 @@ namespace TableTap.DataAccessLayer
                     
 
                   using (SqlCommand command = new SqlCommand(
-                  "INSERT INTO tblUser (emailAddress, passcode, firstName, lastName, adminPermission) VALUES ("
+                  "INSERT INTO tblUser (emailAddress, passcode, firstName, lastName, adminPermission, phoneNum) VALUES ("
                       + "'" + newUser.Email.ToString() + "'" + ", "
                       + "'" + newUser.Password.ToString() + "'" + ", "
                       + "'" + newUser.FirstName + "'" + ", "
                       + "'" + newUser.LastName + "'" + ", "
-                      + "'" + newUser.AdminPermission+ "'"
-                      + ")"
+                      + "'" + newUser.AdminPermission + "'" + ","
+                      + "'" + newUser.phoneNum + "'" + ")"
                       ,
                       conn))
                   {

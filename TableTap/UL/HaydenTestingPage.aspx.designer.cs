@@ -40,13 +40,13 @@ namespace TableTap.UL {
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl inEmail;
         
         /// <summary>
-        /// phonenum control.
+        /// inPhone control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText phonenum;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl inPhone;
         
         /// <summary>
         /// Button2 control.

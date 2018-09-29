@@ -56,8 +56,8 @@ CREATE TABLE tblUser (
 	passcode		NVARCHAR(30) NOT NULL,
 	firstName		NVARCHAR(40),
 	lastName		NVARCHAR(40),
-	adminPermission	BIT NOT NULL DEFAULT 0,
-	phoneNum		NVARCHAR(30) NOT NULL
+	adminPermission	BIT NOT NULL DEFAULT (0),
+	phoneNum		NVARCHAR(30) NOT NULL,
 	)
 
 --CREATE TABLE tblReservation (
@@ -133,8 +133,8 @@ VALUES ( 0001, 6, 'Large'),
 (0001, 2, 'Small')
 go
 
-INSERT INTO tblUser(emailAddress, passcode, firstName, lastName, adminPermission)
-VALUES ('admin@official.com', 'qwerty1', 'admin', 'admin', 1)
+INSERT INTO tblUser(emailAddress, passcode, firstName, lastName, adminPermission, phoneNum)
+VALUES ('admin@official.com', 'qwerty1', 'admin', 'admin', 1, 2)
 go
 
 --INSERT INTO tblReservation(userID, tableID, reservationStartTime, reservationFinishTime, groupName)
@@ -282,3 +282,4 @@ END
 SELECT * FROM tblStatus;
 SELECT TableID FROM tblTable;
 SELECT COUNT (TableID) FROM tblTable;
+SELECT * FROM tblUser;
