@@ -84,6 +84,54 @@ namespace TableTap.DataAccessLayer
             return user;
         }
 
+        public static UserModel loadUserByEmailAndPassword(string email, string password)
+        {
+            UserModel loadeduser = new UserModel();
+
+           
+
+            
+
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+
+            List<UserModel> userList = LoadUsersList();
+
+            UserModel user = userList.Where(u => u.Email == email && u.Password == password).FirstOrDefault();
+
+            if (user != null)
+            {
+                using (conn)
+                {
+                    conn.Open();
+
+                    using (SqlCommand command = new SqlCommand(
+                    "SELECT * FROM tblUser WHERE emailAddress=" + "'" + email.ToString() + "'" + "AND passcode=" + "'" + password.ToString() + "'",
+                    conn))
+                    {
+                        SqlDataReader dr = command.ExecuteReader();
+                        dr.Read();
+
+
+
+                        //user = new UserModel();
+                        loadeduser.UserID = Convert.ToInt32(dr["userID"]);
+                        loadeduser.Email = dr["emailAddress"].ToString();
+                        loadeduser.Password = dr["passcode"].ToString();
+                        loadeduser.FirstName = dr["firstName"].ToString();
+                        loadeduser.LastName = dr["lastName"].ToString();
+                        loadeduser.AdminPermission = Convert.ToByte(dr["adminPermission"]);
+                        loadeduser.phoneNum = dr["phoneNum"].ToString();
+
+
+                        dr.Close();
+                    }
+                    conn.Close();
+                }
+            }
+
+            return user;
+        }
+
         public static void AddNewUser(UserModel user)
         {
             UserModel newUser = user;
@@ -306,7 +354,30 @@ namespace TableTap.DataAccessLayer
 
         }
 
+        public static int CheckLogin(UserModel logUser)
+        {
+            List<UserModel> userList = LoadUsersList();
+            //List<UserModel> adminList = LoadAdminsList();
 
+            UserModel user = userList.Where(u => u.Email == logUser.Email && u.Password == logUser.Password).FirstOrDefault();
+            //UserModel admin = adminList.Where(u => u.Email == logUser.Email && u.Password == logUser.Password).FirstOrDefault();
+            
+            
+            
+            if (user != null)
+            {
+                if (user.AdminPermission == 1)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+
+            return 5;
+        }
 
 
     }

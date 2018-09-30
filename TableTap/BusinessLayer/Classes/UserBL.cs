@@ -29,6 +29,13 @@ namespace TableTap.BusinessLayer
             return user;
         }
 
+        public static UserModel getUserByEmailAndPassword(string email, string password)
+        {
+            UserModel user = UserDAL.loadUserByEmailAndPassword(email, password);
+
+            return user;
+        }
+
         public static void ProcessAddNewUser(UserModel user)
         {
             UserModel newUser = user;
@@ -39,17 +46,18 @@ namespace TableTap.BusinessLayer
 
 
 
-        /// <summary>
-        /// CREATED BY HAYDEN BARTLETT
-        /// scripting for login, passes information from login page to datalayer USERDB.
-        /// A return of INT 3 = username failure
-        /// A return of INT 2 = Password failure
-        /// A return of INT 1 = Login success
-        /// INPUT email Password, from Login
-        /// OUTPUT INT 1/3 passed from USERDAL
-        /// </summary>
+        
         public static int loginScripting(string email, string password)
         {
+            /// <summary>
+            /// CREATED BY HAYDEN BARTLETT
+            /// scripting for login, passes information from login page to datalayer USERDB.
+            /// A return of INT 3 = username failure
+            /// A return of INT 2 = Password failure
+            /// A return of INT 1 = Login success
+            /// INPUT email Password, from Login
+            /// OUTPUT INT 1/3 passed from USERDAL
+            /// </summary>
             int status = 3;
             try
             {
@@ -66,10 +74,10 @@ namespace TableTap.BusinessLayer
 
 
 
-        //detects if email already exists in database (by contacting AdminUserEditCheck)
+        
         public static bool emailDuplicateCheck(string email)
         {
-
+            //detects if email already exists in database (by contacting AdminUserEditCheck)
             bool exists;
 
             List<String> listing = new List<string>();
@@ -95,11 +103,12 @@ namespace TableTap.BusinessLayer
         }
 
 
-        /// <summary>
-        /// passes list from fed from input (adminedituser) to ModifyUser class
-        /// </summary>
+        
         public static bool PassInModifyString(List<string> record)
         {
+            /// <summary>
+            /// passes list from fed from input (adminedituser) to ModifyUser class
+            /// </summary>
             bool success = false;
             try
             {
@@ -117,16 +126,17 @@ namespace TableTap.BusinessLayer
         }
 
 
-        /// <summary>
-        /// Passes accesses data from data access layer
-        /// input a email
-        /// outputs list of user info associated with email
-        /// if no email found or in the event of a error returns null
-        /// </summary>
-        /// <param name="record"></param>
-        /// <returns></returns>
+        
         public static List<string> passUserSearch(string email)
         {
+            /// <summary>
+            /// Passes accesses data from data access layer
+            /// input a email
+            /// outputs list of user info associated with email
+            /// if no email found or in the event of a error returns null
+            /// </summary>
+            /// <param name="record"></param>
+            /// <returns></returns>
             List<string> record = new List<string>();
             try
             {
@@ -143,15 +153,15 @@ namespace TableTap.BusinessLayer
         }
 
 
-        /// <summary>
-        /// accesses user delete function, if successful returns true else
-        /// returns false
-        /// </summary>
-        /// <param name="userID"></param>
-        /// <returns></returns>
+        
         public static void userDelete(int userID)
         {
-
+            /// <summary>
+            /// accesses user delete function, if successful returns true else
+            /// returns false
+            /// </summary>
+            /// <param name="userID"></param>
+            /// <returns></returns>
             UserDAL.deleteUser(userID);
             /*bool success;
             try
@@ -165,6 +175,11 @@ namespace TableTap.BusinessLayer
             }*/
         }
 
+        public static int ProcessLogin(UserModel logUser)
+        {
+
+            return UserDAL.CheckLogin(logUser);
+        }
 
 
     }

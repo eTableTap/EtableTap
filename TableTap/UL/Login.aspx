@@ -40,7 +40,7 @@
 
 
 						<div class="form-group ">
-							<asp:Button type="button" Text="Login" class="btn btn-primary btn-lg btn-block login-button" id="registerButton" onclick="loginButton_Click" runat="server" />
+							<asp:Button type="button" Text="Login" class="btn btn-primary btn-lg btn-block login-button" id="loginButton" onclick="loginButton_Click" runat="server" />
 						</div>
 
                         <div class="login-register">

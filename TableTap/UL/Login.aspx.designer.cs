@@ -49,13 +49,13 @@ namespace TableTap.UL {
         protected global::System.Web.UI.WebControls.Label lblPassword;
         
         /// <summary>
-        /// registerButton control.
+        /// loginButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button registerButton;
+        protected global::System.Web.UI.WebControls.Button loginButton;
         
         /// <summary>
         /// lblinfo control.
