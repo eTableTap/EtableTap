@@ -99,6 +99,64 @@ namespace TableTap.DataAccessLayer.Classes
             return tables;
         }
 
+        public static BookingModel loadTableBookingList(int id)
+        {
+            BookingModel bookings = new BookingModel();
+
+            DateTime dateNow = DateTime.Now;
+            string date = dateNow.ToString("yyyy-MM-d");
+
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+
+            using (conn)
+            {
+                conn.Open();
+
+                using (SqlCommand command = new SqlCommand(
+                    "SELECT * FROM tblStatus WHERE tableID=" + "'" + id.ToString() + "'" + " AND date=" + "'" + date + "'",
+                    conn))
+                {
+                    SqlDataReader dr = command.ExecuteReader();
+
+                    dr.Read();             
+
+                        bookings.StatusID = Convert.ToInt32(dr["StatusID"]);
+                        bookings.TableID = Convert.ToInt32(dr["TableID"]);
+                        bookings.Date = DateTime.Parse(dr["Date"].ToString());
+                        bookings.Hour0 = dr["hour00"].ToString();
+                        bookings.Hour1 = dr["hour01"].ToString();
+                        bookings.Hour2 = dr["hour02"].ToString();
+                        bookings.Hour3 = dr["hour03"].ToString();
+                        bookings.Hour4 = dr["hour04"].ToString();
+                        bookings.Hour5 = dr["hour05"].ToString();
+                        bookings.Hour6 = dr["hour06"].ToString();
+                        bookings.Hour7 = dr["hour07"].ToString();
+                        bookings.Hour8 = dr["hour08"].ToString();
+                        bookings.Hour9 = dr["hour09"].ToString();
+                        bookings.Hour10 = dr["hour10"].ToString();
+                        bookings.Hour11 = dr["hour11"].ToString();
+                        bookings.Hour12 = dr["hour12"].ToString();
+                        bookings.Hour13 = dr["hour13"].ToString();
+                        bookings.Hour14 = dr["hour14"].ToString();
+                        bookings.Hour15 = dr["hour15"].ToString();
+                        bookings.Hour16 = dr["hour16"].ToString();
+                        bookings.Hour17 = dr["hour17"].ToString();
+                        bookings.Hour18 = dr["hour18"].ToString();
+                        bookings.Hour19 = dr["hour19"].ToString();
+                        bookings.Hour20 = dr["hour20"].ToString();
+                        bookings.Hour21 = dr["hour21"].ToString();
+                        bookings.Hour22 = dr["hour22"].ToString();
+                        bookings.Hour23 = dr["hour23"].ToString();
+                    
+
+                    dr.Close();
+                }
+                conn.Close();
+            }
+
+            return bookings;
+        }
+
         public static string checkTableStatus(int id)
         {
             bool hasData = false; //for testing purpuses
@@ -137,11 +195,11 @@ namespace TableTap.DataAccessLayer.Classes
 
             if (sTest == "")
             {
-                sTest = "This table is availabile!";
+                sTest = "This table is currently availabile! Times below are also available";
             }
             else
             {
-                sTest = "This table is Occupied";
+                sTest = "This table is Occupied. Times below are available";
             }
 
             return sTest;

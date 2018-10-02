@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TableTap.BusinessLayer.Classes;
+using TableTap.Models;
 
 
 namespace TableTap.UL
@@ -22,6 +23,10 @@ namespace TableTap.UL
             //testButton1.Text = today.ToString("HH");
 
             lblStatus.Text = TableBL.checkTableStatus(ID).ToString();
+
+            BookingModel bookings = TableBL.getDayTableBooking(ID);
+            listboxTest.Text = bookings.Hour0 + " "+ bookings.Hour1;
+
             //need to create a drop down for available times for the rest of the day
 
             //need to create a booking page, that lets the user select a date

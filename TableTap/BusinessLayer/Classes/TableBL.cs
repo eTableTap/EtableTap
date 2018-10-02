@@ -26,5 +26,12 @@ namespace TableTap.BusinessLayer.Classes
 
             return sCheck;
         }
+
+        public static BookingModel getDayTableBooking(int id)
+        {
+            BookingModel bookings = TableDAL.loadTableBookingList(id);
+
+            return bookings;
+        }
     }
 }

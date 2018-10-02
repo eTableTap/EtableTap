@@ -31,12 +31,21 @@ namespace TableTap.UL {
         protected global::System.Web.UI.WebControls.DropDownList statusDropdown;
         
         /// <summary>
-        /// testButton1 control.
+        /// listboxTest control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button testButton1;
+        protected global::System.Web.UI.WebControls.ListBox listboxTest;
+        
+        /// <summary>
+        /// btnBook control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnBook;
     }
 }
