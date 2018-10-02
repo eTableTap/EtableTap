@@ -23,11 +23,14 @@ namespace TableTap.UL
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["loggedUser"] != "admin") //stops non admins accessing page
+            {
+                Response.Redirect("Login.aspx");
+            }
 
-            
             buildings = BuildingBL.fillBuildingsList();
 
-            if (!IsPostBack) //need this to stop it reverting to the top value every button click
+            if (!IsPostBack) //need this to stop it reverting to the top value every button click ------------------!!!!!!!!!!!!!!!!!!!
             {
                 buildingDropdown.DataSource = buildings;
                 buildingDropdown.DataValueField = "BuildingID";

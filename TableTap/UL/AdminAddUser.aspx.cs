@@ -13,16 +13,20 @@ namespace TableTap.UL
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["loggedUser"] != "admin") //stops non admins accessing page
+            {
+                Response.Redirect("Login.aspx");
+            }
         }
 
 
-        /// <summary>
-        ///  CREATED BY HAYDEN BASED ON REGISTER PAGE
-        ///  SEE REGISTER PAGE FOR MORE DETAILS
-        /// </summary>
+        
         protected void submitButton_Click(object sender, EventArgs e)
         {
+            /// <summary>
+            ///  CREATED BY HAYDEN BASED ON REGISTER PAGE
+            ///  SEE REGISTER PAGE FOR MORE DETAILS
+            /// </summary>
             if (Page.IsValid)
             {
 
