@@ -20,6 +20,7 @@
 
             <div class="form-group ">
 					<asp:Button type="button" ID="btnBook" Text="Book Table" class="btn btn-primary btn-lg btn-block login-button" runat="server" />
+                    <asp:DropDownList runat="server" ID="hourDropdown" ></asp:DropDownList>
 			</div>
 
         </div>

@@ -25,7 +25,24 @@ namespace TableTap.UL
             lblStatus.Text = TableBL.checkTableStatus(ID).ToString();
 
             BookingModel bookings = TableBL.getDayTableBooking(ID);
-            listboxTest.Text = bookings.Hour0 + " "+ bookings.Hour1;
+            
+
+            List<string> dayList = new List<String>();
+            int x = 0;
+            while (x < 24)
+            {
+                dayList.Add(bookings.Hour[x]);
+                x++;
+            }
+            if (!IsPostBack) //need this to stop it reverting to the top value every button click
+            {
+                hourDropdown.DataSource = dayList;
+                
+                hourDropdown.DataBind();
+            }
+
+
+
 
             //need to create a drop down for available times for the rest of the day
 
