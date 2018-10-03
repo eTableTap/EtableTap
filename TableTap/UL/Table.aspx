@@ -8,12 +8,7 @@
 
             <div class="form-group">
                     <asp:Label runat="server" ID="lblStatus" class="cols-sm-2 control-label" text="will update"></asp:Label>
-					<div class="cols-sm-10">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-							<asp:DropDownList runat="server" ID="statusDropdown" ></asp:DropDownList>
-						</div>
-					</div>
+					
 			</div>
 
             <asp:ListBox runat="server" ID="listboxTest"></asp:ListBox>

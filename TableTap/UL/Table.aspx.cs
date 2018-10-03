@@ -28,13 +28,13 @@ namespace TableTap.UL
             
 
             List<string> dayList = new List<String>();
-            int x = 0;
-            while (x < 24)
+            int x = Convert.ToInt32(today.ToString("HH")); //sets x to current hour
+            while (x < 24)      //will loop until the end of the days booking aka 2300. Can change to room closing time     
             {
                 dayList.Add(bookings.Hour[x]);
                 x++;
             }
-            if (!IsPostBack) //need this to stop it reverting to the top value every button click
+            if (!IsPostBack) 
             {
                 hourDropdown.DataSource = dayList;
                 
