@@ -190,7 +190,7 @@ CREATE TABLE tblStatus
 	[statusID]		INT IDENTITY(0001,1) PRIMARY KEY,
 	[tableID]		INT,
 	[date]			DATE,
-	[hour00]			CHAR(50), 
+	[hour00]			CHAR, 
 	[hour01]			CHAR,
 	[hour02]			CHAR,
 	[hour03]			CHAR,

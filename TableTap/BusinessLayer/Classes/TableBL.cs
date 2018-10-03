@@ -18,13 +18,13 @@ namespace TableTap.BusinessLayer.Classes
             return tables;
         }
 
-        public static string checkTableStatus(int id)
+        public static bool checkTableStatus(int id)
         {
             
             
-            string sCheck = TableDAL.checkTableStatus(id);
+            bool bCheck = TableDAL.checkTableStatus(id);
 
-            return sCheck;
+            return bCheck;
         }
 
         public static BookingModel getDayTableBooking(int id)

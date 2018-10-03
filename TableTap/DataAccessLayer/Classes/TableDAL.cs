@@ -182,7 +182,7 @@ namespace TableTap.DataAccessLayer.Classes
             return bookings;
         }
 
-        public static string checkTableStatus(int id)
+        public static bool checkTableStatus(int id)
         {
             bool hasData = false; //for testing purpuses
             string sTest = "default - this should not matter";
@@ -218,16 +218,17 @@ namespace TableTap.DataAccessLayer.Classes
                 conn.Close();
             }
 
-            if (sTest == "")
+            if (sTest.Contains("Free"))
             {
-                sTest = "This table is currently availabile! Times below are also available";
+                //sTest = "This table is currently availabile! Times below are also available";
+                return true;
             }
-            else
+            /*else
             {
                 sTest = "This table is Occupied. Times below are available";
-            }
+            }*/
 
-            return sTest;
+            return false;
         }
 
 

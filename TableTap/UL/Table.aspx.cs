@@ -22,22 +22,41 @@ namespace TableTap.UL
             //testButton1.Text = today.ToString("yyyy-MM-dd");
             //testButton1.Text = today.ToString("HH");
 
-            lblStatus.Text = TableBL.checkTableStatus(ID).ToString();
+            bool bCheck = TableBL.checkTableStatus(ID);
+            if (bCheck == true)
+            {
+                lblStatus.Text = "THE TABLE IS AVAILABLE";
+            }
+            else
+            {
+                lblStatus.Text = "THE TABLE IS CURRENTLY OCCUPIED";
+            }
 
             BookingModel bookings = TableBL.getDayTableBooking(ID);
-            
 
+            
             List<string> dayList = new List<String>();
             int x = Convert.ToInt32(today.ToString("HH")); //sets x to current hour
-            while (x < 24)      //will loop until the end of the days booking aka 2300. Can change to room closing time     
+            
+            while (x < 24)      //will loop until the end of the day's booking aka 2300. Can change to room closing time     
             {
-                dayList.Add(bookings.Hour[x]);
+                if (bookings.Hour[x].ToString().Contains("Free"))
+                {
+                    dayList.Add(x.ToString() + ": " + bookings.Hour[x]);
+                }
+                else
+                {
+                    dayList.Add(x.ToString() + ": Occupied");
+                }
+
                 x++;
             }
+           
             if (!IsPostBack) 
             {
                 hourDropdown.DataSource = dayList;
-                
+                //hourDropdown.DataValueField = "Hour[]";
+                //hourDropdown.DataTextField = "Hour[]";
                 hourDropdown.DataBind();
             }
 
