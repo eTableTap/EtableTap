@@ -118,6 +118,7 @@
     <Content Include="BusinessLayer\JavaScript\jscam.swf" />
     <Content Include="BusinessLayer\JavaScript\photo.js" />
     <Content Include="CSS\Map.css" />
+    <Content Include="UL\Error.aspx" />
     <Content Include="Images\Huxley Library.png" />
     <Content Include="Images\Auchumty Library.png" />
     <Content Include="Images\ICT Building.png" />
@@ -239,6 +240,13 @@
     <Compile Include="DataAccessLayer\Classes\TableDAL.cs" />
     <Compile Include="DataAccessLayer\Classes\UserDALkepler.cs" />
     <Compile Include="DataAccessLayer\Classes\UserDAL.cs" />
+    <Compile Include="UL\Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UL\Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Models\BookingModel.cs" />
     <Compile Include="Models\BuildingModel.cs" />
     <Compile Include="Models\RoomModel.cs" />
