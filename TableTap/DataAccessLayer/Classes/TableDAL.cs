@@ -1,4 +1,5 @@
 ﻿using System;
+
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,6 +10,9 @@ using System.Configuration;
 using System.Data.SqlClient;
 using TableTap.BusinessLayer.Classes;
 using TableTap.Models;
+
+//
+
 
 namespace TableTap.DataAccessLayer.Classes
 {
@@ -184,7 +188,7 @@ namespace TableTap.DataAccessLayer.Classes
 
         public static bool checkTableStatus(int id)
         {
-            bool hasData = false; //for testing purpuses
+            
             string sTest = "default - this should not matter";
             
 
@@ -231,7 +235,31 @@ namespace TableTap.DataAccessLayer.Classes
             return false;
         }
 
+        public static bool bookTable(int id, string login, string hour)
+        {
+            DateTime dateNow = DateTime.Now;
+            string date = dateNow.ToString("yyyy-MM-d");
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+            //need a try catch here
+            using (conn)
+            {
+                conn.Open();
 
+                using (SqlCommand command = new SqlCommand(
+                    /*"UPDATE hour" + hour + " Set hour" + hour + "= '" + login + "'" + " FROM tblStatus WHERE tableID=" + "'" + id.ToString() + "'" + " AND date=" + "'" + date + "'",
+                    conn))*/
+                    "UPDATE tblStatus SET hour" + hour + "= '" + login + "'" + " WHERE tableID=" + "'" + id.ToString() + "'" + " AND date=" + "'" + date + "'",
+                    conn))
+                {
+                    SqlDataReader dr = command.ExecuteReader();
+
+                    dr.Close();
+                }
+                conn.Close();
+                return true;
+            }
+            return false;
+        }
 
 
 

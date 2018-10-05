@@ -17,6 +17,7 @@ namespace TableTap.UL
             int ID = Int32.Parse(Request.QueryString["ID"]);
 
             DateTime today = DateTime.Now;   //HH = 24hours, hh = 12hours, M = month, m = minute, d = day, y = year.
+            heading.InnerText = "Table: " + ID.ToString();
             //testButton1.Text = today.ToShortDateString();
             //testButton1.Text = today.ToString("dd-MM-yyyy");
             //testButton1.Text = today.ToString("yyyy-MM-dd");
@@ -55,19 +56,40 @@ namespace TableTap.UL
             if (!IsPostBack) 
             {
                 hourDropdown.DataSource = dayList;
-                //hourDropdown.DataValueField = "Hour[]";
-                //hourDropdown.DataTextField = "Hour[]";
                 hourDropdown.DataBind();
             }
 
-
-
-
-            //need to create a drop down for available times for the rest of the day
-
             //need to create a booking page, that lets the user select a date
 
-            //add user session to see who booked it.
+        }
+        protected void hourDropdown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (hourDropdown.SelectedItem.Text.ToString().Contains("Occupied"))
+            {
+                btnBook.Visible = false;
+                lblStatus.Text = "THE TABLE IS CURRENTLY OCCUPIED";
+            }
+            else
+            {
+                btnBook.Visible = true;
+                lblStatus.Text = "THE TABLE IS AVAILABLE";
+            }
+        }
+        protected void btnBook_Click(Object sender, EventArgs e)
+        {
+            if (Session["user"] == null)
+            {
+                
+                Response.Redirect("Login.aspx");
+            }
+            int ID = Int32.Parse(Request.QueryString["ID"]);
+            string sHour = new String(hourDropdown.SelectedItem.Text.TakeWhile(Char.IsDigit).ToArray());
+            if (TableBL.bookTable(ID, Session["login"].ToString(), sHour))
+            {
+                heading.InnerText = "Table was booked";
+
+            }
+
         }
     }
 }

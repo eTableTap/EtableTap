@@ -4,18 +4,32 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container-fluid">
         <div class="jumbotron">
-            <h2>Table list</h2>
-
-            <div class="form-group">
-                    <asp:Label runat="server" ID="lblStatus" class="cols-sm-2 control-label" text="will update"></asp:Label>
-					
-			</div>
+            <h2 runat="server" id="heading">Table list</h2>
+            <asp:ScriptManager id="ScriptManager1" runat="server">
+            </asp:ScriptManager>
+            
 
             
 
             <div class="form-group ">
-					<asp:Button type="button" ID="btnBook" Text="Book Table" class="btn btn-primary btn-lg btn-block login-button" runat="server" />
-                    <asp:DropDownList runat="server" ID="hourDropdown" ></asp:DropDownList>
+					
+                
+                        <asp:DropDownList runat="server" ID="hourDropdown" onselectedindexchanged="hourDropdown_SelectedIndexChanged" Autopostback="true"></asp:DropDownList>
+                    <asp:UpdatePanel ID="upBookingInfo" runat="server">
+                                        <ContentTemplate>
+							                <asp:Button type="button" ID="btnBook" Text="Book Table" onclick="btnBook_Click" runat="server" />
+                                            <div class="form-group">
+                                                <asp:Label runat="server" ID="lblStatus" class="cols-sm-2 control-label" text="will update"></asp:Label>
+					
+			                                </div>
+                                        </ContentTemplate>
+                                    
+                                        <Triggers>
+                                                <asp:AsyncPostBackTrigger ControlID="hourDropdown" EventName="SelectedIndexChanged" />  
+                                        </Triggers>
+                                    </asp:UpdatePanel>
+                        
+                    
 			</div>
 
         </div>

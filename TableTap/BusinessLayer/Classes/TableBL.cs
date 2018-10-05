@@ -33,5 +33,20 @@ namespace TableTap.BusinessLayer.Classes
 
             return bookings;
         }
+
+        public static bool bookTable(int id, string login, string hour)
+        {
+
+            bool bCheck = TableDAL.checkTableStatus(id);
+            if (bCheck == true)
+            {
+                if (TableDAL.bookTable(id, login, hour))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
     }
 }
