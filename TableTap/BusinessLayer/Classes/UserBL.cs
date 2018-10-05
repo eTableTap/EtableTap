@@ -156,12 +156,10 @@ namespace TableTap.BusinessLayer
         
         public static void userDelete(int userID)
         {
-            /// <summary>
-            /// accesses user delete function, if successful returns true else
+
+            /// access user delete function, if successful returns true else
             /// returns false
-            /// </summary>
-            /// <param name="userID"></param>
-            /// <returns></returns>
+            IncidenceDAL.incAllUserDelete(userID);
             UserDAL.deleteUser(userID);
             /*bool success;
             try

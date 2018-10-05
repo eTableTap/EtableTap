@@ -113,15 +113,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="UL\404Page.aspx" />
     <Content Include="BusinessLayer\JavaScript\jquery.webcam.js" />
     <Content Include="BusinessLayer\JavaScript\jquery.webcam.min.js" />
     <Content Include="BusinessLayer\JavaScript\jscam.swf" />
     <Content Include="BusinessLayer\JavaScript\photo.js" />
     <Content Include="CSS\Map.css" />
     <Content Include="UL\Error.aspx" />
-    <Content Include="Images\Huxley Library.png" />
-    <Content Include="Images\Auchumty Library.png" />
-    <Content Include="Images\ICT Building.png" />
+    <Content Include="Resources\Images\Huxley Library.png" />
+    <Content Include="Resources\Images\Auchumty Library.png" />
+    <Content Include="Resources\Images\ICT Building.png" />
     <Content Include="NotificationModule\NotificationModuleandLogic.aspx" />
     <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <Content Include="obj\Debug\TableTap.csprojResolveAssemblyReference.cache" />
@@ -228,17 +229,23 @@
     <Content Include="Scripts\popper-utils.js.map" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccessLayer\Classes\IncidenceDAL.cs" />
+    <Compile Include="UL\404Page.aspx.cs">
+      <DependentUpon>404Page.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UL\404Page.aspx.designer.cs">
+      <DependentUpon>404Page.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BusinessLayer\Classes\BuildingBL.cs" />
     <Compile Include="BusinessLayer\Classes\NotifyBL.cs" />
     <Compile Include="BusinessLayer\Classes\RoomBL.cs" />
     <Compile Include="BusinessLayer\Classes\TableBL.cs" />
     <Compile Include="BusinessLayer\Classes\TableManager.cs" />
-    <Compile Include="BusinessLayer\Classes\User.cs" />
     <Compile Include="BusinessLayer\Classes\UserBL.cs" />
     <Compile Include="DataAccessLayer\Classes\BuildingDAL.cs" />
     <Compile Include="DataAccessLayer\Classes\RoomDAL.cs" />
     <Compile Include="DataAccessLayer\Classes\TableDAL.cs" />
-    <Compile Include="DataAccessLayer\Classes\UserDALkepler.cs" />
     <Compile Include="DataAccessLayer\Classes\UserDAL.cs" />
     <Compile Include="UL\Error.aspx.cs">
       <DependentUpon>Error.aspx</DependentUpon>

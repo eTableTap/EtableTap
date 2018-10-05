@@ -8,9 +8,9 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
+        <div> 
 
-            sorry the page you asked for is not avaliable
+            I am a error page for unexpected errors
 
         </div>
     </form>

@@ -60,6 +60,22 @@ CREATE TABLE tblUser (
 	phoneNum		NVARCHAR(30) NOT NULL,
 	)
 
+	
+CREATE TABLE tblIncidence(
+    incidenceID INT IDENTITY(1000001,1) PRIMARY KEY,
+    incDate DATE NOT NULL,
+	info VARCHAR(300) NOT NULL,
+	tableID INT NOT NULL,
+	roomID INT NOT NUll,
+	userID INT,
+
+	 -- determines who sees the notification
+    CONSTRAINT fk_getaroomID FOREIGN KEY (roomID) REFERENCES tblroom(roomID),
+    CONSTRAINT fk_getaTableID FOREIGN KEY (tableID) REFERENCES tblTable(tableID),
+	CONSTRAINT fk_getaUserID FOREIGN KEY (userID) REFERENCES tblUser(userID)
+
+  )
+
 --CREATE TABLE tblReservation (
 --	reservationID	INT IDENTITY(00001,1) PRIMARY KEY,
 --	userID			INT NOT NULL,
@@ -134,8 +150,12 @@ VALUES ( 0001, 6, 'Large'),
 go
 
 INSERT INTO tblUser(emailAddress, passcode, firstName, lastName, adminPermission, phoneNum)
-VALUES ('admin@official.com', 'qwerty1', 'admin', 'admin', 1, 2)
+VALUES ('admin@official.com', 'qwerty1', 'admin', 'admin', 1, 2),
+('hayden.bartlett1@nerg.com', '123', 'baz', 'clide', 0, 2)
 go
+
+INSERT INTO tblIncidence(incDate, info, tableID, roomID, userID)
+VALUES ('2018-09-14', 'I am a fucking retard', 1, 0001, 10002)
 
 --INSERT INTO tblReservation(userID, tableID, reservationStartTime, reservationFinishTime, groupName)
 --VALUES (100001, 1, '2018-09-15 12:00:00', '2018-09-15 13:00:00', 'Keplers group, INFT3970'),
@@ -237,6 +257,8 @@ FROM
 ) AS y;
 
 
+
+
 --INSERT INTO  tblStatus(date)
 --SELECT date
 --FROM tblDates
@@ -283,3 +305,4 @@ SELECT * FROM tblStatus;
 SELECT TableID FROM tblTable;
 SELECT COUNT (TableID) FROM tblTable;
 SELECT * FROM tblUser;
+SELECT * FROM tblIncidence;
