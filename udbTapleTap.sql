@@ -155,7 +155,7 @@ VALUES ('admin@official.com', 'qwerty1', 'admin', 'admin', 1, 2),
 go
 
 INSERT INTO tblIncidence(incDate, info, tableID, roomID, userID)
-VALUES ('2018-09-14', 'I am a fucking retard', 1, 0001, 10002)
+VALUES ('2018-09-14', 'I am a fucking retard', 1, 0001, 100002)
 
 --INSERT INTO tblReservation(userID, tableID, reservationStartTime, reservationFinishTime, groupName)
 --VALUES (100001, 1, '2018-09-15 12:00:00', '2018-09-15 13:00:00', 'Keplers group, INFT3970'),
