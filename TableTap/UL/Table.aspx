@@ -4,7 +4,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container-fluid">
         <div class="jumbotron">
-            <h2 runat="server" id="heading">Table list</h2>
+            
+            <asp:Label runat="server" id="lblHeading1" text="Heading"></asp:Label>
             <asp:ScriptManager id="ScriptManager1" runat="server">
             </asp:ScriptManager>
             

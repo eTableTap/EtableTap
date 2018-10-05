@@ -17,7 +17,7 @@ namespace TableTap.UL
             int ID = Int32.Parse(Request.QueryString["ID"]);
 
             DateTime today = DateTime.Now;   //HH = 24hours, hh = 12hours, M = month, m = minute, d = day, y = year.
-            heading.InnerText = "Table: " + ID.ToString();
+            lblHeading1.Text = "Table: " + ID.ToString();
             //testButton1.Text = today.ToShortDateString();
             //testButton1.Text = today.ToString("dd-MM-yyyy");
             //testButton1.Text = today.ToString("yyyy-MM-dd");
@@ -86,7 +86,7 @@ namespace TableTap.UL
             string sHour = new String(hourDropdown.SelectedItem.Text.TakeWhile(Char.IsDigit).ToArray());
             if (TableBL.bookTable(ID, Session["login"].ToString(), sHour))
             {
-                heading.InnerText = "Table was booked";
+                lblHeading1.Text = "Table was booked";
 
             }
 
