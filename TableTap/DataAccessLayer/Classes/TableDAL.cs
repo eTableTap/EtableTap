@@ -237,28 +237,34 @@ namespace TableTap.DataAccessLayer.Classes
 
         public static bool bookTable(int id, string login, string hour)
         {
-            DateTime dateNow = DateTime.Now;
-            string date = dateNow.ToString("yyyy-MM-d");
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
-            //need a try catch here
-            using (conn)
+            try
             {
-                conn.Open();
-
-                using (SqlCommand command = new SqlCommand(
-                    /*"UPDATE hour" + hour + " Set hour" + hour + "= '" + login + "'" + " FROM tblStatus WHERE tableID=" + "'" + id.ToString() + "'" + " AND date=" + "'" + date + "'",
-                    conn))*/
-                    "UPDATE tblStatus SET hour" + hour + "= '" + login + "'" + " WHERE tableID=" + "'" + id.ToString() + "'" + " AND date=" + "'" + date + "'",
-                    conn))
+                DateTime dateNow = DateTime.Now;
+                string date = dateNow.ToString("yyyy-MM-d");
+                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+                //need a try catch here
+                using (conn)
                 {
-                    SqlDataReader dr = command.ExecuteReader();
+                    conn.Open();
 
-                    dr.Close();
+                    using (SqlCommand command = new SqlCommand(
+                        /*"UPDATE hour" + hour + " Set hour" + hour + "= '" + login + "'" + " FROM tblStatus WHERE tableID=" + "'" + id.ToString() + "'" + " AND date=" + "'" + date + "'",
+                        conn))*/
+                        "UPDATE tblStatus SET hour" + hour + "= '" + login + "'" + " WHERE tableID=" + "'" + id.ToString() + "'" + " AND date=" + "'" + date + "'",
+                        conn))
+                    {
+                        SqlDataReader dr = command.ExecuteReader();
+
+                        dr.Close();
+                    }
+                    conn.Close();
+                    return true;
                 }
-                conn.Close();
-                return true;
             }
+            catch
+            {
             return false;
+            }
         }
 
 
@@ -304,17 +310,19 @@ namespace TableTap.DataAccessLayer.Classes
 
                         dr.Close();
 
+                        conn.Close();
+
                         return tableRecord;
                     }
                     catch
                     {
                         tableRecord = null;
 
+                        conn.Close();
+
                         return tableRecord;
                     }
                 }
-
-                conn.Close();
             }
 
 

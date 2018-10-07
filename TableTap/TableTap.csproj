@@ -113,6 +113,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Images\TestImage.png" />
     <Content Include="UL\404Page.aspx" />
     <Content Include="BusinessLayer\JavaScript\jquery.webcam.js" />
     <Content Include="BusinessLayer\JavaScript\jquery.webcam.min.js" />
