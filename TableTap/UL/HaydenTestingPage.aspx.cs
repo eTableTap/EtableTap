@@ -18,7 +18,57 @@ namespace TableTap.UL
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            dosomeshit();
 
+
+
+        }
+
+        protected void dosomeshit()
+        {
+            if (Request.UserAgent.IndexOf("Android") > 0)
+            {
+                TextBox1.Text = "android";
+            }
+            else if (Request.UserAgent.IndexOf("iPhone") > 0)
+            {
+                TextBox1.Text = "IOS";
+            }
+            else if (Request.UserAgent.IndexOf("iPad") > 0)
+            {
+                TextBox1.Text = "IOS";
+            }
+            else
+                TextBox1.Text = "reeeeee";
+        }
+
+        public String GetMobileVersion(string userAgent, string device)
+        {
+            var temp = userAgent.Substring(userAgent.IndexOf(device) + device.Length).TrimStart();
+            var version = string.Empty;
+
+            foreach (var character in temp)
+            {
+                var validCharacter = false;
+                int test = 0;
+
+                if (Int32.TryParse(character.ToString(), out test))
+                {
+                    version += character;
+                    validCharacter = true;
+                }
+
+                if (character == '.' || character == '_')
+                {
+                    version += '.';
+                    validCharacter = true;
+                }
+
+                if (validCharacter == false)
+                    break;
+            }
+
+            return version;
         }
 
         protected void Button1_Click1(object sender, EventArgs e)

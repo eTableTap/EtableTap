@@ -11,8 +11,13 @@
         <div>
             
             <asp:Button ID="Button1" runat="server" OnClick="Button1_Click1" Text="Button" />
-            
+            +--+
         </div>
+        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+
+        <a href="geo:894%20Granville%20Street%20Vancouver%20BC%20V6Z%201K3">Find Us</a>
+
+
          <p>
             <input type="email" class="form-control" name="email" id="inEmail"  placeholder="Enter your Email" runat="server"/>
 
