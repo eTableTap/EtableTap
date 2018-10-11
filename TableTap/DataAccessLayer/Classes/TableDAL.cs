@@ -234,6 +234,44 @@ namespace TableTap.DataAccessLayer.Classes
 
             return false;
         }
+        public static bool checkTableStatus(int id, string hour)
+        {
+
+            string sTest = "default - this should not matter";
+
+            DateTime dateNow = DateTime.Now;
+            string date = dateNow.ToString("yyyy-MM-d");
+
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+
+            using (conn)
+            {
+                conn.Open();
+
+                using (SqlCommand command = new SqlCommand(
+                    "SELECT hour" + hour.ToString() + " FROM tblStatus WHERE tableID=" + "'" + id.ToString() + "'" + " AND date=" + "'" + date + "'",
+                    conn))
+
+
+                {
+                    SqlDataReader dr = command.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        sTest = dr["hour" + hour.ToString()].ToString();
+                    }
+                    dr.Close();
+                }
+                conn.Close();
+            }
+
+            if (sTest.Contains("Free"))
+            {
+                return true;
+            }
+
+            return false;
+        }
 
         public static bool bookTable(int id, string login, string hour)
         {

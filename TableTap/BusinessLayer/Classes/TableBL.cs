@@ -37,14 +37,14 @@ namespace TableTap.BusinessLayer.Classes
         public static bool bookTable(int id, string login, string hour)
         {
             //NEED TO ADD A CHECK STATUS FOR THE SELECTED HOUR
-            //bool bCheck = TableDAL.checkTableStatus(id); 
-            //if (bCheck == true)
-            //{
+            bool bCheck = TableDAL.checkTableStatus(id, hour); 
+            if (bCheck == true)
+            {
                 if (TableDAL.bookTable(id, login, hour))
                 {
                     return true;
                 }
-            //}
+            }
 
             return false;
         }
