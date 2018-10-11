@@ -15,7 +15,7 @@
             <div class="form-group ">
 					
                 
-                        <asp:DropDownList runat="server" ID="hourDropdown" onselectedindexchanged="hourDropdown_SelectedIndexChanged" Autopostback="true"></asp:DropDownList>
+                        <asp:DropDownList runat="server" ID="hourDropdown" onselectedindexchanged="hourDropdown_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
                     <asp:UpdatePanel ID="upBookingInfo" runat="server">
                                         <ContentTemplate>
 							                <asp:Button type="button" ID="btnBook" Text="Book Table" onclick="btnBook_Click" runat="server" />

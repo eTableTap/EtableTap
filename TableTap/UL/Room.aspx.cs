@@ -33,6 +33,24 @@ namespace TableTap.UL
                 tableDropdown.Visible = false;
                 goToTableButton.Visible = false;
             }
+
+            //
+            List<TableModel> drawtables = new List<TableModel>();
+            drawtables = TableBL.fillTableList(ID);
+            int iLenght = drawtables.Count();
+            int x = 0;
+            /*///////////////////////
+            TextBox textBox = new TextBox();
+            textBox.ID = "textBox1";
+            textBox.Text = iLenght.ToString();
+            div1.Controls.Add(textBox);
+            ////////////////////////*/
+            while (x < iLenght)
+            {
+
+                createImageTable(Convert.ToInt32(drawtables[x].TableID.ToString()));
+                x++;
+            }
         }
 
         protected void goToTableButton_Click(Object sender, EventArgs e)
@@ -46,6 +64,37 @@ namespace TableTap.UL
             string url = ConfigurationManager.AppSettings["UnsecurePath"] + "Table.aspx?id=" + id;
             Response.Redirect(url);
 
+        }
+
+        protected void createImageTable(int tableNumber)
+        {
+            string url = ConfigurationManager.AppSettings["UnsecurePath"] + "Table.aspx?id=" + tableNumber;
+            /////////////////
+            Image imageTable = new Image();
+            imageTable.ID = "imgBox" + tableNumber.ToString();
+            imageTable.Attributes.Add("height", "42");
+            imageTable.Attributes.Add("width", "42");
+            
+            imageTable.Attributes.Add("style", "border-radius:14px;margin-bottom:20px; ");
+
+            HyperLink imageHL = new HyperLink();
+            imageHL.ID = "hLink" + tableNumber.ToString();
+            imageHL.Attributes.Add("style", "margin-left:20px; ");
+
+            //imageHL.Text = "hLink" + tableNumber.ToString();
+
+            imageHL.Controls.Add(imageTable);//adds image to the hyperlink
+            if (TableBL.checkTableStatus(tableNumber))
+            {
+                imageTable.BackColor = System.Drawing.Color.Green;
+                imageHL.NavigateUrl = url; //will only genertate url if table is available
+            }
+            else
+            {
+                imageTable.BackColor = System.Drawing.Color.Red;
+            }
+
+            divTableImages.Controls.Add(imageHL);
         }
     }
     

@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="jumbotron">
             <h2>Table list</h2>
-
+            <div id="divTableImages" runat="server"></div>
             <div class="form-group">
                     <asp:Label runat="server" ID="lblAboveDropdown" class="cols-sm-2 control-label" text="Select Table:"></asp:Label>
 					<div class="cols-sm-10">

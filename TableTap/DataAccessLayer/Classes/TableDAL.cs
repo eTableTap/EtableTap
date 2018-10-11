@@ -186,7 +186,7 @@ namespace TableTap.DataAccessLayer.Classes
             return bookings;
         }
 
-        public static bool checkTableStatus(int id)
+        public static bool checkCurrentTableStatus(int id)
         {
             
             string sTest = "default - this should not matter";

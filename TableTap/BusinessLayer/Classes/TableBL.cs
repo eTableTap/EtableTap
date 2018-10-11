@@ -22,7 +22,7 @@ namespace TableTap.BusinessLayer.Classes
         {
             
             
-            bool bCheck = TableDAL.checkTableStatus(id);
+            bool bCheck = TableDAL.checkCurrentTableStatus(id);
 
             return bCheck;
         }
@@ -36,15 +36,15 @@ namespace TableTap.BusinessLayer.Classes
 
         public static bool bookTable(int id, string login, string hour)
         {
-
-            bool bCheck = TableDAL.checkTableStatus(id);
-            if (bCheck == true)
-            {
+            //NEED TO ADD A CHECK STATUS FOR THE SELECTED HOUR
+            //bool bCheck = TableDAL.checkTableStatus(id); 
+            //if (bCheck == true)
+            //{
                 if (TableDAL.bookTable(id, login, hour))
                 {
                     return true;
                 }
-            }
+            //}
 
             return false;
         }
