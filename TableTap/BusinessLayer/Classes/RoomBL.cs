@@ -17,13 +17,5 @@ namespace TableTap.BusinessLayer.Classes
 
             return rooms;
         }
-        public static RoomModel getRoomByID(int id)
-        {
-            RoomModel room = new RoomModel();
-
-            room = RoomDAL.loadRoomByID(id);
-
-            return room;
-        }
     }
 }

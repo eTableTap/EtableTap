@@ -4,8 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container-fluid">
         <div class="jumbotron">
-            
-            <asp:Label ID="lblHeading" runat="server" Text="Table list" CssClass="h1"></asp:Label>
+            <h2>Table list</h2>
             <div id="divTableImages" runat="server"></div>
             <div class="form-group">
                     <asp:Label runat="server" ID="lblAboveDropdown" class="cols-sm-2 control-label" text="Select Table:"></asp:Label>

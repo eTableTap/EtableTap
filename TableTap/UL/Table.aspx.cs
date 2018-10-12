@@ -19,7 +19,7 @@ namespace TableTap.UL
            
 
             DateTime today = DateTime.Now;   //HH = 24hours, hh = 12hours, M = month, m = minute, d = day, y = year.
-            lblHeading.Text = "Table: " + ID.ToString();
+            lblHeading1.Text = "Table: " + ID.ToString();
             //testButton1.Text = today.ToShortDateString();
             //testButton1.Text = today.ToString("dd-MM-yyyy");
             //testButton1.Text = today.ToString("yyyy-MM-dd");
@@ -88,11 +88,10 @@ namespace TableTap.UL
             //string sHour = new String(hourDropdown.SelectedItem.Text.TakeWhile(Char.IsDigit).ToArray());
             string sHour = hourDropdown.SelectedValue.ToString();
             sHour = new string(sHour.TakeWhile(Char.IsDigit).ToArray());
+            btnBook.Text = sHour;
             if (TableBL.bookTable(ID, Session["login"].ToString(), sHour))
             {
-                lblHeading.Text = "Table was booked";
-                
-                lblStatus.Text = "Table: " + TableBL.getTableByID(ID).TableID + "<br />Room Name: " + RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).RoomName.ToString() + "<br />in building: " + BuildingBL.getBuildingByID(RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).BuildingID).BuildingName + "<br />at: " + sHour + "00 -"+ (Convert.ToInt32(sHour)+1).ToString() +"00" + "<br /> was successfully booked";
+                lblHeading1.Text = "Table was booked";
 
             }
 

@@ -16,7 +16,7 @@ namespace TableTap.UL
         protected void Page_Load(object sender, EventArgs e)
         {
             int ID = Int32.Parse(Request.QueryString["ID"]);
-            lblHeading.Text = "Room: " + RoomBL.getRoomByID(ID).RoomName;
+
             tables = TableBL.fillTableList(ID);
 
             if (!IsPostBack) //need this to stop it reverting to the top value every button click
@@ -29,7 +29,7 @@ namespace TableTap.UL
 
             if (tableDropdown.Items.Count < 1)
             {
-                lblAboveDropdown.Text = "No tables currently available";
+                lblAboveDropdown.Text = "No rooms currently available";
                 tableDropdown.Visible = false;
                 goToTableButton.Visible = false;
             }
@@ -74,8 +74,7 @@ namespace TableTap.UL
             imageTable.ID = "imgBox" + tableNumber.ToString();
             imageTable.Attributes.Add("height", "42");
             imageTable.Attributes.Add("width", "42");
-            imageTable.Attributes.Add("class", "img-circle");
-
+            
             imageTable.Attributes.Add("style", "border-radius:14px;margin-bottom:20px; ");
 
             HyperLink imageHL = new HyperLink();

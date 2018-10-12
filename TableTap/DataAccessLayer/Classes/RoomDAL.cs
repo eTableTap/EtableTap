@@ -43,39 +43,5 @@ namespace TableTap.DataAccessLayer.Classes
 
             return rooms;
         }
-        public static RoomModel loadRoomByID(int id)
-        {
-            RoomModel room = new RoomModel();
-
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
-
-            using (conn)
-            {
-                conn.Open();
-
-                using (SqlCommand command = new SqlCommand(
-                    "SELECT * FROM tblRoom WHERE roomID=" + id.ToString(),
-                    conn))
-                {
-                    SqlDataReader dr = command.ExecuteReader();
-
-                    while (dr.Read())
-                    {
-                        room = new RoomModel();
-                        room.RoomID = Convert.ToInt32(dr["roomID"]);
-                        room.RoomName = dr["roomName"].ToString();
-                        room.RoomLabel = dr["roomLabel"].ToString();
-                        room.BuildingID = Convert.ToInt32(dr["buildingID"]);
-                        room.TableQty = Convert.ToInt32(dr["tableQty"]);
-
-
-                    }
-                    dr.Close();
-                }
-                conn.Close();
-            }
-
-            return room;
-        }
     }
 }
