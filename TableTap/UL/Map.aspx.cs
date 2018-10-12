@@ -29,10 +29,7 @@ namespace TableTap.UL
                 buildingDropdown.DataValueField = "BuildingID";
                 buildingDropdown.DataTextField = "BuildingName";
                 buildingDropdown.DataBind();
-                DropDownList1.DataSource = buildings;
-                DropDownList1.DataValueField = "BuildingID";
-                DropDownList1.DataTextField = "BuildingName";
-                DropDownList1.DataBind();
+
                
             }
         }
@@ -52,27 +49,10 @@ namespace TableTap.UL
 
         }
 
-        protected void bookTableBtn_Click(object sender, EventArgs e)
-        {
 
-        }
 
-        protected void buildingDropdown_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //string str = DropDownList1.Text;
-            //Image1.ImageUrl = "~/Images/" + str + ".png";
-        }
 
-        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string str = DropDownList1.Text;
-            Image1.ImageUrl = "~/Images/" + str + ".png";
-            //if (str == "Newcastle City")
-            //{
-            //    Image1.ImageUrl = "~/Images/Room1.png";
-            //}
 
-        }
 
 
     }

@@ -59,46 +59,7 @@ float:left;
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     Detter er map side
 
-    <div class="container-fluid">
-        <div class="jumbotron">
-            <div class="form-group">
-            
-<h2> Choose a room or table by clicking the corresponding options in the layout below:
-    <asp:DropDownList ID="DropDownList1" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
-    </asp:DropDownList>
-  
-            </h2>
-
-
-             <asp:Image ID="Image1" ImageUrl="" runat="server" Height="193px" Width="535px" />
-            </div>
-   <%-- <div id="holder"> 
-        <ul  id="place">
-
-           
-
-        </ul>    
-    </div>--%>
-    <div style="float:left;"> 
-    <ul id="tableDescription">
-        <li style="background-color:blue" class="auto-style1">Available Table</li>
-        <li style="background-color:red">Booked Table</li>
-        <li style="background-color:green" opacity: 1;>Selected Table</li>
-    </ul>
-    </div>
-            <div style="clear:both;width:100%">
-              
-        </div>
-        <div style="clear:both;width:100%">
-        &nbsp;           
-        <asp:Button ID="bookTableBtn" runat="server" Text="Book Table" OnClick="bookTableBtn_Click" />
-            <br />
-
-            <asp:TextBox ID="roomTxtBx" runat="server"></asp:TextBox>
-        </div>
-        </div>
-        
-    </div>
+    
     
     <div class="container-fluid">
         <div class="jumbotron">
@@ -109,7 +70,7 @@ float:left;
 					<div class="cols-sm-10">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-							<asp:DropDownList runat="server" ID="buildingDropdown" OnSelectedIndexChanged="buildingDropdown_SelectedIndexChanged" ></asp:DropDownList>
+							<asp:DropDownList runat="server" ID="buildingDropdown" ></asp:DropDownList>
 						</div>
 					</div>
 			</div>
