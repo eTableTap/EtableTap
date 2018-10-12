@@ -137,10 +137,6 @@
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="UL\404Page.aspx" />
-    <Content Include="BusinessLayer\JavaScript\jquery.webcam.js" />
-    <Content Include="BusinessLayer\JavaScript\jquery.webcam.min.js" />
-    <Content Include="BusinessLayer\JavaScript\jscam.swf" />
-    <Content Include="BusinessLayer\JavaScript\photo.js" />
     <Content Include="CSS\Map.css" />
     <Content Include="UL\Error.aspx" />
     <Content Include="Resources\Images\Huxley Library.png" />

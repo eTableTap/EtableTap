@@ -9,6 +9,7 @@ namespace TableTap.DirectionsModule
 {
     public partial class Directionsmodule : System.Web.UI.Page
     {
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -16,9 +17,9 @@ namespace TableTap.DirectionsModule
 
         protected List<string> data()
         {
-            string street = "142 nagles falls road";
+            string street = "142 nagles falls rd, sherwood 2440 NSW";
             string suburb = "sherwood";
-            string postcode = "2449";
+            string postcode = "2440";
             string state = "NSW";
 
             List<string> address = new List<string>();
@@ -32,8 +33,12 @@ namespace TableTap.DirectionsModule
 
         protected void anLogic()
         {
-            List<string> address = new List<string>();
-            address = data();
+            List<string> addresslist = new List<string>();
+            addresslist = data();
+            string street = addresslist[0].Replace(" ", "+");
+            string address = "google.navigation:q=" + street;
+            Label1.Text = address;
+            Response.Redirect(address);
 
         }
 

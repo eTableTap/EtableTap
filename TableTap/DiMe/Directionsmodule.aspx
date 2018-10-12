@@ -3,4 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:button runat="server" text="Button" OnClick="Unnamed1_Click" />
+    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+    <a href="google.navigation:q=535+Legget+Drive,+Kanata,+ON,+Canada">Navigation to local address</a>
+      <a href="google.navigation:q=San+Francisco">Navigation to San Francisco</a>  
 </asp:Content>
