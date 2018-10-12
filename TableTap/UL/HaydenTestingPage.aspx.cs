@@ -28,23 +28,18 @@ namespace TableTap.UL
         {
             if (Request.UserAgent.IndexOf("Android") > 0)
             {
-                TextBox1.Text = "https://www.google.com/maps/dir//13+Moate+St,+Georgetown+NSW+2298/  ANDROID";
-
- //               Uri gmmIntentUri = Uri.parse("google.streetview:cbll=29.9774614,31.1329645&cbp=0,30,0,0,-15");
- //               Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
- //               mapIntent.setPackage("com.google.android.apps.maps");
- //               startActivity(mapIntent);
+                TextBox1.Text = "android";
             }
             else if (Request.UserAgent.IndexOf("iPhone") > 0)
             {
-                TextBox1.Text = "IPHONE https://www.google.com/maps/dir//13+Moate+St,+Georgetown+NSW+2298/ ";
+                TextBox1.Text = "IOS";
             }
             else if (Request.UserAgent.IndexOf("iPad") > 0)
             {
-                TextBox1.Text = "iPAD https://www.google.com/maps/dir//13+Moate+St,+Georgetown+NSW+2298/ IPAD";
+                TextBox1.Text = "IOS";
             }
             else
-                TextBox1.Text = "https://www.google.com/maps/dir//13+Moate+St,+Georgetown+NSW+2298/  OTHER";
+                TextBox1.Text = "reeeeee";
         }
 
         public String GetMobileVersion(string userAgent, string device)
