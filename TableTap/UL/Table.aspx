@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="jumbotron">
             
-            <asp:Label runat="server" id="lblHeading1" text="Heading"></asp:Label>
+            <asp:Label runat="server" id="lblHeading" text="Heading"></asp:Label>
             <asp:ScriptManager id="ScriptManager1" runat="server">
             </asp:ScriptManager>
             
@@ -21,6 +21,8 @@
 							                <asp:Button type="button" ID="btnBook" Text="Book Table" onclick="btnBook_Click" runat="server" />
                                             <div class="form-group">
                                                 <asp:Label runat="server" ID="lblStatus" class="cols-sm-2 control-label" text="will update"></asp:Label>
+                                                
+                                                
 					
 			                                </div>
                                         </ContentTemplate>

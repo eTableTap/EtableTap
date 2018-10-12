@@ -89,7 +89,7 @@ namespace TableTap.DataAccessLayer.Classes
                     {
                         table = new TableModel();
                         table.TableID = Convert.ToInt32(dr["tableID"]);
-                        table.RoomID = Convert.ToInt32(dr["tableID"]);
+                        table.RoomID = Convert.ToInt32(dr["roomID"]);
                         table.PersonCapacity = Convert.ToInt32(dr["personCapacity"]);
                         table.Category = dr["category"].ToString();
 
@@ -101,6 +101,39 @@ namespace TableTap.DataAccessLayer.Classes
             }
 
             return tables;
+        }
+        public static TableModel loadTableByID(int id)
+        {
+
+            TableModel table = new TableModel();
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+
+            using (conn)
+            {
+                conn.Open();
+
+                using (SqlCommand command = new SqlCommand(
+                    "SELECT * FROM tblTable WHERE tableID=" + id.ToString(),
+                    conn))
+                {
+                    SqlDataReader dr = command.ExecuteReader();
+                    
+                    while (dr.Read())
+                    {
+
+                        table.TableID = Convert.ToInt32(dr["tableID"]);
+                        table.RoomID = Convert.ToInt32(dr["roomID"]);
+                        table.PersonCapacity = Convert.ToInt32(dr["personCapacity"]);
+                        table.Category = dr["category"].ToString();
+
+
+                    }
+                    dr.Close();
+                }
+                conn.Close();
+            }
+
+            return table;
         }
 
         public static BookingModel loadTableBookingList(int id)
@@ -306,14 +339,13 @@ namespace TableTap.DataAccessLayer.Classes
         }
 
 
-
-        /// <summary>
-        ///  For accessing table data, returns list full of table info
-        /// </summary>
+        
 
         public static List<string> LoadTable(string tableID)
         {
-
+            /// <summary>
+            ///  For accessing table data, returns list full of table info
+            /// </summary>
             List<string> tableRecord = new List<string>();
 
 
@@ -367,12 +399,13 @@ namespace TableTap.DataAccessLayer.Classes
         }
 
 
-        /// <summary>
-        /// Modifys table record from associated tableID passed in
-        /// Uses list (tabledata) to store all data
-        /// </summary>
+        
         public static void modifyTable(List<string> tableData)
         {
+            /// <summary>
+            /// Modifys table record from associated tableID passed in
+            /// Uses list (tabledata) to store all data
+            /// </summary>
             string tableID = tableData[0];
             string roomID = tableData[1];
             string personCapacity = tableData[2];
@@ -394,11 +427,12 @@ namespace TableTap.DataAccessLayer.Classes
 
         }
 
-        /// <summary>
-        /// deletes table associated with tableID
-        /// </summary>
+        
         public static void deleteTable(string tableID)
         {
+            /// <summary>
+            /// deletes table associated with tableID
+            /// </summary>
             UserModel newUser = new UserModel();
 
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);

@@ -17,6 +17,14 @@ namespace TableTap.BusinessLayer.Classes
 
             return tables;
         }
+        public static TableModel getTableByID(int id)
+        {
+            TableModel table = new TableModel();
+
+            table = TableDAL.loadTableByID(id);
+
+            return table;
+        }
 
         public static bool checkTableStatus(int id)
         {
