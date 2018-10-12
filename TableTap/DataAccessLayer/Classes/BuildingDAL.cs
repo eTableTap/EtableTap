@@ -69,5 +69,37 @@ namespace TableTap.DataAccessLayer.Classes
 
             return buildings;
         }
+
+        public static BuildingModel loadBuildingByID(int id)
+        {
+            BuildingModel building = new BuildingModel();
+
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+
+            using (conn)
+            {
+                conn.Open();
+
+                using (SqlCommand command = new SqlCommand(
+                    "SELECT * FROM tblBuilding WHERE buildingID=" + "'"+id+"'",
+                    conn))
+                {
+                    SqlDataReader dr = command.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        building = new BuildingModel();
+                        building.BuildingID = Convert.ToInt32(dr["buildingID"]);
+                        building.BuildingName = dr["buildingName"].ToString();
+                        building.BuildingLabel = dr["buildingLabel"].ToString();
+                        building.RoomQty = Convert.ToInt32(dr["roomQty"]);
+
+                    }
+                    dr.Close();
+                }
+                conn.Close();
+            }
+
+            return building;
+        }
     }
 }
