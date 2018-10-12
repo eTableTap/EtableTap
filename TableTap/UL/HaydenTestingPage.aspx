@@ -15,19 +15,16 @@
         </div>
         <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
 
-        <a href="https://www.google.com/maps/dir/?api=1&destination=Pike+Place+Market+Seattle+WA&travelmode=bicycling">Find Us IOS</a>
+        <a href="geo:894%20Granville%20Street%20Vancouver%20BC%20V6Z%201K3">Find Us</a>
 
-        <a href="google.navigation:q=San+Francisco">Navigation to San Francisco</a>  
+
          <p>
             <input type="email" class="form-control" name="email" id="inEmail"  placeholder="Enter your Email" runat="server"/>
 
             <input type="tel" class="form-control" id="inPhone" name="inPhone" placeholder="0427669341" title="Please enter a mobile number" pattern="[0-9]{10}" required="required" runat="server" />
-      https://www.google.com/maps/dir/?api=1&parameters
+      
             <asp:Button ID="Button2" runat="server" Text="Button" OnClick="Button2_Click" />
         </p>
-        <div>
-
-        </div>
     </form>
 </body>
 </html>
