@@ -18,7 +18,7 @@ namespace TableTap.UL
         {
             
             int ID = Int32.Parse(Request.QueryString["ID"]);
-            lblHeading.Text = "Building: " + BuildingBL.getBuildingByID(ID).BuildingName;
+
             rooms = RoomBL.fillRoomsList(ID);
 
             if (!IsPostBack) //need this to stop it reverting to the top value every button click
@@ -46,7 +46,7 @@ namespace TableTap.UL
             RoomModel rm = new RoomModel();
 
             rm = rooms.Where(b => b.RoomID == Int32.Parse(roomDropdown.Text)).FirstOrDefault(); //grabs single selected building
-               
+                //NEEED TO FIX -- IT IS RETURNING 0 AND I HAVE NO IDEA WHY
             
             int id = rm.RoomID;
 

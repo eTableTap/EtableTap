@@ -25,14 +25,6 @@ namespace TableTap.BusinessLayer.Classes
 
             return buildings;
         }
-        public static BuildingModel getBuildingByID(int id)
-        {
-            BuildingModel building = new BuildingModel();
-
-            building = BuildingDAL.loadBuildingByID(id);
-
-            return building;
-        }
 
     }
 }
