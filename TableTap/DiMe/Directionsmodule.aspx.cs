@@ -17,7 +17,7 @@ namespace TableTap.DirectionsModule
 
         protected List<string> data()
         {
-            string street = "142 nagles falls rd, sherwood 2440 NSW";
+            string street = "142 Nagles Falls Road, Sherwood, NSW, Australia";
             string suburb = "sherwood";
             string postcode = "2440";
             string state = "NSW";
@@ -38,13 +38,21 @@ namespace TableTap.DirectionsModule
             string street = addresslist[0].Replace(" ", "+");
             string address = "google.navigation:q=" + street;
             Label1.Text = address;
-            Response.Redirect(address);
+            redir(address);
 
+        }
+
+        protected void redir(string address)
+        {
+            Response.Redirect(address);
         }
 
         protected void iPLogic()
         {
+            List<string> addresslist = new List<string>();
+            addresslist = data();
 
+            Response.Redirect("http://maps.apple.com/?saddr=Cupertino&daddr=San+Francisco");
         }
 
         protected void iPadLogic()
@@ -54,7 +62,7 @@ namespace TableTap.DirectionsModule
 
         protected void otherlogic()
         {
-
+            anLogic();
         }
 
         protected void Unnamed1_Click(object sender, EventArgs e)

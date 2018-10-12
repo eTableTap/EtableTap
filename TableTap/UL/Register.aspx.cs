@@ -28,20 +28,21 @@ namespace TableTap.UL
             string fEmail = inEmail.Value.ToLower();
 
             // calls external method returns bool true if email already in database
-            bool exists = BusinessLayer.UserBL.emailDuplicateCheck(fEmail);
+            
 
-            if(exists == false)
+            if(BusinessLayer.UserBL.emailDuplicateCheck(fEmail))
             {
 
-                Initiate(fEmail);
 
-                    
+                lblStatus.Text = "Email already registered, please use our login page";
+
 
 
             }
             else
             {
-                 lblStatus.Text = "Email already registered, please use our login page";
+                 
+                Initiate(fEmail);
 
             }
 
