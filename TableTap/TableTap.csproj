@@ -114,6 +114,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DiMe\Directionsmodule.aspx" />
+    <Content Include="Default.html" />
     <Content Include="Resources\Images\TestImage.png" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
