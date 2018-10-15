@@ -25,8 +25,13 @@
 
 .HomeImages {
     display: block;
-    margin-left:auto; 
-    margin-right:auto; 
-    width:90%; 
-    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    position: center;
+    height: 100%;
+    width: 100%;
+    padding: 30px;
+
 }
