@@ -38,8 +38,9 @@ namespace TableTap.DirectionsModule
             string street = addresslist[0].Replace(" ", "+");
             string address = "google.navigation:q=" + street;
             Label1.Text = "WHY WONT THIS FUCKING WORK";
-//            Response.BufferOutput = true;
-            Response.Redirect("https://stackoverflow.com/questions/6635349/how-to-delete-cookies-on-an-asp-net-website");
+ //           Session.Abandon();
+ //            Response.BufferOutput = true;
+            Response.Redirect(address);
 
         }
 
@@ -47,6 +48,7 @@ namespace TableTap.DirectionsModule
         {
             List<string> addresslist = new List<string>();
             addresslist = data();
+
 
             Response.Redirect("http://maps.apple.com/?saddr=Cupertino&daddr=San+Francisco", true);
         }
@@ -63,7 +65,7 @@ namespace TableTap.DirectionsModule
 
         protected void Unnamed1_Click(object sender, EventArgs e)
         {
-            Session.Abandon();
+
 
             if (Request.UserAgent.IndexOf("Android") > 0)
             {
