@@ -113,8 +113,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\MobileMaster.css" />
     <Content Include="DiMe\Directionsmodule.aspx" />
     <Content Include="Default.html" />
+    <Content Include="Resources\Images\Spiteful_Spirit.jpg" />
     <Content Include="Resources\Images\TestImage.png" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
