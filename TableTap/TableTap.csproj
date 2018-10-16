@@ -230,6 +230,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessLayer\Classes\DirectionModuleBL.cs" />
     <Compile Include="DataAccessLayer\Classes\IncidenceDAL.cs" />
     <Compile Include="DiMe\Directionsmodule.aspx.cs">
       <DependentUpon>Directionsmodule.aspx</DependentUpon>

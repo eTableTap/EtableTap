@@ -67,12 +67,15 @@ namespace TableTap.UL
 
         protected void test5_Click(object sender, EventArgs e)
         {
+            Response.Redirect("UL/Register.aspx");
 
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Response.Redirect("DiMe/Directionsmodule.aspx");
+            string URL = DirectionModuleBL.start();
+
+            Response.Redirect(URL);
         }
     }
 }

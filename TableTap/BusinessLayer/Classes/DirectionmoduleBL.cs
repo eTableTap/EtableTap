@@ -5,18 +5,13 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace TableTap.DirectionsModule
+namespace TableTap
 {
-    public partial class Directionsmodule : System.Web.UI.Page
+    public class DirectionModuleBL
     {
-
-        protected void Page_Load(object sender, EventArgs e)
+        public static List<string> data()
         {
-
-        }
-
-        protected List<string> data()
-        {
+            // testing placeholder
             string street = "142 Nagles Falls Road, Sherwood, NSW, Australia";
             string suburb = "sherwood";
             string postcode = "2440";
@@ -31,7 +26,7 @@ namespace TableTap.DirectionsModule
         }
 
 
-        protected string anLogic()
+        public static string anLogic()
         {
             List<string> addresslist = new List<string>();
             addresslist = data();
@@ -42,7 +37,7 @@ namespace TableTap.DirectionsModule
             return URL;
         }
 
-        protected string iPLogic()
+        public static string iPLogic()
         {
             List<string> addresslist = new List<string>();
             addresslist = data();
@@ -51,13 +46,13 @@ namespace TableTap.DirectionsModule
             return URL;
         }
 
-        protected string iPadLogic()
+        public static string iPadLogic()
         {
             string URL = iPLogic(); // may require modification
             return URL;
         }
 
-        protected string otherlogic()
+        public static string otherlogic()
         {
             List<string> addresslist = new List<string>();
             addresslist = data();
@@ -66,43 +61,33 @@ namespace TableTap.DirectionsModule
             return URL;
         }
 
-        protected string versionRedirect()
+        public static string start()
         {
             string URL;
 
-            if (Request.UserAgent.IndexOf("Android") > 0)
+            if (HttpContext.Current.Request.UserAgent.IndexOf("Android") > 0)
             {
-               URL = anLogic();
+                URL = anLogic();
             }
-            else if (Request.UserAgent.IndexOf("iPhone") > 0)
+            else if (HttpContext.Current.Request.UserAgent.IndexOf("iPhone") > 0)
             {
-              URL = iPLogic();
+                URL = iPLogic();
             }
-            else if (Request.UserAgent.IndexOf("iPad") > 0)
+            else if (HttpContext.Current.Request.UserAgent.IndexOf("iPad") > 0)
             {
-               URL = iPadLogic();
+                URL = iPadLogic();
             }
             else
             {
-               URL = otherlogic();
+                URL = otherlogic();
             }
 
             return URL;
 
         }
 
-
-        protected void Unnamed1_Click(object sender, EventArgs e)
-        {
-            // Testing function
-
-            string URL = versionRedirect();
-
-            Response.Redirect(URL);
-        }
-
-
     }
+
+
+
 }
-
-
