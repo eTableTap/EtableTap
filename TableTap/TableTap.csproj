@@ -115,7 +115,7 @@
   <ItemGroup>
     <Content Include="Content\MobileMaster.css" />
     <Content Include="DiMe\Directionsmodule.aspx" />
-    <Content Include="Default.html" />
+    <Content Include="Default11.html" />
     <Content Include="Resources\Images\Spiteful_Spirit.jpg" />
     <Content Include="Resources\Images\TestImage.png" />
     <Content Include="Scripts\esm\popper-utils.js" />
@@ -225,7 +225,9 @@
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="UL\Table.aspx" />
     <Content Include="Default.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataAccessLayer\Classes\IncidenceDAL.cs" />
