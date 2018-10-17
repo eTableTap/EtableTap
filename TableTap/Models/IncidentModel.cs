@@ -10,31 +10,32 @@ namespace TableTap.Models
 
         public int IncidentID { get; set; }
 
-        public DateTime Date { get; set; }
+        public DateTime userdate { get; set; }
 
         public string Info { get; set; }
 
         public int TableID { get; set; }
 
-        public int roomID { get; set; }
+        public int RoomID { get; set; }
 
-        public int userID { get; set; }
+        public int UserID { get; set; }
 
+        public bool IncLevel { get; set; }
 
         public IncidentModel()
         {
 
         }
 
-        public IncidentModel(int id, string email, string psw, string fname, string lname, byte admperm, string ph)
+        public IncidentModel(int id, DateTime date, string data, int tableID, int roomID, int userID, bool incLevel)
         {
             this.IncidentID = id;
-            this.Date = email;
-            this.Info = psw;
-            this.TableID = fname;
-            this.roomID = lname;
-            this.AdminPermissi = admperm;
-            this.phoneNum = ph;
+            this.userdate = date;
+            this.Info = data;
+            this.TableID = tableID;
+            this.RoomID = roomID;
+            this.UserID = userID;
+            this.IncLevel = incLevel;
         }
     }
 }

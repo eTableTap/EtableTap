@@ -74,26 +74,25 @@ namespace TableTap
         }
 
 
-        public static void AddNewIncident()
+        public static void AddNewIncident(IncidentModel incident)
         {
-            UserModel newUser = user;
-
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
-
-            using (conn)
-            {
+         IncidentModel newIncident = incident;
+         SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+         using (conn)
+        {
                 conn.Open();
 
 
 
                 using (SqlCommand command = new SqlCommand(
                 "INSERT INTO tblIncidence(incDate, info, tableID, roomID, userID) VALUES ("
-                    + "'" + newUser.Email.ToString() + "'" + ", "
-                    + "'" + newUser.Password.ToString() + "'" + ", "
-                    + "'" + newUser.FirstName + "'" + ", "
-                    + "'" + newUser.LastName + "'" + ", "
-                    + "'" + newUser.AdminPermission + "'" + ","
-                    + "'" + newUser.phoneNum + "'" + ")"
+                    + "'" + newIncident.IncidentID.ToString() + "'" + ", "
+                    + "'" + newIncident.userdate.ToString() + "'" + ", "
+                    + "'" + newIncident.Info + "'" + ", "
+                    + "'" + newIncident.TableID + "'" + ","
+                    + "'" + newIncident.RoomID + "'" + ","
+                    + "'" + newIncident.UserID + "'" + ","
+                    + "'" + newIncident.IncLevel + "'" + ")"
                     ,
                     conn))
                 {
