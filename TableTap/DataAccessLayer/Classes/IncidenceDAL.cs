@@ -83,10 +83,9 @@ namespace TableTap
                 conn.Open();
 
 
-
+                //reeeeeeee
                 using (SqlCommand command = new SqlCommand(
                 "INSERT INTO tblIncidence(incDate, info, tableID, roomID, userID) VALUES ("
-                    + "'" + newIncident.IncidentID.ToString() + "'" + ", "
                     + "'" + newIncident.userdate.ToString() + "'" + ", "
                     + "'" + newIncident.Info + "'" + ", "
                     + "'" + newIncident.TableID + "'" + ","
