@@ -117,6 +117,7 @@
     <Content Include="Content\MobileMaster.css" />
     <Content Include="DiMe\Directionsmodule.aspx" />
     <Content Include="Default11.html" />
+    <Content Include="IncidenceModule\IncidentModule.aspx" />
     <Content Include="Resources\Images\Spiteful_Spirit.jpg" />
     <Content Include="Resources\Images\TestImage.png" />
     <Content Include="Scripts\esm\popper-utils.js" />
@@ -240,6 +241,14 @@
     <Compile Include="DiMe\Directionsmodule.aspx.designer.cs">
       <DependentUpon>Directionsmodule.aspx</DependentUpon>
     </Compile>
+    <Compile Include="IncidenceModule\IncidentModule.aspx.cs">
+      <DependentUpon>IncidentModule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="IncidenceModule\IncidentModule.aspx.designer.cs">
+      <DependentUpon>IncidentModule.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IncidentModel.cs" />
     <Compile Include="UL\404Page.aspx.cs">
       <DependentUpon>404Page.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

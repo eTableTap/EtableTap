@@ -73,6 +73,40 @@ namespace TableTap
             }
         }
 
+
+        public static void AddNewIncident()
+        {
+            UserModel newUser = user;
+
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+
+            using (conn)
+            {
+                conn.Open();
+
+
+
+                using (SqlCommand command = new SqlCommand(
+                "INSERT INTO tblIncidence(incDate, info, tableID, roomID, userID) VALUES ("
+                    + "'" + newUser.Email.ToString() + "'" + ", "
+                    + "'" + newUser.Password.ToString() + "'" + ", "
+                    + "'" + newUser.FirstName + "'" + ", "
+                    + "'" + newUser.LastName + "'" + ", "
+                    + "'" + newUser.AdminPermission + "'" + ","
+                    + "'" + newUser.phoneNum + "'" + ")"
+                    ,
+                    conn))
+                {
+                    command.ExecuteNonQuery();
+                }
+                conn.Close();
+            }
+
+        }
+
+
+
+
     }
 
 
