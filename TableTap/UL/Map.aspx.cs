@@ -42,7 +42,7 @@ namespace TableTap.UL
             
             int id = bm.BuildingID;
 
-            string url = ConfigurationManager.AppSettings["UnsecurePath"] + "Building.aspx?id=" + id;
+            string url = ConfigurationManager.AppSettings["UnsecurePath"] + "UL/Building.aspx?id=" + id;
             Response.Redirect(url);
             
             // Response.Redirect("Building.aspx?id=" + id);

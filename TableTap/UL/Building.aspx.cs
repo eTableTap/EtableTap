@@ -50,7 +50,7 @@ namespace TableTap.UL
             
             int id = rm.RoomID;
 
-            string url = ConfigurationManager.AppSettings["UnsecurePath"] + "Room.aspx?id=" + id;
+            string url = ConfigurationManager.AppSettings["UnsecurePath"] + "UL/Room.aspx?id=" + id;
             Response.Redirect(url);
 
         }
