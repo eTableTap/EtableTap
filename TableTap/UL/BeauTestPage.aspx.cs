@@ -8,6 +8,12 @@ using System.Web.UI.WebControls;
 using TableTap.BusinessLayer;
 using TableTap.BusinessLayer.Classes;
 using TableTap.Models;
+using System.Device.Location;
+
+
+//
+
+
 
 namespace TableTap.UL
 {
@@ -15,7 +21,8 @@ namespace TableTap.UL
     {
 
         //List<UserModel> users = new List<UserModel>();
-        
+       
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -63,6 +70,43 @@ namespace TableTap.UL
             }
         }
 
+        protected void TestGeoLocationButton_Click(object sender, EventArgs e)
+        {
+            /*
+             watcher.TryStart(false, TimeSpan.FromMilliseconds(1000));
+             GeoCoordinate coord = watcher.Position.Location;
+             lblTest.Text = "Lat: " + coord.Latitude + "</br>Long: " + coord.Longitude;
+             */
+            GetLocationProperty();
+        }
+
+        protected void GetLocationProperty()
+        {
+            //From https://docs.microsoft.com/en-us/dotnet/api/system.device.location.geocoordinatewatcher.position?view=netframework-4.7.2
+            GeoCoordinateWatcher watcher = new GeoCoordinateWatcher();
+
+            // Do not suppress prompt, and wait 1000 milliseconds to start.
+            watcher.TryStart(false, TimeSpan.FromMilliseconds(1000));
+            
+            GeoCoordinate coord = watcher.Position.Location;
+            
+
+            if (coord.IsUnknown != true)
+            {
+                lblTest.Text = "Lat: " + coord.Latitude + "</br>Long: " + coord.Longitude;
+                Console.WriteLine("Lat: {0}, Long: {1}",
+                    coord.Latitude,
+                    coord.Longitude);
+                GeoCoordinate geoLibrary = new GeoCoordinate(-32.892086, 151.698285);
+                double distance = coord.GetDistanceTo(geoLibrary);
+                lblTest.Text += "</br>Distance to library = " + distance;
+            }
+            else
+            {
+                lblTest.Text = "Unknown latitude and longitude.";
+                Console.WriteLine("Unknown latitude and longitude.");
+            }
+        }
 
         protected void createImageTable(int tableNumber)
         {

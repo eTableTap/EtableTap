@@ -12,10 +12,15 @@
     <asp:TextBox  runat="server" ID="txtbxLname"/>
     <asp:TextBox  runat="server" ID="txtbxAdminP"/>
     </ul>
-
+    
    <div id="div1" runat="server">
 
 
    </div>
+    <asp:button runat="server" id="TestGeoLocationButton" onclick="TestGeoLocationButton_Click" Text="Get Coords and distance to library" />
+    <asp:Label runat="server" ID="lblTest" Text="Test"></asp:Label>
+    
+    
+    
     
 </asp:Content>
