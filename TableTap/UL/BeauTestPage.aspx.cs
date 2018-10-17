@@ -27,7 +27,17 @@ namespace TableTap.UL
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Request.IsSecureConnection)
+            {
+                string url =
+                    ConfigurationManager.AppSettings["SecurePath"] + "/UL/BeauTestPage.aspx";
+                Response.Redirect(url);
+
+                
+
+            }
             GetLocationProperty();
+
         }
         protected void TestButton_Click(object sender, EventArgs e)
         {
@@ -78,8 +88,8 @@ namespace TableTap.UL
              GeoCoordinate coord = watcher.Position.Location;
              lblTest.Text = "Lat: " + coord.Latitude + "</br>Long: " + coord.Longitude;
              */
-            
 
+            GetLocationProperty();
 
         }
 
@@ -89,7 +99,7 @@ namespace TableTap.UL
             GeoCoordinateWatcher watcher = new GeoCoordinateWatcher();
            
             // Do not suppress prompt, and wait 1000 milliseconds to start.
-            watcher.TryStart(false, TimeSpan.FromMilliseconds(1000));
+            watcher.TryStart(false, TimeSpan.FromMilliseconds(2000));
             
             GeoCoordinate coord = watcher.Position.Location;
            
