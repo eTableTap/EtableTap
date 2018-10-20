@@ -15,19 +15,32 @@ namespace TableTap.Models
 
         public int RoomQty { get; set; }
 
-        //public Map Image
+        public string street { get; set; }
 
-        public BuildingModel()
+        public string suburb { get; set; }
+
+        public string provence { get; set; }
+
+        public string country { get; set; }
+
+    //public Map Image
+
+    public BuildingModel()
         {
 
         }
 
-        public BuildingModel(int bid, string bl, string bn, int rq)
+        public BuildingModel(int bid, string bl, string bn, int rq, string stree, string burb, string prov, string country)
         {
             this.BuildingID = bid;
             this.BuildingLabel = bl;
             this.BuildingName = bn;
             this.RoomQty = rq;
+            this.street = stree;
+            this.street = burb;
+            this.provence = prov;
+            this.country = country;
+
         }
     }
 }

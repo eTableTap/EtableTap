@@ -1,4 +1,4 @@
---CANNOT DROP DATABASE PROPERLY
+ï»¿--CANNOT DROP DATABASE PROPERLY
 use master
 go
 ---Kills any existing DB sessions (Fixes drop issue) - HAYDEN: REMOVE IF YOUR DB BROKE
@@ -21,6 +21,11 @@ CREATE TABLE tblBuilding (
 	buildingLabel	NVARCHAR(10) NOT NULL,
 	buildingName	NVARCHAR(50) NOT NULL,
 	roomQty			SMALLINT NOT NULL,
+	street			NVARCHAR (200),
+	suburb			NVARCHAR (50),
+	provence		NVARCHAR (4),
+	country			NVARCHAR (30)
+
 	--buildingMap		IMAGE --temporarily Null since we haven't figured out how we're gonna make it interactive
 	)
 
@@ -67,7 +72,8 @@ CREATE TABLE tblIncidence(
 	info VARCHAR(300) NOT NULL,
 	tableID INT NOT NULL,
 	roomID INT NOT NUll,
-	userID INT,
+	userID INT NOT NULL,
+	incLevel BIT NOT NULL,
 
 	 -- determines who sees the notification
     CONSTRAINT fk_getaroomID FOREIGN KEY (roomID) REFERENCES tblroom(roomID),
@@ -111,12 +117,12 @@ AS
 go
 
 --Test values
-INSERT INTO tblBuilding(buildingName, buildingLabel, roomQty)
-VALUES ('Auchmuty Library', 'L', 2), 
-('Huxley Library', 'H', 1), 
-('ICT Building', 'ICT', 1),
-('Beaus Basement', 'BB', 1),
-('Akerhus Festning', 'AF', 1)
+INSERT INTO tblBuilding(buildingName, buildingLabel, roomQty, street, suburb, provence, country)
+VALUES ('Auchmuty Library', 'L', 2, 'Auchmuty Library University Dr', 'Callaghan','NSW', 'Australia'), 
+('Huxley Library', 'H', 1, 'Auchmuty Library', 'Callaghan', 'NSW', 'Australia'), 
+('ICT Building', 'ICT', 1, 'ICT', 'Callaghan', 'NSW', 'Australia'),
+('Beaus Basement', 'BB', 1, 'Auchmuty Library University Dr', 'Callaghan', 'NSW', 'Australia'),
+('Akerhus Festning', 'AF', 1, 'Auchmuty Library University Dr', 'Callaghan', 'NSW', 'Australia')
 go
 
 INSERT INTO tblRoom(roomName, roomLabel, buildingID, openingTime, closingTime, tableQty)
@@ -124,8 +130,8 @@ VALUES ('Auchmuty Information Common', 'L-266', 001, '00:00:00', '23:59:59', 100
 ('Huxley Information Common Area', 'HA-157', 002, '08:00:00', '22:00:00', 140),
 ('Bedroom', 'Bed', 004, '08:00:00', '22:00:00', 2),
 ('Bathroom', 'WC', 004, '08:00:00', '22:00:00', 2),
-('Både', 'b2', 005, '08:00:00', '22:00:00', 4),
-('Både', 'b1', 005, '08:00:00', '22:00:00', 4),
+('BÃ¥de', 'b2', 005, '08:00:00', '22:00:00', 4),
+('BÃ¥de', 'b1', 005, '08:00:00', '22:00:00', 4),
 ('Flower Room', 'FR', 001, '00:00:00', '23:59:59', 100)
 go
 
@@ -154,8 +160,10 @@ VALUES ('admin@official.com', 'qwerty1', 'admin', 'admin', 1, 2),
 ('hayden.bartlett1@nerg.com', '123', 'baz', 'clide', 0, 2)
 go
 
-INSERT INTO tblIncidence(incDate, info, tableID, roomID, userID)
-VALUES ('2018-09-14', 'I am a fucking retard', 1, 0001, 100002)
+INSERT INTO tblIncidence(incDate, info, tableID, roomID, userID, incLevel)
+VALUES ('2018-09-14', 'I am a test incident level 0', 1, 0001, 100002, 0),
+ ('2018-09-14', 'I am a test incident level 1', 1, 0001, 100002, 0)
+ go
 
 --INSERT INTO tblReservation(userID, tableID, reservationStartTime, reservationFinishTime, groupName)
 --VALUES (100001, 1, '2018-09-15 12:00:00', '2018-09-15 13:00:00', 'Keplers group, INFT3970'),

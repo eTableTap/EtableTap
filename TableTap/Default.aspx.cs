@@ -73,7 +73,9 @@ namespace TableTap.UL
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            string URL = DirectionModuleBL.start();
+            int buildingID = 001;
+            // directions module
+            string URL = DirectionModuleBL.start(buildingID);
 
             Response.Redirect(URL);
         }

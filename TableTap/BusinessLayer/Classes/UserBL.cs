@@ -58,7 +58,7 @@ namespace TableTap.BusinessLayer
             /// INPUT email Password, from Login
             /// OUTPUT INT 1/3 passed from USERDAL
             /// </summary>
-            int status = 3;
+            int status;
             try
             {
                 // PLACE ADDITIONAL CODE HERE

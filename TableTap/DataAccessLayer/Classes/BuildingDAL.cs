@@ -92,6 +92,11 @@ namespace TableTap.DataAccessLayer.Classes
                         building.BuildingName = dr["buildingName"].ToString();
                         building.BuildingLabel = dr["buildingLabel"].ToString();
                         building.RoomQty = Convert.ToInt32(dr["roomQty"]);
+                        building.street = dr["street"].ToString();
+                        building.suburb = dr["suburb"].ToString();
+                        building.provence = dr["provence"].ToString();
+                        building.country = dr["country"].ToString();
+
 
                     }
                     dr.Close();

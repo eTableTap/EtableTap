@@ -4,82 +4,110 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TableTap.DataAccessLayer.Classes;
+using TableTap.Models;
 
 namespace TableTap
 {
     public class DirectionModuleBL
     {
-        public static List<string> data()
+        public static BuildingModel TESTINGdata(int num)
         {
+            BuildingModel building = new BuildingModel();
+
             // testing placeholder
-            string street = "142 Nagles Falls Road, Sherwood, NSW, Australia";
-            string suburb = "sherwood";
-            string postcode = "2440";
-            string state = "NSW";
+            building.street = "ICT";
+            building.suburb = "Callaghan";
+            building.provence = "NSW";
+            building.country = "Australia";
+            return building;
+        }
 
-            List<string> address = new List<string>();
-            address.Add(street);
-            address.Add(suburb);
-            address.Add(postcode);
-            address.Add(state);
-            return address;
+        public static BuildingModel data(int buildingID)
+        {
+            BuildingModel building = new BuildingModel();
+
+ //           try
+ //           {
+             building = BuildingDAL.loadBuildingByID(buildingID);
+  //          }
+  //          catch
+  //          {
+  //              building.street = "University of Newcastle";
+    //            building.suburb = "Callaghan";
+   //             building.provence = "NSW";
+    //            building.country = "Australia";
+    //        }
+            return building;
         }
 
 
-        public static string anLogic()
+        public static string anLogic(int buildingID)
         {
-            List<string> addresslist = new List<string>();
-            addresslist = data();
-            string street = addresslist[0].Replace(" ", "+");
-            string URL = "google.navigation:q=" + street + ",+" + addresslist[1] + ",+" + addresslist[2] + ",+" + addresslist[3];
-            //           Session.Abandon();
-            //            Response.BufferOutput = true;
+            //android method for opening google maps (using Intent for reliability)
+
+            BuildingModel building = data(buildingID);
+            string street = building.street.Replace(" ", "+");
+            string suburb = building.suburb.Replace(" ", "+");
+            string provence = building.provence.Replace(" ", "+");
+            //            string URL = "google.navigation:q=" + street + ",+" + addresslist[1] + ",+" + addresslist[2] + ",+" + addresslist[3]; // -- use if Intent doesnt work
+            string URL = "intent://www.google.com.au/maps/dir//" + street + ",+" + suburb + ",+" + provence + ",+" + building.country
+                + "#Intent;scheme=http;package=com.google.android.apps.maps;end"; // - in use as more reliable in tewsting with older phones
             return URL;
         }
 
-        public static string iPLogic()
+        public static string iPLogic(int buildingID)
         {
-            List<string> addresslist = new List<string>();
-            addresslist = data();
-            string street = addresslist[0].Replace(" ", "+");
-            string URL = "comgooglemaps://?daddr=" + street + ",+" + addresslist[1] + ",+" + addresslist[2] + ",+" + addresslist[3];
+            // Iphone method for opening google maps
+
+            BuildingModel building = data(buildingID);
+            string street = building.street.Replace(" ", "+");
+            string suburb = building.suburb.Replace(" ", "+");
+            string provence = building.provence.Replace(" ", "+");
+            string URL = "comgooglemaps://?daddr=" + street + ",+" + suburb + ",+" + provence + ",+" + building.country;
             return URL;
         }
 
-        public static string iPadLogic()
+        public static string iPadLogic(int buildingID)
         {
-            string URL = iPLogic(); // may require modification
+            string URL = iPLogic(buildingID); // may require modification in the future based of test devices
             return URL;
         }
 
-        public static string otherlogic()
+        public static string otherlogic(int buildingID)
         {
-            List<string> addresslist = new List<string>();
-            addresslist = data();
-            string street = addresslist[0].Replace(" ", "+");
-            string URL = "https://www.google.com/maps/dir/?api=1&destination=" + street + ",+" + addresslist[1] + ",+" + addresslist[2] + ",+" + addresslist[3];
+            BuildingModel building = data(buildingID);
+            string street = building.street.Replace(" ", "+");
+            string suburb = building.suburb.Replace(" ", "+");
+            string provence = building.provence.Replace(" ", "+");
+            string URL = "https://www.google.com/maps/dir/?api=1&destination=" + street + ",+" + suburb + ",+" + provence + ",+" + building.country;
             return URL;
         }
 
-        public static string start()
+
+
+
+        public static string start(int buildingID)
         {
+            /// This method detects a device and sends it down correct code path
+
             string URL;
 
             if (HttpContext.Current.Request.UserAgent.IndexOf("Android") > 0)
             {
-                URL = anLogic();
+                URL = anLogic(buildingID);
             }
             else if (HttpContext.Current.Request.UserAgent.IndexOf("iPhone") > 0)
             {
-                URL = iPLogic();
+                URL = iPLogic(buildingID);
             }
             else if (HttpContext.Current.Request.UserAgent.IndexOf("iPad") > 0)
             {
-                URL = iPadLogic();
+                URL = iPadLogic(buildingID);
             }
             else
             {
-                URL = otherlogic();
+                URL = otherlogic(buildingID);
             }
 
             return URL;
