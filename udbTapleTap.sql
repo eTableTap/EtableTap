@@ -70,7 +70,7 @@ CREATE TABLE tblIncidence(
     incidenceID INT IDENTITY(1000001,1) PRIMARY KEY,
     incDate DATE NOT NULL,
 	info VARCHAR(300) NOT NULL,
-	tableID INT NOT NULL,
+	tableID INT,
 	roomID INT NOT NUll,
 	userID INT NOT NULL,
 	incLevel BIT NOT NULL,

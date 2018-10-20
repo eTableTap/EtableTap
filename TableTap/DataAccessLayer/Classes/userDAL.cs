@@ -163,68 +163,7 @@ namespace TableTap.DataAccessLayer
         }
 
 
-        // login function - check username + password 
-        //returns int values 1/3 
-        //Input email and password
-        //CREATED BY HAYDEN
-        public static Int32 loginCheck(string email, string password)
-        {
-            int exists = 3;
 
-
-            UserModel user = new UserModel();
-
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
-
-            using (conn)
-            {
-                conn.Open();
-
-                using (SqlCommand command = new SqlCommand(
-                    "SELECT * FROM tblUser WHERE emailAddress=" + "'" + email.ToString() + "'", conn))
-                {
-
-                    
-                    SqlDataReader dr = command.ExecuteReader();
-                    dr.Read();
-                    try
-                    {
-                        user.Email = dr["emailAddress"].ToString();
-                    }
-                    catch
-                    {
-                        user.Email = null;
-                    }
-
-                    try
-                    { 
-                    user.Password = dr["passcode"].ToString();
-                    }
-                    catch
-                    {
-                        user.Password = null;
-                    }
-
-                    if (user.Email == email && user.Password == password)
-                    {
-                        exists = 1;
-                    }
-                    else if(user.Email == email && user.Password != password)
-                    {
-                        exists = 2;
-                    }
-                    else
-                    {
-                        exists = 3;
-                    }
-                    
-
-                    dr.Close();
-                }
-              
-            }
-         return exists;
-        }
 
         /// <summary>
         /// CREATED BY HAYDEN

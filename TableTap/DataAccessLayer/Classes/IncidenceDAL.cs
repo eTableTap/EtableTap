@@ -85,13 +85,14 @@ namespace TableTap
 
                 //reeeeeeee
                 using (SqlCommand command = new SqlCommand(
-                "INSERT INTO tblIncidence(incDate, info, tableID, roomID, userID) VALUES ("
-                    + "'" + newIncident.userdate.ToString() + "'" + ", "
+                "INSERT INTO tblIncidence(incDate, info, tableID, roomID, userID, incLevel, buildingID) VALUES ("
+                    + "'" + newIncident.Incdate.ToString() + "'" + ", "
                     + "'" + newIncident.Info + "'" + ", "
                     + "'" + newIncident.TableID + "'" + ","
                     + "'" + newIncident.RoomID + "'" + ","
                     + "'" + newIncident.UserID + "'" + ","
-                    + "'" + newIncident.IncLevel + "'" + ")"
+                    + "'" + newIncident.IncLevel + "'" + ","
+                    + "'" + newIncident.buildingID + "'" + ")"
                     ,
                     conn))
                 {

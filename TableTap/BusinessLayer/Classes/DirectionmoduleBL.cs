@@ -27,17 +27,17 @@ namespace TableTap
         {
             BuildingModel building = new BuildingModel();
 
- //           try
- //           {
+            try
+            {
              building = BuildingDAL.loadBuildingByID(buildingID);
-  //          }
-  //          catch
-  //          {
-  //              building.street = "University of Newcastle";
-    //            building.suburb = "Callaghan";
-   //             building.provence = "NSW";
-    //            building.country = "Australia";
-    //        }
+            }
+            catch
+            {
+                building.street = "University of Newcastle";
+                building.suburb = "Callaghan";
+                building.provence = "NSW";
+                building.country = "Australia";
+            }
             return building;
         }
 
@@ -70,12 +70,18 @@ namespace TableTap
 
         public static string iPadLogic(int buildingID)
         {
+
+            // Ipad method - redirects to the Iphone
+
             string URL = iPLogic(buildingID); // may require modification in the future based of test devices
             return URL;
         }
 
         public static string otherlogic(int buildingID)
         {
+
+            // Computer method for opening googles maps (website)
+
             BuildingModel building = data(buildingID);
             string street = building.street.Replace(" ", "+");
             string suburb = building.suburb.Replace(" ", "+");
