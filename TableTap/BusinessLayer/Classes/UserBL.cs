@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using TableTap.DataAccessLayer;
+using TableTap.DataAccessLayer.Classes;
 using TableTap.Models;
 using System.Configuration;
 
@@ -155,12 +155,6 @@ namespace TableTap.BusinessLayer.Classes
         }
 
 
-        public static UserModel getUserByEmail(string email)
-        {
-            UserModel user = UserDAL.EmailSearch(email);
-
-            return user;
-        }
 
 
     }

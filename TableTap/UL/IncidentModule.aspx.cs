@@ -5,7 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TableTap.Models;
-using TableTap.DataAccessLayer.Classes;
+using TableTap.BusinessLayer.Classes;
+
 
 namespace TableTap.IncidentModule
 {
@@ -18,20 +19,21 @@ namespace TableTap.IncidentModule
                 Response.Redirect("login.aspx");
             }
 
-            lbltime.Text = Session["user"].ToString();
             lblText.Text = Session["login"].ToString();
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            
             //test to add data via tableID
             int tableID = 00001;
             DateTime time = System.DateTime.Now;
             string info = "I am a test incident at user level";
-            int userID = 100002;
+
+            UserModel user = UserBL.passUserSearch(Session["login"].ToString());
 
             lbltime.Text = time.ToString();
-            lbluser.Text = userID.ToString();
+            lbluser.Text = user.UserID.ToString();
             lblText.Text = info;
             lblTable.Text = tableID.ToString();
 
@@ -45,34 +47,36 @@ namespace TableTap.IncidentModule
         protected void start()
         {
             IncidentModel incident = new IncidentModel();
+            UserModel user = UserBL.passUserSearch(Session["login"].ToString());
 
-            
 
-            // importing data 
+            // importing/creating 
 
-            incident.UserID = Convert.ToInt32(lbluser.Text);
-            incident.TableID = Convert.ToInt32(lblTable.Text);
+            incident.UserID = Convert.ToInt32(user.UserID);
+            incident.TableID = Convert.ToInt32(lblTable.Text); // needs to come from input
             incident.Incdate = System.DateTime.Now;
-            incident.Info = lblText.Text;
-            incident.RoomID = 0001;
-            incident.buildingID = 001;
+            incident.Info = lblText.Text; // needs to come from input
+            incident.RoomID = 0001; // needs to come from input / tableID
+            incident.buildingID = 001; // needs to come from input/table ID
+            if(user.AdminPermission == 1)
+            {
+                incident.IncLevel = true;
+            }
+            else
+            {
+                incident.IncLevel = false;
+            }
+
+            
 
             
 
 
-            datalayerpassadd(incident);
+            IncidenceBL.datalayerpassadd(incident);
 
         }
 
-        protected void datalayerpassadd(IncidentModel incident)
-        {
-            incident.IncLevel = false;
 
-            IncidenceDAL.AddNewIncident(incident);
-
-
-
-        }
 
 
 

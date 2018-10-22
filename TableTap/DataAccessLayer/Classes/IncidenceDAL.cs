@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 using TableTap.Models;
 
-namespace TableTap
+namespace TableTap.DataAccessLayer.Classes
 {
     public class IncidenceDAL
     {
