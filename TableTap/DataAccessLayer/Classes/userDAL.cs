@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 using TableTap.Models;
 
-namespace TableTap.DataAccessLayer
+namespace TableTap.DataAccessLayer.Classes
 {
     public class UserDAL
     {
