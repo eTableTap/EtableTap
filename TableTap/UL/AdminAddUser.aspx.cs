@@ -38,7 +38,7 @@ namespace TableTap.UL
                 newUser.LastName = inADLastName.Value;
                 newUser.AdminPermission = 0;
 
-                BusinessLayer.UserBL.ProcessAddNewUser(newUser);
+               UserBL.ProcessAddNewUser(newUser);
 
 
                 // placeholder for future feature
