@@ -99,10 +99,20 @@ namespace TableTap.UL
 
             if (InputEmail1.Value != null )
             {
-            //notifyGroupMember(string user, string email, string tableID, string roomName, string buildingName)
-                NotifyBL.notifyGroupMember(UserBL.getUserByEmail, InputEmail1.Value.ToString(), TableBL.getTableByID(ID).TableID, RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).RoomName.ToString(),
-                BuildingBL.getBuildingByID(RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).BuildingID).BuildingName);
-                
+                lblStatus.Text += "<br />Session User: " + UserBL.passUserSearch(Session["login"].ToString()).FirstName.ToString()
+                + "<br />Email: " + InputEmail1.Value.ToString() 
+                + "<br />Email: " + TableBL.getTableByID(ID).TableID.ToString()
+                + "<br />Email: " + RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).RoomName.ToString()
+                + "<br />Email: " + BuildingBL.getBuildingByID(RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).BuildingID).BuildingName.ToString();
+       
+                /*
+                NotifyBL.notifyGroupMember(UserBL.passUserSearch(Session["login"].ToString()).FirstName.ToString(), 
+                InputEmail1.Value.ToString(), 
+                TableBL.getTableByID(ID).TableID.ToString(), 
+                RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).RoomName.ToString(),
+                BuildingBL.getBuildingByID(RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).BuildingID).BuildingName.ToString();
+                */
+
             }
 
 
