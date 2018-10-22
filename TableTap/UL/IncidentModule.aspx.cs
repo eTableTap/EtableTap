@@ -17,6 +17,9 @@ namespace TableTap.IncidentModule
             {
                 Response.Redirect("login.aspx");
             }
+
+            lbltime.Text = Session["user"].ToString();
+            lblText.Text = Session["login"].ToString();
         }
 
         protected void Button1_Click(object sender, EventArgs e)

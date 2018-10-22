@@ -9,7 +9,7 @@ using System.Configuration;
 
 
 
-namespace TableTap.BusinessLayer
+namespace TableTap.BusinessLayer.Classes
 {
     public class UserBL
     {
@@ -39,45 +39,17 @@ namespace TableTap.BusinessLayer
         public static void ProcessAddNewUser(UserModel user)
         {
             UserModel newUser = user;
-
+            try
+            { }
+                catch
+            { }
             UserDAL.AddNewUser(user);
 
         }
 
 
-
         
-<<<<<<< HEAD
-=======
-       /* public static int loginScripting(string email, string password)
-        {
-            /// <summary>
-            /// CREATED BY HAYDEN BARTLETT
-            /// scripting for login, passes information from login page to datalayer USERDB.
-            /// A return of INT 3 = username failure
-            /// A return of INT 2 = Password failure
-            /// A return of INT 1 = Login success
-            /// INPUT email Password, from Login
-            /// OUTPUT INT 1/3 passed from USERDAL
-            /// </summary>
-            int status;
-            try
-            {
-                // PLACE ADDITIONAL CODE HERE
-              //status =  UserDAL.loginCheck(email, password);
-            }
-            catch
-            {
-                status = 3;
-            }
 
-            return status;
-        }*/
-
-
-
-        
->>>>>>> e63ba993c8ed05473b730d9c96a206503e1ff2d2
         public static bool emailDuplicateCheck(string email)
         {
             //detects if email already exists in database (by contacting AdminUserEditCheck)
@@ -140,10 +112,7 @@ namespace TableTap.BusinessLayer
             /// input a email
             /// outputs list of user info associated with email
             /// if no email found or in the event of a error returns null
-            /// </summary>
-            /// <param name="record"></param>
-            /// <returns></returns>
-            List<string> record = new List<string>();
+
             try
             {
 

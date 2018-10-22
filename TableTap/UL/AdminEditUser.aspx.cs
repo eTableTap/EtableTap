@@ -4,9 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using TableTap.BusinessLayer;
+using TableTap.BusinessLayer.Classes;
 using TableTap.Models;
-using TableTap.DataAccessLayer; //REMOVE
+using TableTap.DataAccessLayer.Classes; //REMOVE
 
 
 

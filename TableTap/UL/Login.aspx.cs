@@ -1,5 +1,5 @@
 ﻿using System;
-using TableTap.BusinessLayer;
+using TableTap.BusinessLayer.Classes;
 using TableTap.Models;
 using System.Collections.Generic;
 using System.Linq;

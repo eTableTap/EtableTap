@@ -30,7 +30,7 @@ namespace TableTap.UL
             // calls external method returns bool true if email already in database
             
 
-            if(BusinessLayer.UserBL.emailDuplicateCheck(fEmail))
+            if(UserBL.emailDuplicateCheck(fEmail))
             {
 
 
@@ -68,7 +68,7 @@ namespace TableTap.UL
                 newUser.AdminPermission = 0;
                 newUser.phoneNum = inPhone.Value;
 
-                BusinessLayer.UserBL.ProcessAddNewUser(newUser);
+                UserBL.ProcessAddNewUser(newUser);
 
 
                 NotifyBL.startAccountNotification(fEmail, inPhone.Value, inFirstName.Value, inLastName.Value);
