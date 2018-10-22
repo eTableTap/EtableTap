@@ -105,13 +105,13 @@ namespace TableTap.UL
                 + "<br />Email: " + RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).RoomName.ToString()
                 + "<br />Email: " + BuildingBL.getBuildingByID(RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).BuildingID).BuildingName.ToString();
        
-                /*
+                
                 NotifyBL.notifyGroupMember(UserBL.passUserSearch(Session["login"].ToString()).FirstName.ToString(), 
                 InputEmail1.Value.ToString(), 
                 TableBL.getTableByID(ID).TableID.ToString(), 
                 RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).RoomName.ToString(),
-                BuildingBL.getBuildingByID(RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).BuildingID).BuildingName.ToString();
-                */
+                BuildingBL.getBuildingByID(RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).BuildingID).BuildingName.ToString());
+                
 
             }
 
