@@ -168,61 +168,50 @@ namespace TableTap.DataAccessLayer
         /// <summary>
         /// CREATED BY HAYDEN
         /// Takes input of email
-        /// returns matching record as a list<string>
-        public static List<string> EmailSearch(string email)
+        /// returns matching record as a usermodel
+        public static UserModel EmailSearch(string email)
         {
+            UserModel loadeduser = new UserModel();
 
-            List<string> userRecord = new List<string>();
 
 
-            UserModel user = new UserModel();
+        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
 
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+        List<UserModel> userList = LoadUsersList();
 
-            using (conn)
+        UserModel user = userList.Where(u => u.Email == email).FirstOrDefault();
+
+            if (user != null)
             {
-                conn.Open();
-
-                using (SqlCommand command = new SqlCommand(
-                    "SELECT * FROM tblUser WHERE emailAddress=" + "'" + email + "'", conn))
+                using (conn)
                 {
+                    conn.Open();
 
-
-                    SqlDataReader dr = command.ExecuteReader();
-                    dr.Read();
-
-                    try
+                    using (SqlCommand command = new SqlCommand(
+                    "SELECT * FROM tblUser WHERE emailAddress=" + "'" + email.ToString() + "'",
+                    conn))
                     {
+                        SqlDataReader dr = command.ExecuteReader();
+                        dr.Read();
 
-                        user.UserID = Convert.ToInt32(dr["userID"]);
-                        user.Email = dr["emailAddress"].ToString();
-                        user.Password = dr["passcode"].ToString();
-                        user.FirstName = dr["firstName"].ToString();
-                        user.LastName = dr["lastName"].ToString();
-                        user.AdminPermission = Convert.ToByte(dr["adminPermission"]);
-                        // these lines of code are seperated for debugging
-                        userRecord.Add(user.UserID.ToString());
-                        userRecord.Add(user.Email);
-                        userRecord.Add(user.Password);
-                        userRecord.Add(user.FirstName);
-                        userRecord.Add(user.LastName);
-                        userRecord.Add(user.AdminPermission.ToString());
+
+                        //user = new UserModel();
+                        loadeduser.UserID = Convert.ToInt32(dr["userID"]);
+                        loadeduser.Email = dr["emailAddress"].ToString();
+                        loadeduser.Password = dr["passcode"].ToString();
+                        loadeduser.FirstName = dr["firstName"].ToString();
+                        loadeduser.LastName = dr["lastName"].ToString();
+                        loadeduser.AdminPermission = Convert.ToByte(dr["adminPermission"]);
+                        loadeduser.phoneNum = dr["phoneNum"].ToString();
+
 
                         dr.Close();
                     }
-                    catch
-                    {
-                        userRecord = null;
-                    }
+                     conn.Close();
                 }
-
-                conn.Close();
             }
-           
 
-
-
-            return userRecord;
+            return user;
         }
 
 

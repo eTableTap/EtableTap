@@ -13,7 +13,10 @@ namespace TableTap.IncidentModule
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["loggedUser"] != "admin") //stops non admins accessing page
+            {
+                Response.Redirect("login.aspx");
+            }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -30,7 +33,6 @@ namespace TableTap.IncidentModule
             lblTable.Text = tableID.ToString();
 
 
-
             IncidentModel incident = new IncidentModel();
             start();
 
@@ -41,6 +43,7 @@ namespace TableTap.IncidentModule
         {
             IncidentModel incident = new IncidentModel();
 
+            
 
             // importing data 
 
@@ -50,7 +53,9 @@ namespace TableTap.IncidentModule
             incident.Info = lblText.Text;
             incident.RoomID = 0001;
             incident.buildingID = 001;
-            incident.IncLevel = false;
+
+            
+
 
             datalayerpassadd(incident);
 
@@ -58,7 +63,7 @@ namespace TableTap.IncidentModule
 
         protected void datalayerpassadd(IncidentModel incident)
         {
-
+            incident.IncLevel = false;
 
             IncidenceDAL.AddNewIncident(incident);
 

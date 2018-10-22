@@ -133,7 +133,7 @@
     <Content Include="Content\MobileMaster.css" />
     <Content Include="DiMe\Directionsmodule.aspx" />
     <Content Include="Default11.html" />
-    <Content Include="IncidenceModule\IncidentModule.aspx" />
+    <Content Include="UL\IncidentModule.aspx" />
     <Content Include="Resources\Images\Spiteful_Spirit.jpg" />
     <Content Include="Resources\Images\TestImage.png" />
     <Content Include="Scripts\esm\popper-utils.js" />
@@ -258,11 +258,11 @@
     <Compile Include="DiMe\Directionsmodule.aspx.designer.cs">
       <DependentUpon>Directionsmodule.aspx</DependentUpon>
     </Compile>
-    <Compile Include="IncidenceModule\IncidentModule.aspx.cs">
+    <Compile Include="UL\IncidentModule.aspx.cs">
       <DependentUpon>IncidentModule.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="IncidenceModule\IncidentModule.aspx.designer.cs">
+    <Compile Include="UL\IncidentModule.aspx.designer.cs">
       <DependentUpon>IncidentModule.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\IncidentModel.cs" />
@@ -509,6 +509,7 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="IncidenceModule\" />
     <Folder Include="obj\" />
     <Folder Include="TestQR\" />
     <Folder Include="View\" />

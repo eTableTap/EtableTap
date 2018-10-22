@@ -26,14 +26,15 @@ namespace TableTap.UL
         }
         protected void searchButton_Click(Object sender, EventArgs e)
         {
-            if(txbUsername.Value == null)
+            UserModel record= new UserModel();
+
+            if (txbUsername.Value == null)
             {
                 lblStatus.Text = "Please enter a valid Email";
             }
             else
             {
 
-                List<string> record = new List<string>();
 
                 record = UserBL.passUserSearch(txbUsername.Value);
 
@@ -43,13 +44,13 @@ namespace TableTap.UL
                 }
                 else
                 {
-                    lblUserID.Text = record[0];
-                    Email.Value = record[1];
-                    inPassword.Value = record[2];
-                    inFirstName.Value = record[3];
-                    inLastName.Value = record[4];
+                    lblUserID.Text = record.UserID.ToString();
+                    Email.Value = record.Email;
+                    inPassword.Value = record.Password;
+                    inFirstName.Value = record.FirstName;
+                    inLastName.Value = record.LastName;
 
-                    if(record[5] != "0")
+                    if(record.AdminPermission == 1)
                     {
                         chkAdmin.Checked = true;
                     }

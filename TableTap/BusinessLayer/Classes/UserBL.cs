@@ -47,40 +47,13 @@ namespace TableTap.BusinessLayer
 
 
         
-        public static int loginScripting(string email, string password)
-        {
-            /// <summary>
-            /// CREATED BY HAYDEN BARTLETT
-            /// scripting for login, passes information from login page to datalayer USERDB.
-            /// A return of INT 3 = username failure
-            /// A return of INT 2 = Password failure
-            /// A return of INT 1 = Login success
-            /// INPUT email Password, from Login
-            /// OUTPUT INT 1/3 passed from USERDAL
-            /// </summary>
-            int status;
-            try
-            {
-                // PLACE ADDITIONAL CODE HERE
-              status =  UserDAL.loginCheck(email, password);
-            }
-            catch
-            {
-                status = 3;
-            }
-
-            return status;
-        }
-
-
-
-        
         public static bool emailDuplicateCheck(string email)
         {
             //detects if email already exists in database (by contacting AdminUserEditCheck)
             bool exists;
 
-            List<String> listing = new List<string>();
+            UserModel listing = new UserModel();
+            
             try
             {
                 listing = UserDAL.EmailSearch(email);
@@ -127,8 +100,10 @@ namespace TableTap.BusinessLayer
 
 
         
-        public static List<string> passUserSearch(string email)
+        public static UserModel passUserSearch(string email)
         {
+
+            UserModel loadeduser = new UserModel();
             /// <summary>
             /// Passes accesses data from data access layer
             /// input a email
@@ -141,14 +116,14 @@ namespace TableTap.BusinessLayer
             try
             {
 
-               record = UserDAL.EmailSearch(email);
+               loadeduser = UserDAL.EmailSearch(email);
             }
             catch
             {
-                record = null;
+                loadeduser = null;
             }
 
-            return record;
+            return loadeduser;
 
         }
 
