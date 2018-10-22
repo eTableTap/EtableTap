@@ -47,7 +47,7 @@ namespace TableTap.BusinessLayer
 
 
         
-        public static int loginScripting(string email, string password)
+       /* public static int loginScripting(string email, string password)
         {
             /// <summary>
             /// CREATED BY HAYDEN BARTLETT
@@ -62,7 +62,7 @@ namespace TableTap.BusinessLayer
             try
             {
                 // PLACE ADDITIONAL CODE HERE
-              status =  UserDAL.loginCheck(email, password);
+              //status =  UserDAL.loginCheck(email, password);
             }
             catch
             {
@@ -70,7 +70,7 @@ namespace TableTap.BusinessLayer
             }
 
             return status;
-        }
+        }*/
 
 
 
