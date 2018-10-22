@@ -235,6 +235,45 @@ namespace TableTap.BusinessLayer.Classes
             /// ------------------------------------------------------SUPPLIED BY TWILIO END-------------------------- \\\
         }
 
+
+        //notify a added group member of the users booked table
+        public static void notifyGroupMember(string user, string email, string tableID, string roomName, string buildingName)
+        {
+            try
+            {
+                ///--------------------EMAIL SECTION -------------------------\\\
+
+                // variables for the email address, email subject line, and message respectively
+                string subject = " ETableTap group booking";
+                string message = "Hi " + Environment.NewLine  + user + " "
+                    + ", has made a group booking which includes you at the table: "
+                    + Environment.NewLine + tableID + " in " + roomName + " in " + buildingName + Environment.NewLine + Environment.NewLine
+                    + "Regards, TableTap team       www.etabletap.com";
+                /// ---- Start EMAIL NOTIFICATION ----\\\
+
+                // new Mail instance
+                var eMail = new MimeMessage();
+                // Specifies sending address
+                eMail.From.Add(new MailboxAddress("eTableTap", "eTableTap@GMail.com"));
+                // specifies target address
+                eMail.To.Add(new MailboxAddress(user + " " + "group", email));
+                // email subject line
+                eMail.Subject = subject;
+                // email body
+                eMail.Body = new TextPart("plain") { Text = message };
+
+                // calls external method to SmtpClient method to send email
+                sendemail(eMail);
+            }
+            catch
+            {
+
+            }
+
+          
+
+        }
+
     }
 
 

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TableTap.BusinessLayer.Classes;
+using TableTap.BusinessLayer; //UserBL is not in the namespace Businesslayer.Classes, need to fix and change all references
 using TableTap.Models;
 
 
@@ -93,8 +94,17 @@ namespace TableTap.UL
                 lblHeading.Text = "Table was booked";
                 
                 lblStatus.Text = "Table: " + TableBL.getTableByID(ID).TableID + "<br />Room Name: " + RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).RoomName.ToString() + "<br />in building: " + BuildingBL.getBuildingByID(RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).BuildingID).BuildingName + "<br />at: " + sHour + "00 -"+ (Convert.ToInt32(sHour)+1).ToString() +"00" + "<br /> was successfully booked";
-
+                
             }
+
+            if (InputEmail1.Value != null )
+            {
+            //notifyGroupMember(string user, string email, string tableID, string roomName, string buildingName)
+                NotifyBL.notifyGroupMember(UserBL.getUserByEmail, InputEmail1.Value.ToString(), TableBL.getTableByID(ID).TableID, RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).RoomName.ToString(),
+                BuildingBL.getBuildingByID(RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).BuildingID).BuildingName);
+                
+            }
+
 
         }
     }
