@@ -13,6 +13,8 @@ namespace TableTap.UL
         {
             if (Session["user"] == null)
             {
+                string url = Request.Url.AbsoluteUri;
+                Session["LoginFallback"] = url;
                 Response.Redirect("Login.aspx");
             }
         }

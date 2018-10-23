@@ -11,7 +11,8 @@ using System.Web.UI.WebControls;
 namespace TableTap.UL
 {
     public partial class Login : System.Web.UI.Page
-    {
+    { 
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -76,7 +77,16 @@ namespace TableTap.UL
                         Session["loggedUser"] = "user";
                     }
 
-                    Response.Redirect("Home.aspx");
+
+                    string url = "Home.aspx";
+
+                    if (Session["LoginFallback"] != null) //returns user to the page they were previously on
+                    {
+                        url = Session["LoginFallback"].ToString();
+                        Session["LoginFallback"] = null;
+                    }
+
+                    Response.Redirect(url);
                 }
                 else
                 {
