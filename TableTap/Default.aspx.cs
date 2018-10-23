@@ -79,5 +79,25 @@ namespace TableTap.UL
 
             Response.Redirect(URL);
         }
+
+        protected void btntestnotify_Click(object sender, EventArgs e)
+        {
+
+            string fname = "fnametest";
+            string sname = "sname";
+            string phone = "0427669341";
+
+            string user = fname + " " + sname;
+            string email = "C3166581@uon.edu.au";
+            string tableID = "I AM A TABLE RE";
+            string roomName = "Hi I'm a room and my name is barry";
+            string buildingName = "Nerg building";
+
+
+            NotifyBL.startbookNotify(email, phone, fname, sname, tableID, roomName);
+            NotifyBL.startAccountNotification(email, phone, fname, sname);
+            NotifyBL.notifyGroupMember(user, email, tableID, roomName, buildingName);
+            
+        }
     }
 }
