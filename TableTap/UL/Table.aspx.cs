@@ -112,6 +112,7 @@ namespace TableTap.UL
                 TableBL.getTableByID(ID).TableID.ToString(), 
                 RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).RoomName.ToString(),
                 BuildingBL.getBuildingByID(RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).BuildingID).BuildingName.ToString());
+                //need date and hour
                 
 
             }

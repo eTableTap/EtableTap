@@ -20,8 +20,7 @@
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>
-    </IISExpressSSLPort>
+    <IISExpressSSLPort>44390</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -133,6 +132,8 @@
     <Content Include="Content\MobileMaster.css" />
     <Content Include="DiMe\Directionsmodule.aspx" />
     <Content Include="Default11.html" />
+    <Content Include="Resources\Images\LoginBtn.png" />
+    <Content Include="Resources\Images\MapBtn.png" />
     <Content Include="UL\IncidentModule.aspx" />
     <Content Include="Resources\Images\Spiteful_Spirit.jpg" />
     <Content Include="Resources\Images\TestImage.png" />
