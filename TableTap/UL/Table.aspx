@@ -30,7 +30,7 @@
 							                <asp:Button type="button" ID="btnBook" Text="Book Table" onclick="btnBook_Click" OnClientClick="return CheckDouble();" runat="server" />
                                             <div class="form-group">
                                                 <asp:Label runat="server" ID="lblStatus" class="cols-sm-2 control-label" text="will update"></asp:Label>
-                                                
+                                                <asp:Button type="button" ID="btnDirections" Text="Get Directions" onclick="btnDirections_Click" visible="false" runat="server" />
                                                 
 					
 			                                </div>

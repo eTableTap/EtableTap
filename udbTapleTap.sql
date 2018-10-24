@@ -121,7 +121,7 @@ INSERT INTO tblBuilding(buildingName, buildingLabel, roomQty, street, suburb, pr
 VALUES ('Auchmuty Library', 'L', 2, 'Auchmuty Library University Dr', 'Callaghan','NSW', 'Australia'), 
 ('Huxley Library', 'H', 1, 'Auchmuty Library', 'Callaghan', 'NSW', 'Australia'), 
 ('ICT Building', 'ICT', 1, 'ICT', 'Callaghan', 'NSW', 'Australia'),
-('Beaus Basement', 'BB', 1, 'Auchmuty Library University Dr', 'Callaghan', 'NSW', 'Australia'),
+('Beaus Basement', 'BB', 1, '27 Haddington Dr', 'Cardiff South', 'NSW', 'Australia'),
 ('Akerhus Festning', 'AF', 1, 'Auchmuty Library University Dr', 'Callaghan', 'NSW', 'Australia')
 go
 

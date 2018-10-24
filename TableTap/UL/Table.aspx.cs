@@ -87,15 +87,25 @@ namespace TableTap.UL
                 Session["LoginFallback"] = url;
                 Response.Redirect("Login.aspx");
             }
+            
             btnBook.Visible = false;
             //btnBook.Enabled = false;
             makeBooking();
+            btnDirections.Visible = true;
            
 
 
 
         }
+        protected void btnDirections_Click(object sender, EventArgs e)
+        {
+            int ID = Int32.Parse(Request.QueryString["ID"]);
+            int buildingID = BuildingBL.getBuildingByID(RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).BuildingID).BuildingID; 
+            // directions module
+            string URL = DirectionModuleBL.start(buildingID);
 
+            Response.Redirect(URL);
+        }
         protected void makeBooking()
         {
             int ID = Int32.Parse(Request.QueryString["ID"]);
