@@ -15,7 +15,7 @@ namespace TableTap.BusinessLayer.Classes
             try
             {
 
-                IncidenceDAL.AddNewIncident(incident);
+                IncidenceDAL.AddNewIncidentTable(incident);
             }
             catch
             {

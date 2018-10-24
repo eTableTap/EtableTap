@@ -73,9 +73,29 @@ namespace TableTap.DataAccessLayer.Classes
             }
         }
 
-
-        public static void AddNewIncident(IncidentModel incident)
+        public static void incAllBuildingDelete(int buildingID)
         {
+            //deletes all incidents via building ID
+
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+
+            using (conn)
+            {
+                conn.Open();
+                using (SqlCommand command = new SqlCommand(
+                "DELETE FROM tblIncidence WHERE buildingID=" + buildingID.ToString(), conn))
+                {
+                    command.ExecuteNonQuery();
+                }
+                conn.Close();
+            }
+        }
+
+
+        public static void AddNewIncidentTable(IncidentModel incident)
+        {
+            // adds a incident by for a table
+
          IncidentModel newIncident = incident;
          SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
          using (conn)
@@ -102,6 +122,66 @@ namespace TableTap.DataAccessLayer.Classes
             
 
         }
+
+
+
+
+
+        public static void AddNewIncidentRoom(IncidentModel incident)
+        {
+            // adds a incident by for a room
+
+            IncidentModel newIncident = incident;
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+            using (conn)
+
+                conn.Open();
+
+            using (SqlCommand command = new SqlCommand(
+            "INSERT INTO tblIncidence(incDate, info, roomID, userID, incLevel, buildingID) VALUES ("
+                + "'" + newIncident.Incdate.ToString() + "'" + ", "
+                + "'" + newIncident.Info + "'" + ", "
+                + "'" + newIncident.RoomID + "'" + ","
+                + "'" + newIncident.UserID + "'" + ","
+                + "'" + newIncident.IncLevel + "'" + ","
+                + "'" + newIncident.buildingID + "'" + ")"
+                ,
+                conn))
+            {
+                command.ExecuteNonQuery();
+            }
+            conn.Close();
+
+
+        }
+
+        public static void AddNewIncidentBuilding(IncidentModel incident)
+        {
+            // adds a incident by for a Building
+
+            IncidentModel newIncident = incident;
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+            using (conn)
+
+                conn.Open();
+
+            using (SqlCommand command = new SqlCommand(
+            "INSERT INTO tblIncidence(incDate, info, userID, incLevel, buildingID) VALUES ("
+                + "'" + newIncident.Incdate.ToString() + "'" + ", "
+                + "'" + newIncident.Info + "'" + ", "
+                + "'" + newIncident.UserID + "'" + ","
+                + "'" + newIncident.IncLevel + "'" + ","
+                + "'" + newIncident.buildingID + "'" + ")"
+                ,
+                conn))
+            {
+                command.ExecuteNonQuery();
+            }
+            conn.Close();
+
+
+        }
+
 
 
         public static IncidentModel searchviadateandUserID(IncidentModel user)

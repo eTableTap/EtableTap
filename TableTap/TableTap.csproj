@@ -20,7 +20,8 @@
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44390</IISExpressSSLPort>
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -260,6 +261,7 @@
     <Compile Include="DiMe\Directionsmodule.aspx.designer.cs">
       <DependentUpon>Directionsmodule.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Startup.cs" />
     <Compile Include="UL\IncidentModule.aspx.cs">
       <DependentUpon>IncidentModule.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -511,6 +513,7 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="BackGroundWorker\" />
     <Folder Include="IncidenceModule\" />
     <Folder Include="obj\" />
     <Folder Include="TestQR\" />

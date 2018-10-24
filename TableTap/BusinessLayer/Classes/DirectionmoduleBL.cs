@@ -52,7 +52,7 @@ namespace TableTap
             string provence = building.provence.Replace(" ", "+");
             //            string URL = "google.navigation:q=" + street + ",+" + addresslist[1] + ",+" + addresslist[2] + ",+" + addresslist[3]; // -- use if Intent doesnt work
             string URL = "intent://www.google.com.au/maps/dir//" + street + ",+" + suburb + ",+" + provence + ",+" + building.country
-                + "#Intent;scheme=http;package=com.google.android.apps.maps;end"; // - in use as more reliable in tewsting with older phones
+                + "#Intent;scheme=http;package=com.google.android.apps.maps;end"; // - in use as more reliable in testing with older phones
             return URL;
         }
 

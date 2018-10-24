@@ -9,7 +9,9 @@
     <asp:Button ID="test5" runat="server" Text="Registration page" OnClick="test5_Click" />
     <asp:Button ID="Button1" runat="server" Text="Directions Module" OnClick="Button1_Click" />
     <asp:Button ID="btntestnotify" runat="server" OnClick="btntestnotify_Click" Text="Test notify" />
-    <div></div>
+    <div>
+        <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Test background worker" Width="77px" />
+    </div>
     </asp:Content>
 
 
