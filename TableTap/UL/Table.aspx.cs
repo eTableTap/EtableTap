@@ -105,16 +105,15 @@ namespace TableTap.UL
                 + "<br />Email: " + TableBL.getTableByID(ID).TableID.ToString()
                 + "<br />Email: " + RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).RoomName.ToString()
                 + "<br />Email: " + BuildingBL.getBuildingByID(RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).BuildingID).BuildingName.ToString();
-       
-                
+
+                DateTime today = DateTime.Now;
                 NotifyBL.notifyGroupMember(UserBL.passUserSearch(Session["login"].ToString()).FirstName.ToString(), 
                 InputEmail1.Value.ToString(), 
                 TableBL.getTableByID(ID).TableID.ToString(), 
                 RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).RoomName.ToString(),
-                BuildingBL.getBuildingByID(RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).BuildingID).BuildingName.ToString());
-                //need date and hour
-                
-
+                BuildingBL.getBuildingByID(RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).BuildingID).BuildingName.ToString(),
+                today.ToString("dd-MM-yyyy"),
+                sHour + "00");
             }
 
 

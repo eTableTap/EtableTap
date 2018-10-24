@@ -96,7 +96,7 @@ namespace TableTap.UL
 
             NotifyBL.startbookNotify(email, phone, fname, sname, tableID, roomName);
             NotifyBL.startAccountNotification(email, phone, fname, sname);
-            NotifyBL.notifyGroupMember(user, email, tableID, roomName, buildingName);
+            //NotifyBL.notifyGroupMember(user, email, tableID, roomName, buildingName);
             
         }
     }

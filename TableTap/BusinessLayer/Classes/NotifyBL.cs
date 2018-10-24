@@ -237,7 +237,7 @@ namespace TableTap.BusinessLayer.Classes
 
 
         //notify a added group member of the users booked table
-        public static void notifyGroupMember(string user, string email, string tableID, string roomName, string buildingName)
+        public static void notifyGroupMember(string user, string email, string tableID, string roomName, string buildingName, string date, string hour)
         {
             try
             {
@@ -245,9 +245,13 @@ namespace TableTap.BusinessLayer.Classes
 
                 // variables for the email address, email subject line, and message respectively
                 string subject = " ETableTap group booking";
-                string message = "Hi " + Environment.NewLine  + user + " "
-                    + ", has made a group booking which includes you at the table: "
-                    + Environment.NewLine + tableID + " in " + roomName + " in " + buildingName + Environment.NewLine + Environment.NewLine
+                string message = "Hi " + Environment.NewLine
+                    + user + ", has made a group booking which includes you " + Environment.NewLine
+                    + "At building: " +  buildingName + Environment.NewLine
+                    + "In room: " + roomName + Environment.NewLine 
+                    + "For table: " + tableID + Environment.NewLine 
+                    + "On date: " + date + Environment.NewLine
+                    + "At hour: " + hour + Environment.NewLine
                     + "Regards, TableTap team       www.etabletap.com";
                 /// ---- Start EMAIL NOTIFICATION ----\\\
 
