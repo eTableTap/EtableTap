@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hangfire;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -41,12 +42,12 @@ namespace TableTap.UL
         protected void test4_Click(object sender, EventArgs e)
         {
 
-            string domain = "/UL/HaydenTestingPageURLIN.aspx";
+            string domain = "/UL/table.aspx";
 
-            string IDnumber = "?=ID10008";
+            string IDnumber = "?=ID1";
 
 
-            string url = "www.etabletap.com";
+            string url = "http://220.233.30.25/";
 
             string cUrl = url + domain + IDnumber;
 
@@ -98,6 +99,23 @@ namespace TableTap.UL
             NotifyBL.startAccountNotification(email, phone, fname, sname);
             //NotifyBL.notifyGroupMember(user, email, tableID, roomName, buildingName);
             
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            string fname = "fnametest";
+            string sname = "sname";
+            string phone = "0427669341";
+
+            string user = fname + " " + sname;
+            string email = "hayden.bartlett1@hotmail.com";
+            string tableID = "I AM A TABLE RE";
+            string roomName = "Hi I'm a room and my name is barry";
+            string buildingName = "Nerg building";
+
+            var jobId = BackgroundJob.Schedule(
+           () => NotifyBL.startbookNotify(email, phone, fname, sname, tableID, roomName),
+           TimeSpan.FromMinutes(1));
         }
     }
 }

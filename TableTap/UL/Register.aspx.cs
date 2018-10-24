@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using TableTap.BusinessLayer.Classes;
 using TableTap.Models;
+using Hangfire;
 
 namespace TableTap.UL
 {
@@ -70,8 +71,8 @@ namespace TableTap.UL
 
                 UserBL.ProcessAddNewUser(newUser);
 
-
-                NotifyBL.startAccountNotification(fEmail, inPhone.Value, inFirstName.Value, inLastName.Value);
+                BackgroundJob.Enqueue( () => NotifyBL.startAccountNotification(fEmail, inPhone.Value, inFirstName.Value, inLastName.Value));
+                
 
 
                 Response.Redirect("Home.aspx");
