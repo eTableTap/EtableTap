@@ -42,9 +42,9 @@ namespace TableTap.UL
         protected void test4_Click(object sender, EventArgs e)
         {
 
-            string domain = "/UL/table.aspx";
+            string domain = "UL/table.aspx";
 
-            string IDnumber = "?=ID1";
+            string IDnumber = "?ID=1";
 
 
             string url = "http://220.233.30.25/";
@@ -116,6 +116,12 @@ namespace TableTap.UL
             var jobId = BackgroundJob.Schedule(
            () => NotifyBL.startbookNotify(email, phone, fname, sname, tableID, roomName),
            TimeSpan.FromMinutes(1));
+        }
+
+        protected void buttontry_OnClick(object sender, EventArgs e)
+        {
+            ClientScript.RegisterStartupScript(this.GetType(), "?", "<script language=javascript>getLocation();</script>");
+            ClientScript.RegisterStartupScript(this.GetType(), "?", "<script language=javascript>getLocation();</script>");
         }
     }
 }
