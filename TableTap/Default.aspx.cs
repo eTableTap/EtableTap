@@ -41,9 +41,9 @@ namespace TableTap.UL
         protected void test4_Click(object sender, EventArgs e)
         {
 
-            string domain = "/UL/HaydenTestingPageURLIN.aspx";
+            string domain = "/UL/Table.aspx";
 
-            string IDnumber = "?=ID10008";
+            string IDnumber = "?=id1";
 
 
             string url = "www.etabletap.com";
