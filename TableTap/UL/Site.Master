@@ -22,7 +22,7 @@
             NeedImageHere
           </button>
           <div class="dropdown-menu">
-            <asp:HyperLink class="dropdown-item" runat="server" href="Home.aspx">Home</asp:HyperLink>
+            <asp:HyperLink class="dropdown-item" runat="server" href="/UL/Home.aspx">Home</asp:HyperLink>
             <asp:HyperLink class="dropdown-item" runat="server" href="Map.aspx">Map</asp:HyperLink>
             <asp:HyperLink class="dropdown-item" runat="server" href="Scan.aspx">Scan</asp:HyperLink>
             <div class="dropdown-divider"></div>

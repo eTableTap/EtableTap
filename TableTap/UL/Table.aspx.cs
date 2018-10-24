@@ -33,6 +33,7 @@ namespace TableTap.UL
             }
             else
             {
+                btnBook.Visible = false;
                 lblStatus.Text = "THE TABLE IS CURRENTLY OCCUPIED";
             }
 
@@ -86,6 +87,17 @@ namespace TableTap.UL
                 Session["LoginFallback"] = url;
                 Response.Redirect("Login.aspx");
             }
+            btnBook.Visible = false;
+            //btnBook.Enabled = false;
+            makeBooking();
+           
+
+
+
+        }
+
+        protected void makeBooking()
+        {
             int ID = Int32.Parse(Request.QueryString["ID"]);
             //string sHour = new String(hourDropdown.SelectedItem.Text.TakeWhile(Char.IsDigit).ToArray());
             string sHour = hourDropdown.SelectedValue.ToString();
@@ -93,31 +105,28 @@ namespace TableTap.UL
             if (TableBL.bookTable(ID, Session["login"].ToString(), sHour))
             {
                 lblHeading.Text = "Table was booked";
-                
-                lblStatus.Text = "Table: " + TableBL.getTableByID(ID).TableID + "<br />Room Name: " + RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).RoomName.ToString() + "<br />in building: " + BuildingBL.getBuildingByID(RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).BuildingID).BuildingName + "<br />at: " + sHour + "00 -"+ (Convert.ToInt32(sHour)+1).ToString() +"00" + "<br /> was successfully booked";
-                
+
+                lblStatus.Text = "Table: " + TableBL.getTableByID(ID).TableID + "<br />Room Name: " + RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).RoomName.ToString() + "<br />in building: " + BuildingBL.getBuildingByID(RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).BuildingID).BuildingName + "<br />at: " + sHour + "00 -" + (Convert.ToInt32(sHour) + 1).ToString() + "00" + "<br /> was successfully booked";
+
             }
 
-            if (InputEmail1.Value != null )
+            if (InputEmail1.Value != null)
             {
                 lblStatus.Text += "<br />Session User: " + UserBL.passUserSearch(Session["login"].ToString()).FirstName.ToString()
-                + "<br />Email: " + InputEmail1.Value.ToString() 
+                + "<br />Email: " + InputEmail1.Value.ToString()
                 + "<br />Email: " + TableBL.getTableByID(ID).TableID.ToString()
                 + "<br />Email: " + RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).RoomName.ToString()
                 + "<br />Email: " + BuildingBL.getBuildingByID(RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).BuildingID).BuildingName.ToString();
-       
-                
-                NotifyBL.notifyGroupMember(UserBL.passUserSearch(Session["login"].ToString()).FirstName.ToString(), 
-                InputEmail1.Value.ToString(), 
-                TableBL.getTableByID(ID).TableID.ToString(), 
+
+                DateTime today = DateTime.Now;
+                NotifyBL.notifyGroupMember(UserBL.passUserSearch(Session["login"].ToString()).FirstName.ToString(),
+                InputEmail1.Value.ToString(),
+                TableBL.getTableByID(ID).TableID.ToString(),
                 RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).RoomName.ToString(),
-                BuildingBL.getBuildingByID(RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).BuildingID).BuildingName.ToString());
-                //need date and hour
-                
-
+                BuildingBL.getBuildingByID(RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).BuildingID).BuildingName.ToString(),
+                today.ToString("dd-MM-yyyy"),
+                sHour + "00");
             }
-
-
         }
     }
 }
