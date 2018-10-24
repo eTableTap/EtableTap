@@ -14,12 +14,12 @@ namespace TableTap.IncidentModule
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["loggedUser"] != "admin") //stops non admins accessing page
+            if (Session["user"] == null)
             {
-                Response.Redirect("login.aspx");
+                string url = Request.Url.AbsoluteUri;
+                Session["LoginFallback"] = url;
+                Response.Redirect("Login.aspx");
             }
-
-            lblText.Text = Session["login"].ToString();
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -50,6 +50,8 @@ namespace TableTap.IncidentModule
             UserModel user = UserBL.passUserSearch(Session["login"].ToString());
 
 
+
+
             // importing/creating 
 
             incident.UserID = Convert.ToInt32(user.UserID);
@@ -67,12 +69,21 @@ namespace TableTap.IncidentModule
                 incident.IncLevel = false;
             }
 
-            
+
+            if (IncidenceBL.spamPrevention(incident) == true && incident.IncLevel != true)
+            {
+
+                lblText.Text = "Bugger off mate";
+
+
+            }
+            else
+            {
+                IncidenceBL.datalayerpassadd(incident);
+
+            }
 
             
-
-
-            IncidenceBL.datalayerpassadd(incident);
 
         }
 
