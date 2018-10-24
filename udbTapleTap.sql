@@ -122,7 +122,7 @@ VALUES ('Auchmuty Library', 'L', 2, 'Auchmuty Library University Dr', 'Callaghan
 ('Huxley Library', 'H', 1, 'Auchmuty Library', 'Callaghan', 'NSW', 'Australia'), 
 ('ICT Building', 'ICT', 1, 'ICT', 'Callaghan', 'NSW', 'Australia'),
 ('Beaus Basement', 'BB', 1, '27 Haddington Dr', 'Cardiff South', 'NSW', 'Australia'),
-('Akerhus Festning', 'AF', 1, 'Auchmuty Library University Dr', 'Callaghan', 'NSW', 'Australia')
+('Sogn Studentby', 'AF', 1, '9 Rolf E Steneres Alle', '0858 Oslo', 'Oslo', 'Norway')
 go
 
 INSERT INTO tblRoom(roomName, roomLabel, buildingID, openingTime, closingTime, tableQty)
@@ -130,8 +130,8 @@ VALUES ('Auchmuty Information Common', 'L-266', 001, '00:00:00', '23:59:59', 100
 ('Huxley Information Common Area', 'HA-157', 002, '08:00:00', '22:00:00', 140),
 ('Bedroom', 'Bed', 004, '08:00:00', '22:00:00', 2),
 ('Bathroom', 'WC', 004, '08:00:00', '22:00:00', 2),
-('Både', 'b2', 005, '08:00:00', '22:00:00', 4),
-('Både', 'b1', 005, '08:00:00', '22:00:00', 4),
+('Amatøren', 'Ama', 005, '08:00:00', '22:00:00', 4),
+('28B', '28B', 005, '08:00:00', '22:00:00', 4),
 ('Flower Room', 'FR', 001, '00:00:00', '23:59:59', 100)
 go
 
@@ -152,7 +152,11 @@ VALUES ( 0001, 6, 'Large'),
 (0001, 6, 'Large'),
 (0001, 2, 'Small'),
 (0001, 2, 'Small'),
-(0001, 2, 'Small')
+(0001, 2, 'Small'),
+(0005, 2, 'Small'),
+(0005, 4, 'Medium'),
+(0006, 2, 'Small'),
+(0006, 8, 'Large')
 go
 
 INSERT INTO tblUser(emailAddress, passcode, firstName, lastName, adminPermission, phoneNum)
