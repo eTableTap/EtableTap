@@ -27,28 +27,6 @@ namespace TableTap.UL
             lblUsername.Text = "";
             lblPassword.Text = "";
 
-            /*
-            string password = txbPassword.Value;
-            string username = txbUsername.Value;
-            int status = UserBL.loginScripting(username, password);
-            if(status == 1)
-            {
-
-                // 1 = login success
-                // this section was used during testing, it has been left incase further tests are needed
-                
-                    
-            }
-            else if(status == 2)
-            {
-                // 2 = password failure
-                lblPassword.Text = "Password Incorrect";
-            }
-            else
-            {
-                lblUsername.Text = "Email not found";
-            }
-            */
             if (IsValid)
             {
                 UserModel loggedUser = new UserModel();

@@ -8,8 +8,17 @@
             <asp:Label runat="server" id="lblHeading" text="Heading"></asp:Label>
             <asp:ScriptManager id="ScriptManager1" runat="server">
             </asp:ScriptManager>
-            
-
+            <script type="text/javascript"> <!--From https://stackoverflow.com/questions/25200152/prevent-double-clicking-asp-net-button-->
+               var submit = 0;
+                function CheckDouble()
+                {
+                    if (++submit > 1)
+                    {
+                     alert('This sometimes takes a few seconds - please be patient.');
+                     return false;
+                    }
+                }
+             </script>
             
 
             <div class="form-group ">
@@ -18,7 +27,7 @@
                         <asp:DropDownList runat="server" ID="hourDropdown" onselectedindexchanged="hourDropdown_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
                     <asp:UpdatePanel ID="upBookingInfo" runat="server">
                                         <ContentTemplate>
-							                <asp:Button type="button" ID="btnBook" Text="Book Table" onclick="btnBook_Click" runat="server" />
+							                <asp:Button type="button" ID="btnBook" Text="Book Table" onclick="btnBook_Click" OnClientClick="return CheckDouble();" runat="server" />
                                             <div class="form-group">
                                                 <asp:Label runat="server" ID="lblStatus" class="cols-sm-2 control-label" text="will update"></asp:Label>
                                                 
