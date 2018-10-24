@@ -79,7 +79,7 @@ namespace TableTap.DataAccessLayer.Classes
          IncidentModel newIncident = incident;
          SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
          using (conn)
-        {
+        
                 conn.Open();
 
 
@@ -99,10 +99,57 @@ namespace TableTap.DataAccessLayer.Classes
                     command.ExecuteNonQuery();
                 }
                 conn.Close();
-            }
+            
 
         }
 
+
+        public static IncidentModel searchviadateandUserID(IncidentModel user)
+        {
+            IncidentModel incident = new IncidentModel();
+            try
+            {
+
+                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+
+                using (conn)
+                {
+                    conn.Open();
+
+                    using (SqlCommand command = new SqlCommand(
+                        "SELECT * FROM tblIncidence WHERE userID=" + "'" + user.UserID + "'" + " AND incDate=" + "'" + user.Incdate + "'",
+                        conn))
+                    {
+                        SqlDataReader dr = command.ExecuteReader();
+                        dr.Read();
+
+                        incident.IncidentID = Convert.ToInt32(dr["incidenceID"].ToString());
+                        incident.Incdate = DateTime.Parse(dr["incDate"].ToString());
+                        incident.Info = dr["info"].ToString();
+                        incident.TableID = int.Parse(dr["tableID"].ToString());
+                        incident.RoomID = int.Parse(dr["roomID"].ToString());
+                        incident.buildingID = int.Parse(dr["buildingID"].ToString());
+                        incident.UserID = int.Parse(dr["userID"].ToString());
+                        incident.IncLevel = Convert.ToBoolean(dr["incLevel"]);
+
+
+                        dr.Close();
+                    }
+                    conn.Close();
+                }
+
+                return incident;
+
+            }
+            catch
+            {
+                incident = null;
+
+                return incident;
+            }
+
+            
+        }
 
 
 

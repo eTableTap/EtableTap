@@ -70,7 +70,7 @@ namespace TableTap.IncidentModule
             }
 
 
-            if (IncidenceBL.spamPrevention(incident) == true && incident.IncLevel != true)
+           if (IncidenceBL.spamPrevention(incident) == true && incident.IncLevel != true)
             {
 
                 lblText.Text = "Bugger off mate";

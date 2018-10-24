@@ -26,5 +26,33 @@ namespace TableTap.BusinessLayer.Classes
 
         }
 
+
+        public static IncidentModel searchviadateandUserID(IncidentModel user)
+        {
+            IncidentModel incident = IncidenceDAL.searchviadateandUserID(user);
+
+            return incident;
+        }
+
+        public static bool spamPrevention(IncidentModel user)
+        {
+            IncidentModel incident = searchviadateandUserID(user);
+
+
+
+            if(incident == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
+
+
+        }
+
+
     }
 }
