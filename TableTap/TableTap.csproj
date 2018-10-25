@@ -135,6 +135,7 @@
     <Content Include="HtmlPage1.html" />
     <Content Include="Resources\Images\LoginBtn.png" />
     <Content Include="Resources\Images\MapBtn.png" />
+    <Content Include="Resources\Images\SorryFlower.png" />
     <Content Include="UL\AdminTaskScheduler.aspx" />
     <Content Include="UL\IncidentModule.aspx" />
     <Content Include="Resources\Images\Spiteful_Spirit.jpg" />
