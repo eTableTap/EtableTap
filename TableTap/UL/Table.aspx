@@ -44,6 +44,8 @@
                     
 			</div>
             <div id="bitToAddGroupMembers">
+                <asp:Label ID="lblInviteHelp" runat="server" Text="You can invite group members or friends by entering their emails here:" class="cols-sm-2 control-label"></asp:Label>
+                <br />
                 <asp:Label ID="lblOptional1" runat="server" Text="Optional:"></asp:Label>
                 <Input id="InputEmail1" runat="server" type="email"/>
                 <br />

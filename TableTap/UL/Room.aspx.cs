@@ -16,7 +16,8 @@ namespace TableTap.UL
         protected void Page_Load(object sender, EventArgs e)
         {
             int ID = Int32.Parse(Request.QueryString["ID"]);
-            lblHeading.Text = "Room: " + RoomBL.getRoomByID(ID).RoomName;
+            lblRoomHeading.Text = "Room: " + RoomBL.getRoomByID(ID).RoomName;
+
             tables = TableBL.fillTableList(ID);
 
             if (!IsPostBack) //need this to stop it reverting to the top value every button click

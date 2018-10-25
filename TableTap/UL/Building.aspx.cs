@@ -28,7 +28,14 @@ namespace TableTap.UL
                 roomDropdown.DataTextField = "RoomName";
                 roomDropdown.DataBind();
             }
-
+            if (!IsPostBack) //need this to stop it reverting to the top value every button click
+            {
+                
+                inputRoomSelecter.DataSource = rooms;
+                inputRoomSelecter.DataValueField = "RoomID";
+                inputRoomSelecter.DataTextField = "RoomName";
+                inputRoomSelecter.DataBind();
+            }
             if (roomDropdown.Items.Count < 1)
             {
                 lblAboveDropdown.Text = "No rooms currently available";
@@ -45,7 +52,7 @@ namespace TableTap.UL
         {
             RoomModel rm = new RoomModel();
 
-            rm = rooms.Where(b => b.RoomID == Int32.Parse(roomDropdown.Text)).FirstOrDefault(); //grabs single selected building
+            rm = rooms.Where(b => b.RoomID == Int32.Parse(inputRoomSelecter.Value)).FirstOrDefault(); //grabs single selected building
                
             
             int id = rm.RoomID;

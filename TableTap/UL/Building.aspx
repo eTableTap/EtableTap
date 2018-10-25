@@ -17,6 +17,15 @@
 					</div>
 			</div>
 
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Options</label>
+              </div>
+              <select runat="server" class="custom-select" id="inputRoomSelecter">
+
+              </select>
+            </div>
+
             <div class="form-group ">
 					<asp:Button type="button" Text="Go to room" class="btn btn-primary btn-lg btn-block login-button" id="goToRoomingButton" onclick="goToRoomButton_Click" runat="server" />
 			</div>

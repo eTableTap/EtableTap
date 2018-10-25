@@ -13,13 +13,31 @@ namespace TableTap.UL {
     public partial class Room {
         
         /// <summary>
-        /// lblHeading control.
+        /// lblRoomHeading control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblHeading;
+        protected global::System.Web.UI.WebControls.Label lblRoomHeading;
+        
+        /// <summary>
+        /// lblSelectGuide control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSelectGuide;
+        
+        /// <summary>
+        /// lblSelectHelp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSelectHelp;
         
         /// <summary>
         /// divTableImages control.
