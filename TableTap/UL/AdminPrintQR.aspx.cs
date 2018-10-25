@@ -125,7 +125,7 @@ namespace TableTap.UL
             generateButton.Text = tid.ToString();
 
             
-            string sGeneration = /*ConfigurationManager.AppSettings["UnsecurePath"] + "Table.aspx?id=" + */tid.ToString();
+            string sGeneration = ConfigurationManager.AppSettings["UnsecurePath"] + "Table.aspx?id=" + tid.ToString();
 
 
             Bitmap img = encoder.Encode(sGeneration);
