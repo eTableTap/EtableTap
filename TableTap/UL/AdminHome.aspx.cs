@@ -38,5 +38,10 @@ namespace TableTap.UL
         {
             Response.Redirect("AdminEditTable.aspx");
         }
+
+        protected void printQRButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AdminPrintQR.aspx");
+        }
     }
 }
