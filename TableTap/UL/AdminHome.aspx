@@ -24,7 +24,7 @@
                             <asp:Button type="button" Text="Edit Users" class="btn btn-primary btn-lg btn-block login-button" id="userButton" runat="server" OnClick="userButton_Click" />
                             <asp:Button type="button" Text="Add User" class="btn btn-primary btn-lg btn-block login-button" id="addUserButton" runat="server" OnClick="addUserButton_Click" />
                             <asp:Button type="button" Text="Scheduled Tasks Start up" class="btn btn-primary btn-lg btn-block login-button" id="scheduled" runat="server" OnClick="addUserButton_Click" />
-                            <asp:Button type="button" Text="Print QR Codes" class="btn btn-primary btn-lg btn-block login-button" id="qrButton" runat="server" />
+                            <asp:Button type="button" Text="Print QR Codes" class="btn btn-primary btn-lg btn-block login-button" id="qrButton" runat="server" OnClick="printQRButton_Click"  />
 						</div>
 						
 					</form>
