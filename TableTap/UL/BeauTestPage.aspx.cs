@@ -27,7 +27,7 @@ namespace TableTap.UL
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Request.IsSecureConnection)
+            /*if (!Request.IsSecureConnection)
             {
                 string url =
                     ConfigurationManager.AppSettings["SecurePath"] + "/UL/BeauTestPage.aspx";
@@ -35,7 +35,7 @@ namespace TableTap.UL
 
                 
 
-            }
+            }*/
             GetLocationProperty();
 
         }
