@@ -11,7 +11,7 @@
             <asp:Label ID="Label3" runat="server" Text="Uh Oh!!! We don't seem to have that page. But! I drew you a flower!" Font-Bold="True" Font-Size="Large"
               CssClass="StrongText"></asp:Label>
             </div>
-                   <asp:Image ID="imgLogin" runat="server" imageurl="~/Resources/Images/SorryFlower.png" CssClass="HomeImages" Width="20%" Height="20%" />
+                   <asp:Image ID="imgLogin" runat="server" imageurl="~/Resources/Images/SorryFlower.png" CssClass="HomeImages" Width="50%" Height="50%" />
                 </div>
             <div style="margin-left: auto; margin-right: auto; text-align: center;">
             <asp:Label ID="Label1" runat="server" Text="Now that you’ve forgiven us; Use this button to get back on track" Font-Bold="True" Font-Size="Large"

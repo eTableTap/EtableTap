@@ -71,9 +71,7 @@ namespace TableTap.UL
 
                 UserBL.ProcessAddNewUser(newUser);
 
-                BackgroundJob.Enqueue( () => NotifyBL.startAccountNotification(fEmail, inPhone.Value, inFirstName.Value, inLastName.Value));
-                
-
+                NotifyBL.startAccountNotification(fEmail, inPhone.Value, inFirstName.Value, inLastName.Value);
 
                 Response.Redirect("Home.aspx");
 

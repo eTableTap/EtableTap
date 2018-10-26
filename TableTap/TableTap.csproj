@@ -251,7 +251,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BusinessLayer\Classes\BackgroundWorkerEmail.cs" />
+    <Compile Include="BackGroundWorker\Classes\EmailQueuing.cs" />
     <Compile Include="BusinessLayer\Classes\DirectionModuleBL.cs" />
     <Compile Include="BusinessLayer\Classes\IncidenceBL.cs" />
     <Compile Include="DataAccessLayer\Classes\IncidenceDAL.cs" />
@@ -521,7 +521,6 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="BackGroundWorker\Classes\" />
     <Folder Include="IncidenceModule\" />
     <Folder Include="obj\" />
     <Folder Include="View\" />

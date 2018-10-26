@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 // take note of the modules below:
+using Hangfire; //using background tasks for increased user-level performance
 using MimeKit;
 using MailKit.Net.Smtp;
 using Twilio;
@@ -24,9 +25,33 @@ namespace TableTap.BusinessLayer.Classes
     public class NotifyBL
     {
 
-        // booking notification code requires sendmail(), phNumFormat() and sendSMS methods
+        // The three methods below start backgroundtasks to operate the email and SMS functions for performance reasons 
+        public static void startAccountNotification(string email, string phone, string fName, string sName)
+        {
+            BackgroundJob.Enqueue(() => startAccountNotification(email, phone, fName, sName));
+
+        }
+
+        
         public static void startbookNotify(string email, string phone, string fName, string sName, string tableID, string roomName)
         {
+            BackgroundJob.Enqueue(() => bookingNotify(email, phone, fName, sName, tableID, roomName));
+
+        }
+
+        public static void startNotifyGroupMember(string user, string email, string tableID, string roomName, string buildingName, string date, string hour)
+        {
+            BackgroundJob.Enqueue(() => notifyGroupMember(user, email, tableID, roomName, buildingName, date, hour));
+        }
+
+
+
+
+
+            // booking notification code requires sendmail(), phNumFormat() and sendSMS methods
+            protected static void bookingNotify(string email, string phone, string fName, string sName, string tableID, string roomName)
+        {
+
             try
             {
                 ///--------------------EMAIL SECTION -------------------------\\\
@@ -89,7 +114,7 @@ namespace TableTap.BusinessLayer.Classes
 
 
         // formats phonenumber to twilio standards input string phone output formattedPhone
-        public static string phNumFormat(string phone)
+        protected static string phNumFormat(string phone)
         {
 
 
@@ -120,11 +145,8 @@ namespace TableTap.BusinessLayer.Classes
 
 
 
-
-
-
         // account creation notification code includes both email and SMS notification requires sendmail(), phNumFormat() and sendSMS methods
-        public static void startAccountNotification(string email, string phone, string fName, string sName)
+        protected static void AccountNotification(string email, string phone, string fName, string sName)
         {
             try
             {
@@ -191,7 +213,7 @@ namespace TableTap.BusinessLayer.Classes
 
 
         // method for sending Emails using SmtpClient, requires input of MimeMessage Variable
-        public static void sendemail(MimeMessage eMail)
+        protected static void sendemail(MimeMessage eMail)
         {
             using (var client = new SmtpClient())
             {
@@ -211,7 +233,7 @@ namespace TableTap.BusinessLayer.Classes
 
 
         // Twilio SMS notification method, requires input of a message and a phone number as +614 format
-        public static void sendSMS(string message, string phone)
+        protected static void sendSMS(string message, string phone)
         {
             /// ------------------------------------------------------SUPPLIED BY TWILIO -------------------------- \\\
             // Account Information from Twilio account
