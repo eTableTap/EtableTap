@@ -25,23 +25,22 @@ namespace TableTap.DataAccessLayer.Classes
 
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
 
+
             using (conn)
             {
                 conn.Open();
 
-
-
-               /* using (SqlCommand command = new SqlCommand(
-                "INSERT INTO tblTable (emailAddress, passcode, firstName, lastName, adminPermission) VALUES ("
-                    + "'" + newTable.Email.ToString() + "'" + ", "
-
-                    + ")"
+                using (SqlCommand command = new SqlCommand(
+                "INSERT INTO tblTable (roomID, personCapacity, Category) VALUES ("
+                    + "'" + newTable.RoomID.ToString() + "'" + ", "
+                    + "'" + newTable.PersonCapacity.ToString() + "'" + ", "
+                    + "'" + newTable.Category + "'" + ")"
                     ,
                     conn))
                 {
                     command.ExecuteNonQuery();
                 }
-                conn.Close(); */
+                conn.Close();
             }
 
         }

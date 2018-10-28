@@ -56,5 +56,16 @@ namespace TableTap.BusinessLayer.Classes
 
             return false;
         }
+
+        public static void ProcessAddNewTable(TableModel table)
+        {
+            TableModel newTable = table;
+            try
+            { }
+            catch
+            { }
+            TableDAL.AddNewTable(table);
+
+        }
     }
 }
