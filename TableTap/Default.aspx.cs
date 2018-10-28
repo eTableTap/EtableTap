@@ -14,6 +14,7 @@ using TableTap.DataAccessLayer;
 using TableTap.Models;
 using MessagingToolkit.QRCode.Codec;
 using MessagingToolkit.QRCode.Codec.Data;
+using TableTap.BackGroundWorker.Classes;
 
 namespace TableTap.UL
 {
@@ -122,6 +123,21 @@ namespace TableTap.UL
         {
             ClientScript.RegisterStartupScript(this.GetType(), "?", "<script language=javascript>getLocation();</script>");
             ClientScript.RegisterStartupScript(this.GetType(), "?", "<script language=javascript>getLocation();</script>");
+        }
+
+        protected void btnBackgroundworker_Click(object sender, EventArgs e)
+        {
+            bool status = EmailQueuing.startEmailNotificationSystem();
+
+            if(status == true)
+            {
+                lblsttatus.Text = "started";
+            }
+            else
+            {
+                lblsttatus.Text = "error";
+            }
+
         }
     }
 }

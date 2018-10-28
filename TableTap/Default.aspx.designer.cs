@@ -76,6 +76,15 @@ namespace TableTap.UL {
         protected global::System.Web.UI.WebControls.Button btntestnotify;
         
         /// <summary>
+        /// btnBackgroundworker control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnBackgroundworker;
+        
+        /// <summary>
         /// Button2 control.
         /// </summary>
         /// <remarks>
@@ -92,5 +101,14 @@ namespace TableTap.UL {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Buttontry;
+        
+        /// <summary>
+        /// lblsttatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblsttatus;
     }
 }
