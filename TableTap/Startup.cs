@@ -18,6 +18,7 @@ namespace TableTap
 
                 app.UseHangfireDashboard();
                 app.UseHangfireServer();
+                
             }
         }
     }

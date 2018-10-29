@@ -18,7 +18,7 @@ namespace TableTap.BackGroundWorker.Classes
             {
                 RecurringJob.AddOrUpdate(
                 () => emailWorker(),
-                Cron.Minutely);
+                Cron.Hourly);
 
                 emailWorker();
 
