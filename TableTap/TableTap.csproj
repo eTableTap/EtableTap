@@ -148,11 +148,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bookingInformation.aspx" />
+    <Content Include="UL\bookingInformation.aspx" />
     <Content Include="Content\MobileMaster.css" />
-    <Content Include="DiMe\Directionsmodule.aspx" />
     <Content Include="google8de9dcc8df485c7e.html" />
-    <Content Include="UL\LoginGoogle.aspx" />
     <Content Include="Resources\Images\LoginBtn.png" />
     <Content Include="Resources\Images\MapBtn.png" />
     <Content Include="Resources\Images\SorryFlower.png" />
@@ -186,13 +184,10 @@
     <Content Include="Resources\Images\Huxley Library.png" />
     <Content Include="Resources\Images\Auchumty Library.png" />
     <Content Include="Resources\Images\ICT Building.png" />
-    <Content Include="NotificationModule\NotificationModuleandLogic.aspx" />
     <None Include="packages.config" />
     <Content Include="bin\MessagingToolkit.QRCode.dll" />
     <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
     <Content Include="Content\Master.css" />
-    <Content Include="NotificationModule\TestNotification\TestEmail.aspx" />
-    <Content Include="NotificationModule\TestNotification\TestTwilio.aspx" />
     <Content Include="Seats.js" />
     <Content Include="UL\Account.aspx" />
     <Content Include="UL\AdminAddBuilding.aspx" />
@@ -272,30 +267,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BackGroundWorker\Classes\EmailQueuing.cs" />
-    <Compile Include="bookingInformation.aspx.cs">
+    <Compile Include="UL\bookingInformation.aspx.cs">
       <DependentUpon>bookingInformation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="bookingInformation.aspx.designer.cs">
+    <Compile Include="UL\bookingInformation.aspx.designer.cs">
       <DependentUpon>bookingInformation.aspx</DependentUpon>
     </Compile>
     <Compile Include="BusinessLayer\Classes\DirectionModuleBL.cs" />
     <Compile Include="BusinessLayer\Classes\IncidenceBL.cs" />
     <Compile Include="DataAccessLayer\Classes\IncidenceDAL.cs" />
-    <Compile Include="DiMe\Directionsmodule.aspx.cs">
-      <DependentUpon>Directionsmodule.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DiMe\Directionsmodule.aspx.designer.cs">
-      <DependentUpon>Directionsmodule.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="UL\LoginGoogle.aspx.cs">
-      <DependentUpon>LoginGoogle.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UL\LoginGoogle.aspx.designer.cs">
-      <DependentUpon>LoginGoogle.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="UL\AdminTaskScheduler.aspx.cs">
       <DependentUpon>AdminTaskScheduler.aspx</DependentUpon>
@@ -341,32 +322,11 @@
     <Compile Include="Models\RoomModel.cs" />
     <Compile Include="Models\TableModel.cs" />
     <Compile Include="Models\UserModel.cs" />
-    <Compile Include="NotificationModule\NotificationModuleandLogic.aspx.cs">
-      <DependentUpon>NotificationModuleandLogic.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="NotificationModule\NotificationModuleandLogic.aspx.designer.cs">
-      <DependentUpon>NotificationModuleandLogic.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-    <Compile Include="NotificationModule\TestNotification\TestEmail.aspx.cs">
-      <DependentUpon>TestEmail.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="NotificationModule\TestNotification\TestEmail.aspx.designer.cs">
-      <DependentUpon>TestEmail.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="NotificationModule\TestNotification\TestTwilio.aspx.cs">
-      <DependentUpon>TestTwilio.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="NotificationModule\TestNotification\TestTwilio.aspx.designer.cs">
-      <DependentUpon>TestTwilio.aspx</DependentUpon>
     </Compile>
     <Compile Include="UL\Account.aspx.cs">
       <DependentUpon>Account.aspx</DependentUpon>
@@ -555,6 +515,7 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="GoogleAPI\" />
     <Folder Include="IncidenceModule\" />
     <Folder Include="obj\" />
     <Folder Include="View\" />
