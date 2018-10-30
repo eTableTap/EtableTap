@@ -10,7 +10,7 @@
     <asp:Button ID="Button1" runat="server" Text="Directions Module" OnClick="Button1_Click" />
     <asp:Button ID="btntestnotify" runat="server" OnClick="btntestnotify_Click" Text="Test notify" />
     <asp:Button ID="btnBackgroundworker" runat="server" Text="start email notify ( DO NOT PUSH WILL SPAM HAYDEN SO BAD)" BackColor="Red" BorderColor="#003300" BorderStyle="Solid" BorderWidth="5px" Font-Bold="True" Font-Names="Arial Black" OnClick="btnBackgroundworker_Click" />
-
+    <asp:Button ID="Button3" runat="server" Text="Test google login" OnClick="Button3_Click" />
 
     <div>
         <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Test background worker" Width="96px" />

@@ -122,7 +122,7 @@ namespace TableTap.UL
         protected void buttontry_OnClick(object sender, EventArgs e)
         {
             ClientScript.RegisterStartupScript(this.GetType(), "?", "<script language=javascript>getLocation();</script>");
-            ClientScript.RegisterStartupScript(this.GetType(), "?", "<script language=javascript>getLocation();</script>");
+ //           ClientScript.RegisterStartupScript(this.GetType(), "?", "<script language=javascript>getLocation();</script>");
         }
 
         protected void btnBackgroundworker_Click(object sender, EventArgs e)
@@ -138,6 +138,11 @@ namespace TableTap.UL
                 lblsttatus.Text = "error";
             }
 
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("GoogleAPI/Googlelogin.aspx");
         }
     }
 }

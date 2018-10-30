@@ -148,6 +148,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="GoogleAPI\Googlelogin.aspx" />
+    <Content Include="GoogleAPI\Return.aspx" />
     <Content Include="UL\bookingInformation.aspx" />
     <Content Include="Content\MobileMaster.css" />
     <Content Include="google8de9dcc8df485c7e.html" />
@@ -267,6 +269,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BackGroundWorker\Classes\EmailQueuing.cs" />
+    <Compile Include="BusinessLayer\Classes\GoogleLoginBL.cs" />
+    <Compile Include="GoogleAPI\Googlelogin.aspx.cs">
+      <DependentUpon>Googlelogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GoogleAPI\Googlelogin.aspx.designer.cs">
+      <DependentUpon>Googlelogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GoogleAPI\Return.aspx.cs">
+      <DependentUpon>Return.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GoogleAPI\Return.aspx.designer.cs">
+      <DependentUpon>Return.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UL\bookingInformation.aspx.cs">
       <DependentUpon>bookingInformation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -515,7 +532,6 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="GoogleAPI\" />
     <Folder Include="IncidenceModule\" />
     <Folder Include="obj\" />
     <Folder Include="View\" />
