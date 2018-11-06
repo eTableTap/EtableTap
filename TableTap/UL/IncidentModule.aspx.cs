@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using TableTap.Models;
 using TableTap.BusinessLayer.Classes;
+using TableTap.DataAccessLayer.Classes;
 
 
 namespace TableTap.IncidentModule
@@ -88,10 +89,13 @@ namespace TableTap.IncidentModule
 
         }
 
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+
+            UserModel user = UserBL.passUserSearch(Session["login"].ToString());
 
 
-
-
-
+            IncidenceDAL.incAllUserDelete(user.UserID);
+        }
     }
 }

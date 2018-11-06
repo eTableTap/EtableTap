@@ -37,6 +37,7 @@ namespace TableTap.BackGroundWorker.Classes
 
         public static void incidentdeleter()
         {
+            IncidenceDAL.incOldIncDelete();
 
 
         }

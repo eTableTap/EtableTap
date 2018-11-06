@@ -124,14 +124,15 @@ namespace TableTap.DataAccessLayer.Classes
 
          IncidentModel newIncident = incident;
          SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
-         using (conn)
-        
+            using (conn)
+            {
+
                 conn.Open();
 
 
                 //reeeeeeee
                 using (SqlCommand command = new SqlCommand(
-                "INSERT INTO tblIncidence(incDate, info, tableID, roomID, buildingID, userID, incLevel) VALUES ("
+                "INSERT INTO tblIncidence(incDate, info, tableID, roomID, buildingID, userID, incLevel, incENDDate) VALUES ("
                     + "'" + newIncident.Incdate.ToString() + "'" + ", "
                     + "'" + newIncident.Info + "'" + ", "
                     + "'" + newIncident.TableID + "'" + ","
@@ -139,14 +140,14 @@ namespace TableTap.DataAccessLayer.Classes
                     + "'" + newIncident.buildingID + "'" + ","
                     + "'" + newIncident.UserID + "'" + ","
                     + "'" + newIncident.IncLevel + "'" + ","
-                    + "'" + newIncident.IncENDDate + "'" + ")"
+                    + "'" + newIncident.IncENDDate.ToString() + "'" + ")"
                     ,
                     conn))
                 {
                     command.ExecuteNonQuery();
                 }
                 conn.Close();
-            
+            }
 
         }
 
@@ -161,23 +162,25 @@ namespace TableTap.DataAccessLayer.Classes
             IncidentModel newIncident = incident;
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
             using (conn)
+            {
 
                 conn.Open();
 
-            using (SqlCommand command = new SqlCommand(
-            "INSERT INTO tblIncidence(incDate, info, roomID, userID, incLevel, buildingID) VALUES ("
-                + "'" + newIncident.Incdate.ToString() + "'" + ", "
-                + "'" + newIncident.Info + "'" + ", "
-                + "'" + newIncident.RoomID + "'" + ","
-                + "'" + newIncident.UserID + "'" + ","
-                + "'" + newIncident.IncLevel + "'" + ","
-                + "'" + newIncident.buildingID + "'" + ")"
-                ,
-                conn))
-            {
-                command.ExecuteNonQuery();
+                using (SqlCommand command = new SqlCommand(
+                "INSERT INTO tblIncidence(incDate, info, roomID, userID, incLevel, buildingID) VALUES ("
+                    + "'" + newIncident.Incdate.ToString() + "'" + ", "
+                    + "'" + newIncident.Info + "'" + ", "
+                    + "'" + newIncident.RoomID + "'" + ","
+                    + "'" + newIncident.UserID + "'" + ","
+                    + "'" + newIncident.IncLevel + "'" + ","
+                    + "'" + newIncident.buildingID + "'" + ")"
+                    ,
+                    conn))
+                {
+                    command.ExecuteNonQuery();
+                }
+                conn.Close();
             }
-            conn.Close();
 
 
         }
@@ -189,25 +192,29 @@ namespace TableTap.DataAccessLayer.Classes
             IncidentModel newIncident = incident;
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
             using (conn)
+            {
 
                 conn.Open();
 
-            using (SqlCommand command = new SqlCommand(
-            "INSERT INTO tblIncidence(incDate, info, userID, incLevel, buildingID) VALUES ("
-                + "'" + newIncident.Incdate.ToString() + "'" + ", "
-                + "'" + newIncident.Info + "'" + ", "
-                + "'" + newIncident.UserID + "'" + ","
-                + "'" + newIncident.IncLevel + "'" + ","
-                + "'" + newIncident.buildingID + "'" + ")"
-                ,
-                conn))
-            {
-                command.ExecuteNonQuery();
+                using (SqlCommand command = new SqlCommand(
+                "INSERT INTO tblIncidence(incDate, info, userID, incLevel, buildingID) VALUES ("
+                    + "'" + newIncident.Incdate.ToString() + "'" + ", "
+                    + "'" + newIncident.Info + "'" + ", "
+                    + "'" + newIncident.UserID + "'" + ","
+                    + "'" + newIncident.IncLevel + "'" + ","
+                    + "'" + newIncident.buildingID + "'" + ")"
+                    ,
+                    conn))
+                {
+                    command.ExecuteNonQuery();
+                }
+                conn.Close();
             }
-            conn.Close();
 
 
         }
+
+
 
 
 
