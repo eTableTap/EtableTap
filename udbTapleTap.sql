@@ -261,6 +261,7 @@ CREATE TABLE tblStatus
 	CREATE TABLE tblGroup (
 	groupID			INT IDENTITY(100001,1) PRIMARY KEY,
 	statusID		INT NOT NULL,
+	tableID			INT NOT NULL,
 	gDate			DATE NOT NULL,
 	emailAddress	NVARCHAR(100) NOT NULL,
 	gHour			INT NOT NULL,
@@ -270,7 +271,8 @@ CREATE TABLE tblStatus
 	memberEmail3	NVARCHAR(40),
 	memberEmail4	NVARCHAR(40),
 
-	    CONSTRAINT fk_getStatusID FOREIGN KEY (statusID) REFERENCES tblStatus(statusID)
+	    CONSTRAINT fk_getStatusID FOREIGN KEY (statusID) REFERENCES tblStatus(statusID),
+		CONSTRAINT fk_gettheTableID FOREIGN KEY (tableID) REFERENCES tblTable(tableID)
 	)
 
 
