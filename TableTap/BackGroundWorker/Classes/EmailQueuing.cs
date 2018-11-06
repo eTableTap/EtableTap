@@ -11,19 +11,27 @@ namespace TableTap.BackGroundWorker.Classes
     public class EmailQueuing
     {
 
-        public static void stahp()
+        public static void stopEmail()
         {
-            RecurringJob.RemoveIfExists("09");
+            /// stops the EmailNotification hangfire task (01)
+            /// 
+
+            RecurringJob.RemoveIfExists("01");
         }
 
         public static bool startEmailNotificationSystem()
         {
+            /// creates hangfire task to send hourly reminder email notifications
+            /// returns a true if job starts successfully, a false if there is an error
+
+            stopEmail();
+
             try
             {
-                RecurringJob.RemoveIfExists("09");
-                RecurringJob.AddOrUpdate("09",
+
+                RecurringJob.AddOrUpdate("01",
                 () => emailWorker(),
-                Cron.Minutely);
+                Cron.Hourly);
 
                 emailWorker();
 
@@ -38,7 +46,7 @@ namespace TableTap.BackGroundWorker.Classes
 
         public static List<List<string>> getData()
         {
-
+            /// 
 
             string email1 = "hayden.bartlett1@hotmail.com";
             string phone = "0434346773";

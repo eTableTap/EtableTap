@@ -132,9 +132,16 @@ namespace TableTap.BusinessLayer.Classes
         public static void userDelete(int userID)
         {
 
-            /// access user delete function, if successful returns true else
-            /// returns false
+
+            UserModel user = new UserModel();
+
+            /// access user delete function
+            /// 
+
+            user = getUserByID(userID);
+
             IncidenceDAL.incAllUserDelete(userID);
+            GroupDAL.groupAllUserDelete(user.Email);
             UserDAL.deleteUser(userID);
             /*bool success;
             try

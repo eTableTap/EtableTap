@@ -11,14 +11,16 @@ namespace TableTap.BackGroundWorker.Classes
     public class AutomaticIncidentDeletion
     {
 
+
+
         public static bool startIncidentDeletionSystem()
         {
             stopTask(); // prevents build up of tasks
 
             try
             {
-                
-                RecurringJob.AddOrUpdate(
+                RecurringJob.RemoveIfExists("02");
+                RecurringJob.AddOrUpdate("02",
                 () => incidentdeleter(),
                 Cron.Daily);
 
@@ -42,7 +44,7 @@ namespace TableTap.BackGroundWorker.Classes
 
         public static void stopTask()
         {
-            
+            RecurringJob.RemoveIfExists("02");
         }
 
 

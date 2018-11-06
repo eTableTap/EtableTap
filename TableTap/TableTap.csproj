@@ -270,7 +270,9 @@
   <ItemGroup>
     <Compile Include="BackGroundWorker\Classes\AutomaticIncidentDeletion.cs" />
     <Compile Include="BackGroundWorker\Classes\EmailQueuing.cs" />
+    <Compile Include="BackGroundWorker\Classes\README.cs" />
     <Compile Include="BusinessLayer\Classes\GoogleLoginBL.cs" />
+    <Compile Include="DataAccessLayer\Classes\GroupDAL.cs" />
     <Compile Include="GoogleAPI\Googlelogin.aspx.cs">
       <DependentUpon>Googlelogin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

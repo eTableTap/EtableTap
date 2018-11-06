@@ -1,6 +1,16 @@
 ﻿
+///  This document specifies how to use the hangfire API within this project
+///  please place all recuring jobs and associated logic in the \TableTap\BackGroundWorker\Classes folder
+///  for the sake of sanity, consistency and debugging purposes
+///  
+/// all methods referenced by hangfire must be public
+///  
+///  For full functionality the application MUST BE OPEN ON THE SERVER
+///  in a real deployment windows task scheduling should be used to instigate application
 
-//// HANGFIRE JOB IDs
+
+
+/// HANGFIRE JOB IDs
 
 /// 01 = Email automated hourly Email notifications for Bookings
 /// 02 = Automatic deletion of out of date incidents
@@ -30,12 +40,14 @@
 /// 
 /// 
 ///  -------- Examples from code ----------
-/// Recuring Job -                 
-///                RecurringJob.RemoveIfExists("01");
+/// Recuring Job -     
+/// 
+///                RecurringJob.RemoveIfExists("01"); --- stops job
 ///                
-///                RecurringJob.AddOrUpdate("01", () => emailWorker(), Cron.Hourly);
+///                RecurringJob.AddOrUpdate("01", () => emailWorker(), Cron.Hourly);  --- creates/starts job
 ///                
 ///
 ///
 /// Background task - 
-///                 BackgroundJob.Enqueue(() => bookingNotify(email, phone, fName, sName, tableID, roomName));
+/// 
+///                 BackgroundJob.Enqueue(() => bookingNotify(email, phone, fName, sName, tableID, roomName));  --- starts job

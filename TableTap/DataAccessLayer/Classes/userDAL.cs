@@ -272,6 +272,8 @@ namespace TableTap.DataAccessLayer.Classes
             using (conn)
             {
                 conn.Open();
+
+
                 using (SqlCommand command = new SqlCommand(
                 "DELETE FROM tblUser WHERE userID=" + UserID.ToString(), conn))
                 {
