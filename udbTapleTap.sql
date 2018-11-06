@@ -65,18 +65,23 @@ CREATE TABLE tblUser (
 	phoneNum		NVARCHAR(30) NOT NULL,
 	)
 
+
+
 	
 CREATE TABLE tblIncidence(
     incidenceID INT IDENTITY(1000001,1) PRIMARY KEY,
     incDate DATE NOT NULL,
 	info VARCHAR(300) NOT NULL,
 	tableID INT,
-	roomID INT NOT NUll,
+	roomID INT,
+	buildingID INT NOT NUll,
 	userID INT NOT NULL,
-	incLevel BIT NOT NULL,
+	incLevel BIT NOT NULL,  -- determines who sees the notification
+	incENDDate DATE NOT NULL,
 
-	 -- determines who sees the notification
-    CONSTRAINT fk_getaroomID FOREIGN KEY (roomID) REFERENCES tblroom(roomID),
+	 
+    CONSTRAINT fk_getabuildingID FOREIGN KEY (buildingID) REFERENCES tblBuilding(buildingID),
+	CONSTRAINT fk_getaroomID FOREIGN KEY (roomID) REFERENCES tblroom(roomID),
     CONSTRAINT fk_getaTableID FOREIGN KEY (tableID) REFERENCES tblTable(tableID),
 	CONSTRAINT fk_getaUserID FOREIGN KEY (userID) REFERENCES tblUser(userID)
 
@@ -164,9 +169,9 @@ VALUES ('admin@official.com', 'qwerty1', 'admin', 'admin', 1, 2),
 ('hayden.bartlett1@nerg.com', '123', 'baz', 'clide', 0, 2)
 go
 
-INSERT INTO tblIncidence(incDate, info, tableID, roomID, userID, incLevel)
-VALUES ('2018-09-14', 'I am a test incident level 0', 1, 0001, 100002, 0),
- ('2018-09-14', 'I am a test incident level 1', 1, 0001, 100002, 0)
+INSERT INTO tblIncidence(incDate, info, tableID, roomID, buildingID, userID, incLevel, incENDDate)
+VALUES ('2018-09-14', 'I am a test incident level 0', 1, 0001, 001, 100002, 0, '2018-09-14'),
+ ('2018-09-14', 'I am a test incident level 1', 1, 0001, 001, 100002, 0, '2018-09-14')
  go
 
 --INSERT INTO tblReservation(userID, tableID, reservationStartTime, reservationFinishTime, groupName)
@@ -251,6 +256,24 @@ CREATE TABLE tblStatus
   CONSTRAINT fk_GETTABLEID FOREIGN KEY (tableID) REFERENCES tblTable(tableID)
 );
 -- use the catalog views to generate as many rows as we need
+
+
+	CREATE TABLE tblGroup (
+	groupID			INT IDENTITY(100001,1) PRIMARY KEY,
+	statusID		INT NOT NULL,
+	gDate			DATE NOT NULL,
+	emailAddress	NVARCHAR(100) NOT NULL,
+	gHour			INT NOT NULL,
+	memberEmail		NVARCHAR(40),
+	memberEmail1	NVARCHAR(40),
+	memberEmail2	NVARCHAR(40),
+	memberEmail3	NVARCHAR(40),
+	memberEmail4	NVARCHAR(40),
+
+	    CONSTRAINT fk_getStatusID FOREIGN KEY (statusID) REFERENCES tblStatus(statusID)
+	)
+
+
 
 INSERT INTO tbldates([date]) 
 SELECT d
