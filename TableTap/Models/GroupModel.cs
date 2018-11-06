@@ -26,7 +26,10 @@ namespace TableTap.Models
         public string memberEmail4 { get; set; }
         public string memberEmail5 { get; set; }
 
+        public GroupModel()
+        {
 
+        }
 
 
         public GroupModel(int groupIDE, int statusIDE, int tableIDE, DateTime bookingDate, string usersEmailAddress, int BookingHour, 

@@ -337,8 +337,46 @@ namespace TableTap.DataAccessLayer.Classes
             }
         }
 
+        public static bool CreateCalanderBookTable(GroupModel groupModel)
+        {
+            try
+            {
+                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+                GroupModel newGroupModel = groupModel;
 
-        
+                using (conn)
+                {
+                    conn.Open();
+
+                    using (SqlCommand command = new SqlCommand(
+                        
+                        "INSERT INTO tblGroup (TableID, gDate, emailAddress, gHour, memberEmail, memberEmail1, memberEmail2, memberEmail3, memberEmail4) VALUES ("
+                        + "'" + newGroupModel.tableID + "'" + ", "
+                        + "'" + newGroupModel.gDate + "'" + ", "
+                        + "'" + newGroupModel.emailAddress+ "'" + ", "
+                        + "'" + newGroupModel.gHour + "'" + ", "
+                        + "'" + newGroupModel.memberEmail1 + "'" + ", "
+                        + "'" + newGroupModel.memberEmail2 + "'" + ", "
+                        + "'" + newGroupModel.memberEmail3 + "'" + ", "
+                        + "'" + newGroupModel.memberEmail4 + "'" + ", "
+                        + "'" + newGroupModel.memberEmail5 + "'" + ")"
+                        ,
+                        conn))
+                    {
+                        SqlDataReader dr = command.ExecuteReader();
+
+                        dr.Close();
+                    }
+                    conn.Close();
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
 
         public static List<string> LoadTable(string tableID)
         {

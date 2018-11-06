@@ -106,6 +106,34 @@ namespace TableTap.UL
 
             Response.Redirect(URL);
         }
+        protected void btnBookCalander_Click(Object sender, EventArgs e)
+        {
+            
+            int ID = Int32.Parse(Request.QueryString["ID"]);
+            string sHour = hourDropdown.SelectedValue.ToString();
+            DateTime date = Cal.SelectedDate;
+            GroupModel newGroupBooking = new GroupModel();
+            newGroupBooking.tableID = ID;
+            newGroupBooking.gDate = Cal.SelectedDate.Date;
+            newGroupBooking.emailAddress = Session["Login"].ToString();
+            newGroupBooking.gHour = 12;
+            newGroupBooking.memberEmail1 = "Test1";
+            newGroupBooking.memberEmail2 = "Test2";
+            newGroupBooking.memberEmail3 = "Test3";
+            newGroupBooking.memberEmail4 = "Test4";
+            newGroupBooking.memberEmail5 = "Test5";
+
+            TableBL.processCalanderBookTable(newGroupBooking);
+            lblCalCheck.Text = "TableID = " + newGroupBooking.tableID.ToString() + " " +
+                "Date = " + newGroupBooking.gDate.ToShortDateString() + " " +
+                "UserEmail = " + newGroupBooking.emailAddress + " " +
+                "memberEmail1 = " + newGroupBooking.memberEmail1 + " " +
+                "memberEmail2 = " + newGroupBooking.memberEmail2 + " " +
+                "memberEmail3 = " + newGroupBooking.memberEmail3 + " " +
+                "memberEmail4 = " + newGroupBooking.memberEmail4 + " " +
+                "memberEmail5 = " + newGroupBooking.memberEmail5;
+
+        }
         protected void makeBooking()
         {
             int ID = Int32.Parse(Request.QueryString["ID"]);

@@ -64,5 +64,11 @@
             </div>
                 
         </div>
+         <div class="jumbotron">
+            <asp:Calendar runat="server" ID="Cal" />
+            <asp:Button type="button" ID="btnBookCalander" onclick="btnBookCalander_Click" runat="server"/>
+            <asp:Label runat="server" ID="lblCalCheck" class="cols-sm-2 control-label" text="update on btn click"></asp:Label>
+
+        </div>
     </div>
 </asp:Content>
