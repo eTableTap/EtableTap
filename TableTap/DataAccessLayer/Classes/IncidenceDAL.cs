@@ -241,6 +241,7 @@ namespace TableTap.DataAccessLayer.Classes
                         incident.buildingID = int.Parse(dr["buildingID"].ToString());
                         incident.UserID = int.Parse(dr["userID"].ToString());
                         incident.IncLevel = Convert.ToBoolean(dr["incLevel"]);
+                        incident.IncENDDate = Convert.ToDateTime(dr["incENDDate"]);
 
 
                         dr.Close();
@@ -259,6 +260,44 @@ namespace TableTap.DataAccessLayer.Classes
             }
 
             
+        }
+
+
+        public static List<IncidentModel> loadIncidentList()
+        {
+            List<IncidentModel> incidentList = new List<IncidentModel>();
+
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+
+            using (conn)
+            {
+                conn.Open();
+
+                using (SqlCommand command = new SqlCommand(
+                    "SELECT * FROM tblIncidence",
+                    conn))
+                {
+                    SqlDataReader dr = command.ExecuteReader();
+                    IncidentModel incident;
+                    while (dr.Read())
+                    {
+                        incident = new IncidentModel();
+                        incident.IncidentID = Convert.ToInt32(dr["incidenceID"].ToString());
+                        incident.Incdate = DateTime.Parse(dr["incDate"].ToString());
+                        incident.Info = dr["info"].ToString();
+                        incident.TableID = int.Parse(dr["tableID"].ToString());
+                        incident.RoomID = int.Parse(dr["roomID"].ToString());
+                        incident.buildingID = int.Parse(dr["buildingID"].ToString());
+                        incident.UserID = int.Parse(dr["userID"].ToString());
+                        incident.IncLevel = Convert.ToBoolean(dr["incLevel"]);
+                        incident.IncENDDate = Convert.ToDateTime(dr["incENDDate"]);
+                    }
+                    dr.Close();
+                }
+                conn.Close();
+            }
+
+            return incidentList;
         }
 
 
