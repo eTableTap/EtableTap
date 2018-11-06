@@ -92,9 +92,35 @@ namespace TableTap.DataAccessLayer.Classes
         }
 
 
+
+
+
+        public static void incOldIncDelete()
+        {
+            //deletes all incidents via building ID
+
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+
+            using (conn)
+            {
+                conn.Open();
+                using (SqlCommand command = new SqlCommand(
+                "DELETE FROM tblIncidence WHERE incENDDate<" + System.DateTime.Now.AddDays(-1).ToString(), conn))
+                {
+                    command.ExecuteNonQuery();
+                }
+                conn.Close();
+            }
+        }
+
+
+
+
+
+
         public static void AddNewIncidentTable(IncidentModel incident)
         {
-            // adds a incident by for a table
+            // adds a incident  for a table
 
          IncidentModel newIncident = incident;
          SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
@@ -105,14 +131,15 @@ namespace TableTap.DataAccessLayer.Classes
 
                 //reeeeeeee
                 using (SqlCommand command = new SqlCommand(
-                "INSERT INTO tblIncidence(incDate, info, tableID, roomID, userID, incLevel, buildingID) VALUES ("
+                "INSERT INTO tblIncidence(incDate, info, tableID, roomID, buildingID, userID, incLevel) VALUES ("
                     + "'" + newIncident.Incdate.ToString() + "'" + ", "
                     + "'" + newIncident.Info + "'" + ", "
                     + "'" + newIncident.TableID + "'" + ","
                     + "'" + newIncident.RoomID + "'" + ","
+                    + "'" + newIncident.buildingID + "'" + ","
                     + "'" + newIncident.UserID + "'" + ","
                     + "'" + newIncident.IncLevel + "'" + ","
-                    + "'" + newIncident.buildingID + "'" + ")"
+                    + "'" + newIncident.IncENDDate + "'" + ")"
                     ,
                     conn))
                 {
@@ -186,6 +213,9 @@ namespace TableTap.DataAccessLayer.Classes
 
         public static IncidentModel searchviadateandUserID(IncidentModel user)
         {
+            // searches inc table for records for user ID and date,
+            // returns a incident model
+
             IncidentModel incident = new IncidentModel();
             try
             {

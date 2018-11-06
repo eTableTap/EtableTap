@@ -60,7 +60,8 @@ namespace TableTap.IncidentModule
             incident.Info = lblText.Text; // needs to come from input
             incident.RoomID = 0001; // needs to come from input / tableID
             incident.buildingID = 001; // needs to come from input/table ID
-            if(user.AdminPermission == 1)
+            incident.IncENDDate = (System.DateTime.Now.AddDays(1)); // needs to come from input if user is admin, else leave as is;
+            if (user.AdminPermission == 1)
             {
                 incident.IncLevel = true;
             }

@@ -11,14 +11,19 @@ namespace TableTap.BackGroundWorker.Classes
     public class EmailQueuing
     {
 
+        public static void stahp()
+        {
+            RecurringJob.RemoveIfExists("09");
+        }
 
         public static bool startEmailNotificationSystem()
         {
             try
             {
-                RecurringJob.AddOrUpdate(
+                RecurringJob.RemoveIfExists("09");
+                RecurringJob.AddOrUpdate("09",
                 () => emailWorker(),
-                Cron.Hourly);
+                Cron.Minutely);
 
                 emailWorker();
 

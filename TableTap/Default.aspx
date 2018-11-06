@@ -20,6 +20,8 @@
 
         <asp:button ID="Buttontry" runat="server" onclick="buttontry_OnClick" Text="tryit"></asp:button>
 
+    <asp:Button ID="Button4" runat="server" OnClick="Button4_Click" Text="stop job" />
+
 <p id="demo">
     <asp:Label ID="lblsttatus" runat="server" Text="Label"></asp:Label>
 </p>

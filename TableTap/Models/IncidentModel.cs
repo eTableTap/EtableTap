@@ -25,6 +25,8 @@ namespace TableTap.Models
 
         public bool IncLevel { get; set; }
 
+        public DateTime IncENDDate { get; set; }
+
 
 
         public IncidentModel()
@@ -32,7 +34,7 @@ namespace TableTap.Models
 
         }
 
-        public IncidentModel(int id, DateTime date, string data, int tableID, int roomID, int buildingId, int userID, bool incLevel)
+        public IncidentModel(int id, DateTime date, string data, int tableID, int roomID, int buildingId, int userID, bool incLevel, DateTime ENDDate)
         {
             this.IncidentID = id;
             this.Incdate = date;
@@ -42,6 +44,7 @@ namespace TableTap.Models
             this.buildingID =
             this.UserID = userID;
             this.IncLevel = incLevel;
+            this.IncENDDate = ENDDate;
         }
     }
 }
