@@ -141,6 +141,61 @@ namespace TableTap.BackGroundWorker.Classes
                 // main user
                 NotifyBL.startNotifyBooking(user.FirstName + " " + user.LastName, user.phoneNum, user.Email , table.TableID.ToString(),
                     room.RoomName, building.BuildingName, group.gDate.ToString(), group.gHour.ToString() + ":00", URL);
+
+                //group member 1
+                try
+                { 
+                    NotifyBL.startNotifyBooking(user.FirstName + " " + user.LastName, user.phoneNum, group.memberEmail1, table.TableID.ToString(),
+                    room.RoomName, building.BuildingName, group.gDate.ToString(), group.gHour.ToString() + ":00", URL);
+                }
+                catch
+                {
+
+                }
+
+                // group member 2
+                try
+                {
+                    NotifyBL.startNotifyBooking(user.FirstName + " " + user.LastName, user.phoneNum, group.memberEmail2, table.TableID.ToString(),
+                    room.RoomName, building.BuildingName, group.gDate.ToString(), group.gHour.ToString() + ":00", URL);
+                }
+                catch
+                {
+
+                }
+
+                // groupmember 3
+                try
+                {
+                    NotifyBL.startNotifyBooking(user.FirstName + " " + user.LastName, user.phoneNum, group.memberEmail3, table.TableID.ToString(),
+                    room.RoomName, building.BuildingName, group.gDate.ToString(), group.gHour.ToString() + ":00", URL);
+                }
+                catch
+                {
+
+                }
+
+                // group member 4
+                try
+                {
+                    NotifyBL.startNotifyBooking(user.FirstName + " " + user.LastName, user.phoneNum, group.memberEmail4, table.TableID.ToString(),
+                    room.RoomName, building.BuildingName, group.gDate.ToString(), group.gHour.ToString() + ":00", URL);
+                }
+                catch
+                {
+
+                }
+
+                // groupmember 5
+                try
+                {
+                    NotifyBL.startNotifyBooking(user.FirstName + " " + user.LastName, user.phoneNum, group.memberEmail5, table.TableID.ToString(),
+                    room.RoomName, building.BuildingName, group.gDate.ToString(), group.gHour.ToString() + ":00", URL);
+                }
+                catch
+                {
+
+                }
             }
 
 
