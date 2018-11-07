@@ -39,7 +39,7 @@ namespace TableTap.UL
 
             BookingModel bookings = TableBL.getDayTableBooking(ID);
 
-            
+            /*
             List<string> dayList = new List<String>();
             int x = Convert.ToInt32(today.ToString("HH")); //sets x to current hour
             
@@ -62,8 +62,32 @@ namespace TableTap.UL
                 hourDropdown.DataSource = dayList;
                 hourDropdown.DataBind();
             }
+            */
+            /////For New System///Checks
+            ///
+            List<string> hoursList = new List<String>();
+            int x = Convert.ToInt32(today.ToString("HH")); ; //set y to current hour
+            ;
 
-            //need to create a booking page, that lets the user select a date
+            while (x < 24)      //will loop until the end of the day's booking aka 2300. Can change to room closing time     
+            {
+                if (!TableBL.checkTableHourAvailability(Int32.Parse(Request.QueryString["ID"]), x, today))
+                {
+                    hoursList.Add(x.ToString() + ": " + "is free");
+                }
+                else
+                {
+                    hoursList.Add(x.ToString() + ": Occupied");
+                }
+
+                x++;
+            }
+            if (!IsPostBack)
+            {
+                hourDropdown.DataSource = hoursList;
+                hourDropdown.DataBind();
+            }
+
 
         }
         protected void hourDropdown_SelectedIndexChanged(object sender, EventArgs e)
@@ -128,13 +152,38 @@ namespace TableTap.UL
                 Session["LoginFallback"] = url;
                 Response.Redirect("Login.aspx");
             }
-            
+            /*
             btnBook.Visible = false;
             //btnBook.Enabled = false;
             makeBooking();
             btnDirections.Visible = true;
-           
+           */
 
+            ///for new system
+            ///
+
+            int ID = Int32.Parse(Request.QueryString["ID"]);
+            string sHour = hourDropdown.SelectedValue.ToString();
+            sHour = new string(sHour.TakeWhile(Char.IsDigit).ToArray());
+            //DateTime date = DateTime.Now;
+            GroupModel newGroupBooking = new GroupModel();
+            newGroupBooking.tableID = ID;
+            newGroupBooking.gDate = DateTime.Now;
+            newGroupBooking.emailAddress = Session["Login"].ToString();
+            newGroupBooking.gHour = Int32.Parse(sHour);
+            newGroupBooking.memberEmail1 = InputEmail1.Value;
+            newGroupBooking.memberEmail2 = "Test2";
+            newGroupBooking.memberEmail3 = "Test3";
+            newGroupBooking.memberEmail4 = "Test4";
+            newGroupBooking.memberEmail5 = "Test5";
+
+            if (TableBL.processCalanderBookTable(newGroupBooking))
+            {
+                lblHeading.Text = "Table was booked";
+
+                lblStatus.Text = "Table: " + TableBL.getTableByID(ID).TableID + "<br />Room Name: " + RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).RoomName.ToString() + "<br />in building: " + BuildingBL.getBuildingByID(RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).BuildingID).BuildingName + "<br />at: " + sHour + "00 -" + (Convert.ToInt32(sHour) + 1).ToString() + "00" + "<br /> was successfully booked";
+
+            }
 
 
         }

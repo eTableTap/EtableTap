@@ -183,32 +183,7 @@ namespace TableTap.DataAccessLayer.Classes
                     bookings.Hour[21] = dr["hour21"].ToString();
                     bookings.Hour[22] = dr["hour22"].ToString();
                     bookings.Hour[23] = dr["hour23"].ToString();
-                    /*
-                    bookings.Hour0 = dr["hour00"].ToString();
-                    bookings.Hour1 = dr["hour01"].ToString();
-                    bookings.Hour2 = dr["hour02"].ToString();
-                    bookings.Hour3 = dr["hour03"].ToString();
-                    bookings.Hour4 = dr["hour04"].ToString();
-                    bookings.Hour5 = dr["hour05"].ToString();
-                    bookings.Hour6 = dr["hour06"].ToString();
-                    bookings.Hour7 = dr["hour07"].ToString();
-                    bookings.Hour8 = dr["hour08"].ToString();
-                    bookings.Hour9 = dr["hour09"].ToString();
-                    bookings.Hour10 = dr["hour10"].ToString();
-                    bookings.Hour11 = dr["hour11"].ToString();
-                    bookings.Hour12 = dr["hour12"].ToString();
-                    bookings.Hour13 = dr["hour13"].ToString();
-                    bookings.Hour14 = dr["hour14"].ToString();
-                    bookings.Hour15 = dr["hour15"].ToString();
-                    bookings.Hour16 = dr["hour16"].ToString();
-                    bookings.Hour17 = dr["hour17"].ToString();
-                    bookings.Hour18 = dr["hour18"].ToString();
-                    bookings.Hour19 = dr["hour19"].ToString();
-                    bookings.Hour20 = dr["hour20"].ToString();
-                    bookings.Hour21 = dr["hour21"].ToString();
-                    bookings.Hour22 = dr["hour22"].ToString();
-                    bookings.Hour23 = dr["hour23"].ToString();
-                    */
+                    
 
                     dr.Close();
                 }
@@ -217,7 +192,7 @@ namespace TableTap.DataAccessLayer.Classes
 
             return bookings;
         }
-
+   
         public static bool checkCurrentTableStatus(int id)
         {
 
