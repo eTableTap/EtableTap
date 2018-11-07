@@ -12,16 +12,23 @@ namespace TableTap.UL
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["user"] == null)
+            {
+                string url = Request.Url.AbsoluteUri;
+                Session["LoginFallback"] = url;
+                Response.Redirect("Login.aspx");
+            }
+
             if (Session["loggedUser"] != "admin") //stops non admins accessing page
             {
-                Response.Redirect("Login.aspx");
+                Response.Redirect("home.aspx");
             }
 
         }
 
         protected void EditBuildingButton_Click(Object sender, EventArgs e)
         {
-            Response.Redirect("AdminAddBuilding.aspx");
+
         }
 
         protected void addUserButton_Click(object sender, EventArgs e)
@@ -42,6 +49,41 @@ namespace TableTap.UL
         protected void printQRButton_Click(object sender, EventArgs e)
         {
             Response.Redirect("AdminPrintQR.aspx");
+        }
+
+        protected void AddBuildingButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AdminAddBuilding.aspx");
+        }
+
+        protected void roomButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnaddRoom_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void AddTableButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void scheduledButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void AddNotificationButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ManageNotificationsButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

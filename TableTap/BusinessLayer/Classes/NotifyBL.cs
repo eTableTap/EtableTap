@@ -319,7 +319,7 @@ namespace TableTap.BusinessLayer.Classes
                 // variables for the email address, email subject line, and message respectively
                 string subject = " ETableTap group booking";
                 string message = "Hi " + Environment.NewLine
-                    + user + ", just a friendly reminder of your booking " + Environment.NewLine
+                    + "created by:" + user + ", just a friendly reminder of your booking " + Environment.NewLine
                     + "At building: " + buildingName + Environment.NewLine
                     + "In room: " + roomName + Environment.NewLine
                     + "For table: " + tableID + Environment.NewLine

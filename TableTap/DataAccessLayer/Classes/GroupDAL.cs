@@ -33,5 +33,137 @@ namespace TableTap.DataAccessLayer.Classes
 
 
 
+
+        public static bool CreateCalanderBookTable(GroupModel groupModel)
+        {
+            try
+            {
+                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+                GroupModel newGroupModel = groupModel;
+
+                using (conn)
+                {
+                    conn.Open();
+
+                    using (SqlCommand command = new SqlCommand(
+
+                        "INSERT INTO tblGroup (TableID, gDate, emailAddress, gHour, memberEmail, memberEmail1, memberEmail2, memberEmail3, memberEmail4) VALUES ("
+                        + "'" + newGroupModel.tableID + "'" + ", "
+                        + "'" + newGroupModel.gDate.ToString("yyyy-MM-d") + "'" + ", "
+                        + "'" + newGroupModel.emailAddress + "'" + ", "
+                        + "'" + newGroupModel.gHour + "'" + ", "
+                        + "'" + newGroupModel.memberEmail1 + "'" + ", "
+                        + "'" + newGroupModel.memberEmail2 + "'" + ", "
+                        + "'" + newGroupModel.memberEmail3 + "'" + ", "
+                        + "'" + newGroupModel.memberEmail4 + "'" + ", "
+                        + "'" + newGroupModel.memberEmail5 + "'" + ")"
+                        ,
+                        conn))
+                    {
+                        SqlDataReader dr = command.ExecuteReader();
+
+                        dr.Close();
+                    }
+                    conn.Close();
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
+
+
+        public static bool checkTableHourAvailability(int TableID, int Hour, DateTime date)
+        {
+            string sTest = null;
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+
+            using (conn)
+            {
+                conn.Open();
+
+                using (SqlCommand command = new SqlCommand(
+                    "SELECT * FROM tblGroup WHERE tableID=" + "'" + TableID.ToString() + "'"
+                    + " AND gDate=" + "'" + date.ToString("yyyy-MM-d") + "'"
+                    + " AND gHour=" + "'" + Hour.ToString() + "'",
+                    conn))
+
+
+                {
+                    SqlDataReader dr = command.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        sTest = dr["gHour"].ToString();
+                    }
+                    dr.Close();
+                }
+                conn.Close();
+            }
+            if (sTest != null)
+            {
+                return true;
+            }
+
+
+            return false;
+        }
+
+
+
+        public static List<GroupModel> loadGroupListattime()
+        {
+            List<GroupModel> groups = new List<GroupModel>();
+
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+
+            using (conn)
+            {
+                conn.Open();
+
+                using (SqlCommand command = new SqlCommand(
+                    "SELECT * FROM tblGroup WHERE gHour = " + System.DateTime.Now.AddHours(1).ToString("HH") + " AND  gDate ="
+                    + System.DateTime.Now.ToString(),
+                    conn))
+                {
+                    SqlDataReader dr = command.ExecuteReader();
+                    GroupModel group;
+                    while (dr.Read())
+                    {
+
+                        group = new GroupModel();
+                        group.groupID = Convert.ToInt32(dr["groupID"]);
+                        group.statusID = Convert.ToInt32(dr["statusID"]);
+                        group.tableID = Convert.ToInt32(dr["tableID"]);
+                        group.gDate = Convert.ToDateTime(dr["gDate"]);
+                        group.emailAddress = dr["emailAddress"].ToString();
+                        group.gHour = Convert.ToInt32(dr["gHour"]);
+                        group.memberEmail1 = dr["memberEmail1"].ToString();
+                        group.memberEmail2 = dr["memberEmail2"].ToString();
+                        group.memberEmail3 = dr["memberEmail3"].ToString();
+                        group.memberEmail4 = dr["memberEmail4"].ToString();
+                        group.memberEmail5 = dr["memberEmail5"].ToString();
+
+                        groups.Add(group);
+
+                    }
+
+                    dr.Close();
+                }
+
+                conn.Close();
+            }
+
+            return groups;
+        }
+
+
     }
+
+
+
 }

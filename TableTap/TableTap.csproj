@@ -150,6 +150,7 @@
   <ItemGroup>
     <Content Include="GoogleAPI\Googlelogin.aspx" />
     <Content Include="GoogleAPI\Return.aspx" />
+    <Content Include="UL\AdminEditBuilding.aspx" />
     <Content Include="UL\bookingInformation.aspx" />
     <Content Include="Content\MobileMaster.css" />
     <Content Include="google8de9dcc8df485c7e.html" />
@@ -157,6 +158,7 @@
     <Content Include="Resources\Images\MapBtn.png" />
     <Content Include="Resources\Images\SorryFlower.png" />
     <Content Include="UL\AdminTaskScheduler.aspx" />
+    <Content Include="UL\BookingReceipt.aspx" />
     <Content Include="UL\IncidentModule.aspx" />
     <Content Include="Resources\Images\Spiteful_Spirit.jpg" />
     <Content Include="Resources\Images\TestImage.png" />
@@ -288,6 +290,13 @@
       <DependentUpon>Return.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\GroupModel.cs" />
+    <Compile Include="UL\AdminEditBuilding.aspx.cs">
+      <DependentUpon>AdminEditBuilding.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UL\AdminEditBuilding.aspx.designer.cs">
+      <DependentUpon>AdminEditBuilding.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UL\bookingInformation.aspx.cs">
       <DependentUpon>bookingInformation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -305,6 +314,13 @@
     </Compile>
     <Compile Include="UL\AdminTaskScheduler.aspx.designer.cs">
       <DependentUpon>AdminTaskScheduler.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UL\BookingReceipt.aspx.cs">
+      <DependentUpon>BookingReceipt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UL\BookingReceipt.aspx.designer.cs">
+      <DependentUpon>BookingReceipt.aspx</DependentUpon>
     </Compile>
     <Compile Include="UL\IncidentModule.aspx.cs">
       <DependentUpon>IncidentModule.aspx</DependentUpon>

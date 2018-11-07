@@ -166,6 +166,8 @@ go
 
 INSERT INTO tblUser(emailAddress, passcode, firstName, lastName, adminPermission, phoneNum)
 VALUES ('admin@official.com', 'qwerty1', 'admin', 'admin', 1, 2),
+('t@t', 't', 'fname', 'sname', 1, 0421505997),
+('u@t', 't', 'ufname', 'usname', 0, 0421505997), 
 ('hayden.bartlett1@nerg.com', '123', 'baz', 'clide', 0, 2)
 go
 
@@ -265,11 +267,11 @@ CREATE TABLE tblStatus
 	gDate			DATE NOT NULL,
 	emailAddress	NVARCHAR(100) NOT NULL,
 	gHour			INT NOT NULL,
-	memberEmail		NVARCHAR(40),
-	memberEmail1	NVARCHAR(40),
+	memberEmail1		NVARCHAR(40),
 	memberEmail2	NVARCHAR(40),
 	memberEmail3	NVARCHAR(40),
 	memberEmail4	NVARCHAR(40),
+	memberEmail5	NVARCHAR(40),
 
 	    CONSTRAINT fk_getStatusID FOREIGN KEY (statusID) REFERENCES tblStatus(statusID),
 		CONSTRAINT fk_gettheTableID FOREIGN KEY (tableID) REFERENCES tblTable(tableID)

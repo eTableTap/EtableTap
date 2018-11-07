@@ -116,7 +116,7 @@ namespace TableTap.DataAccessLayer.Classes
                     conn))
                 {
                     SqlDataReader dr = command.ExecuteReader();
-                    
+
                     while (dr.Read())
                     {
 
@@ -154,35 +154,35 @@ namespace TableTap.DataAccessLayer.Classes
                 {
                     SqlDataReader dr = command.ExecuteReader();
 
-                    dr.Read();             
+                    dr.Read();
 
-                        bookings.StatusID = Convert.ToInt32(dr["StatusID"]);
-                        bookings.TableID = Convert.ToInt32(dr["TableID"]);
-                        bookings.Date = DateTime.Parse(dr["Date"].ToString());
-                        bookings.Hour[0] = dr["hour00"].ToString();
-                        bookings.Hour[1] = dr["hour01"].ToString();
-                        bookings.Hour[2] = dr["hour02"].ToString();
-                        bookings.Hour[3] = dr["hour03"].ToString();
-                        bookings.Hour[4] = dr["hour04"].ToString();
-                        bookings.Hour[5] = dr["hour05"].ToString();
-                        bookings.Hour[6] = dr["hour06"].ToString();
-                        bookings.Hour[7] = dr["hour07"].ToString();
-                        bookings.Hour[8] = dr["hour08"].ToString();
-                        bookings.Hour[9] = dr["hour09"].ToString();
-                        bookings.Hour[10] = dr["hour10"].ToString();
-                        bookings.Hour[11] = dr["hour11"].ToString();
-                        bookings.Hour[12] = dr["hour12"].ToString();
-                        bookings.Hour[13] = dr["hour13"].ToString();
-                        bookings.Hour[14] = dr["hour14"].ToString();
-                        bookings.Hour[15] = dr["hour15"].ToString();
-                        bookings.Hour[16] = dr["hour16"].ToString();
-                        bookings.Hour[17] = dr["hour17"].ToString();
-                        bookings.Hour[18] = dr["hour18"].ToString();
-                        bookings.Hour[19] = dr["hour19"].ToString();
-                        bookings.Hour[20] = dr["hour20"].ToString();
-                        bookings.Hour[21] = dr["hour21"].ToString();
-                        bookings.Hour[22] = dr["hour22"].ToString();
-                        bookings.Hour[23] = dr["hour23"].ToString();
+                    bookings.StatusID = Convert.ToInt32(dr["StatusID"]);
+                    bookings.TableID = Convert.ToInt32(dr["TableID"]);
+                    bookings.Date = DateTime.Parse(dr["Date"].ToString());
+                    bookings.Hour[0] = dr["hour00"].ToString();
+                    bookings.Hour[1] = dr["hour01"].ToString();
+                    bookings.Hour[2] = dr["hour02"].ToString();
+                    bookings.Hour[3] = dr["hour03"].ToString();
+                    bookings.Hour[4] = dr["hour04"].ToString();
+                    bookings.Hour[5] = dr["hour05"].ToString();
+                    bookings.Hour[6] = dr["hour06"].ToString();
+                    bookings.Hour[7] = dr["hour07"].ToString();
+                    bookings.Hour[8] = dr["hour08"].ToString();
+                    bookings.Hour[9] = dr["hour09"].ToString();
+                    bookings.Hour[10] = dr["hour10"].ToString();
+                    bookings.Hour[11] = dr["hour11"].ToString();
+                    bookings.Hour[12] = dr["hour12"].ToString();
+                    bookings.Hour[13] = dr["hour13"].ToString();
+                    bookings.Hour[14] = dr["hour14"].ToString();
+                    bookings.Hour[15] = dr["hour15"].ToString();
+                    bookings.Hour[16] = dr["hour16"].ToString();
+                    bookings.Hour[17] = dr["hour17"].ToString();
+                    bookings.Hour[18] = dr["hour18"].ToString();
+                    bookings.Hour[19] = dr["hour19"].ToString();
+                    bookings.Hour[20] = dr["hour20"].ToString();
+                    bookings.Hour[21] = dr["hour21"].ToString();
+                    bookings.Hour[22] = dr["hour22"].ToString();
+                    bookings.Hour[23] = dr["hour23"].ToString();
                     /*
                     bookings.Hour0 = dr["hour00"].ToString();
                     bookings.Hour1 = dr["hour01"].ToString();
@@ -220,9 +220,9 @@ namespace TableTap.DataAccessLayer.Classes
 
         public static bool checkCurrentTableStatus(int id)
         {
-            
+
             string sTest = "default - this should not matter";
-            
+
 
             DateTime dateNow = DateTime.Now;
             //string hour = dateNow.ToString("HH");
@@ -247,7 +247,7 @@ namespace TableTap.DataAccessLayer.Classes
 
                     while (dr.Read())
                     {
-                        sTest = dr["hour"+dateNow.ToString("HH")].ToString();
+                        sTest = dr["hour" + dateNow.ToString("HH")].ToString();
                     }
                     dr.Close();
                 }
@@ -305,7 +305,7 @@ namespace TableTap.DataAccessLayer.Classes
             return false;
         }
 
-        public static bool checkTableHourAvailability(int TableID,int Hour, DateTime date)
+        public static bool checkTableHourAvailability(int TableID, int Hour, DateTime date)
         {
             string sTest = null;
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
@@ -315,7 +315,7 @@ namespace TableTap.DataAccessLayer.Classes
                 conn.Open();
 
                 using (SqlCommand command = new SqlCommand(
-                    "SELECT * FROM tblGroup WHERE tableID=" + "'" + TableID.ToString() + "'" 
+                    "SELECT * FROM tblGroup WHERE tableID=" + "'" + TableID.ToString() + "'"
                     + " AND gDate=" + "'" + date.ToString("yyyy-MM-d") + "'"
                     + " AND gHour=" + "'" + Hour.ToString() + "'",
                     conn))
@@ -369,7 +369,7 @@ namespace TableTap.DataAccessLayer.Classes
             }
             catch
             {
-            return false;
+                return false;
             }
         }
 
@@ -385,11 +385,11 @@ namespace TableTap.DataAccessLayer.Classes
                     conn.Open();
 
                     using (SqlCommand command = new SqlCommand(
-                        
+
                         "INSERT INTO tblGroup (TableID, gDate, emailAddress, gHour, memberEmail, memberEmail1, memberEmail2, memberEmail3, memberEmail4) VALUES ("
                         + "'" + newGroupModel.tableID + "'" + ", "
                         + "'" + newGroupModel.gDate.ToString("yyyy-MM-d") + "'" + ", "
-                        + "'" + newGroupModel.emailAddress+ "'" + ", "
+                        + "'" + newGroupModel.emailAddress + "'" + ", "
                         + "'" + newGroupModel.gHour + "'" + ", "
                         + "'" + newGroupModel.memberEmail1 + "'" + ", "
                         + "'" + newGroupModel.memberEmail2 + "'" + ", "
@@ -443,7 +443,7 @@ namespace TableTap.DataAccessLayer.Classes
                         string roomID = dr["roomID"].ToString();
                         string personCapacity = dr["personCapacity"].ToString();
                         string category = dr["category"].ToString();
-                        
+
 
                         tableRecord.Add(tableID);
                         tableRecord.Add(roomID);
@@ -472,7 +472,7 @@ namespace TableTap.DataAccessLayer.Classes
         }
 
 
-        
+
         public static void modifyTable(List<string> tableData)
         {
             /// <summary>
@@ -487,7 +487,7 @@ namespace TableTap.DataAccessLayer.Classes
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
             SqlCommand modify = new SqlCommand();
             SqlDataReader reader;
-            modify.CommandText = "UPDATE tblTable SET roomID=" + "'" + roomID + "', personCapacity=" + "'" + personCapacity + "', category='" + category 
+            modify.CommandText = "UPDATE tblTable SET roomID=" + "'" + roomID + "', personCapacity=" + "'" + personCapacity + "', category='" + category
                 + "' WHERE tableID=" + "'" + tableID + "'";
             modify.CommandType = System.Data.CommandType.Text;
             modify.Connection = conn;
@@ -500,7 +500,7 @@ namespace TableTap.DataAccessLayer.Classes
 
         }
 
-        
+
         public static void deleteTable(string tableID)
         {
             /// <summary>
@@ -522,5 +522,18 @@ namespace TableTap.DataAccessLayer.Classes
             }
 
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

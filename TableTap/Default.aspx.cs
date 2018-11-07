@@ -149,5 +149,10 @@ namespace TableTap.UL
         {
             EmailQueuing.stopEmail();
         }
+
+        protected void Button5_Click(object sender, EventArgs e)
+        {
+            lbltimetest.Text = System.DateTime.Now.AddHours(1).ToString("HH");
+        }
     }
 }
