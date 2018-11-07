@@ -97,5 +97,20 @@ namespace TableTap.IncidentModule
 
             IncidenceDAL.incAllUserDelete(user.UserID);
         }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            IncidenceBL.passUserDelete(00001);
+        }
+
+        protected void Button4_Click(object sender, EventArgs e)
+        {
+            IncidenceBL.passRoomDelete(0001);
+        }
+
+        protected void Button5_Click(object sender, EventArgs e)
+        {
+            IncidenceBL.passBuildingDelete(001);
+        }
     }
 }

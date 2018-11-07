@@ -53,6 +53,58 @@ namespace TableTap.BusinessLayer.Classes
 
         }
 
+        public static void passUserDelete(int id)
+        {
+            try
+            {
+
+                IncidenceDAL.incAllUserDelete(id);
+            }
+            catch
+            {
+
+            }
+        }
+
+        public static void passTableDelete(int id)
+        {
+            try
+            {
+
+                IncidenceDAL.incAllTableDelete(id);
+            }
+            catch
+            {
+
+            }
+        }
+
+        public static void passRoomDelete(int id)
+        {
+            try
+            {
+
+                IncidenceDAL.incAllRoomDelete(id);
+            }
+            catch
+            {
+
+            }
+        }
+
+        public static void passBuildingDelete(int id)
+        {
+            try
+            {
+
+                IncidenceDAL.incAllBuildingDelete(id);
+            }
+            catch
+            {
+
+            }
+        }
+
 
     }
 }

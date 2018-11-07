@@ -22,6 +22,15 @@ namespace TableTap.UL {
         protected global::System.Web.UI.WebControls.Button buildingButton;
         
         /// <summary>
+        /// AddBuildingButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button AddBuildingButton;
+        
+        /// <summary>
         /// roomButton control.
         /// </summary>
         /// <remarks>
@@ -31,6 +40,15 @@ namespace TableTap.UL {
         protected global::System.Web.UI.WebControls.Button roomButton;
         
         /// <summary>
+        /// btnaddRoom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnaddRoom;
+        
+        /// <summary>
         /// tableButton control.
         /// </summary>
         /// <remarks>
@@ -38,6 +56,15 @@ namespace TableTap.UL {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button tableButton;
+        
+        /// <summary>
+        /// AddTableButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button AddTableButton;
         
         /// <summary>
         /// userButton control.
@@ -58,13 +85,31 @@ namespace TableTap.UL {
         protected global::System.Web.UI.WebControls.Button addUserButton;
         
         /// <summary>
-        /// scheduled control.
+        /// scheduledButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button scheduled;
+        protected global::System.Web.UI.WebControls.Button scheduledButton;
+        
+        /// <summary>
+        /// AddNotificationButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button AddNotificationButton;
+        
+        /// <summary>
+        /// ManageNotificationsButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ManageNotificationsButton;
         
         /// <summary>
         /// qrButton control.
