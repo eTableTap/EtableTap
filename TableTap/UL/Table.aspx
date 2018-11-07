@@ -65,10 +65,23 @@
                 
         </div>
          <div class="jumbotron">
-            <asp:Calendar runat="server" ID="Cal" />
-            <asp:Button type="button" ID="btnBookCalander" onclick="btnBookCalander_Click" runat="server"/>
+            <asp:Calendar runat="server" ID="Cal" OnSelectionChanged="MyCalendar_SelectionChanged"  />
+            <asp:Button type="button" ID="btnBookCalander" Text="Book Table" onclick="btnBookCalander_Click" OnClientClick="return CheckDouble();" runat="server" />
             <asp:Label runat="server" ID="lblCalCheck" class="cols-sm-2 control-label" text="update on btn click"></asp:Label>
+             
+             <asp:DropDownList runat="server" ID="CalHourDropDown" onselectedindexchanged="calHourDropdown_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                        <ContentTemplate>
+							                
+                                            <div class="form-group">
 
+			                                </div>
+                                        </ContentTemplate>
+                                    
+                                        <Triggers>
+                                                <asp:AsyncPostBackTrigger ControlID="CalHourDropDown" EventName="SelectedIndexChanged" />  
+                                        </Triggers>
+                   </asp:UpdatePanel>
         </div>
     </div>
 </asp:Content>

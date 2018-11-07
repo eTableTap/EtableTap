@@ -305,6 +305,42 @@ namespace TableTap.DataAccessLayer.Classes
             return false;
         }
 
+        public static bool checkTableHourAvailability(int TableID,int Hour, DateTime date)
+        {
+            string sTest = null;
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+
+            using (conn)
+            {
+                conn.Open();
+
+                using (SqlCommand command = new SqlCommand(
+                    "SELECT * FROM tblGroup WHERE tableID=" + "'" + TableID.ToString() + "'" 
+                    + " AND gDate=" + "'" + date.ToString("yyyy-MM-d") + "'"
+                    + " AND gHour=" + "'" + Hour.ToString() + "'",
+                    conn))
+
+
+                {
+                    SqlDataReader dr = command.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        sTest = dr["gHour"].ToString();
+                    }
+                    dr.Close();
+                }
+                conn.Close();
+            }
+            if (sTest != null)
+            {
+                return true;
+            }
+
+
+            return false;
+        }
+
         public static bool bookTable(int id, string login, string hour)
         {
             try
@@ -352,7 +388,7 @@ namespace TableTap.DataAccessLayer.Classes
                         
                         "INSERT INTO tblGroup (TableID, gDate, emailAddress, gHour, memberEmail, memberEmail1, memberEmail2, memberEmail3, memberEmail4) VALUES ("
                         + "'" + newGroupModel.tableID + "'" + ", "
-                        + "'" + newGroupModel.gDate + "'" + ", "
+                        + "'" + newGroupModel.gDate.ToString("yyyy-MM-d") + "'" + ", "
                         + "'" + newGroupModel.emailAddress+ "'" + ", "
                         + "'" + newGroupModel.gHour + "'" + ", "
                         + "'" + newGroupModel.memberEmail1 + "'" + ", "

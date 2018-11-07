@@ -34,6 +34,16 @@ namespace TableTap.BusinessLayer.Classes
 
             return bCheck;
         }
+        public static bool checkTableHourAvailability(int TableID, int Hour, DateTime dateTime)
+        {
+            bool bCheckHour = TableDAL.checkTableHourAvailability(TableID, Hour, dateTime);
+            if (bCheckHour == true)
+            {
+                return true;
+            }
+
+            return false;
+        }
 
         public static BookingModel getDayTableBooking(int id)
         {

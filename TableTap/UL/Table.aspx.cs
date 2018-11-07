@@ -79,7 +79,48 @@ namespace TableTap.UL
                 lblStatus.Text = "THE TABLE IS AVAILABLE";
             }
         }
-        protected void btnBook_Click(Object sender, EventArgs e)
+        protected void calHourDropdown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (hourDropdown.SelectedValue.ToString().Contains("Occupied"))
+            {
+                
+            }
+            else
+            {
+                
+            }
+        }
+        protected void MyCalendar_SelectionChanged(object sender, EventArgs e)
+        {
+            lblCalCheck.Text = "You selected this date: ";
+
+            foreach (DateTime dt in Cal.SelectedDates)
+            {
+                lblCalCheck.Text += dt.ToLongDateString() + "<br />";
+            }
+
+            List<string> hoursList = new List<String>();
+            int x = 0; //need building opening time
+
+            while (x < 24)      //will loop until the end of the day's booking aka 2300. Can change to room closing time     
+            {
+                if (!TableBL.checkTableHourAvailability(Int32.Parse(Request.QueryString["ID"]), x, Cal.SelectedDate))
+                {
+                    hoursList.Add(x.ToString() + ": " + "is free");
+                }
+                else
+                {
+                    hoursList.Add(x.ToString() + ": Occupied");
+                }
+
+                x++;
+            }
+
+            CalHourDropDown.DataSource = hoursList;
+            CalHourDropDown.DataBind();
+
+        }
+            protected void btnBook_Click(Object sender, EventArgs e)
         {
             if (Session["user"] == null)
             {
@@ -108,15 +149,22 @@ namespace TableTap.UL
         }
         protected void btnBookCalander_Click(Object sender, EventArgs e)
         {
-            
+            if (Session["user"] == null)
+            {
+                string url = Request.Url.AbsoluteUri;
+                Session["LoginFallback"] = url;
+                Response.Redirect("Login.aspx");
+            }
+
             int ID = Int32.Parse(Request.QueryString["ID"]);
-            string sHour = hourDropdown.SelectedValue.ToString();
+            string sHour = CalHourDropDown.SelectedValue.ToString();
+            sHour = new string(sHour.TakeWhile(Char.IsDigit).ToArray());
             DateTime date = Cal.SelectedDate;
             GroupModel newGroupBooking = new GroupModel();
             newGroupBooking.tableID = ID;
             newGroupBooking.gDate = Cal.SelectedDate.Date;
             newGroupBooking.emailAddress = Session["Login"].ToString();
-            newGroupBooking.gHour = 12;
+            newGroupBooking.gHour = Int32.Parse(sHour);
             newGroupBooking.memberEmail1 = "Test1";
             newGroupBooking.memberEmail2 = "Test2";
             newGroupBooking.memberEmail3 = "Test3";
@@ -124,6 +172,8 @@ namespace TableTap.UL
             newGroupBooking.memberEmail5 = "Test5";
 
             TableBL.processCalanderBookTable(newGroupBooking);
+
+            //for testing
             lblCalCheck.Text = "TableID = " + newGroupBooking.tableID.ToString() + " " +
                 "Date = " + newGroupBooking.gDate.ToShortDateString() + " " +
                 "UserEmail = " + newGroupBooking.emailAddress + " " +
