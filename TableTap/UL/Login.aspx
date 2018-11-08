@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UL/Site.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="TableTap.UL.Login" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server" style="text-align:center">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
     <!---- Google login ---->
      <script type="text/javascript">
@@ -14,7 +14,7 @@
     <!--- END Google login --->
 
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server" class="form-horizontal" method="post" action="#">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server" >
     <div class="container-fluid" >
         <div class="jumbotron" >
              <div class="row main" >
@@ -96,7 +96,7 @@
             }
             else
             {
-                window.location.href = '/UL/Login.aspx'; // do not place anything here as it is too annoying to code for no benefit
+              //  window.location.href = '/UL/Login.aspx'; // do not place anything here as it is too annoying to code for no benefit
             }
         }
      </script>

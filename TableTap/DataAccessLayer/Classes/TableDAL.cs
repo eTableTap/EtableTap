@@ -350,7 +350,7 @@ namespace TableTap.DataAccessLayer.Classes
 
         public static bool CreateCalanderBookTable(GroupModel groupModel)
         {
-            //try
+            try
             {
                 SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
                 GroupModel newGroupModel = groupModel;
@@ -382,7 +382,7 @@ namespace TableTap.DataAccessLayer.Classes
                     return true;
                 }
             }
-            //catch
+            catch
             {
                 return false;
             }
