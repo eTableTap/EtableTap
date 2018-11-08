@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="jumbotron">
             
-            <asp:Label runat="server" id="lblHeading" text="Heading"></asp:Label>
+            
             <asp:ScriptManager id="ScriptManager1" runat="server">
             </asp:ScriptManager>
             <script type="text/javascript"> <!--From https://stackoverflow.com/questions/25200152/prevent-double-clicking-asp-net-button-->
@@ -21,9 +21,9 @@
              </script>
             
 
-            <div class="form-group ">
-					
-                
+            <div class="row">
+					<div class="mx-auto">
+                        <asp:Label runat="server" id="lblHeading" text="Heading"></asp:Label>
                         <asp:DropDownList runat="server" ID="hourDropdown" onselectedindexchanged="hourDropdown_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
                     <asp:UpdatePanel ID="upBookingInfo" runat="server">
                                         <ContentTemplate>
@@ -41,9 +41,10 @@
                                         </Triggers>
                    </asp:UpdatePanel>
                         
-                    
+                </div>    
 			</div>
-            <div id="bitToAddGroupMembers">
+            <div id="bitToAddGroupMembers" class="row">
+                <div class="mx-auto">
                 <asp:Label ID="lblInviteHelp" runat="server" Text="You can invite group members or friends by entering their emails here:" class="cols-sm-2 control-label"></asp:Label>
                 <br />
                 <asp:Label ID="lblOptional1" runat="server" Text="Optional:"></asp:Label>
@@ -61,27 +62,43 @@
                 <asp:Label ID="lblOptional5" runat="server" Text="Optional:"></asp:Label>
                 <Input id="InputEmail5" runat="server" type="email"/>
                 <br />
+                </div>
             </div>
                 
         </div>
          <div class="jumbotron">
-            <asp:Calendar runat="server" ID="Cal" OnSelectionChanged="MyCalendar_SelectionChanged"  />
-            <asp:Button type="button" ID="btnBookCalander" Text="Book Table" onclick="btnBookCalander_Click" OnClientClick="return CheckDouble();" runat="server" />
-            <asp:Label runat="server" ID="lblCalCheck" class="cols-sm-2 control-label" text="update on btn click"></asp:Label>
-             
-             <asp:DropDownList runat="server" ID="CalHourDropDown" onselectedindexchanged="calHourDropdown_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
-                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                                        <ContentTemplate>
+             <div class="form-group">
+             <div class="row">
+                 <div class="col">
+                    
+                    <asp:Label runat="server" ID="lblCalCheck" class="cols-sm-2 control-label" text="Select A Date:"></asp:Label>
+                     <br />
+                     <asp:DropDownList runat="server" ID="CalHourDropDown" onselectedindexchanged="calHourDropdown_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                            <ContentTemplate>
 							                
-                                            <div class="form-group">
+                                                <div class="form-group">
 
-			                                </div>
-                                        </ContentTemplate>
+			                                    </div>
+                                            </ContentTemplate>
                                     
-                                        <Triggers>
-                                                <asp:AsyncPostBackTrigger ControlID="CalHourDropDown" EventName="SelectedIndexChanged" />  
-                                        </Triggers>
-                   </asp:UpdatePanel>
+                                            <Triggers>
+                                                    <asp:AsyncPostBackTrigger ControlID="CalHourDropDown" EventName="SelectedIndexChanged" />  
+                                            </Triggers>
+                       </asp:UpdatePanel>
+                 </div>
+                 <div class="col">
+                    <asp:Calendar runat="server" ID="Cal" OnSelectionChanged="MyCalendar_SelectionChanged" class="align-items-center" />
+                </div>
+
+
+            </div>
+           </div>
+             
+                   <div class="form-group ">
+                    <asp:Button type="button" ID="btnBookCalander" Text="Book Table" onclick="btnBookCalander_Click" OnClientClick="return CheckDouble();" runat="server" class="btn btn-primary btn-lg btn-block login-button"/>
+                   </div>
         </div>
-    </div>
+    
+        </div>
 </asp:Content>
