@@ -427,7 +427,48 @@ namespace TableTap.DataAccessLayer.Classes
 
             return false; // = table is already booked
         }
+        public static bool checkCheckin(GroupModel groupModel)
+        {
 
+            string sTest = null;
+
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+
+            using (conn)
+            {
+                conn.Open();
+
+                using (SqlCommand command = new SqlCommand(
+                    "SELECT * FROM tblGroup WHERE tableID=" + "'" + groupModel.tableID.ToString() + "'"
+                    + " AND gDate=" + "'" + groupModel.gDate.ToString("yyyy-MM-d") + "'"
+                    + " AND gHour=" + "'" + groupModel.gHour.ToString() + "'"
+                    + " AND emailAddress=" + "'" + groupModel.emailAddress + "'",
+                    conn))
+
+
+                {
+                    SqlDataReader dr = command.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+
+                        sTest = dr["emailAddress"].ToString();
+
+                    }
+                    dr.Close();
+
+                }
+                conn.Close();
+
+            }
+
+            if (sTest == null)
+            {
+                return true; //  = not exist or wrong user
+            }
+
+            return false; // = table can be checked into
+        }
 
         public static List<string> LoadTable(string tableID)
         {

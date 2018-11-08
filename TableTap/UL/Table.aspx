@@ -167,7 +167,14 @@
             </div>
         </div>
        <div class="jumbotron" runat="server" id="CheckinSection" visible="false">
-
+           <div class="row">
+                        <div class="col mx-auto">
+                        </div>
+                        <div class="col mx-auto">
+                            <asp:Label ID="lblCheckinResult" runat="server" Text="Should update"></asp:Label>
+                        </div>  
+                        <div class="col mx-auto">
+                        </div>
         </div>
      </div>
 </asp:Content>

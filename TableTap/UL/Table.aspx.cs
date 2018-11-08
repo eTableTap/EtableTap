@@ -381,9 +381,31 @@ namespace TableTap.UL
         }
         protected void btnCheckinSection_Click(object sender, EventArgs e)
         {
+            if (Session["user"] == null)
+            {
+                string url = Request.Url.AbsoluteUri;
+                Session["LoginFallback"] = url;
+                Response.Redirect("Login.aspx");
+            }
+
             BookNowSection.Visible = false;
             CalanderSection.Visible = false;
             CheckinSection.Visible = true;
+
+            int ID = Int32.Parse(Request.QueryString["ID"]);
+            string sHour = hourDropdown.SelectedValue.ToString();
+            sHour = new string(sHour.TakeWhile(Char.IsDigit).ToArray());
+            //DateTime date = DateTime.Now;
+            GroupModel newCheckin = new GroupModel();
+            newCheckin.tableID = ID;
+            newCheckin.gDate = DateTime.Now;
+            newCheckin.emailAddress = Session["Login"].ToString();
+            newCheckin.gHour = Int32.Parse(sHour);
+
+            lblCheckinResult.Text = TableBL.processTableCheckin(newCheckin);
+            
+
+
         }
     }
 }

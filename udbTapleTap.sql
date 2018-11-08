@@ -34,10 +34,10 @@ CREATE TABLE tblRoom (
 	roomName		NVARCHAR(50) NOT NULL,
 	roomLabel		NVARCHAR(10) NOT NULL,
 	buildingID		INT NOT NULL,
-	openingTime		TIME(0) NOT NULL,
-	closingTime		TIME(0) NOT NULL,
+	openingTime		TIME(0) NOT NULL DEFAULT '09:00:00',
+	closingTime		TIME(0) NOT NULL DEFAULT '18:00:00',
 	roomMap			IMAGE, --Same as building map
-	tableQty		SMALLINT NOT NULL,
+	tableQty		SMALLINT NOT NULL DEFAULT 10,
 	tablesAvailable SMALLINT NOT NULL DEFAULT 0,
 
 	CONSTRAINT fk_RoomBuilding FOREIGN KEY (buildingID) REFERENCES tblBuilding(buildingID)
@@ -126,15 +126,15 @@ INSERT INTO tblBuilding(buildingName, buildingLabel, roomQty, street, suburb, pr
 VALUES ('Auchmuty Library', 'L', 2, 'Auchmuty Library University Dr', 'Callaghan','NSW', 'Australia'), 
 ('Huxley Library', 'H', 1, 'Auchmuty Library', 'Callaghan', 'NSW', 'Australia'), 
 ('ICT Building', 'ICT', 1, 'ICT', 'Callaghan', 'NSW', 'Australia'),
-('Beaus Basement', 'BB', 1, '27 Haddington Dr', 'Cardiff South', 'NSW', 'Australia'),
+('Basement Library', 'BL', 1, '27 Haddington Dr', 'Cardiff South', 'NSW', 'Australia'),
 ('Sogn Studentby', 'AF', 1, '9 Rolf E Steneres Alle', '0858 Oslo', 'Oslo', 'Norway')
 go
 
 INSERT INTO tblRoom(roomName, roomLabel, buildingID, openingTime, closingTime, tableQty)
 VALUES ('Auchmuty Information Common', 'L-266', 001, '00:00:00', '23:59:59', 100), 
 ('Huxley Information Common Area', 'HA-157', 002, '08:00:00', '22:00:00', 140),
-('Bedroom', 'Bed', 004, '08:00:00', '22:00:00', 2),
-('Bathroom', 'WC', 004, '08:00:00', '22:00:00', 2),
+('Old Common Room', 'OCR', 004, '08:00:00', '22:00:00', 2),
+('Reading Room', 'RR', 004, '08:00:00', '22:00:00', 2),
 ('Amatøren', 'Ama', 005, '08:00:00', '22:00:00', 4),
 ('28B', '28B', 005, '08:00:00', '22:00:00', 4),
 ('Flower Room', 'FR', 001, '00:00:00', '23:59:59', 100)

@@ -151,6 +151,7 @@
     <Content Include="GoogleAPI\Googlelogin.aspx" />
     <Content Include="GoogleAPI\Return.aspx" />
     <Content Include="Resources\Images\favicon.ico" />
+    <Content Include="UL\AdminAddRoom.aspx" />
     <Content Include="UL\AdminEditBuilding.aspx" />
     <Content Include="Content\MobileMaster.css" />
     <Content Include="google8de9dcc8df485c7e.html" />
@@ -293,6 +294,13 @@
       <DependentUpon>Return.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\GroupModel.cs" />
+    <Compile Include="UL\AdminAddRoom.aspx.cs">
+      <DependentUpon>AdminAddRoom.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UL\AdminAddRoom.aspx.designer.cs">
+      <DependentUpon>AdminAddRoom.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UL\AdminEditBuilding.aspx.cs">
       <DependentUpon>AdminEditBuilding.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

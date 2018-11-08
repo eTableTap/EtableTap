@@ -25,5 +25,11 @@ namespace TableTap.BusinessLayer.Classes
 
             return room;
         }
+        public static void ProcessAddNewRoom(RoomModel room)
+        { 
+            RoomModel newRoom = room;
+            RoomDAL.AddNewRoom(newRoom);
+
+        }
     }
 }

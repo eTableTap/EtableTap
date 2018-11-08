@@ -63,7 +63,7 @@ namespace TableTap.UL
 
         protected void btnaddRoom_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("AdminAddRoom.aspx");
         }
 
         protected void AddTableButton_Click(object sender, EventArgs e)

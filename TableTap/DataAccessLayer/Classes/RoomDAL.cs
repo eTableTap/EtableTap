@@ -79,5 +79,31 @@ namespace TableTap.DataAccessLayer.Classes
 
             return room;
         }
+        public static void AddNewRoom(RoomModel room)
+        {
+            RoomModel newRoom = room;
+
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+
+            using (conn)
+            {
+                conn.Open();
+
+                using (SqlCommand command = new SqlCommand(
+                "INSERT INTO tblRoom (roomLabel, roomName, buildingID, tableQty) VALUES ("
+                    + "'" + newRoom.RoomLabel + "'" + ", "
+                    + "'" + newRoom.RoomName + "'" + ", "
+                    + "'" + newRoom.BuildingID.ToString() + "'" + ", "
+                    + "'" + newRoom.TableQty.ToString() + "'"
+                    + ")"
+                    ,
+                    conn))
+                {
+                    command.ExecuteNonQuery();
+                }
+                conn.Close();
+            }
+
+        }
     }
 }

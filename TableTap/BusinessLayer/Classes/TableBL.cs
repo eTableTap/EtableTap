@@ -81,6 +81,19 @@ namespace TableTap.BusinessLayer.Classes
             return false;
         }
 
+        public static string processTableCheckin(GroupModel groupModel)
+        {
+            bool bCheck = TableDAL.checkCheckin(groupModel); //check if booking exists - return false if exists
+            if (bCheck == false)
+            {
+                
+                    return groupModel.emailAddress + " has successfully checked in!";
+                
+            }
+
+            return "Failed to check in";
+        }
+
         public static void ProcessAddNewTable(TableModel table)
         {
             TableModel newTable = table;
