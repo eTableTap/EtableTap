@@ -69,9 +69,13 @@ namespace TableTap.BusinessLayer.Classes
 
         public static bool processCalanderBookTable(GroupModel groupModel)
         {
-            if (TableDAL.CreateCalanderBookTable(groupModel))
+            bool bCheck = TableDAL.checkTableStatus(groupModel); //check if booking exists - return false if exists
+            if (bCheck == true)
             {
-                return true;
+                if (TableDAL.CreateCalanderBookTable(groupModel))
+                {
+                    return true;
+                }
             }
 
             return false;

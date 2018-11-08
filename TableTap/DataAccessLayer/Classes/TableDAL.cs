@@ -387,6 +387,46 @@ namespace TableTap.DataAccessLayer.Classes
                 return false;
             }
         }
+        public static bool checkTableStatus(GroupModel groupModel)
+        {
+
+            string sTest = null;
+
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+
+            using (conn)
+            {
+                conn.Open();
+
+                using (SqlCommand command = new SqlCommand(
+                    "SELECT * FROM tblGroup WHERE tableID=" + "'" + groupModel.tableID.ToString() + "'"
+                    + " AND gDate=" + "'" + groupModel.gDate.ToString("yyyy-MM-d") + "'"
+                    + " AND gHour=" + "'" + groupModel.gHour.ToString() + "'",
+                    conn))
+
+
+                {
+                    SqlDataReader dr = command.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        sTest = dr["gHour"].ToString();
+   
+                    }
+                    dr.Close();
+
+                }
+                conn.Close();
+
+            }
+
+            if (sTest == null)
+            {
+                return true; //  = available to book
+            }
+
+            return false; // = table is already booked
+        }
 
 
         public static List<string> LoadTable(string tableID)
