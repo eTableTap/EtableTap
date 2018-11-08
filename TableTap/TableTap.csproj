@@ -212,6 +212,7 @@
     <Content Include="UL\Logout.aspx" />
     <Content Include="UL\Map.aspx" />
     <Content Include="UL\MapTest.aspx" />
+    <Content Include="UL\PrintPage.aspx" />
     <Content Include="UL\QRtest.aspx" />
     <Content Include="UL\Register.aspx" />
     <Content Include="UL\Room.aspx" />
@@ -493,6 +494,13 @@
     <Compile Include="UL\MapTest.aspx.designer.cs">
       <DependentUpon>MapTest.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UL\PrintPage.aspx.cs">
+      <DependentUpon>PrintPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UL\PrintPage.aspx.designer.cs">
+      <DependentUpon>PrintPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UL\QRtest.aspx.cs">
       <DependentUpon>QRtest.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -556,6 +564,7 @@
   <ItemGroup>
     <Folder Include="IncidenceModule\" />
     <Folder Include="obj\" />
+    <Folder Include="Resources\Images\QR\" />
     <Folder Include="View\" />
   </ItemGroup>
   <ItemGroup>

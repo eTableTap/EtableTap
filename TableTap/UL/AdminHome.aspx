@@ -10,14 +10,14 @@
 					<form class="form-horizontal" method="post" action="#"  >
                         <div class="panel-heading">
 	                        <div class="panel-title text-center">
-	               		    <h1 class="title">Admin Control</h1>
-	               		    <hr />
+	               		    <h1 class="title" >Admin Control</h1>
+	               		    <br />
 	               	        </div>
 	                    </div> 
 						
 						
 
-						<div class="form-group " style="text-align: center" >
+						<div class="form-group " style="text-align: center"  >
 							<asp:Button type="button" Text="Edit Buildings" class="btn btn-primary btn-lg btn-block login-button" OnClick="EditBuildingButton_Click" id="buildingButton" runat="server" />
                             <asp:Button type="button" Text="Add Buildings" class="btn btn-primary btn-lg btn-block login-button" id="AddBuildingButton" runat="server" OnClick="AddBuildingButton_Click" />
                             <asp:Button type="button" Text="Edit Rooms" class="btn btn-primary btn-lg btn-block login-button" id="roomButton" runat="server" OnClick="roomButton_Click" />
