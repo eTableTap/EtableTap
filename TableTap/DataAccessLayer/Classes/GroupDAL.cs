@@ -77,40 +77,46 @@ namespace TableTap.DataAccessLayer.Classes
 
 
 
-        public static bool checkTableHourAvailability(int TableID, int Hour, DateTime date)
+        public static GroupModel checkGroupBooking(int groupIDE)
         {
-            string sTest = null;
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+
+            GroupModel group = new GroupModel();
 
             using (conn)
             {
                 conn.Open();
 
                 using (SqlCommand command = new SqlCommand(
-                    "SELECT * FROM tblGroup WHERE tableID=" + "'" + TableID.ToString() + "'"
-                    + " AND gDate=" + "'" + date.ToString("yyyy-MM-d") + "'"
-                    + " AND gHour=" + "'" + Hour.ToString() + "'",
+                    "SELECT * FROM tblGroup WHERE groupID=" + "'" + groupIDE.ToString() + "'",
                     conn))
 
 
                 {
                     SqlDataReader dr = command.ExecuteReader();
+                    dr.Read();
 
-                    while (dr.Read())
-                    {
-                        sTest = dr["gHour"].ToString();
-                    }
+                
+
+
+                    group.groupID = groupIDE;
+                    group.tableID = int.Parse(dr["tableID"].ToString());
+                    group.gDate = DateTime.Parse(dr["gDate"].ToString());
+                    group.emailAddress = dr["emailAddress"].ToString();
+                    group.gHour = int.Parse(dr["gHour"].ToString());
+                    group.memberEmail1 = dr["memberEmail1"].ToString();
+                    group.memberEmail2 = dr["memberEmail2"].ToString();
+                    group.memberEmail3 = dr["memberEmail3"].ToString();
+                    group.memberEmail4 = dr["memberEmail4"].ToString();
+                    group.memberEmail5 = dr["memberEmail5"].ToString();
+
                     dr.Close();
                 }
                 conn.Close();
             }
-            if (sTest != null)
-            {
-                return true;
-            }
 
-
-            return false;
+            return group;
+    
         }
 
 

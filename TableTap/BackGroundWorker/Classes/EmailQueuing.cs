@@ -121,7 +121,7 @@ namespace TableTap.BackGroundWorker.Classes
             {
                 List<string> dataset1 = new List<string>();
 
-                string URL = "https://www.etabletap.com/UL/Booking.aspx?=ID" + group.groupID;
+                string URL = "https://www.etabletap.com/UL/BookingReceipt.aspx?id=" +  group.groupID;
 
                 UserModel user = new UserModel();
                 TableModel table = new TableModel();
