@@ -76,6 +76,15 @@ namespace TableTap.UL {
         protected global::System.Web.UI.WebControls.Button Button2;
         
         /// <summary>
+        /// BookNowSection control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl BookNowSection;
+        
+        /// <summary>
         /// lblHeading control.
         /// </summary>
         /// <remarks>
@@ -238,6 +247,15 @@ namespace TableTap.UL {
         protected global::System.Web.UI.WebControls.Button btnBook;
         
         /// <summary>
+        /// CalanderSection control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl CalanderSection;
+        
+        /// <summary>
         /// lblCalCheck control.
         /// </summary>
         /// <remarks>
@@ -283,6 +301,114 @@ namespace TableTap.UL {
         protected global::System.Web.UI.WebControls.Calendar Cal;
         
         /// <summary>
+        /// Div1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div1;
+        
+        /// <summary>
+        /// lblCalInviteHelp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCalInviteHelp;
+        
+        /// <summary>
+        /// lblCalOptional1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCalOptional1;
+        
+        /// <summary>
+        /// InputCalEmail1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl InputCalEmail1;
+        
+        /// <summary>
+        /// lblCalOptional2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCalOptional2;
+        
+        /// <summary>
+        /// InputCalEmail2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl InputCalEmail2;
+        
+        /// <summary>
+        /// lblCalOptional3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCalOptional3;
+        
+        /// <summary>
+        /// InputCalEmail3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl InputCalEmail3;
+        
+        /// <summary>
+        /// lblCalOptional4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCalOptional4;
+        
+        /// <summary>
+        /// InputCalEmail4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl InputCalEmail4;
+        
+        /// <summary>
+        /// lblCalOptional5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCalOptional5;
+        
+        /// <summary>
+        /// InputCalEmail5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl InputCalEmail5;
+        
+        /// <summary>
         /// btnBookCalander control.
         /// </summary>
         /// <remarks>
@@ -290,5 +416,14 @@ namespace TableTap.UL {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnBookCalander;
+        
+        /// <summary>
+        /// CheckinSection control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl CheckinSection;
     }
 }

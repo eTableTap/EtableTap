@@ -35,17 +35,17 @@
             <br />
             <div class="row">
                     <div class="col mx-auto">
-                        <asp:Button ID="btnBookToday" Text="Book table for today" runat="server" class="btn btn-primary btn-md btn-block login-button" /><br />
+                        <asp:Button ID="btnBookToday" Text="Book table for today" runat="server" class="btn btn-primary btn-md btn-block login-button" onclick="btnBookNowSection_Click"/><br />
                     </div>
                     <div class="col mx-auto">
-                        <asp:Button ID="Button1" Text="Book table for future" runat="server" class="btn btn-success btn-md btn-block login-button" /><br />
+                        <asp:Button ID="Button1" Text="Book table for future" runat="server" class="btn btn-success btn-md btn-block login-button" onclick="btnCalanderSection_Click"/><br />
                     </div>
                     <div class="col mx-auto">
-                        <asp:Button ID="Button2" Text="Check In" runat="server" class="btn btn-primary btn-md btn-block login-button" /><br />
+                        <asp:Button ID="Button2" Text="Check In" runat="server" class="btn btn-primary btn-md btn-block login-button" onclick="btnCheckinSection_Click" /><br />
                     </div>
             </div>
-            
-
+            </div>
+            <div class="jumbotron" runat="server" id="BookNowSection" visible="false">
             <div class="row">
 					<div class="mx-auto">
                         <asp:Label runat="server" id="lblHeading" text="Heading"></asp:Label>
@@ -100,8 +100,8 @@
                         </div>
                 </div>
            
-        
-         <div class="jumbotron">
+        </div>
+         <div class="jumbotron" runat="server" id="CalanderSection" visible="false">
              <div class="form-group">
              <div class="row">
                  <div class="col">
@@ -132,7 +132,27 @@
             </div>
            </div>
              
-                   
+            <div  class="row" >
+                <div id="Div1" class="mx-auto" runat="server">
+                <asp:Label ID="lblCalInviteHelp" runat="server" Text="You can invite group members or friends by entering their emails below:" class="cols-sm-2 control-label" visible ="false"></asp:Label>
+                <br />
+                <asp:Label ID="lblCalOptional1" runat="server" Text="Optional Email:" visible ="false"></asp:Label>
+                <Input id="InputCalEmail1" runat="server" type="email" visible ="false"/>
+                <br />
+                <asp:Label ID="lblCalOptional2" runat="server" Text="Optional Email:" visible ="false"></asp:Label>
+                <Input id="InputCalEmail2" runat="server" type="email" visible ="false"/>
+                <br />
+                <asp:Label ID="lblCalOptional3" runat="server" Text="Optional Email:" visible="false"></asp:Label>
+                <Input id="InputCalEmail3" runat="server" type="email" visible ="false"/>
+                <br />
+                <asp:Label ID="lblCalOptional4" runat="server" Text="Optional Email:" visible ="false"></asp:Label>
+                <Input id="InputCalEmail4" runat="server" type="email" visible ="false"/>
+                <br />
+                <asp:Label ID="lblCalOptional5" runat="server" Text="Optional Email:" visible ="false"></asp:Label>
+                <Input id="InputCalEmail5" runat="server" type="email" visible ="false"/>
+                <br />
+                </div>
+            </div>       
                     
                  
             <br />
@@ -146,6 +166,8 @@
                         </div>
             </div>
         </div>
-    
+       <div class="jumbotron" runat="server" id="CheckinSection" visible="false">
+
         </div>
+     </div>
 </asp:Content>

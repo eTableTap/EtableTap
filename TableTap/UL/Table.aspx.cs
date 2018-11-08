@@ -87,15 +87,9 @@ namespace TableTap.UL
                 hourDropdown.DataSource = hoursList;
                 hourDropdown.DataBind();
             }
-
-            int y = 0;
-            while (y < TableBL.getTableByID(ID).PersonCapacity)
-            {
-                //createInviteTextBox(TableBL.getTableByID(ID).PersonCapacity);
-                showInputBoxes(y);
-                
-                y++;
-            }
+            showCalInputBoxes((TableBL.getTableByID(ID).PersonCapacity) - 1); // -1 because the user takes up 1 spot
+            showInputBoxes((TableBL.getTableByID(ID).PersonCapacity) - 1);
+            
 
         }
         protected void hourDropdown_SelectedIndexChanged(object sender, EventArgs e)
@@ -340,6 +334,56 @@ namespace TableTap.UL
             }
 
 
+        }
+        protected void showCalInputBoxes(int x)
+        {
+
+            if (x >= 1)
+            {
+                InputCalEmail1.Visible = true;
+                lblCalInviteHelp.Visible = true;
+                lblCalOptional1.Visible = true;
+            }
+            if (x >= 2)
+            {
+                InputCalEmail2.Visible = true;
+                lblCalOptional2.Visible = true;
+            }
+            if (x >= 3)
+            {
+                InputCalEmail3.Visible = true;
+                lblCalOptional3.Visible = true;
+            }
+            if (x >= 4)
+            {
+                InputCalEmail4.Visible = true;
+                lblCalOptional4.Visible = true;
+            }
+            if (x >= 5)
+            {
+                InputCalEmail5.Visible = true;
+                lblCalOptional5.Visible = true;
+            }
+
+
+        }
+        protected void btnBookNowSection_Click(object sender, EventArgs e)
+        {
+            BookNowSection.Visible = true;
+            CalanderSection.Visible = false;
+            CheckinSection.Visible = false;
+        }
+        protected void btnCalanderSection_Click(object sender, EventArgs e)
+        {
+            BookNowSection.Visible = false;
+            CalanderSection.Visible = true;
+            CheckinSection.Visible = false;
+        }
+        protected void btnCheckinSection_Click(object sender, EventArgs e)
+        {
+            BookNowSection.Visible = false;
+            CalanderSection.Visible = false;
+            CheckinSection.Visible = true;
         }
     }
 }

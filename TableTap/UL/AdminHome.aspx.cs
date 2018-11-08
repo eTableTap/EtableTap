@@ -68,7 +68,7 @@ namespace TableTap.UL
 
         protected void AddTableButton_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("AdminAddTable.aspx");
         }
 
         protected void scheduledButton_Click(object sender, EventArgs e)
