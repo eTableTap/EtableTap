@@ -73,7 +73,7 @@ namespace TableTap.UL
 
         protected void scheduledButton_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("AdminTaskScheduler.aspx");
         }
 
         protected void AddNotificationButton_Click(object sender, EventArgs e)

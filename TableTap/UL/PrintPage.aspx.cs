@@ -18,29 +18,26 @@ namespace TableTap.UL
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            try
+            {
             string URL = Session["QRURL"].ToString();
-            Session["QRURL"] = null;
+            string filename = Session["filename"].ToString();
+
 
             string imgURL = Session["Login"].ToString();
 
-            makeQR(URL);
+            string path = ("~/Resources/Images/QR/") + filename + ".png";
+            lblURL.Text = URL;
+                
+            Image1.ImageUrl = path;
+            }
+            catch
+            {
+                Response.Redirect("Error.aspx");
+            }
         }
 
-        public void makeQR(string URL)
-        {
-            QRCodeEncoder encoder = new QRCodeEncoder();
-            MemoryStream stream = new MemoryStream();
-            Bitmap img = encoder.Encode(URL);
+        
 
-
-
-            System.Drawing.Image i = (System.Drawing.Image)img;
-
-   
-
-           
-            
-
-        }
     }
 }
