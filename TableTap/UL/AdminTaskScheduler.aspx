@@ -18,9 +18,7 @@
 						
 
 						<div class="form-group " style="text-align: center" >
-                            <asp:Label ID="Lblinfo" runat="server" Text="Run only from server"></asp:Label>
-                            <br />
-                            <asp:Button ID="Button1" runat="server" Text="Start Automated Tasks" class="btn btn-primary btn-lg btn-block login-button" OnClick="Button1_Click" />
+                            <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
 						</div>
 						
 					</form>

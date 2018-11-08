@@ -83,25 +83,17 @@ namespace TableTap.UL
 
         private string GoogleUser()
         {
-            try
-            {
-                string url = "https://www.googleapis.com/userinfo/email?alt=json";
+            string url = "https://www.googleapis.com/userinfo/email?alt=json";
 
-                WebClient wc = new WebClient();
-                wc.Headers.Add("Authorization", "OAuth " + Request.QueryString["accessToken"]);
-                Stream data = wc.OpenRead(url);
-                StreamReader reader = new StreamReader(data);
-                string returnedJson = reader.ReadToEnd();
-                data.Close();
-                reader.Close();
+            WebClient wc = new WebClient();
+            wc.Headers.Add("Authorization", "OAuth " + Request.QueryString["accessToken"]);
+            Stream data = wc.OpenRead(url);
+            StreamReader reader = new StreamReader(data);
+            string returnedJson = reader.ReadToEnd();
+            data.Close();
+            reader.Close();
 
-                return returnedJson;
-            }
-            catch
-            {
-                return null;
-
-            }
+            return returnedJson;
         }
 
 
