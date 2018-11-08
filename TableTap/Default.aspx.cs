@@ -22,7 +22,7 @@ namespace TableTap.UL
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Response.Redirect("/UL/Home.aspx");
         }
 
         protected void test1_Click(object sender, EventArgs e)
@@ -93,12 +93,11 @@ namespace TableTap.UL
             string email = "C3166581@uon.edu.au";
             string tableID = "I AM A TABLE RE";
             string roomName = "Hi I'm a room and my name is barry";
-            string buildingName = "Nerg building";
+//            string buildingName = "Nerg building";
 
 
             NotifyBL.startbookNotify(email, phone, fname, sname, tableID, roomName);
             NotifyBL.startAccountNotification(email, phone, fname, sname);
-            //NotifyBL.notifyGroupMember(user, email, tableID, roomName, buildingName);
             
         }
 
@@ -112,7 +111,7 @@ namespace TableTap.UL
             string email = "hayden.bartlett1@hotmail.com";
             string tableID = "I AM A TABLE RE";
             string roomName = "Hi I'm a room and my name is barry";
-            string buildingName = "Nerg building";
+//            string buildingName = "Nerg building";
 
             var jobId = BackgroundJob.Schedule(
            () => NotifyBL.startbookNotify(email, phone, fname, sname, tableID, roomName),
@@ -153,6 +152,14 @@ namespace TableTap.UL
         protected void Button5_Click(object sender, EventArgs e)
         {
             lbltimetest.Text = System.DateTime.Now.AddHours(1).ToString("HH");
+        }
+
+        protected void Button6_Click(object sender, EventArgs e)
+        {
+            if (UserBL.passUserSearch("reee") == null)
+            {
+                lblsttatus.Text = "reeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeolk;;;;;;;;;;;;;;;e";
+                     }
         }
     }
 }

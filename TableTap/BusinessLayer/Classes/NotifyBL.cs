@@ -28,7 +28,7 @@ namespace TableTap.BusinessLayer.Classes
         // The three methods below start backgroundtasks to operate the email and SMS functions for performance reasons 
         public static void startAccountNotification(string email, string phone, string fName, string sName)
         {
-            BackgroundJob.Enqueue(() => startAccountNotification(email, phone, fName, sName));
+            BackgroundJob.Enqueue(() => AccountNotification(email, phone, fName, sName));
 
         }
 

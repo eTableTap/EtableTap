@@ -10,96 +10,78 @@
 namespace TableTap.UL {
     
     
-    public partial class BookingReceipt {
+    public partial class GoogleLogin {
         
         /// <summary>
-        /// lblName control.
+        /// lblEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblName;
+        protected global::System.Web.UI.WebControls.Label lblEmail;
         
         /// <summary>
-        /// lblDay control.
+        /// inFirstName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDay;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText inFirstName;
         
         /// <summary>
-        /// lblHour control.
+        /// inLastName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblHour;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText inLastName;
         
         /// <summary>
-        /// lblTable control.
+        /// inPhone control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTable;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl inPhone;
         
         /// <summary>
-        /// lblRoom control.
+        /// inPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRoom;
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword inPassword;
         
         /// <summary>
-        /// lblBuilding control.
+        /// inConfirmPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblBuilding;
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword inConfirmPassword;
         
         /// <summary>
-        /// lblAddress control.
+        /// cvPsw control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAddress;
+        protected global::System.Web.UI.WebControls.CompareValidator cvPsw;
         
         /// <summary>
-        /// Directions control.
+        /// registerButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Directions;
-        
-        /// <summary>
-        /// goToHomeButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button goToHomeButton;
-        
-        /// <summary>
-        /// lblbuildingid control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblbuildingid;
+        protected global::System.Web.UI.WebControls.Button registerButton;
     }
 }

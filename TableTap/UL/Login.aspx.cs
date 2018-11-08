@@ -45,9 +45,14 @@ namespace TableTap.UL
                     Session["user"] = loggedUser;
                     Session["login"] = txbUsername.Value;
 
+
+
+                    string url = "Home.aspx";
+
                     if (usr == 1)
                     {
                         Session["loggedUser"] = "admin";
+                        url = "AdminHome.aspx";
                     }
                     if (usr == 2)
                     {
@@ -56,7 +61,6 @@ namespace TableTap.UL
                     }
 
 
-                    string url = "Home.aspx";
 
                     if (Session["LoginFallback"] != null) //returns user to the page they were previously on
                     {

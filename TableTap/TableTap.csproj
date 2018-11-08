@@ -150,8 +150,8 @@
   <ItemGroup>
     <Content Include="GoogleAPI\Googlelogin.aspx" />
     <Content Include="GoogleAPI\Return.aspx" />
+    <Content Include="Resources\Images\favicon.ico" />
     <Content Include="UL\AdminEditBuilding.aspx" />
-    <Content Include="UL\bookingInformation.aspx" />
     <Content Include="Content\MobileMaster.css" />
     <Content Include="google8de9dcc8df485c7e.html" />
     <Content Include="Resources\Images\LoginBtn.png" />
@@ -159,6 +159,7 @@
     <Content Include="Resources\Images\SorryFlower.png" />
     <Content Include="UL\AdminTaskScheduler.aspx" />
     <Content Include="UL\BookingReceipt.aspx" />
+    <Content Include="UL\GoogleLogin.aspx" />
     <Content Include="UL\IncidentModule.aspx" />
     <Content Include="Resources\Images\Spiteful_Spirit.jpg" />
     <Content Include="Resources\Images\TestImage.png" />
@@ -274,6 +275,7 @@
     <Compile Include="BackGroundWorker\Classes\EmailQueuing.cs" />
     <Compile Include="BackGroundWorker\Classes\README.cs" />
     <Compile Include="BusinessLayer\Classes\GoogleLoginBL.cs" />
+    <Compile Include="BusinessLayer\Classes\GroupBL.cs" />
     <Compile Include="DataAccessLayer\Classes\GroupDAL.cs" />
     <Compile Include="GoogleAPI\Googlelogin.aspx.cs">
       <DependentUpon>Googlelogin.aspx</DependentUpon>
@@ -297,13 +299,6 @@
     <Compile Include="UL\AdminEditBuilding.aspx.designer.cs">
       <DependentUpon>AdminEditBuilding.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UL\bookingInformation.aspx.cs">
-      <DependentUpon>bookingInformation.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UL\bookingInformation.aspx.designer.cs">
-      <DependentUpon>bookingInformation.aspx</DependentUpon>
-    </Compile>
     <Compile Include="BusinessLayer\Classes\DirectionModuleBL.cs" />
     <Compile Include="BusinessLayer\Classes\IncidenceBL.cs" />
     <Compile Include="DataAccessLayer\Classes\IncidenceDAL.cs" />
@@ -321,6 +316,13 @@
     </Compile>
     <Compile Include="UL\BookingReceipt.aspx.designer.cs">
       <DependentUpon>BookingReceipt.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UL\GoogleLogin.aspx.cs">
+      <DependentUpon>GoogleLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UL\GoogleLogin.aspx.designer.cs">
+      <DependentUpon>GoogleLogin.aspx</DependentUpon>
     </Compile>
     <Compile Include="UL\IncidentModule.aspx.cs">
       <DependentUpon>IncidentModule.aspx</DependentUpon>

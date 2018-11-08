@@ -27,6 +27,9 @@
         </p>
         <div>
 
+    <asp:Button ID="Button3" runat="server" Text="Test thing" OnClick="Button3_Click" />
+            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+
         </div>
     </form>
 </body>
