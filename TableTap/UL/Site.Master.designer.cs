@@ -22,6 +22,15 @@ namespace TableTap.UL {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
         
         /// <summary>
+        /// lblNavText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNavText;
+        
+        /// <summary>
         /// loginNavigate control.
         /// </summary>
         /// <remarks>

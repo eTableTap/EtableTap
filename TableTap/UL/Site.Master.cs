@@ -16,7 +16,8 @@ namespace TableTap.UL
             {
                 loginNavigate.Visible = false;
                 logoutNavigate.Visible = true;
-                accountNavigate.Visible = true; 
+                accountNavigate.Visible = true;
+                lblNavText.Text = Session["login"].ToString();
             }
             else
             {

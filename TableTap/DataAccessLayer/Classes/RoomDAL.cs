@@ -67,6 +67,8 @@ namespace TableTap.DataAccessLayer.Classes
                         room.RoomLabel = dr["roomLabel"].ToString();
                         room.BuildingID = Convert.ToInt32(dr["buildingID"]);
                         room.TableQty = Convert.ToInt32(dr["tableQty"]);
+                        room.ClosingTime = TimeSpan.Parse(dr["closingTime"].ToString());
+                        room.OpeningTime = TimeSpan.Parse(dr["openingTime"].ToString());
 
 
                     }

@@ -15,9 +15,9 @@ namespace TableTap.Models
 
         public int BuildingID { get; set; }
 
-        public DateTime OpeningTime { get; set; }
+        public TimeSpan OpeningTime { get; set; }
 
-        public DateTime ClosingTime { get; set; }
+        public TimeSpan ClosingTime { get; set; }
 
         //need RoomMap image stored here
 
@@ -30,7 +30,7 @@ namespace TableTap.Models
 
         }
 
-        public RoomModel(int rid, string rn, string rl, int bid, DateTime ot, DateTime ct, int tq, int ta)
+        public RoomModel(int rid, string rn, string rl, int bid, TimeSpan ot, TimeSpan ct, int tq, int ta)
         {
             this.RoomID = rid;
             this.RoomName = rn;
