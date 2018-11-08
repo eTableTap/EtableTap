@@ -89,6 +89,7 @@ namespace TableTap.UL
 
         protected void Button3_Click(object sender, EventArgs e)
         {
+            Button3.Enabled = false;
             GroupDAL.loadGroupListattime();
 
         }
