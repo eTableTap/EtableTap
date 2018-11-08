@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Text;
 using TableTap.BusinessLayer.Classes;
-using TableTap.DataAccessLayer;
+using TableTap.DataAccessLayer.Classes;
 using TableTap.Models;
 using System.Configuration;
 
@@ -20,7 +20,7 @@ namespace TableTap.UL
         {
             dosomeshit();
 
-
+            Label1.Text = System.DateTime.Now.AddHours(1).ToString("HH");
 
         }
 
@@ -84,6 +84,12 @@ namespace TableTap.UL
 
         protected void Button2_Click(object sender, EventArgs e)
         {
+
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            GroupDAL.loadGroupListattime();
 
         }
     }

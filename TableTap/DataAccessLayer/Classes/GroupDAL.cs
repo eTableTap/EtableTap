@@ -132,8 +132,8 @@ namespace TableTap.DataAccessLayer.Classes
                 conn.Open();
 
                 using (SqlCommand command = new SqlCommand(
-                    "SELECT * FROM tblGroup WHERE gHour = " + System.DateTime.Now.AddHours(1).ToString("HH") + " AND  gDate ="
-                    + System.DateTime.Now.ToString(),
+                    "SELECT * FROM tblGroup WHERE gHour = " + "'" + System.DateTime.Now.AddHours(1).ToString("HH") + "'" + " AND  gDate =" + "'"
+                    + System.DateTime.Now.ToString("yyyy-MM-d") + "'",
                     conn))
                 {
                     SqlDataReader dr = command.ExecuteReader();
@@ -142,12 +142,11 @@ namespace TableTap.DataAccessLayer.Classes
                     {
 
                         group = new GroupModel();
-                        group.groupID = Convert.ToInt32(dr["groupID"]);
-                        group.statusID = Convert.ToInt32(dr["statusID"]);
-                        group.tableID = Convert.ToInt32(dr["tableID"]);
-                        group.gDate = Convert.ToDateTime(dr["gDate"]);
+                        group.groupID = Convert.ToInt32(dr["groupID"].ToString());
+                        group.tableID = Convert.ToInt32(dr["tableID"].ToString());
+                        group.gDate = Convert.ToDateTime(dr["gDate"].ToString());
                         group.emailAddress = dr["emailAddress"].ToString();
-                        group.gHour = Convert.ToInt32(dr["gHour"]);
+                        group.gHour = Convert.ToInt32(dr["gHour"].ToString());
                         group.memberEmail1 = dr["memberEmail1"].ToString();
                         group.memberEmail2 = dr["memberEmail2"].ToString();
                         group.memberEmail3 = dr["memberEmail3"].ToString();

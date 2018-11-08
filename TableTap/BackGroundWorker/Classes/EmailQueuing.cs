@@ -32,7 +32,7 @@ namespace TableTap.BackGroundWorker.Classes
 
                 RecurringJob.AddOrUpdate("01",
                 () => startEmailWorker(),
-                Cron.Minutely);
+                Cron.Hourly);
 
                 startEmailWorker();
 
