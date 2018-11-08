@@ -89,16 +89,18 @@
                 <br />
                 </div>
             </div>
-            <div class="row">
-                    <div class="col mx-auto">
-                    </div>
-                    <div class="col mx-auto">
-                         <asp:Button type="button" ID="btnBook" Text="Book Table" onclick="btnBook_Click" OnClientClick="return CheckDouble();" runat="server" class="btn btn-danger btn-md btn-block login-button" />
-                    </div>  
-                    <div class="col mx-auto">
-                    </div>
-           </div>
-        </div>
+            <br />
+                <div class="row">
+                        <div class="col mx-auto">
+                        </div>
+                        <div class="col mx-auto">
+                             <asp:Button type="button" ID="btnBook" Text="Book Table" onclick="btnBook_Click" OnClientClick="return CheckDouble();" runat="server" class="btn btn-danger btn-lg btn-block login-button" />
+                        </div>  
+                        <div class="col mx-auto">
+                        </div>
+                </div>
+           
+        
          <div class="jumbotron">
              <div class="form-group">
              <div class="row">
@@ -130,9 +132,19 @@
             </div>
            </div>
              
-                   <div class="form-group ">
-                    <asp:Button type="button" ID="btnBookCalander" Text="Book Table" onclick="btnBookCalander_Click" OnClientClick="return CheckDouble();" runat="server" class="btn btn-primary btn-lg btn-block login-button"/>
-                   </div>
+                   
+                    
+                 
+            <br />
+            <div class="row">
+                        <div class="col mx-auto">
+                        </div>
+                        <div class="col mx-auto">
+                            <asp:Button type="button" ID="btnBookCalander" Text="Book Table" onclick="btnBookCalander_Click" OnClientClick="return CheckDouble();" runat="server" class="btn btn-danger btn-lg btn-block login-button"/>
+                        </div>  
+                        <div class="col mx-auto">
+                        </div>
+            </div>
         </div>
     
         </div>

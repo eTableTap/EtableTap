@@ -64,7 +64,7 @@ namespace TableTap.UL
             List<string> hoursList = new List<String>();
             int x = Convert.ToInt32(today.ToString("HH")); ; //set y to current hour
             RoomModel thisRoom = RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID);
-            if ((x > thisRoom.ClosingTime.TotalHours) && (x < thisRoom.OpeningTime.TotalHours))
+            if (x >= thisRoom.ClosingTime.TotalHours)
             {
                 btnBook.Enabled = false;
 
