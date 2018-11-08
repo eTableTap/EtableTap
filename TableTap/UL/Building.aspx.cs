@@ -21,14 +21,7 @@ namespace TableTap.UL
             lblHeading.Text = "Building: " + BuildingBL.getBuildingByID(ID).BuildingName;
             rooms = RoomBL.fillRoomsList(ID);
 
-            if (!IsPostBack) //need this to stop it reverting to the top value every button click
-            {
-                roomDropdown.DataSource = rooms;
-                roomDropdown.DataValueField = "RoomID";
-                roomDropdown.DataTextField = "RoomName";
-                roomDropdown.DataBind();
-            }
-            if (!IsPostBack) //need this to stop it reverting to the top value every button click
+            if (!IsPostBack) 
             {
                 
                 inputRoomSelecter.DataSource = rooms;
@@ -36,14 +29,11 @@ namespace TableTap.UL
                 inputRoomSelecter.DataTextField = "RoomName";
                 inputRoomSelecter.DataBind();
             }
-            if (roomDropdown.Items.Count < 1)
+            if (inputRoomSelecter.Items.Count < 1)
             {
-                lblAboveDropdown.Text = "No rooms currently available";
-                roomDropdown.Visible = false;
+                sideLbl.Text = "No rooms found";
+                inputRoomSelecter.Visible = false;
                 goToRoomingButton.Visible = false;
-
-
-                //show room timetables
 
             }
         }

@@ -16,23 +16,35 @@
 </head>
 
 <body>
-<nav>
-        <div class="btn-group">
-          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            NeedImageHere
-          </button>
-          <div class="dropdown-menu">
-            <asp:HyperLink class="dropdown-item" runat="server" href="/UL/Home.aspx">Home</asp:HyperLink>
-            <asp:HyperLink class="dropdown-item" runat="server" href="Map.aspx">Map</asp:HyperLink>
-            <asp:HyperLink class="dropdown-item" runat="server" href="Scan.aspx">Scan</asp:HyperLink>
-            <div class="dropdown-divider"></div>
-            <asp:HyperLink class="dropdown-item" id="loginNav" runat="server" href="Login.aspx">Login</asp:HyperLink>
-            <asp:HyperLink class="dropdown-item" id="accountNav" runat="server" href="Account.aspx">Account</asp:HyperLink>
-            <asp:HyperLink class="dropdown-item" id="logoutNav" runat="server" href="Logout.aspx">Logout</asp:HyperLink>
-          </div>
-        </div>
 
-</nav>
+<nav class="navbar navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">TableTap</a>
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="navbar-collapse collapse" id="navbarsExample01" style="">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="Home.aspx">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Map.aspx">Find Table</a>
+          </li>
+          <li class="nav-item">
+            <asp:Hyperlink class="nav-link" runat="server"  id="loginNavigate" href="Login.aspx">Login</asp:Hyperlink>
+          </li>
+          <li class="nav-item">
+            <asp:Hyperlink class="nav-link" runat="server"  id="accountNavigate" href="Account.aspx">Account</asp:Hyperlink>
+          </li>
+          <li class="nav-item">
+            <asp:Hyperlink class="nav-link" runat="server" id="logoutNavigate" href="Logout.aspx">Logout</asp:Hyperlink>
+          </li>
+          
+        </ul>
+        
+      </div>
+    </nav>
 
 
     <form id="form1" runat="server">

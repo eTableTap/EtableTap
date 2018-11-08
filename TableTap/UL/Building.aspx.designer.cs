@@ -22,22 +22,13 @@ namespace TableTap.UL {
         protected global::System.Web.UI.WebControls.Label lblHeading;
         
         /// <summary>
-        /// lblAboveDropdown control.
+        /// sideLbl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAboveDropdown;
-        
-        /// <summary>
-        /// roomDropdown control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList roomDropdown;
+        protected global::System.Web.UI.WebControls.Label sideLbl;
         
         /// <summary>
         /// inputRoomSelecter control.

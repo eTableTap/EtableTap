@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="container-fluid">
+    <div class="container">
         <div class="jumbotron">
             
             
@@ -88,7 +88,7 @@
                        </asp:UpdatePanel>
                  </div>
                  <div class="col">
-                    <asp:Calendar runat="server" ID="Cal" OnSelectionChanged="MyCalendar_SelectionChanged" class="align-items-center" />
+                    <asp:Calendar runat="server" ID="Cal" OnSelectionChanged="MyCalendar_SelectionChanged" Width="100%"/>
                 </div>
 
 

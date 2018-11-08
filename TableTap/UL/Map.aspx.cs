@@ -20,17 +20,22 @@ namespace TableTap.UL
             
             
             buildings = BuildingBL.fillBuildingsList();
-           // Image1.ImageUrl = "~/Images/Room1.png";
 
 
-            if (!IsPostBack) //need this to stop it reverting to the top value every button click
+            if (!IsPostBack)
             {
-                buildingDropdown.DataSource = buildings;
-                buildingDropdown.DataValueField = "BuildingID";
-                buildingDropdown.DataTextField = "BuildingName";
-                buildingDropdown.DataBind();
 
-               
+                inputBuildingSelecter.DataSource = buildings;
+                inputBuildingSelecter.DataValueField = "BuildingID";
+                inputBuildingSelecter.DataTextField = "BuildingName";
+                inputBuildingSelecter.DataBind();
+            }
+            if (inputBuildingSelecter.Items.Count < 1)
+            {
+                sideLbl.Text = "No rooms found";
+                inputBuildingSelecter.Visible = false;
+                goToBuildingButton.Visible = false;
+
             }
         }
 
@@ -38,7 +43,7 @@ namespace TableTap.UL
         {
             BuildingModel bm = new BuildingModel();
 
-            bm = buildings.Where(b => b.BuildingID == Int32.Parse(buildingDropdown.Text)).FirstOrDefault(); //grabs single selected building
+            bm = buildings.Where(b => b.BuildingID == Int32.Parse(inputBuildingSelecter.Value)).FirstOrDefault(); //grabs single selected building
             
             int id = bm.BuildingID;
 

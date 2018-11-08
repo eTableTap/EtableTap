@@ -2,28 +2,24 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="container-fluid">
+    <div class="container">
         <div class="jumbotron">
+            <div class="row">
+                <div class="mx-auto">
+                     <asp:Label ID="lblHeading" runat="server" Text="Room list" CssClass="h1"></asp:Label>
+                </div>
+            </div>
+            <br />
             
-            <asp:Label ID="lblHeading" runat="server" Text="Room list" CssClass="h1"></asp:Label>
-
             <div class="form-group">
-                    <asp:Label runat="server" ID="lblAboveDropdown" class="cols-sm-2 control-label" text="Select Room:"></asp:Label>
-					<div class="cols-sm-10">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-							<asp:DropDownList runat="server" ID="roomDropdown" ></asp:DropDownList>
-						</div>
-					</div>
-			</div>
-
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <label class="input-group-text" for="inputGroupSelect01">Options</label>
-              </div>
-              <select runat="server" class="custom-select" id="inputRoomSelecter">
-
-              </select>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <asp:label class="input-group-text" for="inputGroupSelect01" runat="server" Text="Select Room:" ID="sideLbl"></asp:label>
+                  </div>
+                  <select runat="server" class="custom-select" id="inputRoomSelecter">
+                  
+                  </select>
+                </div>
             </div>
 
             <div class="form-group ">

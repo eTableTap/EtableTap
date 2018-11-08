@@ -5,7 +5,11 @@
     <div class="container">
         <div class="jumbotron">
             
-            <asp:Label ID="lblRoomHeading" runat="server" Text="Table list" text-align="center"></asp:Label><br />
+            <div class="row">
+                <div class="mx-auto">
+                    <asp:Label ID="lblRoomHeading" runat="server" Text="Table list" CssClass="h1"></asp:Label><br />
+                </div>
+            </div>
             <asp:Label ID="lblSelectGuide" runat="server" Text="Current table statuses:" CssClass="h3"></asp:Label><br />
             <asp:Label ID="lblSelectHelp" runat="server" Text="Click table to book it" class="cols-sm-2 control-label"></asp:Label>
             <div id="divTableImages" runat="server"></div>

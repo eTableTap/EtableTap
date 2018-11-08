@@ -22,31 +22,31 @@ namespace TableTap.UL {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
         
         /// <summary>
-        /// loginNav control.
+        /// loginNavigate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink loginNav;
+        protected global::System.Web.UI.WebControls.HyperLink loginNavigate;
         
         /// <summary>
-        /// accountNav control.
+        /// accountNavigate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink accountNav;
+        protected global::System.Web.UI.WebControls.HyperLink accountNavigate;
         
         /// <summary>
-        /// logoutNav control.
+        /// logoutNavigate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink logoutNav;
+        protected global::System.Web.UI.WebControls.HyperLink logoutNavigate;
         
         /// <summary>
         /// form1 control.
