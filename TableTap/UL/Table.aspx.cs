@@ -220,7 +220,7 @@ namespace TableTap.UL
             newGroupBooking.memberEmail4 = "Test4";
             newGroupBooking.memberEmail5 = "Test5";
 
-            TableBL.processCalanderBookTable(newGroupBooking);
+            bool btest = TableBL.processCalanderBookTable(newGroupBooking);
 
             //for testing
             lblCalCheck.Text = "TableID = " + newGroupBooking.tableID.ToString() + " " +
@@ -230,7 +230,8 @@ namespace TableTap.UL
                 "memberEmail2 = " + newGroupBooking.memberEmail2 + " " +
                 "memberEmail3 = " + newGroupBooking.memberEmail3 + " " +
                 "memberEmail4 = " + newGroupBooking.memberEmail4 + " " +
-                "memberEmail5 = " + newGroupBooking.memberEmail5;
+                "memberEmail5 = " + newGroupBooking.memberEmail5 + " " +
+                btest;
 
         }
         protected void makeBooking()

@@ -86,8 +86,13 @@ namespace TableTap.UL
             //imageHL.Text = "hLink" + tableNumber.ToString();
 
             imageHL.Controls.Add(imageTable);//adds image to the hyperlink
-            if (TableBL.checkTableStatus(tableNumber))
+            /*if (TableBL.checkTableStatus(tableNumber))
             {
+                imageTable.BackColor = System.Drawing.Color.Green;
+                imageHL.NavigateUrl = url; //will only genertate url if table is available
+            }*/
+            if (!TableBL.checkTableHourAvailability(tableNumber,Int32.Parse(DateTime.Now.ToString("HH")), DateTime.Now)) //returning false means it is free
+            {                                                                                                            //returning true means table exists, therefor is booked
                 imageTable.BackColor = System.Drawing.Color.Green;
                 imageHL.NavigateUrl = url; //will only genertate url if table is available
             }

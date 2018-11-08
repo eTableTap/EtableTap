@@ -350,7 +350,7 @@ namespace TableTap.DataAccessLayer.Classes
 
         public static bool CreateCalanderBookTable(GroupModel groupModel)
         {
-            try
+            //try
             {
                 SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
                 GroupModel newGroupModel = groupModel;
@@ -361,7 +361,7 @@ namespace TableTap.DataAccessLayer.Classes
 
                     using (SqlCommand command = new SqlCommand(
 
-                        "INSERT INTO tblGroup (TableID, gDate, emailAddress, gHour, memberEmail, memberEmail1, memberEmail2, memberEmail3, memberEmail4) VALUES ("
+                        "INSERT INTO tblGroup (TableID, gDate, emailAddress, gHour, memberEmail1, memberEmail2, memberEmail3, memberEmail4, memberEmail5) VALUES ("
                         + "'" + newGroupModel.tableID + "'" + ", "
                         + "'" + newGroupModel.gDate.ToString("yyyy-MM-d") + "'" + ", "
                         + "'" + newGroupModel.emailAddress + "'" + ", "
@@ -382,7 +382,7 @@ namespace TableTap.DataAccessLayer.Classes
                     return true;
                 }
             }
-            catch
+            //catch
             {
                 return false;
             }

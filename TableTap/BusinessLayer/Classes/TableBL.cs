@@ -69,9 +69,12 @@ namespace TableTap.BusinessLayer.Classes
 
         public static bool processCalanderBookTable(GroupModel groupModel)
         {
-            TableDAL.CreateCalanderBookTable(groupModel);
-            
-            return true;
+            if (TableDAL.CreateCalanderBookTable(groupModel))
+            {
+                return true;
+            }
+
+            return false;
         }
 
         public static void ProcessAddNewTable(TableModel table)

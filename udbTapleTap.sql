@@ -262,7 +262,7 @@ CREATE TABLE tblStatus
 
 	CREATE TABLE tblGroup (
 	groupID			INT IDENTITY(100001,1) PRIMARY KEY,
-	statusID		INT NOT NULL,
+	statusID		INT,
 	tableID			INT NOT NULL,
 	gDate			DATE NOT NULL,
 	emailAddress	NVARCHAR(100) NOT NULL,
