@@ -20,7 +20,6 @@ namespace TableTap.UL
 
 
 /// <summary>
-/// This contains email duplicate checking which has been disabled to to a bug, will return too when I have time - HAYDEN
 /// would be good if a new pair of eyes looked at this
 /// if the Initiate(fEmail) is disrupted in anyway there are major Jquery errors.
 /// </summary>

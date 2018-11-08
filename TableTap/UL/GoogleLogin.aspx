@@ -1,19 +1,30 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UL/Site.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="TableTap.UL.Register" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UL/Site.Master" AutoEventWireup="true" CodeBehind="GoogleLogin.aspx.cs" Inherits="TableTap.UL.GoogleLogin" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server" >
-    <div class="container-fluid">
+</asp:Content> 
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+
+        <div class="container">
         <div class="jumbotron">
             <div class="row main">
 				
-				<div class="main-login main-center">
-					<div ></div>
+				<div class="main-login main-center mx-auto">
+                    
                         <div class="panel-heading">
 	                        <div class="panel-title text-center">
 	               		    <h1 class="title">Register</h1>
 	               		    <hr />
 	               	        </div>
 	                    </div> 
+
+                    	<div class="form-group">
+							<label for="name" class="cols-sm-2 control-label">Email</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+                                    <asp:Label ID="lblEmail" runat="server" Text=""></asp:Label>
+								</div>
+							</div>
+						</div>
 						
 						<div class="form-group">
 							<label for="name" class="cols-sm-2 control-label">Your First Name</label>
@@ -35,15 +46,6 @@
 							</div>
 						</div>
 
-						<div class="form-group">
-							<label for="email" class="cols-sm-2 control-label">Your Email</label>
-							<div class="cols-sm-10">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-									<input type="email" class="form-control" name="email" id="inEmail"  placeholder="Enter your Email" required="required" runat="server"/>
-								</div>
-							</div>
-						</div>
 
                       <div class="form-group">
 						<label for="phone" class="cols-sm-2 control-label">Mobile Phone</label>
@@ -52,11 +54,10 @@
 									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
 									<input type="number" class="form-control" name="Phone" id="inPhone"  placeholder="Enter your phone" required="required" runat="server"/>
 								</div>
+
 							</div>
 						</div>
-
-
-						<div class="form-group">
+                    						<div class="form-group">
 							<label for="password" class="cols-sm-2 control-label">Password</label>
 							<div class="cols-sm-10">
 								<div class="input-group">
@@ -85,18 +86,19 @@
                         </asp:CompareValidator><br />
 
 
-                        
-                        <asp:Label ID="lblStatus" runat="server" Text=""></asp:Label>
-
-						<div class="form-group ">
+                    	<div class="form-group ">
 							<asp:Button type="button" Text="Register" class="btn btn-primary btn-lg btn-block login-button" id="registerButton" onclick="registerButton_Click" runat="server" />
 						</div>
-						
-					
-				</div>
-			</div>
+
+                    </div>
+                </div>
+            </div>
+            </div>
 
 
-        </div>
-    </div>
 </asp:Content>
+
+
+    
+
+

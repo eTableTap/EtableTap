@@ -1,13 +1,26 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UL/Site.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="TableTap.UL.Login" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server" style="text-align:center">
+
+    <!---- Google login ---->
+     <script type="text/javascript">
+       (function () {
+           var po = document.createElement('script');
+           po.type = 'text/javascript'; po.async = true;
+           po.src = 'https://plus.google.com/js/client:plusone.js';
+           var s = document.getElementsByTagName('script')[0];
+           s.parentNode.insertBefore(po, s);
+       })();
+     </script>
+    <!--- END Google login --->
+
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="container-fluid">
-        <div class="jumbotron">
-             <div class="row main">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server" class="form-horizontal" method="post" action="#">
+    <div class="container-fluid" >
+        <div class="jumbotron" >
+             <div class="row main" >
 				
 				<div class="main-login main-center">
-					<form class="form-horizontal" method="post" action="#">
+
                         <div class="panel-heading">
 	                        <div class="panel-title text-center">
 	               		    <h1 class="title">Login</h1>
@@ -43,16 +56,52 @@
 							<asp:Button type="button" Text="Login" class="btn btn-primary btn-lg btn-block login-button" id="loginButton" onclick="loginButton_Click" runat="server" />
 						</div>
 
+                        <div id="googleSignin" style="text-align:center" >
+                            <button class="g-signin" style="text-align:Center"
+                            data-scope="https://www.googleapis.com/auth/plus.login  https://www.googleapis.com/auth/userinfo.email "
+                            data-requestvisibleactions="http://schemas.google.com/AddActivity"
+                            data-clientid="95633628411-ieit1lmkbmrsorf62osrevkmffi4uk87.apps.googleusercontent.com"
+                            data-accesstype="online"
+                            data-callback="Callback"
+                            data-theme="dark"
+                            data-cookiepolicy="single_host_origin">
+                            </button>
+                            
+                       </div>
+
                         <div class="login-register">
 				            <asp:Label ID="lblinfo" runat="server" Text="Don't have an account?  "></asp:Label>
 				            <asp:HyperLink runat="server" href="Register.aspx">Register</asp:HyperLink>
 				        </div>
 
-					</form>
+					
 				</div>
 			</div>
 
 
         </div>
     </div>
+
+    <!----- GOOGLE LOGIN SCRIPT ---------->
+
+    <script type="text/javascript">
+        function Callback(authResult)
+        {
+
+            if (authResult['access_token'])
+            {
+
+                // Signin is successful
+                window.location.href = '/UL/GoogleLogin.aspx?accessToken=' + authResult['access_token'];
+            }
+            else
+            {
+                window.location.href = '/UL/Login.aspx'; // do not place anything here as it is too annoying to code for no benefit
+            }
+        }
+     </script>
+
+
+
+
 </asp:Content>

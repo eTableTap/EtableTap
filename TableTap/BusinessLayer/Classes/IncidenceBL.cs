@@ -12,12 +12,12 @@ namespace TableTap.BusinessLayer.Classes
 
         public static void datalayerpassadd(IncidentModel incident)
         {
-//            try
+            try
             {
 
                 IncidenceDAL.AddNewIncidentTable(incident);
             }
-//            catch
+            catch
             {
                 // insulation
             }
