@@ -7,7 +7,7 @@
     <div class="container">
         <div class="jumbotron">
         <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-6" runat ="server" id="loginArea">
                      <asp:hyperlink ID="hlLogin" runat="server" href="Login.aspx">
                                 <asp:Image ID="imgLogin" runat="server" imageurl="~/Resources/Images/LoginBtn.png" CssClass="HomeImages"/>
                      </asp:hyperlink>

@@ -26,6 +26,10 @@ namespace TableTap.UL
             {
                 
             }
+            else
+            {
+                loginArea.Visible = false;
+            }
         }
     }
 

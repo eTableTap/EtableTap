@@ -23,10 +23,10 @@ namespace TableTap.UL
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["loggedUser"] != "admin") //stops non admins accessing page
+            /*if (Session["loggedUser"] != "admin") //stops non admins accessing page
             {
                 Response.Redirect("Login.aspx");
-            }
+            }*/
 
             buildings = BuildingBL.fillBuildingsList();
 
@@ -92,7 +92,7 @@ namespace TableTap.UL
         {
 
 
-            BuildingModel bm = new BuildingModel();
+            /*BuildingModel bm = new BuildingModel();
 
             bm = buildings.Where(b => b.BuildingID == Int32.Parse(buildingDropdown.Text)).FirstOrDefault(); //grabs single selected building
             int id = bm.BuildingID;
@@ -107,14 +107,14 @@ namespace TableTap.UL
             int rid = rm.RoomID;
 
             tables = TableBL.fillTableList(rid);
-
+            
             tableDropdown.DataSource = tables;
-            tableDropdown.DataValueField = "TableID";
-            tableDropdown.DataTextField = "TableID";
+            //tableDropdown.DataValueField = "TableID";
+            //tableDropdown.DataTextField = "TableID";
             tableDropdown.DataBind();
             ////////////////////
 
-            QRCodeEncoder encoder = new QRCodeEncoder();
+           
 
             TableModel tm = new TableModel();
 
@@ -122,10 +122,11 @@ namespace TableTap.UL
 
             int tid = tm.TableID;
 
-            generateButton.Text = tid.ToString();
+            generateButton.Text = tid.ToString();*/
+            QRCodeEncoder encoder = new QRCodeEncoder();
+            generateButton.Text = tableDropdown.Text;
 
-            
-            string sGeneration = ConfigurationManager.AppSettings["UnsecurePath"] + "Table.aspx?id=" + tid.ToString();
+            string sGeneration = "www.etabletap.com/UL/" + "Table.aspx?id=" + tableDropdown.Text;
 
 
             Bitmap img = encoder.Encode(sGeneration);
@@ -135,8 +136,8 @@ namespace TableTap.UL
 
             //Change to your own location if you want to store a copy-- not needed
                //     img.Save("C:\\Users\\kepst\\Desktop\\LastQRCodeCreated.png", ImageFormat.Png);
-           // QRImage.ImageUrl = "LastQRCodeCreated.png";
-           
+           // QRImage.ImageUrl = "LastQRCodeCreated.png";*/
+
         }
     }
 }
