@@ -18,6 +18,8 @@ namespace TableTap.UL
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            try
+            {
             string URL = Session["QRURL"].ToString();
             string filename = Session["filename"].ToString();
 
@@ -25,10 +27,14 @@ namespace TableTap.UL
             string imgURL = Session["Login"].ToString();
 
             string path = ("~/Resources/Images/QR/") + filename + ".png";
-            Label1.Text = path;
+            lblURL.Text = URL;
                 
             Image1.ImageUrl = path;
-
+            }
+            catch
+            {
+                Response.Redirect("Error.aspx");
+            }
         }
 
         
