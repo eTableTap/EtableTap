@@ -131,12 +131,32 @@ namespace TableTap.UL
 
             Bitmap img = encoder.Encode(sGeneration);
 
-            Response.ContentType = "image/png";
-            img.Save(Response.OutputStream, System.Drawing.Imaging.ImageFormat.Png);
+            Session["QRURL"] = sGeneration;
+            Session["filename"] = makeFileName();
+            //   Response.ContentType = "image/png";
+            //     img.Save(Response.OutputStream, System.Drawing.Imaging.ImageFormat.Png);
 
             //Change to your own location if you want to store a copy-- not needed
-               //     img.Save("C:\\Users\\kepst\\Desktop\\LastQRCodeCreated.png", ImageFormat.Png);
-           // QRImage.ImageUrl = "LastQRCodeCreated.png";*/
+            string path = Server.MapPath("~/Resources/Images/QR/");
+            generateButton.Text = path;
+
+            img.Save(path + makeFileName() + ".Png", System.Drawing.Imaging.ImageFormat.Png);
+            // QRImage.ImageUrl = "LastQRCodeCreated.png";
+
+            Response.Redirect("PrintPage.aspx");
+
+        }
+
+        private string makeFileName()
+        {
+            string data = Session["login"].ToString();
+
+            data = data.Replace(".", "");
+            data = data.Replace("@", "");
+
+            string filename = data;
+
+            return filename;
 
         }
     }
