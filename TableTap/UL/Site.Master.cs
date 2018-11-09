@@ -19,6 +19,13 @@ namespace TableTap.UL
                 accountNavigate.Visible = true;
                 lblNavText.Text = Session["login"].ToString();
             }
+            else if ((string)Session["loggedUser"] == "admin")
+            {
+                loginNavigate.Visible = false;
+                logoutNavigate.Visible = true;
+                accountNavigate.Visible = true;
+                lblNavText.Text = Session["login"].ToString();
+            }
             else
             {
                 loginNavigate.Visible = true;
