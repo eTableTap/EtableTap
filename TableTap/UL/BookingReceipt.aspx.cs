@@ -51,7 +51,7 @@ namespace TableTap.UL
 
             building = BuildingBL.getBuildingByID(room.BuildingID);
             string name = user.FirstName;
-            string day = group.gDate.ToString();
+            string day = group.gDate.ToString("yyyy-MM-d");
             string hour = group.gHour.ToString() + ":00";
             string bTable = table.TableID.ToString();
             string roomName = room.RoomName;

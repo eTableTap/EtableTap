@@ -81,6 +81,13 @@ namespace TableTap.BusinessLayer.Classes
             return false;
         }
 
+        public static int getGroupIntByGroupModel(GroupModel groupModel)
+        {
+            int i = TableDAL.getGroupIDByGroupModel(groupModel);
+
+            return i;
+        }
+
         public static string processTableCheckin(GroupModel groupModel)
         {
             bool bCheck = TableDAL.checkCheckin(groupModel); //check if booking exists - return false if exists

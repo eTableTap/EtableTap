@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using TableTap.BusinessLayer.Classes;
 using TableTap.BusinessLayer; //UserBL is not in the namespace Businesslayer.Classes, need to fix and change all references
 using TableTap.Models;
-
+using System.Configuration;
 
 namespace TableTap.UL
 {
@@ -210,6 +210,11 @@ namespace TableTap.UL
                 }
                 //(string email, int tableID,DateTime date, string sHour)
                 btnDirections.Visible = true;
+
+                int receipt = TableBL.getGroupIntByGroupModel(newGroupBooking);
+
+                string url = ConfigurationManager.AppSettings["UnsecurePath"] + "BookingReceipt.aspx?id=" + receipt;
+                Response.Redirect(url);
             }
 
 
@@ -247,9 +252,43 @@ namespace TableTap.UL
             newGroupBooking.memberEmail4 = "Test4";
             newGroupBooking.memberEmail5 = "Test5";
 
-            bool btest = TableBL.processCalanderBookTable(newGroupBooking);
+            //bool btest = TableBL.processCalanderBookTable(newGroupBooking);
+            if(TableBL.processCalanderBookTable(newGroupBooking))
+            {
+                lblHeading.Text = "Table was booked";
 
+                lblStatus.Text = "Table: " + TableBL.getTableByID(ID).TableID + "<br />Room Name: " + RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).RoomName.ToString() + "<br />in building: " + BuildingBL.getBuildingByID(RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).BuildingID).BuildingName + "<br />at: " + sHour + "00 -" + (Convert.ToInt32(sHour) + 1).ToString() + "00" + "<br /> was successfully booked";
+
+                if (InputEmail1.Value != null)
+                {
+                    notifyGroup(InputCalEmail1.Value, ID, date, sHour);
+                }
+                if (InputEmail2.Value != null)
+                {
+                    notifyGroup(InputCalEmail2.Value, ID, date, sHour);
+                }
+                if (InputEmail3.Value != null)
+                {
+                    notifyGroup(InputCalEmail3.Value, ID, date, sHour);
+                }
+                if (InputEmail4.Value != null)
+                {
+                    notifyGroup(InputCalEmail4.Value, ID, date, sHour);
+                }
+                if (InputEmail5.Value != null)
+                {
+                    notifyGroup(InputCalEmail5.Value, ID, date, sHour);
+                }
+                //(string email, int tableID,DateTime date, string sHour)
+                btnDirections.Visible = true;
+
+                int receipt = TableBL.getGroupIntByGroupModel(newGroupBooking);
+
+                string url = ConfigurationManager.AppSettings["UnsecurePath"] + "BookingReceipt.aspx?id=" + receipt;
+                Response.Redirect(url);
+            }
             //for testing
+            /*
             lblCalCheck.Text = "TableID = " + newGroupBooking.tableID.ToString() + " " +
                 "Date = " + newGroupBooking.gDate.ToShortDateString() + " " +
                 "UserEmail = " + newGroupBooking.emailAddress + " " +
@@ -259,6 +298,7 @@ namespace TableTap.UL
                 "memberEmail4 = " + newGroupBooking.memberEmail4 + " " +
                 "memberEmail5 = " + newGroupBooking.memberEmail5 + " " +
                 btest;
+            */
 
         }
         /*protected void makeBooking()

@@ -469,6 +469,42 @@ namespace TableTap.DataAccessLayer.Classes
 
             return false; // = table can be checked into
         }
+        public static int getGroupIDByGroupModel(GroupModel groupModel)
+        {
+
+            int iTest = 0;
+
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+
+            using (conn)
+            {
+                conn.Open();
+
+                using (SqlCommand command = new SqlCommand(
+                    "SELECT groupID FROM tblGroup WHERE tableID=" + "'" + groupModel.tableID.ToString() + "'"
+                    + " AND gDate=" + "'" + groupModel.gDate.ToString("yyyy-MM-d") + "'"
+                    + " AND gHour=" + "'" + groupModel.gHour.ToString() + "'",
+                    conn))
+
+
+                {
+                    SqlDataReader dr = command.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        iTest = Convert.ToInt32(dr["groupID"].ToString());
+
+                    }
+                    dr.Close();
+
+                }
+                conn.Close();
+
+            }
+
+            
+            return iTest; 
+        }
 
         public static List<string> LoadTable(string tableID)
         {
