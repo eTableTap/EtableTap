@@ -294,6 +294,7 @@
       <DependentUpon>Return.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\GroupModel.cs" />
+    <Compile Include="Resources\Images\QR\ForceGen.cs" />
     <Compile Include="UL\AdminAddRoom.aspx.cs">
       <DependentUpon>AdminAddRoom.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -572,7 +573,6 @@
   <ItemGroup>
     <Folder Include="IncidenceModule\" />
     <Folder Include="obj\" />
-    <Folder Include="Resources\Images\QR\" />
     <Folder Include="View\" />
   </ItemGroup>
   <ItemGroup>

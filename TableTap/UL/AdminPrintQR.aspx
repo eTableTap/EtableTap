@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
      <div class="container-fluid">
         <div class="jumbotron">
-            <h2> Beau's table list</h2>
+            <h2> Print QR</h2>
             <asp:ScriptManager id="ScriptManager1" runat="server">
             </asp:ScriptManager>
 
