@@ -49,7 +49,7 @@ namespace TableTap.UL
             while (x < iLenght)
             {
 
-                createImageTable(Convert.ToInt32(drawtables[x].TableID.ToString()));
+                createImageTable(Convert.ToInt32(drawtables[x].TableID.ToString()), drawtables[x].Category);
                 x++;
             }
         }
@@ -67,14 +67,21 @@ namespace TableTap.UL
 
         }
 
-        protected void createImageTable(int tableNumber)
+        protected void createImageTable(int tableNumber, string category)
         {
             string url = ConfigurationManager.AppSettings["UnsecurePath"] + "Table.aspx?id=" + tableNumber;
             /////////////////
             Image imageTable = new Image();
             imageTable.ID = "imgBox" + tableNumber.ToString();
             imageTable.Attributes.Add("height", "42");
-            imageTable.Attributes.Add("width", "42");
+            if (category == "Large")
+            {
+                imageTable.Attributes.Add("width", "62");
+            }
+            else
+            {
+                imageTable.Attributes.Add("width", "42");
+            }
             imageTable.Attributes.Add("class", "img-circle");
 
             imageTable.Attributes.Add("style", "border-radius:14px;margin-bottom:20px; ");
