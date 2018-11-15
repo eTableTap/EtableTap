@@ -76,7 +76,7 @@ CREATE TABLE tblBooking (
 	memberEmail3		NVARCHAR(40) DEFAULT ('No Email'),
 	memberEmail4		NVARCHAR(40) DEFAULT ('No Email'),
 	memberEmail5		NVARCHAR(40) DEFAULT ('No Email'),
-	Checkin				BIT NOT NULL DEFAULT (0)
+	checkinStatus		BIT NOT NULL DEFAULT (0)
 
 
 		CONSTRAINT fk_gettheTableID FOREIGN KEY (tableID) REFERENCES tblTable(tableID)

@@ -76,7 +76,7 @@ namespace TableTap.UL
             rm = rooms.Where(r => r.RoomID == Int32.Parse(roomDropdown.Text)).FirstOrDefault(); //grabs single selected building
             int rid = rm.RoomID;
 
-            tables = TableBL.fillTableList(rid);
+            tables = TableBL.FillTableList(rid);
 
             tableDropdown.DataSource = tables;
             tableDropdown.DataValueField = "TableID";

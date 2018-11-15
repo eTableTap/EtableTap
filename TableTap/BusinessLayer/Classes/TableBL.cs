@@ -9,27 +9,27 @@ namespace TableTap.BusinessLayer.Classes
 {
     public class TableBL
     {
-        public static List<TableModel> fillTableList(int id)
+        public static List<TableModel> FillTableList(int id)
         {
             List<TableModel> tables = new List<TableModel>();
 
-            tables = TableDAL.loadTableList(id);
+            tables = TableDAL.LoadTableList(id);
 
             return tables;
         }
-        public static TableModel getTableByID(int id)
+        public static TableModel GetTableByID(int id)
         {
             TableModel table = new TableModel();
 
-            table = TableDAL.loadTableByID(id);
+            table = TableDAL.LoadTableByID(id);
 
             return table;
         }
 
 
-        public static bool checkTableHourAvailability(int TableID, int Hour, DateTime dateTime)
+        public static bool CheckTableHourAvailability(int TableID, int Hour, DateTime dateTime)
         {
-            bool bCheckHour = TableDAL.checkTableHourAvailability(TableID, Hour, dateTime);
+            bool bCheckHour = TableDAL.CheckTableHourAvailability(TableID, Hour, dateTime);
             if (bCheckHour == true)
             {
                 return true;
@@ -39,12 +39,12 @@ namespace TableTap.BusinessLayer.Classes
         }
 
 
-        public static bool processCalanderBookTable(BookingModel groupModel)
+        public static bool ProcessCalanderBookTable(BookingModel bookingModel)
         {
-            bool bCheck = TableDAL.checkTableStatus(groupModel); //check if booking exists - return false if exists
+            bool bCheck = TableDAL.CheckTableStatus(bookingModel); //check if booking exists - return false if exists
             if (bCheck == true)
             {
-                if (TableDAL.CreateCalanderBookTable(groupModel))
+                if (TableDAL.CreateCalanderBookTable(bookingModel))
                 {
                     return true;
                 }
@@ -53,20 +53,21 @@ namespace TableTap.BusinessLayer.Classes
             return false;
         }
 
-        public static int getGroupIntByGroupModel(BookingModel groupModel)
+        public static int GetBookingIDByBookingModel(BookingModel bookingModel) 
         {
-            int i = TableDAL.getGroupIDByGroupModel(groupModel);
+            
+            int i = TableDAL.GetBookingIDByBookingModel(bookingModel);
 
             return i;
         }
 
-        public static string processTableCheckin(BookingModel groupModel)
+        public static string ProcessTableCheckin(BookingModel bookingModel)
         {
-            bool bCheck = TableDAL.checkCheckin(groupModel); //check if booking exists - return false if exists
+            bool bCheck = TableDAL.CheckCheckin(bookingModel); //check if booking exists - return false if exists
             if (bCheck == false)
             {
                 
-                    return groupModel.emailAddress + " has successfully checked in!";
+                    return bookingModel.emailAddress + " has successfully checked in!";
                 
             }
 

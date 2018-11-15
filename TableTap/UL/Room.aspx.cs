@@ -18,7 +18,7 @@ namespace TableTap.UL
             int ID = Int32.Parse(Request.QueryString["ID"]);
             lblRoomHeading.Text = "Room: " + RoomBL.getRoomByID(ID).RoomName;
 
-            tables = TableBL.fillTableList(ID);
+            tables = TableBL.FillTableList(ID);
 
             if (!IsPostBack) //need this to stop it reverting to the top value every button click
             {
@@ -37,7 +37,7 @@ namespace TableTap.UL
 
             //
             List<TableModel> drawtables = new List<TableModel>();
-            drawtables = TableBL.fillTableList(ID);
+            drawtables = TableBL.FillTableList(ID);
             int iLenght = drawtables.Count();
             int x = 0;
             /*///////////////////////
@@ -91,7 +91,7 @@ namespace TableTap.UL
                 imageTable.BackColor = System.Drawing.Color.Green;
                 imageHL.NavigateUrl = url; //will only genertate url if table is available
             }*/
-            if (!TableBL.checkTableHourAvailability(tableNumber,Int32.Parse(DateTime.Now.ToString("HH")), DateTime.Now)) //returning false means it is free
+            if (!TableBL.CheckTableHourAvailability(tableNumber,Int32.Parse(DateTime.Now.ToString("HH")), DateTime.Now)) //returning false means it is free
             {                                                                                                            //returning true means table exists, therefor is booked
                 imageTable.BackColor = System.Drawing.Color.Green;
                 imageHL.NavigateUrl = url; //will only genertate url if table is available

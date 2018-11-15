@@ -35,7 +35,7 @@ namespace TableTap.UL
         protected void MainWorker(int groupID)
         {
 
-            BookingModel group = GroupBL.searchGroupByID(groupID);
+            BookingModel booking = BookingBL.SearchBookingByID(groupID);
 
             UserModel user = new UserModel();
             TableModel table = new TableModel();
@@ -43,16 +43,16 @@ namespace TableTap.UL
             BuildingModel building = new BuildingModel();
 
 
-            table = TableBL.getTableByID(group.tableID);
+            table = TableBL.GetTableByID(booking.tableID);
 
-            user = UserBL.passUserSearch(group.emailAddress);
+            user = UserBL.passUserSearch(booking.emailAddress);
 
             room = RoomBL.getRoomByID(table.RoomID);
 
             building = BuildingBL.getBuildingByID(room.BuildingID);
             string name = user.FirstName;
-            string day = group.gDate.ToString("yyyy-MM-d");
-            string hour = group.gHour.ToString() + ":00";
+            string day = booking.bookingDate.ToString("yyyy-MM-d");
+            string hour = booking.bookingHour.ToString() + ":00";
             string bTable = table.TableID.ToString();
             string roomName = room.RoomName;
             string buildingName = building.BuildingName;

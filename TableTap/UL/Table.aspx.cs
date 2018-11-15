@@ -18,7 +18,7 @@ namespace TableTap.UL
         {
             int ID = Int32.Parse(Request.QueryString["ID"]);
 
-            TableModel ThisTable = TableBL.getTableByID(ID);
+            TableModel ThisTable = TableBL.GetTableByID(ID);
             lblgetID.Text = ThisTable.TableID.ToString();
             lblgetCategory.Text = ThisTable.Category;
             lblgetSeatingCapacity.Text = ThisTable.PersonCapacity.ToString();
@@ -32,7 +32,7 @@ namespace TableTap.UL
 
             List<string> hoursList = new List<String>();
             int x = Convert.ToInt32(today.ToString("HH")); ; //set y to current hour
-            RoomModel thisRoom = RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID);
+            RoomModel thisRoom = RoomBL.getRoomByID(TableBL.GetTableByID(ID).RoomID);
             if (x >= thisRoom.ClosingTime.TotalHours)
             {
                 btnBook.Enabled = false;
@@ -40,7 +40,7 @@ namespace TableTap.UL
             }
             while (x < thisRoom.ClosingTime.TotalHours)      //will loop until the end of the day's booking aka 2300. Can change to room closing time     
             {
-                if (!TableBL.checkTableHourAvailability(Int32.Parse(Request.QueryString["ID"]), x, today))
+                if (!TableBL.CheckTableHourAvailability(Int32.Parse(Request.QueryString["ID"]), x, today))
                 {
                     hoursList.Add(x.ToString() + ": " + "is free");
                 }
@@ -63,8 +63,8 @@ namespace TableTap.UL
                 lblStatus.Text = "THE TABLE IS CURRENTLY OCCUPIED";
             }
 
-            showCalInputBoxes((TableBL.getTableByID(ID).PersonCapacity) - 1); // -1 because the user takes up 1 spot
-            showInputBoxes((TableBL.getTableByID(ID).PersonCapacity) - 1);
+            showCalInputBoxes((TableBL.GetTableByID(ID).PersonCapacity) - 1); // -1 because the user takes up 1 spot
+            showInputBoxes((TableBL.GetTableByID(ID).PersonCapacity) - 1);
             
 
         }
@@ -100,14 +100,14 @@ namespace TableTap.UL
                 lblCalCheck.Text += dt.ToLongDateString() + "<br />";
             }
             int ID = Int32.Parse(Request.QueryString["ID"]);
-            RoomModel thisRoom = RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID);
+            RoomModel thisRoom = RoomBL.getRoomByID(TableBL.GetTableByID(ID).RoomID);
             List<string> hoursList = new List<String>();
 
             double x = thisRoom.OpeningTime.TotalHours; //building opening time
 
             while (x < thisRoom.ClosingTime.TotalHours)      //will loop until the end of the day's booking aka 2300. Can change to room closing time     
             {
-                if (!TableBL.checkTableHourAvailability(Int32.Parse(Request.QueryString["ID"]), Convert.ToInt32(x), Cal.SelectedDate))
+                if (!TableBL.CheckTableHourAvailability(Int32.Parse(Request.QueryString["ID"]), Convert.ToInt32(x), Cal.SelectedDate))
                 {
                     hoursList.Add(x.ToString() + ": " + "is free");
                 }
@@ -145,22 +145,22 @@ namespace TableTap.UL
             string sHour = hourDropdown.SelectedValue.ToString();
             sHour = new string(sHour.TakeWhile(Char.IsDigit).ToArray());
             //DateTime date = DateTime.Now;
-            BookingModel newGroupBooking = new BookingModel();
-            newGroupBooking.tableID = ID;
-            newGroupBooking.gDate = DateTime.Now;
-            newGroupBooking.emailAddress = Session["Login"].ToString();
-            newGroupBooking.gHour = Int32.Parse(sHour);
-            newGroupBooking.memberEmail1 = InputEmail1.Value;
-            newGroupBooking.memberEmail2 = InputEmail2.Value;
-            newGroupBooking.memberEmail3 = InputEmail3.Value;
-            newGroupBooking.memberEmail4 = InputEmail4.Value;
-            newGroupBooking.memberEmail5 = InputEmail5.Value;
+            BookingModel newBooking = new BookingModel();
+            newBooking.tableID = ID;
+            newBooking.bookingDate = DateTime.Now;
+            newBooking.emailAddress = Session["Login"].ToString();
+            newBooking.bookingHour = Int32.Parse(sHour);
+            newBooking.memberEmail1 = InputEmail1.Value;
+            newBooking.memberEmail2 = InputEmail2.Value;
+            newBooking.memberEmail3 = InputEmail3.Value;
+            newBooking.memberEmail4 = InputEmail4.Value;
+            newBooking.memberEmail5 = InputEmail5.Value;
 
-            if (TableBL.processCalanderBookTable(newGroupBooking))
+            if (TableBL.ProcessCalanderBookTable(newBooking))
             {
                 lblHeading.Text = "Table was booked";
 
-                lblStatus.Text = "Table: " + TableBL.getTableByID(ID).TableID + "<br />Room Name: " + RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).RoomName.ToString() + "<br />in building: " + BuildingBL.getBuildingByID(RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).BuildingID).BuildingName + "<br />at: " + sHour + "00 -" + (Convert.ToInt32(sHour) + 1).ToString() + "00" + "<br /> was successfully booked";
+                lblStatus.Text = "Table: " + TableBL.GetTableByID(ID).TableID + "<br />Room Name: " + RoomBL.getRoomByID(TableBL.GetTableByID(ID).RoomID).RoomName.ToString() + "<br />in building: " + BuildingBL.getBuildingByID(RoomBL.getRoomByID(TableBL.GetTableByID(ID).RoomID).BuildingID).BuildingName + "<br />at: " + sHour + "00 -" + (Convert.ToInt32(sHour) + 1).ToString() + "00" + "<br /> was successfully booked";
 
                 if (InputEmail1.Value != null)
                 {
@@ -182,10 +182,10 @@ namespace TableTap.UL
                 {
                     notifyGroup(InputEmail5.Value, ID, DateTime.Now, sHour);
                 }
-                //(string email, int tableID,DateTime date, string sHour)
+
                 btnDirections.Visible = true;
 
-                int receipt = TableBL.getGroupIntByGroupModel(newGroupBooking);
+                int receipt = TableBL.GetBookingIDByBookingModel(newBooking); //booking ID is auto generated in DB so we need to grab it ourselves
 
                 string url = ConfigurationManager.AppSettings["UnsecurePath"] + "BookingReceipt.aspx?id=" + receipt;
                 Response.Redirect(url);
@@ -196,7 +196,7 @@ namespace TableTap.UL
         protected void btnDirections_Click(object sender, EventArgs e)
         {
             int ID = Int32.Parse(Request.QueryString["ID"]);
-            int buildingID = BuildingBL.getBuildingByID(RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).BuildingID).BuildingID; 
+            int buildingID = BuildingBL.getBuildingByID(RoomBL.getRoomByID(TableBL.GetTableByID(ID).RoomID).BuildingID).BuildingID; 
             // directions module
             string URL = DirectionModuleBL.start(buildingID);
 
@@ -215,23 +215,23 @@ namespace TableTap.UL
             string sHour = CalHourDropDown.SelectedValue.ToString();
             sHour = new string(sHour.TakeWhile(Char.IsDigit).ToArray());
             DateTime date = Cal.SelectedDate;
-            BookingModel newGroupBooking = new BookingModel();
-            newGroupBooking.tableID = ID;
-            newGroupBooking.gDate = Cal.SelectedDate.Date;
-            newGroupBooking.emailAddress = Session["Login"].ToString();
-            newGroupBooking.gHour = Int32.Parse(sHour);
-            newGroupBooking.memberEmail1 = InputCalEmail1.Value;
-            newGroupBooking.memberEmail2 = InputCalEmail2.Value;
-            newGroupBooking.memberEmail3 = InputCalEmail3.Value;
-            newGroupBooking.memberEmail4 = InputCalEmail4.Value;
-            newGroupBooking.memberEmail5 = InputCalEmail5.Value;
+            BookingModel newBooking = new BookingModel();
+            newBooking.tableID = ID;
+            newBooking.bookingDate = Cal.SelectedDate.Date;
+            newBooking.emailAddress = Session["Login"].ToString();
+            newBooking.bookingHour = Int32.Parse(sHour);
+            newBooking.memberEmail1 = InputCalEmail1.Value;
+            newBooking.memberEmail2 = InputCalEmail2.Value;
+            newBooking.memberEmail3 = InputCalEmail3.Value;
+            newBooking.memberEmail4 = InputCalEmail4.Value;
+            newBooking.memberEmail5 = InputCalEmail5.Value;
 
             //bool btest = TableBL.processCalanderBookTable(newGroupBooking);
-            if(TableBL.processCalanderBookTable(newGroupBooking))
+            if(TableBL.ProcessCalanderBookTable(newBooking))
             {
                 lblHeading.Text = "Table was booked";
 
-                lblStatus.Text = "Table: " + TableBL.getTableByID(ID).TableID + "<br />Room Name: " + RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).RoomName.ToString() + "<br />in building: " + BuildingBL.getBuildingByID(RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).BuildingID).BuildingName + "<br />at: " + sHour + "00 -" + (Convert.ToInt32(sHour) + 1).ToString() + "00" + "<br /> was successfully booked";
+                lblStatus.Text = "Table: " + TableBL.GetTableByID(ID).TableID + "<br />Room Name: " + RoomBL.getRoomByID(TableBL.GetTableByID(ID).RoomID).RoomName.ToString() + "<br />in building: " + BuildingBL.getBuildingByID(RoomBL.getRoomByID(TableBL.GetTableByID(ID).RoomID).BuildingID).BuildingName + "<br />at: " + sHour + "00 -" + (Convert.ToInt32(sHour) + 1).ToString() + "00" + "<br /> was successfully booked";
 
                 if (InputCalEmail1.Value != null)
                 {
@@ -256,7 +256,7 @@ namespace TableTap.UL
                 //(string email, int tableID,DateTime date, string sHour)
                 btnDirections.Visible = true;
 
-                int receipt = TableBL.getGroupIntByGroupModel(newGroupBooking);
+                int receipt = TableBL.GetBookingIDByBookingModel(newBooking);
 
                 string url = ConfigurationManager.AppSettings["UnsecurePath"] + "BookingReceipt.aspx?id=" + receipt;
                 Response.Redirect(url);
@@ -269,9 +269,9 @@ namespace TableTap.UL
         {
             NotifyBL.startNotifyGroupMember(UserBL.passUserSearch(Session["login"].ToString()).FirstName.ToString(),
             email,
-            TableBL.getTableByID(tableID).TableID.ToString(),
-            RoomBL.getRoomByID(TableBL.getTableByID(tableID).RoomID).RoomName.ToString(),
-            BuildingBL.getBuildingByID(RoomBL.getRoomByID(TableBL.getTableByID(tableID).RoomID).BuildingID).BuildingName.ToString(),
+            TableBL.GetTableByID(tableID).TableID.ToString(),
+            RoomBL.getRoomByID(TableBL.GetTableByID(tableID).RoomID).RoomName.ToString(),
+            BuildingBL.getBuildingByID(RoomBL.getRoomByID(TableBL.GetTableByID(tableID).RoomID).BuildingID).BuildingName.ToString(),
             date.ToString("dd-MM-yyyy"),
             sHour + "00");
         }
@@ -370,11 +370,11 @@ namespace TableTap.UL
             //DateTime date = DateTime.Now;
             BookingModel newCheckin = new BookingModel();
             newCheckin.tableID = ID;
-            newCheckin.gDate = DateTime.Now;
+            newCheckin.bookingDate = DateTime.Now;
             newCheckin.emailAddress = Session["Login"].ToString();
-            newCheckin.gHour = Int32.Parse(sHour);
+            newCheckin.bookingHour = Int32.Parse(sHour);
 
-            lblCheckinResult.Text = TableBL.processTableCheckin(newCheckin);
+            lblCheckinResult.Text = TableBL.ProcessTableCheckin(newCheckin);
             
 
 

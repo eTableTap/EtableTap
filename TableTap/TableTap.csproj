@@ -271,8 +271,8 @@
     <Compile Include="BackGroundWorker\Classes\EmailQueuing.cs" />
     <Compile Include="BackGroundWorker\Classes\README.cs" />
     <Compile Include="BusinessLayer\Classes\GoogleLoginBL.cs" />
-    <Compile Include="BusinessLayer\Classes\GroupBL.cs" />
-    <Compile Include="DataAccessLayer\Classes\GroupDAL.cs" />
+    <Compile Include="BusinessLayer\Classes\BookingBL.cs" />
+    <Compile Include="DataAccessLayer\Classes\BookingDAL.cs" />
     <Compile Include="Models\BookingModel.cs" />
     <Compile Include="Resources\Images\QR\ForceGen.cs" />
     <Compile Include="UL\AdminAddRoom.aspx.cs">

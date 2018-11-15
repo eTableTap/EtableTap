@@ -12,14 +12,14 @@ namespace TableTap.UL
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["user"] == null)
+            if ((string)Session["user"] == null)
             {
                 string url = Request.Url.AbsoluteUri;
                 Session["LoginFallback"] = url;
                 Response.Redirect("Login.aspx");
             }
 
-            if (Session["loggedUser"] != "admin") //stops non admins accessing page
+            if ((string)Session["loggedUser"] != "admin") //stops non admins accessing page
             {
                 Response.Redirect("home.aspx");
             }

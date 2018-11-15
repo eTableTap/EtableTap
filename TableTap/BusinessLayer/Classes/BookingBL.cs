@@ -7,7 +7,7 @@ using TableTap.DataAccessLayer.Classes;
 
 namespace TableTap.BusinessLayer.Classes
 {
-    public class GroupBL
+    public class BookingBL
     {
 
 
@@ -15,11 +15,11 @@ namespace TableTap.BusinessLayer.Classes
 
 
 
-        public static BookingModel searchGroupByID(int groupID)
+        public static BookingModel SearchBookingByID(int bookingID)
         {
-            BookingModel group = GroupDAL.checkGroupBooking(groupID);
+            BookingModel booking = BookingDAL.CheckBooking(bookingID);
 
-            return group;
+            return booking;
 
         }
     }

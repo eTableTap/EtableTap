@@ -114,14 +114,14 @@ namespace TableTap.BackGroundWorker.Classes
 
 //            List<List<string>> data = new List<List<string>>();
 
-            groups = GroupDAL.loadGroupListattime();
+            groups = BookingDAL.loadBookingListattime();
 
 
-            foreach(BookingModel group in groups)
+            foreach(BookingModel booking in groups)
             {
                 List<string> dataset1 = new List<string>();
 
-                string URL = "https://www.etabletap.com/UL/BookingReceipt.aspx?id=" +  group.groupID;
+                string URL = "https://www.etabletap.com/UL/BookingReceipt.aspx?id=" +  booking.bookingID;
 
                 UserModel user = new UserModel();
                 TableModel table = new TableModel();
@@ -129,9 +129,9 @@ namespace TableTap.BackGroundWorker.Classes
                 BuildingModel building = new BuildingModel();
 
 
-                table = TableBL.getTableByID(group.tableID);
+                table = TableBL.GetTableByID(booking.tableID);
 
-                user = UserBL.passUserSearch(group.emailAddress);
+                user = UserBL.passUserSearch(booking.emailAddress);
 
                 room = RoomBL.getRoomByID(table.RoomID);
 
@@ -140,24 +140,24 @@ namespace TableTap.BackGroundWorker.Classes
 
                 // main user
                 NotifyBL.startNotifyBooking(user.FirstName + " " + user.LastName, user.phoneNum, user.Email , table.TableID.ToString(),
-                    room.RoomName, building.BuildingName, group.gDate.ToString(), group.gHour.ToString() + ":00", URL);
+                    room.RoomName, building.BuildingName, booking.bookingDate.ToString(), booking.bookingHour.ToString() + ":00", URL);
 
-                //group member 1
+                //booking member 1
                 try
                 { 
-                    NotifyBL.startNotifyBooking(user.FirstName + " " + user.LastName, user.phoneNum, group.memberEmail1, table.TableID.ToString(),
-                    room.RoomName, building.BuildingName, group.gDate.ToString(), group.gHour.ToString() + ":00", URL);
+                    NotifyBL.startNotifyBooking(user.FirstName + " " + user.LastName, user.phoneNum, booking.memberEmail1, table.TableID.ToString(),
+                    room.RoomName, building.BuildingName, booking.bookingDate.ToString(), booking.bookingHour.ToString() + ":00", URL);
                 }
                 catch
                 {
 
                 }
 
-                // group member 2
+                // booking member 2
                 try
                 {
-                    NotifyBL.startNotifyBooking(user.FirstName + " " + user.LastName, user.phoneNum, group.memberEmail2, table.TableID.ToString(),
-                    room.RoomName, building.BuildingName, group.gDate.ToString(), group.gHour.ToString() + ":00", URL);
+                    NotifyBL.startNotifyBooking(user.FirstName + " " + user.LastName, user.phoneNum, booking.memberEmail2, table.TableID.ToString(),
+                    room.RoomName, building.BuildingName, booking.bookingDate.ToString(), booking.bookingHour.ToString() + ":00", URL);
                 }
                 catch
                 {
@@ -167,19 +167,19 @@ namespace TableTap.BackGroundWorker.Classes
                 // groupmember 3
                 try
                 {
-                    NotifyBL.startNotifyBooking(user.FirstName + " " + user.LastName, user.phoneNum, group.memberEmail3, table.TableID.ToString(),
-                    room.RoomName, building.BuildingName, group.gDate.ToString(), group.gHour.ToString() + ":00", URL);
+                    NotifyBL.startNotifyBooking(user.FirstName + " " + user.LastName, user.phoneNum, booking.memberEmail3, table.TableID.ToString(),
+                    room.RoomName, building.BuildingName, booking.bookingDate.ToString(), booking.bookingHour.ToString() + ":00", URL);
                 }
                 catch
                 {
 
                 }
 
-                // group member 4
+                // booking member 4
                 try
                 {
-                    NotifyBL.startNotifyBooking(user.FirstName + " " + user.LastName, user.phoneNum, group.memberEmail4, table.TableID.ToString(),
-                    room.RoomName, building.BuildingName, group.gDate.ToString(), group.gHour.ToString() + ":00", URL);
+                    NotifyBL.startNotifyBooking(user.FirstName + " " + user.LastName, user.phoneNum, booking.memberEmail4, table.TableID.ToString(),
+                    room.RoomName, building.BuildingName, booking.bookingDate.ToString(), booking.bookingHour.ToString() + ":00", URL);
                 }
                 catch
                 {
@@ -189,8 +189,8 @@ namespace TableTap.BackGroundWorker.Classes
                 // groupmember 5
                 try
                 {
-                    NotifyBL.startNotifyBooking(user.FirstName + " " + user.LastName, user.phoneNum, group.memberEmail5, table.TableID.ToString(),
-                    room.RoomName, building.BuildingName, group.gDate.ToString(), group.gHour.ToString() + ":00", URL);
+                    NotifyBL.startNotifyBooking(user.FirstName + " " + user.LastName, user.phoneNum, booking.memberEmail5, table.TableID.ToString(),
+                    room.RoomName, building.BuildingName, booking.bookingDate.ToString(), booking.bookingHour.ToString() + ":00", URL);
                 }
                 catch
                 {

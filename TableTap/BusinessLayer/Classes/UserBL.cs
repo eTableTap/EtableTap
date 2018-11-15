@@ -141,7 +141,7 @@ namespace TableTap.BusinessLayer.Classes
             user = getUserByID(userID);
 
             IncidenceDAL.incAllUserDelete(userID);
-            GroupDAL.groupAllUserDelete(user.Email);
+            BookingDAL.BookingAllUserDelete(user.Email);
             UserDAL.deleteUser(userID);
             /*bool success;
             try

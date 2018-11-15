@@ -45,7 +45,7 @@ namespace TableTap.DataAccessLayer.Classes
 
         }
        
-        public static List<TableModel> loadTableList(int id)
+        public static List<TableModel> LoadTableList(int id)
         {
             List<TableModel> tables = new List<TableModel>();
 
@@ -79,7 +79,7 @@ namespace TableTap.DataAccessLayer.Classes
             return tables;
         }
 
-        public static TableModel loadTableByID(int id)
+        public static TableModel LoadTableByID(int id)
         {
 
             TableModel table = new TableModel();
@@ -113,8 +113,10 @@ namespace TableTap.DataAccessLayer.Classes
             return table;
         }
 
-        public static bool checkTableHourAvailability(int TableID, int Hour, DateTime date)
+        public static bool CheckTableHourAvailability(int TableID, int Hour, DateTime date)
         {
+           
+
             string sTest = null;
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
 
@@ -123,9 +125,9 @@ namespace TableTap.DataAccessLayer.Classes
                 conn.Open();
 
                 using (SqlCommand command = new SqlCommand(
-                    "SELECT * FROM tblGroup WHERE tableID=" + "'" + TableID.ToString() + "'"
-                    + " AND gDate=" + "'" + date.ToString("yyyy-MM-d") + "'"
-                    + " AND gHour=" + "'" + Hour.ToString() + "'",
+                    "SELECT * FROM tblBooking WHERE tableID=" + "'" + TableID.ToString() + "'"
+                    + " AND bookingDate=" + "'" + date.ToString("yyyy-MM-d") + "'"
+                    + " AND bookingHour=" + "'" + Hour.ToString() + "'",
                     conn))
 
 
@@ -134,7 +136,7 @@ namespace TableTap.DataAccessLayer.Classes
 
                     while (dr.Read())
                     {
-                        sTest = dr["gHour"].ToString();
+                        sTest = dr["bookingHour"].ToString();
                     }
                     dr.Close();
                 }
@@ -149,12 +151,12 @@ namespace TableTap.DataAccessLayer.Classes
             return false;
         }
 
-        public static bool CreateCalanderBookTable(BookingModel groupModel)
+        public static bool CreateCalanderBookTable(BookingModel bookingModel)
         {
             try
             {
                 SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
-                BookingModel newGroupModel = groupModel;
+                BookingModel newBookingModel = bookingModel;
 
                 using (conn)
                 {
@@ -162,16 +164,16 @@ namespace TableTap.DataAccessLayer.Classes
 
                     using (SqlCommand command = new SqlCommand(
 
-                        "INSERT INTO tblGroup (TableID, gDate, emailAddress, gHour, memberEmail1, memberEmail2, memberEmail3, memberEmail4, memberEmail5) VALUES ("
-                        + "'" + newGroupModel.tableID + "'" + ", "
-                        + "'" + newGroupModel.gDate.ToString("yyyy-MM-d") + "'" + ", "
-                        + "'" + newGroupModel.emailAddress + "'" + ", "
-                        + "'" + newGroupModel.gHour + "'" + ", "
-                        + "'" + newGroupModel.memberEmail1 + "'" + ", "
-                        + "'" + newGroupModel.memberEmail2 + "'" + ", "
-                        + "'" + newGroupModel.memberEmail3 + "'" + ", "
-                        + "'" + newGroupModel.memberEmail4 + "'" + ", "
-                        + "'" + newGroupModel.memberEmail5 + "'" + ")"
+                        "INSERT INTO tblBooking (TableID, bookingDate, emailAddress, bookingHour, memberEmail1, memberEmail2, memberEmail3, memberEmail4, memberEmail5) VALUES ("
+                        + "'" + newBookingModel.tableID + "'" + ", "
+                        + "'" + newBookingModel.bookingDate.ToString("yyyy-MM-d") + "'" + ", "
+                        + "'" + newBookingModel.emailAddress + "'" + ", "
+                        + "'" + newBookingModel.bookingHour + "'" + ", "
+                        + "'" + newBookingModel.memberEmail1 + "'" + ", "
+                        + "'" + newBookingModel.memberEmail2 + "'" + ", "
+                        + "'" + newBookingModel.memberEmail3 + "'" + ", "
+                        + "'" + newBookingModel.memberEmail4 + "'" + ", "
+                        + "'" + newBookingModel.memberEmail5 + "'" + ")"
                         ,
                         conn))
                     {
@@ -189,7 +191,7 @@ namespace TableTap.DataAccessLayer.Classes
             }
         }
 
-        public static bool checkTableStatus(BookingModel groupModel)
+        public static bool CheckTableStatus(BookingModel bookingModel)
         {
 
             string sTest = null;
@@ -201,9 +203,9 @@ namespace TableTap.DataAccessLayer.Classes
                 conn.Open();
 
                 using (SqlCommand command = new SqlCommand(
-                    "SELECT * FROM tblGroup WHERE tableID=" + "'" + groupModel.tableID.ToString() + "'"
-                    + " AND gDate=" + "'" + groupModel.gDate.ToString("yyyy-MM-d") + "'"
-                    + " AND gHour=" + "'" + groupModel.gHour.ToString() + "'",
+                    "SELECT * FROM tblBooking WHERE tableID=" + "'" + bookingModel.tableID.ToString() + "'"
+                    + " AND bookingDate=" + "'" + bookingModel.bookingDate.ToString("yyyy-MM-d") + "'"
+                    + " AND bookingHour=" + "'" + bookingModel.bookingHour.ToString() + "'",
                     conn))
 
 
@@ -212,7 +214,7 @@ namespace TableTap.DataAccessLayer.Classes
 
                     while (dr.Read())
                     {
-                        sTest = dr["gHour"].ToString();
+                        sTest = dr["bookingHour"].ToString();
    
                     }
                     dr.Close();
@@ -230,7 +232,7 @@ namespace TableTap.DataAccessLayer.Classes
             return false; // = table is already booked
         }
 
-        public static bool checkCheckin(BookingModel groupModel)
+        public static bool CheckCheckin(BookingModel bookingModel)
         {
 
             string sTest = null;
@@ -242,10 +244,10 @@ namespace TableTap.DataAccessLayer.Classes
                 conn.Open();
 
                 using (SqlCommand command = new SqlCommand(
-                    "SELECT * FROM tblGroup WHERE tableID=" + "'" + groupModel.tableID.ToString() + "'"
-                    + " AND gDate=" + "'" + groupModel.gDate.ToString("yyyy-MM-d") + "'"
-                    + " AND gHour=" + "'" + groupModel.gHour.ToString() + "'"
-                    + " AND emailAddress=" + "'" + groupModel.emailAddress + "'",
+                    "SELECT * FROM tblBooking WHERE tableID=" + "'" + bookingModel.tableID.ToString() + "'"
+                    + " AND bookingDate=" + "'" + bookingModel.bookingDate.ToString("yyyy-MM-d") + "'"
+                    + " AND bookingHour=" + "'" + bookingModel.bookingHour.ToString() + "'"
+                    + " AND emailAddress=" + "'" + bookingModel.emailAddress + "'",
                     conn))
 
 
@@ -267,13 +269,52 @@ namespace TableTap.DataAccessLayer.Classes
 
             if (sTest == null)
             {
+
+
+
                 return true; //  = not exist or wrong user
             }
+            else
+            {
 
-            return false; // = table can be checked into
+
+                using (conn)
+                {
+                    conn.Open();
+
+                    using (SqlCommand command = new SqlCommand(
+                        "UPDATE tblBooking SET checkinStatus = 1 WHERE tableID=" + "'" + bookingModel.tableID.ToString() + "'"
+                        + " AND bookingDate=" + "'" + bookingModel.bookingDate.ToString("yyyy-MM-d") + "'"
+                        + " AND bookingHour=" + "'" + bookingModel.bookingHour.ToString() + "'"
+                        + " AND emailAddress=" + "'" + bookingModel.emailAddress + "'",
+                        conn))
+
+
+                    {
+                        SqlDataReader dr = command.ExecuteReader();
+
+                        /* while (dr.Read())
+                         {
+
+                             sTest = dr["emailAddress"].ToString();
+
+                         }
+                         dr.Close();*/
+
+                    }
+                    conn.Close();
+
+                    return false; // = table can be checked into
+                }
+
+            }
+
+            
         }
-
-        public static int getGroupIDByGroupModel(BookingModel groupModel)
+        
+        //decalred but not use/////////////////////////////////////////////////////////////////////////////////////////////////
+            
+        public static int GetBookingIDByBookingModel(BookingModel bookingModel)
         {
 
             int iTest = 0;
@@ -285,9 +326,9 @@ namespace TableTap.DataAccessLayer.Classes
                 conn.Open();
 
                 using (SqlCommand command = new SqlCommand(
-                    "SELECT groupID FROM tblGroup WHERE tableID=" + "'" + groupModel.tableID.ToString() + "'"
-                    + " AND gDate=" + "'" + groupModel.gDate.ToString("yyyy-MM-d") + "'"
-                    + " AND gHour=" + "'" + groupModel.gHour.ToString() + "'",
+                    "SELECT bookingID FROM tblBooking WHERE tableID=" + "'" + bookingModel.tableID.ToString() + "'"
+                    + " AND bookingDate=" + "'" + bookingModel.bookingDate.ToString("yyyy-MM-d") + "'"
+                    + " AND bookingHour=" + "'" + bookingModel.bookingHour.ToString() + "'",
                     conn))
 
 
@@ -296,7 +337,7 @@ namespace TableTap.DataAccessLayer.Classes
 
                     while (dr.Read())
                     {
-                        iTest = Convert.ToInt32(dr["groupID"].ToString());
+                        iTest = Convert.ToInt32(dr["bookingID"].ToString());
 
                     }
                     dr.Close();
@@ -309,6 +350,7 @@ namespace TableTap.DataAccessLayer.Classes
             
             return iTest; 
         }
+        
 
         public static List<string> LoadTable(string tableID)
         {
@@ -367,7 +409,7 @@ namespace TableTap.DataAccessLayer.Classes
 
         }
 
-        public static void modifyTable(List<string> tableData)
+        public static void ModifyTable(List<string> tableData)
         {
             /// <summary>
             /// Modifys table record from associated tableID passed in

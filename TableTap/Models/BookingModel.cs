@@ -12,11 +12,11 @@ namespace TableTap.Models
 
         public int tableID { get; set; }
 
-        public DateTime gDate { get; set; }
+        public DateTime bookingDate { get; set; }
 
         public string emailAddress { get; set; }
 
-        public int gHour { get; set; }
+        public int bookingHour { get; set; }
 
         public string memberEmail1 { get; set; }
         public string memberEmail2 { get; set; }
@@ -24,26 +24,29 @@ namespace TableTap.Models
         public string memberEmail4 { get; set; }
         public string memberEmail5 { get; set; }
 
+        public int checkinStatus { get; set; }
+
         public BookingModel()
         {
 
         }
 
 
-        public BookingModel(int bookingIDE, int tableIDE, DateTime bookingDate, string usersEmailAddress, int BookingHour, 
-            string member1, string member2, string member3, string member4, string member5)
+        public BookingModel(int bookingIDE, int tableIDE, DateTime bDate, string usersEmailAddress, int bHour, 
+            string member1, string member2, string member3, string member4, string member5, int checkin)
         {
             this.bookingID = bookingIDE;
 
             this.tableID = tableIDE;
-            this.gDate = bookingDate;
+            this.bookingDate = bDate;
             this.emailAddress = usersEmailAddress;
-            this.gHour = BookingHour;
+            this.bookingHour = bHour;
             this.memberEmail1 = member1;
             this.memberEmail2 = member2;
             this.memberEmail3 = member3;
             this.memberEmail4 = member4;
             this.memberEmail5 = member5;
+            this.checkinStatus = checkin;
 
    
         }
