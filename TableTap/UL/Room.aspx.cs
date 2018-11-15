@@ -73,10 +73,31 @@ namespace TableTap.UL
             /////////////////
             Image imageTable = new Image();
             imageTable.ID = "imgBox" + tableNumber.ToString();
-            imageTable.Attributes.Add("height", "42");
-            if (category == "Large")
+            //determine height
+            if (category.ToLower() == "lounge")
             {
-                imageTable.Attributes.Add("width", "62");
+                imageTable.Attributes.Add("height", "32");
+            }
+            else if (category.ToLower() == "small")
+            {
+                imageTable.Attributes.Add("height", "32");
+            }
+            else
+            {
+                imageTable.Attributes.Add("height", "42");
+            }
+            //Determine width
+            if (category.ToLower() == "large")
+            {
+                imageTable.Attributes.Add("width", "72");
+            }
+            else if (category.ToLower() == "lounge")
+            {
+                imageTable.Attributes.Add("width", "72");
+            }
+            else if (category.ToLower() == "small")
+            {
+                imageTable.Attributes.Add("width", "32");
             }
             else
             {
