@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home" Language="C#" MasterPageFile="~/UL/Site.Mobile.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="TableTap.UL.Home"  %>
+﻿<%@ Page Title="Home" Language="C#" MasterPageFile="~/UL/Site.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="TableTap.UL.Home"  %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     

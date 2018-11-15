@@ -139,10 +139,7 @@ VALUES ('Auchmuty Information Common', 'L-266', 001, '00:00:00', '23:59:59', 100
 ('Flower Room', 'FR', 001, '00:00:00', '23:59:59', 100)
 go
 
---INSERT INTO tblTable(tableQR, roomID, personCapacity, category, reservable)
---VALUES ('18nvjwk89', 0001, 6, 'Large', 1), ('mvne439j0d', 0001, 2, 'Small', 0),
---('8jf74hn3j4', 0001, 6, 'Lounge', 1), ('mklpo098ik', 0002, 1, 'Computer', 0)
---go
+
 INSERT INTO tblTable(roomID, personCapacity, category)
 VALUES ( 0001, 6, 'Large'), 
 (0001, 2, 'Small'),
@@ -182,7 +179,7 @@ VALUES (2, '2018-09-16 12:00:00', '2018-09-16 15:20:02', 'Beau'),
 go
 
 
--- use the catalog views to generate as many rows as we need
+
 
 SELECT TableID FROM tblTable;
 SELECT COUNT (TableID) FROM tblTable;
