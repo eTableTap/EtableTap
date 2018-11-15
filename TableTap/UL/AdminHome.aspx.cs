@@ -12,7 +12,7 @@ namespace TableTap.UL
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if ((string)Session["user"] == null)
+            if (Session["user"] == null)
             {
                 string url = Request.Url.AbsoluteUri;
                 Session["LoginFallback"] = url;
