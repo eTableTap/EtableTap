@@ -1,26 +1,49 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UL/Site.Mobile.Master" AutoEventWireup="true" CodeBehind="404Page.aspx.cs" Inherits="TableTap._404Page" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UL/Site.Master" AutoEventWireup="true" CodeBehind="404Page.aspx.cs" Inherits="TableTap._404Page" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
 
 
-        <div class="container-fluid">
+        <div class="container">
         <div class="jumbotron">
             <div style="margin-left: auto; margin-right: auto; text-align: center;">
-            <asp:Label ID="Label3" runat="server" Text="Uh Oh!!! Something has gone wrong. But! I drew you a flower!" Font-Bold="True" Font-Size="Large"
-              CssClass="StrongText"></asp:Label>
-            </div>
-                   <asp:Image ID="imgLogin" runat="server" imageurl="~/Resources/Images/SorryFlower.png" CssClass="HomeImages" Width="50%" Height="50%" />
+                <div class="panel-heading">
+	                   <div class="panel-title text-center">
+	               		    <h1 class="title">Uh Oh!!! </h1>
+	               		    <br />
+	               	  </div>
+	            </div> 
+
+                <table style="width:100%">
+                        <tr>
+                            <th class="auto-style2">
+                                <asp:Label ID="Label2" runat="server" Text="Something has gone wrong. But! I drew you a flower!" Font-Bold="True" Font-Size="Large"></asp:Label>
+                            </th>
+
+
+                        </tr>
+
+                       <tr>
+                           <th class="auto-style2">
+                               <asp:Image ID="imgLogin" runat="server" imageurl="~/Resources/Images/SorryFlower.png" Height ="30%"/>
+                           </th>
+                       </tr>
+                       <tr>
+                           <th class="auto-style2">
+                                <asp:Label ID="Label1" runat="server" Text="Now that you’ve forgiven us; Use this button to get back on track" Font-Bold="True" Font-Size="Large"></asp:Label>
+                           </th>
+                       </tr>
+                       <tr>
+                           <th class="auto-style2">
+                                <asp:Button type="button" Text="Go back to home" class="btn btn-primary btn-lg btn-block login-button" id="Button1" runat="server" />
+                           </th>
+                       </tr>
+                    </table>
+
                 </div>
-            <div style="margin-left: auto; margin-right: auto; text-align: center;">
-            <asp:Label ID="Label1" runat="server" Text="Now that you’ve forgiven us; Use this button to get back on track" Font-Bold="True" Font-Size="Large"
-              CssClass="StrongText"></asp:Label>
-            </div>
-            <div>
-                <asp:Button type="button" Text="Go back to home" class="btn btn-primary btn-lg btn-block login-button" id="goToHomeButton" runat="server" />
-            </div>
             
+            </div>
             </div>
 
 
