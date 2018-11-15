@@ -44,7 +44,7 @@ namespace TableTap.UL
 
         if (googleUser != null)
         {
-            string email = lblEmail.Text = googleUser.data.email;
+            string email = lblEmail.Text = googleUser.data.email.ToLower();
 
             UserModel user = UserBL.passUserSearch(email);
 
