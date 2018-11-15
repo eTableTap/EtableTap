@@ -67,7 +67,7 @@ namespace TableTap.UL
 
                         url = "AdminHome.aspx";
                     }
-                    if (user.AdminPermission == 2)
+                    if (user.AdminPermission == 0)
                     {
 
                         Session["loggedUser"] = "user";

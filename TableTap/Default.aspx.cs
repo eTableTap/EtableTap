@@ -33,7 +33,7 @@ namespace TableTap.UL
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Response.Redirect("/UL/Home.aspx");
+            /// Response.Redirect("/UL/Home.aspx");
         }
     }
 }
