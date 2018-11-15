@@ -32,10 +32,10 @@ namespace TableTap.UL
 
 
 
-        protected void MainWorker(int groupID)
+        protected void MainWorker(int bookingID)
         {
 
-            BookingModel booking = BookingBL.SearchBookingByID(groupID);
+            BookingModel booking = BookingBL.SearchBookingByID(bookingID);
 
             UserModel user = new UserModel();
             TableModel table = new TableModel();

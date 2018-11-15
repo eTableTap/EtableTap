@@ -96,16 +96,7 @@ CREATE TABLE tblIncidence(
 
   )
 
-CREATE TABLE tblSession (
-	sessionID		INT IDENTITY(000000001, 1) PRIMARY KEY,
-	tableID			INT NOT NULL,
-	sessionStartTime	DATETIME DEFAULT GETDATE(),
-	sessionFinishTime	DATETIME NOT NULL,
-	sessionName			NVARCHAR(50), --optional session name. session name will pop up on map and may help users find where their group/friends are sitting
 
-	CONSTRAINT fk_OccupiedTable FOREIGN KEY (tableID) REFERENCES tblTable(tableID)
-	)
-go
 
 --sets default value of tablesAvailable as tableQty when a room is created
 --CREATE TRIGGER tblRoom_AfterInsert_TRG
@@ -169,14 +160,6 @@ INSERT INTO tblIncidence(incDate, info, tableID, roomID, buildingID, userID, inc
 VALUES ('2018-09-14', 'I am a test incident level 0', 1, 0001, 001, 100002, 0, '2018-09-14'),
  ('2018-09-14', 'I am a test incident level 1', 1, 0001, 001, 100002, 0, '2018-09-14')
  go
-
-
-INSERT INTO tblSession(tableID, sessionStartTime, sessionFinishTime, sessionName)
-VALUES (2, '2018-09-16 12:00:00', '2018-09-16 15:20:02', 'Beau'), 
-(4, '2018-09-15 11:00:00', '2018-09-15 16:05:40', NULL)
-go
-
-
 
 
 SELECT TableID FROM tblTable;
