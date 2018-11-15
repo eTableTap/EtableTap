@@ -65,8 +65,20 @@ CREATE TABLE tblUser (
 	phoneNum		NVARCHAR(30) NOT NULL,
 	)
 
+CREATE TABLE tblGroup (
+	groupID			INT IDENTITY(100001,1) PRIMARY KEY,
+	tableID			INT NOT NULL,
+	gDate			DATE NOT NULL,
+	emailAddress	NVARCHAR(100) NOT NULL,
+	gHour			INT NOT NULL,
+	memberEmail1		NVARCHAR(40),
+	memberEmail2	NVARCHAR(40),
+	memberEmail3	NVARCHAR(40),
+	memberEmail4	NVARCHAR(40),
+	memberEmail5	NVARCHAR(40),
 
-
+		CONSTRAINT fk_gettheTableID FOREIGN KEY (tableID) REFERENCES tblTable(tableID)
+	)
 	
 CREATE TABLE tblIncidence(
     incidenceID INT IDENTITY(1000001,1) PRIMARY KEY,
@@ -78,7 +90,6 @@ CREATE TABLE tblIncidence(
 	userID INT NOT NULL,
 	incLevel BIT NOT NULL,  -- determines who sees the notification
 	incENDDate DATE NOT NULL,
-
 	 
     CONSTRAINT fk_getabuildingID FOREIGN KEY (buildingID) REFERENCES tblBuilding(buildingID),
 	CONSTRAINT fk_getaroomID FOREIGN KEY (roomID) REFERENCES tblroom(roomID),
@@ -86,18 +97,6 @@ CREATE TABLE tblIncidence(
 	CONSTRAINT fk_getaUserID FOREIGN KEY (userID) REFERENCES tblUser(userID)
 
   )
-
---CREATE TABLE tblReservation (
---	reservationID	INT IDENTITY(00001,1) PRIMARY KEY,
---	userID			INT NOT NULL,
---	tableID			INT NOT NULL,
---	reservationStartTime	DATETIME NOT NULL,
---	reservationFinishTime	DATETIME NOT NULL,
---	groupName				NVARCHAR(50) NOT NULL,
---
---	CONSTRAINT fk_ReserverID FOREIGN KEY (userID) REFERENCES tblUser(userID),
---	CONSTRAINT fk_ReservedTable FOREIGN KEY (tableID) REFERENCES tblTable(tableID)
---	)
 
 CREATE TABLE tblSession (
 	sessionID		INT IDENTITY(000000001, 1) PRIMARY KEY,
@@ -176,171 +175,15 @@ VALUES ('2018-09-14', 'I am a test incident level 0', 1, 0001, 001, 100002, 0, '
  ('2018-09-14', 'I am a test incident level 1', 1, 0001, 001, 100002, 0, '2018-09-14')
  go
 
---INSERT INTO tblReservation(userID, tableID, reservationStartTime, reservationFinishTime, groupName)
---VALUES (100001, 1, '2018-09-15 12:00:00', '2018-09-15 13:00:00', 'Keplers group, INFT3970'),
---(100003, 3, '2018-09-15 12:00:00', '2018-09-15 13:00:00', 'Michaels group, INFT3960')
---go
 
 INSERT INTO tblSession(tableID, sessionStartTime, sessionFinishTime, sessionName)
 VALUES (2, '2018-09-16 12:00:00', '2018-09-16 15:20:02', 'Beau'), 
 (4, '2018-09-15 11:00:00', '2018-09-15 16:05:40', NULL)
 go
 
----------------------------------------
---taken from
---https://www.mssqltips.com/sqlservertip/4054/creating-a-date-dimension-or-calendar-table-in-sql-server/
 
-DECLARE @StartDate DATE = '20180914', @NumberOfYears INT = 1;
-
--- prevent set or regional settings from interfering with 
--- interpretation of dates / literals
-
-SET DATEFIRST 7;
-SET DATEFORMAT mdy;
-SET LANGUAGE US_ENGLISH;
-
-DECLARE @CutoffDate DATE = DATEADD(YEAR, @NumberOfYears, @StartDate);
-
--- this is just a holding table for intermediate calculations:
-
---DROP TABLE tblStatus
---DROP TABLE tblDates
-
-CREATE TABLE tblDates
-(
-  [date]       DATE PRIMARY KEY, 
-  [day]        AS DATEPART(DAY,      [date]),
-  [month]      AS DATEPART(MONTH,    [date]),
-
-  --FirstOfMonth AS CONVERT(DATE, DATEADD(MONTH, DATEDIFF(MONTH, 0, [date]), 0)),
-  [MonthName]  AS DATENAME(MONTH,    [date]),
-  --[week]       AS DATEPART(WEEK,     [date]),
-  --[ISOweek]    AS DATEPART(ISO_WEEK, [date]),
-  --[DayOfWeek]  AS DATEPART(WEEKDAY,  [date]),
-  --[quarter]    AS DATEPART(QUARTER,  [date]),
-  [year]       AS DATEPART(YEAR,     [date]),
-  --FirstOfYear  AS CONVERT(DATE, DATEADD(YEAR,  DATEDIFF(YEAR,  0, [date]), 0)),
-  --Style112     AS CONVERT(CHAR(8),   [date], 112),
-  --Style101     AS CONVERT(CHAR(10),  [date], 101)
-);
-
-CREATE TABLE tblStatus
-(
-	[statusID]		INT IDENTITY(0001,1) PRIMARY KEY,
-	[tableID]		INT,
-	[date]			DATE,
-	[hour00]			NVARCHAR(100) default 'Free', 
-	[hour01]			NVARCHAR(100) default 'Free', 
-	[hour02]			NVARCHAR(100) default 'Free', 
-	[hour03]			NVARCHAR(100) default 'Free',
-	[hour04]			NVARCHAR(100) default 'Free',
-	[hour05]			NVARCHAR(100) default 'Free',
-	[hour06]			NVARCHAR(100) default 'Free',
-	[hour07]			NVARCHAR(100) default 'Free',
-	[hour08]			NVARCHAR(100) default 'Free',
-	[hour09]			NVARCHAR(100) default 'Free',
-	[hour10]			NVARCHAR(100) default 'Free',
-	[hour11]			NVARCHAR(100) default 'Free',
-	[hour12]			NVARCHAR(100) default 'Free',
-	[hour13]			NVARCHAR(100) default 'Free',
-	[hour14]			NVARCHAR(100) default 'Free',
-	[hour15]			NVARCHAR(100) default 'Free',
-	[hour16]			NVARCHAR(100) default 'Free',
-	[hour17]			NVARCHAR(100) default 'Free',
-	[hour18]			NVARCHAR(100) default 'Free',
-	[hour19]			NVARCHAR(100) default 'Free',
-	[hour20]			NVARCHAR(100) default 'Free',
-	[hour21]			NVARCHAR(100) default 'Free',
-	[hour22]			NVARCHAR(100) default 'Free',
-	[hour23]			NVARCHAR(100) default 'Free'
-
-  CONSTRAINT fk_GETDATE FOREIGN KEY (date) REFERENCES tblDates(date),
-  CONSTRAINT fk_GETTABLEID FOREIGN KEY (tableID) REFERENCES tblTable(tableID)
-);
 -- use the catalog views to generate as many rows as we need
 
-
-	CREATE TABLE tblGroup (
-	groupID			INT IDENTITY(100001,1) PRIMARY KEY,
-	statusID		INT,
-	tableID			INT NOT NULL,
-	gDate			DATE NOT NULL,
-	emailAddress	NVARCHAR(100) NOT NULL,
-	gHour			INT NOT NULL,
-	memberEmail1		NVARCHAR(40),
-	memberEmail2	NVARCHAR(40),
-	memberEmail3	NVARCHAR(40),
-	memberEmail4	NVARCHAR(40),
-	memberEmail5	NVARCHAR(40),
-
-	    CONSTRAINT fk_getStatusID FOREIGN KEY (statusID) REFERENCES tblStatus(statusID),
-		CONSTRAINT fk_gettheTableID FOREIGN KEY (tableID) REFERENCES tblTable(tableID)
-	)
-
-
-
-INSERT INTO tbldates([date]) 
-SELECT d
-FROM
-(
-  SELECT d = DATEADD(DAY, rn - 1, @StartDate)
-  FROM 
-  (
-    SELECT TOP (DATEDIFF(DAY, @StartDate, @CutoffDate)) 
-      rn = ROW_NUMBER() OVER (ORDER BY s1.[object_id])
-    FROM sys.all_objects AS s1
-    CROSS JOIN sys.all_objects AS s2
-    -- on my system this would support > 5 million days
-    ORDER BY s1.[object_id]
-  ) AS x
-) AS y;
-
-
-
-
---INSERT INTO  tblStatus(date)
---SELECT date
---FROM tblDates
-
---INSERT INTO tblStatus(tableID, date)
-
-
---select t.TableID, d.date 
---from tblTable t
---left JOIN tblStatus ts on (ts.tableID = t.tableID)
---left JOIN tblDates d on (d.date = ts.date)
-
---select t.TableID, d.date 
---from tblDates d
---left JOIN tblStatus ts on (d.date = ts.date)
---left JOIN tblStatus t on (ts.tableID = t.tableID)
-DECLARE @i int = 0
-WHILE @i <= (SELECT Count(tableID) FROM  tblTable ) 
-BEGIN
-INSERT INTO tblStatus(tableID, date) 
-select t.TableID, d.date 
-from tblDates d, tblTable t
-where t.TableID = @i
---left JOIN tblStatus ts on (d.date = ts.date)
---left JOIN tblStatus t on (ts.tableID = t.tableID)
-SET @i = @i + 1
-END
---SELECT d.date
---      FROM tblStatus ts
---INNER JOIN tblDates d ON d.date = ts.date
---     WHERE ts.date = 2018-09-14
-
-
-
--- tableID
---FROM tblTable
-
---UPDATE tblStatus
---SET [00] ='test'
---WHERE [date] = '2018-09-14';
---go
-
-SELECT * FROM tblStatus;
 SELECT TableID FROM tblTable;
 SELECT COUNT (TableID) FROM tblTable;
 SELECT * FROM tblUser;

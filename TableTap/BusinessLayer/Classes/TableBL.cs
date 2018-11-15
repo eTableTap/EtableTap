@@ -26,14 +26,7 @@ namespace TableTap.BusinessLayer.Classes
             return table;
         }
 
-        public static bool checkTableStatus(int id)
-        {
-            
-            
-            bool bCheck = TableDAL.checkCurrentTableStatus(id);
 
-            return bCheck;
-        }
         public static bool checkTableHourAvailability(int TableID, int Hour, DateTime dateTime)
         {
             bool bCheckHour = TableDAL.checkTableHourAvailability(TableID, Hour, dateTime);
@@ -45,27 +38,6 @@ namespace TableTap.BusinessLayer.Classes
             return false;
         }
 
-        public static BookingModel getDayTableBooking(int id)
-        {
-            BookingModel bookings = TableDAL.loadTableBookingList(id);
-
-            return bookings;
-        }
-
-        public static bool bookTable(int id, string login, string hour)
-        {
-            
-            bool bCheck = TableDAL.checkTableStatus(id, hour); 
-            if (bCheck == true)
-            {
-                if (TableDAL.bookTable(id, login, hour))
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
 
         public static bool processCalanderBookTable(GroupModel groupModel)
         {

@@ -94,7 +94,14 @@
                         <div class="col mx-auto">
                         </div>
                         <div class="col mx-auto">
+                            <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                                <ContentTemplate>
                              <asp:Button type="button" ID="btnBook" Text="Book Table" onclick="btnBook_Click" OnClientClick="return CheckDouble();" runat="server" class="btn btn-danger btn-lg btn-block login-button" />
+                                </ContentTemplate>
+                                <Triggers>
+                                                <asp:AsyncPostBackTrigger ControlID="hourDropdown" EventName="SelectedIndexChanged" />  
+                                </Triggers>
+                            </asp:UpdatePanel>
                         </div>  
                         <div class="col mx-auto">
                         </div>
@@ -160,7 +167,14 @@
                         <div class="col mx-auto">
                         </div>
                         <div class="col mx-auto">
+                            <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+                                <ContentTemplate>
                             <asp:Button type="button" ID="btnBookCalander" Text="Book Table" onclick="btnBookCalander_Click" OnClientClick="return CheckDouble();" runat="server" class="btn btn-danger btn-lg btn-block login-button"/>
+                                    </ContentTemplate>
+                                <Triggers>
+                                                <asp:AsyncPostBackTrigger ControlID="CalHourDropDown" EventName="SelectedIndexChanged" />  
+                                </Triggers>
+                            </asp:UpdatePanel>
                         </div>  
                         <div class="col mx-auto">
                         </div>

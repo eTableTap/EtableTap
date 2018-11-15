@@ -101,6 +101,7 @@ namespace TableTap.DataAccessLayer.Classes
 
             return tables;
         }
+
         public static TableModel loadTableByID(int id)
         {
 
@@ -133,151 +134,6 @@ namespace TableTap.DataAccessLayer.Classes
             }
 
             return table;
-        }
-
-        public static BookingModel loadTableBookingList(int id)
-        {
-            BookingModel bookings = new BookingModel();
-
-            DateTime dateNow = DateTime.Now;
-            string date = dateNow.ToString("yyyy-MM-d");
-
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
-
-            using (conn)
-            {
-                conn.Open();
-
-                using (SqlCommand command = new SqlCommand(
-                    "SELECT * FROM tblStatus WHERE tableID=" + "'" + id.ToString() + "'" + " AND date=" + "'" + date + "'",
-                    conn))
-                {
-                    SqlDataReader dr = command.ExecuteReader();
-
-                    dr.Read();
-
-                    bookings.StatusID = Convert.ToInt32(dr["StatusID"]);
-                    bookings.TableID = Convert.ToInt32(dr["TableID"]);
-                    bookings.Date = DateTime.Parse(dr["Date"].ToString());
-                    bookings.Hour[0] = dr["hour00"].ToString();
-                    bookings.Hour[1] = dr["hour01"].ToString();
-                    bookings.Hour[2] = dr["hour02"].ToString();
-                    bookings.Hour[3] = dr["hour03"].ToString();
-                    bookings.Hour[4] = dr["hour04"].ToString();
-                    bookings.Hour[5] = dr["hour05"].ToString();
-                    bookings.Hour[6] = dr["hour06"].ToString();
-                    bookings.Hour[7] = dr["hour07"].ToString();
-                    bookings.Hour[8] = dr["hour08"].ToString();
-                    bookings.Hour[9] = dr["hour09"].ToString();
-                    bookings.Hour[10] = dr["hour10"].ToString();
-                    bookings.Hour[11] = dr["hour11"].ToString();
-                    bookings.Hour[12] = dr["hour12"].ToString();
-                    bookings.Hour[13] = dr["hour13"].ToString();
-                    bookings.Hour[14] = dr["hour14"].ToString();
-                    bookings.Hour[15] = dr["hour15"].ToString();
-                    bookings.Hour[16] = dr["hour16"].ToString();
-                    bookings.Hour[17] = dr["hour17"].ToString();
-                    bookings.Hour[18] = dr["hour18"].ToString();
-                    bookings.Hour[19] = dr["hour19"].ToString();
-                    bookings.Hour[20] = dr["hour20"].ToString();
-                    bookings.Hour[21] = dr["hour21"].ToString();
-                    bookings.Hour[22] = dr["hour22"].ToString();
-                    bookings.Hour[23] = dr["hour23"].ToString();
-                    
-
-                    dr.Close();
-                }
-                conn.Close();
-            }
-
-            return bookings;
-        }
-   
-        public static bool checkCurrentTableStatus(int id)
-        {
-
-            string sTest = "default - this should not matter";
-
-
-            DateTime dateNow = DateTime.Now;
-            //string hour = dateNow.ToString("HH");
-            string date = dateNow.ToString("yyyy-MM-d");
-            string dateYear = dateNow.ToString("yyyy");
-            string dateMonth = dateNow.ToString("MM");
-            string dateDay = dateNow.ToString("Day");
-            //string date = dateNow.ToString("dd/MM/yyyy");
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
-
-            using (conn)
-            {
-                conn.Open();
-
-                using (SqlCommand command = new SqlCommand(
-                    "SELECT hour" + dateNow.ToString("HH").ToString() + " FROM tblStatus WHERE tableID=" + "'" + id.ToString() + "'" + " AND date=" + "'" + date + "'",
-                    conn))
-
-
-                {
-                    SqlDataReader dr = command.ExecuteReader();
-
-                    while (dr.Read())
-                    {
-                        sTest = dr["hour" + dateNow.ToString("HH")].ToString();
-                    }
-                    dr.Close();
-                }
-                conn.Close();
-            }
-
-            if (sTest.Contains("Free"))
-            {
-                //sTest = "This table is currently availabile! Times below are also available";
-                return true;
-            }
-            /*else
-            {
-                sTest = "This table is Occupied. Times below are available";
-            }*/
-
-            return false;
-        }
-        public static bool checkTableStatus(int id, string hour)
-        {
-
-            string sTest = "default - this should not matter";
-
-            DateTime dateNow = DateTime.Now;
-            string date = dateNow.ToString("yyyy-MM-d");
-
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
-
-            using (conn)
-            {
-                conn.Open();
-
-                using (SqlCommand command = new SqlCommand(
-                    "SELECT hour" + hour.ToString() + " FROM tblStatus WHERE tableID=" + "'" + id.ToString() + "'" + " AND date=" + "'" + date + "'",
-                    conn))
-
-
-                {
-                    SqlDataReader dr = command.ExecuteReader();
-
-                    while (dr.Read())
-                    {
-                        sTest = dr["hour" + hour.ToString()].ToString();
-                    }
-                    dr.Close();
-                }
-                conn.Close();
-            }
-
-            if (sTest.Contains("Free"))
-            {
-                return true;
-            }
-
-            return false;
         }
 
         public static bool checkTableHourAvailability(int TableID, int Hour, DateTime date)
@@ -314,38 +170,6 @@ namespace TableTap.DataAccessLayer.Classes
 
 
             return false;
-        }
-
-        public static bool bookTable(int id, string login, string hour)
-        {
-            try
-            {
-                DateTime dateNow = DateTime.Now;
-                string date = dateNow.ToString("yyyy-MM-d");
-                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
-                //need a try catch here
-                using (conn)
-                {
-                    conn.Open();
-
-                    using (SqlCommand command = new SqlCommand(
-                        /*"UPDATE hour" + hour + " Set hour" + hour + "= '" + login + "'" + " FROM tblStatus WHERE tableID=" + "'" + id.ToString() + "'" + " AND date=" + "'" + date + "'",
-                        conn))*/
-                        "UPDATE tblStatus SET hour" + hour + "= '" + login + "'" + " WHERE tableID=" + "'" + id.ToString() + "'" + " AND date=" + "'" + date + "'",
-                        conn))
-                    {
-                        SqlDataReader dr = command.ExecuteReader();
-
-                        dr.Close();
-                    }
-                    conn.Close();
-                    return true;
-                }
-            }
-            catch
-            {
-                return false;
-            }
         }
 
         public static bool CreateCalanderBookTable(GroupModel groupModel)
@@ -387,6 +211,7 @@ namespace TableTap.DataAccessLayer.Classes
                 return false;
             }
         }
+
         public static bool checkTableStatus(GroupModel groupModel)
         {
 
@@ -427,6 +252,7 @@ namespace TableTap.DataAccessLayer.Classes
 
             return false; // = table is already booked
         }
+
         public static bool checkCheckin(GroupModel groupModel)
         {
 
@@ -469,6 +295,7 @@ namespace TableTap.DataAccessLayer.Classes
 
             return false; // = table can be checked into
         }
+
         public static int getGroupIDByGroupModel(GroupModel groupModel)
         {
 
@@ -563,8 +390,6 @@ namespace TableTap.DataAccessLayer.Classes
 
         }
 
-
-
         public static void modifyTable(List<string> tableData)
         {
             /// <summary>
@@ -591,7 +416,6 @@ namespace TableTap.DataAccessLayer.Classes
 
 
         }
-
 
         public static void deleteTable(string tableID)
         {

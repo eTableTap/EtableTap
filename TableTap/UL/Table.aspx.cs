@@ -25,42 +25,11 @@ namespace TableTap.UL
 
             DateTime today = DateTime.Now;   //HH = 24hours, hh = 12hours, M = month, m = minute, d = day, y = year.
             lblHeading.Text = "Select Hour: ";
-            //testButton1.Text = today.ToShortDateString();
-            //testButton1.Text = today.ToString("dd-MM-yyyy");
-            //testButton1.Text = today.ToString("yyyy-MM-dd");
-            //testButton1.Text = today.ToString("HH");
 
-            //bool bCheck = TableBL.checkTableStatus(ID);
+
             
-
-           // BookingModel bookings = TableBL.getDayTableBooking(ID);
-
-            /*
-            List<string> dayList = new List<String>();
-            int x = Convert.ToInt32(today.ToString("HH")); //sets x to current hour
-            
-            while (x < 24)      //will loop until the end of the day's booking aka 2300. Can change to room closing time     
-            {
-                if (bookings.Hour[x].ToString().Contains("Free"))
-                {
-                    dayList.Add(x.ToString() + ": " + bookings.Hour[x]);
-                }
-                else
-                {
-                    dayList.Add(x.ToString() + ": Occupied");
-                }
-
-                x++;
-            }
-           
-            if (!IsPostBack) 
-            {
-                hourDropdown.DataSource = dayList;
-                hourDropdown.DataBind();
-            }
-            */
             /////For New System///Checks
-            ///
+
             List<string> hoursList = new List<String>();
             int x = Convert.ToInt32(today.ToString("HH")); ; //set y to current hour
             RoomModel thisRoom = RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID);
@@ -87,6 +56,13 @@ namespace TableTap.UL
                 hourDropdown.DataSource = hoursList;
                 hourDropdown.DataBind();
             }
+
+            if (hourDropdown.SelectedValue.ToString().Contains("Occupied"))
+            {
+                btnBook.Visible = false;
+                lblStatus.Text = "THE TABLE IS CURRENTLY OCCUPIED";
+            }
+
             showCalInputBoxes((TableBL.getTableByID(ID).PersonCapacity) - 1); // -1 because the user takes up 1 spot
             showInputBoxes((TableBL.getTableByID(ID).PersonCapacity) - 1);
             
@@ -97,23 +73,21 @@ namespace TableTap.UL
             if (hourDropdown.SelectedValue.ToString().Contains("Occupied"))
             {
                 btnBook.Visible = false;
-                lblStatus.Text = "THE TABLE IS CURRENTLY OCCUPIED";
             }
             else
             {
                 btnBook.Visible = true;
-                lblStatus.Text = "THE TABLE IS AVAILABLE";
             }
         }
         protected void calHourDropdown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (hourDropdown.SelectedValue.ToString().Contains("Occupied"))
+            if (CalHourDropDown.SelectedValue.ToString().Contains("Occupied"))
             {
-                
+                btnBookCalander.Visible = false;
             }
             else
             {
-                
+                btnBookCalander.Visible = true;
             }
         }
         protected void MyCalendar_SelectionChanged(object sender, EventArgs e)
@@ -148,6 +122,11 @@ namespace TableTap.UL
             CalHourDropDown.DataSource = hoursList;
             CalHourDropDown.DataBind();
 
+            if (CalHourDropDown.SelectedValue.ToString().Contains("Occupied"))
+            {
+                btnBookCalander.Visible = false;
+            }
+
         }
         protected void btnBook_Click(Object sender, EventArgs e)
         {
@@ -157,12 +136,7 @@ namespace TableTap.UL
                 Session["LoginFallback"] = url;
                 Response.Redirect("Login.aspx");
             }
-            /*
-            btnBook.Visible = false;
-            //btnBook.Enabled = false;
-            makeBooking();
             
-           */
 
             ///for new system
             ///
@@ -246,11 +220,11 @@ namespace TableTap.UL
             newGroupBooking.gDate = Cal.SelectedDate.Date;
             newGroupBooking.emailAddress = Session["Login"].ToString();
             newGroupBooking.gHour = Int32.Parse(sHour);
-            newGroupBooking.memberEmail1 = "Test1";
-            newGroupBooking.memberEmail2 = "Test2";
-            newGroupBooking.memberEmail3 = "Test3";
-            newGroupBooking.memberEmail4 = "Test4";
-            newGroupBooking.memberEmail5 = "Test5";
+            newGroupBooking.memberEmail1 = InputCalEmail1.Value;
+            newGroupBooking.memberEmail2 = InputCalEmail2.Value;
+            newGroupBooking.memberEmail3 = InputCalEmail3.Value;
+            newGroupBooking.memberEmail4 = InputCalEmail4.Value;
+            newGroupBooking.memberEmail5 = InputCalEmail5.Value;
 
             //bool btest = TableBL.processCalanderBookTable(newGroupBooking);
             if(TableBL.processCalanderBookTable(newGroupBooking))
@@ -259,23 +233,23 @@ namespace TableTap.UL
 
                 lblStatus.Text = "Table: " + TableBL.getTableByID(ID).TableID + "<br />Room Name: " + RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).RoomName.ToString() + "<br />in building: " + BuildingBL.getBuildingByID(RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).BuildingID).BuildingName + "<br />at: " + sHour + "00 -" + (Convert.ToInt32(sHour) + 1).ToString() + "00" + "<br /> was successfully booked";
 
-                if (InputEmail1.Value != null)
+                if (InputCalEmail1.Value != null)
                 {
                     notifyGroup(InputCalEmail1.Value, ID, date, sHour);
                 }
-                if (InputEmail2.Value != null)
+                if (InputCalEmail2.Value != null)
                 {
                     notifyGroup(InputCalEmail2.Value, ID, date, sHour);
                 }
-                if (InputEmail3.Value != null)
+                if (InputCalEmail3.Value != null)
                 {
                     notifyGroup(InputCalEmail3.Value, ID, date, sHour);
                 }
-                if (InputEmail4.Value != null)
+                if (InputCalEmail4.Value != null)
                 {
                     notifyGroup(InputCalEmail4.Value, ID, date, sHour);
                 }
-                if (InputEmail5.Value != null)
+                if (InputCalEmail5.Value != null)
                 {
                     notifyGroup(InputCalEmail5.Value, ID, date, sHour);
                 }
@@ -287,52 +261,10 @@ namespace TableTap.UL
                 string url = ConfigurationManager.AppSettings["UnsecurePath"] + "BookingReceipt.aspx?id=" + receipt;
                 Response.Redirect(url);
             }
-            //for testing
-            /*
-            lblCalCheck.Text = "TableID = " + newGroupBooking.tableID.ToString() + " " +
-                "Date = " + newGroupBooking.gDate.ToShortDateString() + " " +
-                "UserEmail = " + newGroupBooking.emailAddress + " " +
-                "memberEmail1 = " + newGroupBooking.memberEmail1 + " " +
-                "memberEmail2 = " + newGroupBooking.memberEmail2 + " " +
-                "memberEmail3 = " + newGroupBooking.memberEmail3 + " " +
-                "memberEmail4 = " + newGroupBooking.memberEmail4 + " " +
-                "memberEmail5 = " + newGroupBooking.memberEmail5 + " " +
-                btest;
-            */
+
 
         }
-        /*protected void makeBooking()
-        {
-            int ID = Int32.Parse(Request.QueryString["ID"]);
-            //string sHour = new String(hourDropdown.SelectedItem.Text.TakeWhile(Char.IsDigit).ToArray());
-            string sHour = hourDropdown.SelectedValue.ToString();
-            sHour = new string(sHour.TakeWhile(Char.IsDigit).ToArray());
-            if (TableBL.bookTable(ID, Session["login"].ToString(), sHour))
-            {
-                lblHeading.Text = "Table was booked";
 
-                lblStatus.Text = "Table: " + TableBL.getTableByID(ID).TableID + "<br />Room Name: " + RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).RoomName.ToString() + "<br />in building: " + BuildingBL.getBuildingByID(RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).BuildingID).BuildingName + "<br />at: " + sHour + "00 -" + (Convert.ToInt32(sHour) + 1).ToString() + "00" + "<br /> was successfully booked";
-
-            }
-
-            if (InputEmail1.Value != null)
-            {
-                lblStatus.Text += "<br />Session User: " + UserBL.passUserSearch(Session["login"].ToString()).FirstName.ToString()
-                + "<br />Email: " + InputEmail1.Value.ToString()
-                + "<br />Email: " + TableBL.getTableByID(ID).TableID.ToString()
-                + "<br />Email: " + RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).RoomName.ToString()
-                + "<br />Email: " + BuildingBL.getBuildingByID(RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).BuildingID).BuildingName.ToString();
-
-                DateTime today = DateTime.Now;
-                NotifyBL.startNotifyGroupMember(UserBL.passUserSearch(Session["login"].ToString()).FirstName.ToString(),
-                InputEmail1.Value.ToString(),
-                TableBL.getTableByID(ID).TableID.ToString(),
-                RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).RoomName.ToString(),
-                BuildingBL.getBuildingByID(RoomBL.getRoomByID(TableBL.getTableByID(ID).RoomID).BuildingID).BuildingName.ToString(),
-                today.ToString("dd-MM-yyyy"),
-                sHour + "00");
-            }
-        }*/
         protected void notifyGroup(string email, int tableID,DateTime date, string sHour)
         {
             NotifyBL.startNotifyGroupMember(UserBL.passUserSearch(Session["login"].ToString()).FirstName.ToString(),
