@@ -61,7 +61,7 @@ namespace TableTap.UL
 
                 UserModel newUser = new UserModel();
 
-                newUser.Email = fEmail;
+                newUser.Email = fEmail.ToLower();
                 newUser.Password = inPassword.Value;
                 newUser.FirstName = inFirstName.Value;
                 newUser.LastName = inLastName.Value;

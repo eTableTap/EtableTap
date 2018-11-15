@@ -30,7 +30,7 @@ namespace TableTap.UL
             if (IsValid)
             {
                 UserModel loggedUser = new UserModel();
-                loggedUser.Email = txbUsername.Value;
+                loggedUser.Email = txbUsername.Value.ToLower();
                 loggedUser.Password = txbPassword.Value;
 
                 var usr = UserBL.ProcessLogin(loggedUser);
@@ -38,7 +38,7 @@ namespace TableTap.UL
                 //5 for unknown user, 1 for admin 2 for user
                 if (usr != 5)
                 {
-                    loggedUser = UserBL.getUserByEmailAndPassword(txbUsername.Value, txbPassword.Value);
+                    loggedUser = UserBL.getUserByEmailAndPassword(txbUsername.Value.ToLower(), txbPassword.Value);
                     
                 
 
