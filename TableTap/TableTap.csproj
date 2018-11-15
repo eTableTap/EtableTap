@@ -148,8 +148,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="GoogleAPI\Googlelogin.aspx" />
-    <Content Include="GoogleAPI\Return.aspx" />
     <Content Include="Resources\Images\favicon.ico" />
     <Content Include="UL\AdminAddRoom.aspx" />
     <Content Include="UL\AdminEditBuilding.aspx" />
@@ -161,7 +159,6 @@
     <Content Include="UL\AdminTaskScheduler.aspx" />
     <Content Include="UL\BookingReceipt.aspx" />
     <Content Include="UL\GoogleLogin.aspx" />
-    <Content Include="UL\IncidentModule.aspx" />
     <Content Include="Resources\Images\Spiteful_Spirit.jpg" />
     <Content Include="Resources\Images\TestImage.png" />
     <Content Include="Scripts\esm\popper-utils.js" />
@@ -206,8 +203,6 @@
     <Content Include="UL\AdminPrintQR.aspx" />
     <Content Include="UL\BeauTestPage.aspx" />
     <Content Include="UL\Building.aspx" />
-    <Content Include="UL\HaydenTestingPage.aspx" />
-    <Content Include="UL\HaydenTestingPageURLIN.aspx" />
     <Content Include="UL\Home.aspx" />
     <Content Include="UL\Login.aspx" />
     <Content Include="UL\Logout.aspx" />
@@ -279,20 +274,6 @@
     <Compile Include="BusinessLayer\Classes\GoogleLoginBL.cs" />
     <Compile Include="BusinessLayer\Classes\GroupBL.cs" />
     <Compile Include="DataAccessLayer\Classes\GroupDAL.cs" />
-    <Compile Include="GoogleAPI\Googlelogin.aspx.cs">
-      <DependentUpon>Googlelogin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="GoogleAPI\Googlelogin.aspx.designer.cs">
-      <DependentUpon>Googlelogin.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="GoogleAPI\Return.aspx.cs">
-      <DependentUpon>Return.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="GoogleAPI\Return.aspx.designer.cs">
-      <DependentUpon>Return.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Models\GroupModel.cs" />
     <Compile Include="Resources\Images\QR\ForceGen.cs" />
     <Compile Include="UL\AdminAddRoom.aspx.cs">
@@ -333,13 +314,6 @@
     </Compile>
     <Compile Include="UL\GoogleLogin.aspx.designer.cs">
       <DependentUpon>GoogleLogin.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="UL\IncidentModule.aspx.cs">
-      <DependentUpon>IncidentModule.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UL\IncidentModule.aspx.designer.cs">
-      <DependentUpon>IncidentModule.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\IncidentModel.cs" />
     <Compile Include="UL\404Page.aspx.cs">
@@ -454,20 +428,6 @@
     <Compile Include="UL\Building.aspx.designer.cs">
       <DependentUpon>Building.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UL\HaydenTestingPage.aspx.cs">
-      <DependentUpon>HaydenTestingPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UL\HaydenTestingPage.aspx.designer.cs">
-      <DependentUpon>HaydenTestingPage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="UL\HaydenTestingPageURLIN.aspx.cs">
-      <DependentUpon>HaydenTestingPageURLIN.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UL\HaydenTestingPageURLIN.aspx.designer.cs">
-      <DependentUpon>HaydenTestingPageURLIN.aspx</DependentUpon>
-    </Compile>
     <Compile Include="UL\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -571,7 +531,6 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="IncidenceModule\" />
     <Folder Include="obj\" />
     <Folder Include="View\" />
   </ItemGroup>

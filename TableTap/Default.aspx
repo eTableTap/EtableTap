@@ -5,26 +5,12 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:Button ID="test1" runat="server" Text="Hayden Testing Page" OnClick="test1_Click" />
-    <asp:Button ID="test2" runat="server" Text="Beau test page" OnClick="test2_Click" />
-    <asp:Button ID="test3" runat="server" Text="admin home page" OnClick="test3_Click" />
-    <asp:Button ID="test4" runat="server" Text="testQR" OnClick="test4_Click" />
-    <asp:Button ID="test5" runat="server" Text="Registration page" OnClick="test5_Click" />
-    <asp:Button ID="Button1" runat="server" Text="Directions Module" OnClick="Button1_Click" />
-    <asp:Button ID="btntestnotify" runat="server" OnClick="btntestnotify_Click" Text="Test notify" />
-    <asp:Button ID="btnBackgroundworker" runat="server" Text="start email notify ( DO NOT PUSH WILL SPAM HAYDEN SO BAD)" BackColor="Red" BorderColor="#003300" BorderStyle="Solid" BorderWidth="5px" Font-Bold="True" Font-Names="Arial Black" OnClick="btnBackgroundworker_Click" />
-    <asp:Button ID="Button3" runat="server" Text="Test google login" OnClick="Button3_Click" />
-    <asp:Button ID="Button6" runat="server" Text="Query Test" OnClick="Button6_Click" />
     <div>
-        <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Test background worker" Width="96px" />
     </div>
 
     
 
         <asp:button ID="Buttontry" runat="server" onclick="buttontry_OnClick" Text="tryit"></asp:button>
-
-<asp:Button ID="Button4" runat="server" OnClick="Button4_Click" Text="stop job" />
-<asp:Button ID="Button5" runat="server" Text="SystemTime+1hour" OnClick="Button5_Click" />
 
     <asp:Label ID="lbltimetest" runat="server" Text="Label"></asp:Label>
 
