@@ -44,30 +44,7 @@ namespace TableTap.DataAccessLayer.Classes
             }
 
         }
-        //Add user with input strings from registration page
-        /*public void AddTable(string TableQR, int RoomID, int PersonCapacity, string Category, Boolean Reservable)
-        {
-            string DBConn;
-            DBConn = ConfigurationManager.ConnectionStrings["udbTableTapConnectionString"].ConnectionString;
-            using (SqlConnection sqlConnection = new SqlConnection(DBConn))
-            {
-                sqlConnection.Open();
-
-                using (SqlCommand command = sqlConnection.CreateCommand())
-                {
-                    command.CommandText = "INSERT INTO tblTable (tableQR, roomID, personCapacity, category, reservable) VALUES (@tableQR, @roomID, @personCapacity, @category, @reservable)";
-
-                    command.Parameters.AddWithValue("@tableQR", TableQR);
-                    command.Parameters.AddWithValue("@roomID", RoomID);
-                    command.Parameters.AddWithValue("@personCapacity", PersonCapacity);
-                    command.Parameters.AddWithValue("@category", Category);
-                    command.Parameters.AddWithValue("@reservable", Reservable);
-
-                    int result = command.ExecuteNonQuery();
-                }
-
-            }
-        }*/
+       
         public static List<TableModel> loadTableList(int id)
         {
             List<TableModel> tables = new List<TableModel>();
@@ -172,12 +149,12 @@ namespace TableTap.DataAccessLayer.Classes
             return false;
         }
 
-        public static bool CreateCalanderBookTable(GroupModel groupModel)
+        public static bool CreateCalanderBookTable(BookingModel groupModel)
         {
             try
             {
                 SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
-                GroupModel newGroupModel = groupModel;
+                BookingModel newGroupModel = groupModel;
 
                 using (conn)
                 {
@@ -212,7 +189,7 @@ namespace TableTap.DataAccessLayer.Classes
             }
         }
 
-        public static bool checkTableStatus(GroupModel groupModel)
+        public static bool checkTableStatus(BookingModel groupModel)
         {
 
             string sTest = null;
@@ -253,7 +230,7 @@ namespace TableTap.DataAccessLayer.Classes
             return false; // = table is already booked
         }
 
-        public static bool checkCheckin(GroupModel groupModel)
+        public static bool checkCheckin(BookingModel groupModel)
         {
 
             string sTest = null;
@@ -296,7 +273,7 @@ namespace TableTap.DataAccessLayer.Classes
             return false; // = table can be checked into
         }
 
-        public static int getGroupIDByGroupModel(GroupModel groupModel)
+        public static int getGroupIDByGroupModel(BookingModel groupModel)
         {
 
             int iTest = 0;

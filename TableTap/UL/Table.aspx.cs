@@ -145,7 +145,7 @@ namespace TableTap.UL
             string sHour = hourDropdown.SelectedValue.ToString();
             sHour = new string(sHour.TakeWhile(Char.IsDigit).ToArray());
             //DateTime date = DateTime.Now;
-            GroupModel newGroupBooking = new GroupModel();
+            BookingModel newGroupBooking = new BookingModel();
             newGroupBooking.tableID = ID;
             newGroupBooking.gDate = DateTime.Now;
             newGroupBooking.emailAddress = Session["Login"].ToString();
@@ -215,7 +215,7 @@ namespace TableTap.UL
             string sHour = CalHourDropDown.SelectedValue.ToString();
             sHour = new string(sHour.TakeWhile(Char.IsDigit).ToArray());
             DateTime date = Cal.SelectedDate;
-            GroupModel newGroupBooking = new GroupModel();
+            BookingModel newGroupBooking = new BookingModel();
             newGroupBooking.tableID = ID;
             newGroupBooking.gDate = Cal.SelectedDate.Date;
             newGroupBooking.emailAddress = Session["Login"].ToString();
@@ -368,7 +368,7 @@ namespace TableTap.UL
             string sHour = hourDropdown.SelectedValue.ToString();
             sHour = new string(sHour.TakeWhile(Char.IsDigit).ToArray());
             //DateTime date = DateTime.Now;
-            GroupModel newCheckin = new GroupModel();
+            BookingModel newCheckin = new BookingModel();
             newCheckin.tableID = ID;
             newCheckin.gDate = DateTime.Now;
             newCheckin.emailAddress = Session["Login"].ToString();

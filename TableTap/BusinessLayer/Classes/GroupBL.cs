@@ -15,9 +15,9 @@ namespace TableTap.BusinessLayer.Classes
 
 
 
-        public static GroupModel searchGroupByID(int groupID)
+        public static BookingModel searchGroupByID(int groupID)
         {
-            GroupModel group = GroupDAL.checkGroupBooking(groupID);
+            BookingModel group = GroupDAL.checkGroupBooking(groupID);
 
             return group;
 

@@ -35,7 +35,7 @@ namespace TableTap.UL
         protected void MainWorker(int groupID)
         {
 
-            GroupModel group = GroupBL.searchGroupByID(groupID);
+            BookingModel group = GroupBL.searchGroupByID(groupID);
 
             UserModel user = new UserModel();
             TableModel table = new TableModel();

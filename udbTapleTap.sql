@@ -65,17 +65,19 @@ CREATE TABLE tblUser (
 	phoneNum		NVARCHAR(30) NOT NULL,
 	)
 
-CREATE TABLE tblGroup (
-	groupID			INT IDENTITY(100001,1) PRIMARY KEY,
-	tableID			INT NOT NULL,
-	gDate			DATE NOT NULL,
-	emailAddress	NVARCHAR(100) NOT NULL,
-	gHour			INT NOT NULL,
-	memberEmail1		NVARCHAR(40),
-	memberEmail2	NVARCHAR(40),
-	memberEmail3	NVARCHAR(40),
-	memberEmail4	NVARCHAR(40),
-	memberEmail5	NVARCHAR(40),
+CREATE TABLE tblBooking (
+	bookingID			INT IDENTITY(100001,1) PRIMARY KEY,
+	tableID				INT NOT NULL,
+	bookingDate			DATE NOT NULL,
+	emailAddress		NVARCHAR(100) NOT NULL,
+	bookingHour			INT NOT NULL,
+	memberEmail1		NVARCHAR(40) DEFAULT ('No Email'),
+	memberEmail2		NVARCHAR(40) DEFAULT ('No Email'),
+	memberEmail3		NVARCHAR(40) DEFAULT ('No Email'),
+	memberEmail4		NVARCHAR(40) DEFAULT ('No Email'),
+	memberEmail5		NVARCHAR(40) DEFAULT ('No Email'),
+	Checkin				BIT NOT NULL DEFAULT (0)
+
 
 		CONSTRAINT fk_gettheTableID FOREIGN KEY (tableID) REFERENCES tblTable(tableID)
 	)

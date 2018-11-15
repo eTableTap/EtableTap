@@ -34,12 +34,12 @@ namespace TableTap.DataAccessLayer.Classes
 
 
 
-        public static bool CreateCalanderBookTable(GroupModel groupModel)
+        public static bool CreateCalanderBookTable(BookingModel groupModel)
         {
             try
             {
                 SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
-                GroupModel newGroupModel = groupModel;
+                BookingModel newGroupModel = groupModel;
 
                 using (conn)
                 {
@@ -77,11 +77,11 @@ namespace TableTap.DataAccessLayer.Classes
 
 
 
-        public static GroupModel checkGroupBooking(int groupIDE)
+        public static BookingModel checkGroupBooking(int groupIDE)
         {
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
 
-            GroupModel group = new GroupModel();
+            BookingModel group = new BookingModel();
 
             using (conn)
             {
@@ -121,9 +121,9 @@ namespace TableTap.DataAccessLayer.Classes
 
 
 
-        public static List<GroupModel> loadGroupListattime()
+        public static List<BookingModel> loadGroupListattime()
         {
-            List<GroupModel> groups = new List<GroupModel>();
+            List<BookingModel> groups = new List<BookingModel>();
 
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
 
@@ -137,11 +137,11 @@ namespace TableTap.DataAccessLayer.Classes
                     conn))
                 {
                     SqlDataReader dr = command.ExecuteReader();
-                    GroupModel group;
+                    BookingModel group;
                     while (dr.Read())
                     {
 
-                        group = new GroupModel();
+                        group = new BookingModel();
                         group.groupID = Convert.ToInt32(dr["groupID"].ToString());
                         group.tableID = Convert.ToInt32(dr["tableID"].ToString());
                         group.gDate = Convert.ToDateTime(dr["gDate"].ToString());

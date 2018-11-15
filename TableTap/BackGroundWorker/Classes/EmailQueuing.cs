@@ -110,14 +110,14 @@ namespace TableTap.BackGroundWorker.Classes
 
         public static void startEmailWorker()
         {
-            List<GroupModel> groups = new List<GroupModel>();
+            List<BookingModel> groups = new List<BookingModel>();
 
 //            List<List<string>> data = new List<List<string>>();
 
             groups = GroupDAL.loadGroupListattime();
 
 
-            foreach(GroupModel group in groups)
+            foreach(BookingModel group in groups)
             {
                 List<string> dataset1 = new List<string>();
 

@@ -20,8 +20,7 @@
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>
-    </IISExpressSSLPort>
+    <IISExpressSSLPort>44390</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -274,7 +273,7 @@
     <Compile Include="BusinessLayer\Classes\GoogleLoginBL.cs" />
     <Compile Include="BusinessLayer\Classes\GroupBL.cs" />
     <Compile Include="DataAccessLayer\Classes\GroupDAL.cs" />
-    <Compile Include="Models\GroupModel.cs" />
+    <Compile Include="Models\BookingModel.cs" />
     <Compile Include="Resources\Images\QR\ForceGen.cs" />
     <Compile Include="UL\AdminAddRoom.aspx.cs">
       <DependentUpon>AdminAddRoom.aspx</DependentUpon>
@@ -340,7 +339,6 @@
     <Compile Include="UL\Error.aspx.designer.cs">
       <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Models\BookingModel.cs" />
     <Compile Include="Models\BuildingModel.cs" />
     <Compile Include="Models\RoomModel.cs" />
     <Compile Include="Models\TableModel.cs" />

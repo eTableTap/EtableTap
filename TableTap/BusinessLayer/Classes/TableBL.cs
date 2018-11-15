@@ -39,7 +39,7 @@ namespace TableTap.BusinessLayer.Classes
         }
 
 
-        public static bool processCalanderBookTable(GroupModel groupModel)
+        public static bool processCalanderBookTable(BookingModel groupModel)
         {
             bool bCheck = TableDAL.checkTableStatus(groupModel); //check if booking exists - return false if exists
             if (bCheck == true)
@@ -53,14 +53,14 @@ namespace TableTap.BusinessLayer.Classes
             return false;
         }
 
-        public static int getGroupIntByGroupModel(GroupModel groupModel)
+        public static int getGroupIntByGroupModel(BookingModel groupModel)
         {
             int i = TableDAL.getGroupIDByGroupModel(groupModel);
 
             return i;
         }
 
-        public static string processTableCheckin(GroupModel groupModel)
+        public static string processTableCheckin(BookingModel groupModel)
         {
             bool bCheck = TableDAL.checkCheckin(groupModel); //check if booking exists - return false if exists
             if (bCheck == false)
