@@ -36,21 +36,17 @@ CREATE TABLE tblRoom (
 	buildingID		INT NOT NULL,
 	openingTime		TIME(0) NOT NULL DEFAULT '09:00:00',
 	closingTime		TIME(0) NOT NULL DEFAULT '18:00:00',
-	roomMap			IMAGE, --Same as building map
 	tableQty		SMALLINT NOT NULL DEFAULT 10,
-	tablesAvailable SMALLINT NOT NULL DEFAULT 0,
 
 	CONSTRAINT fk_RoomBuilding FOREIGN KEY (buildingID) REFERENCES tblBuilding(buildingID)
 	)
 
 CREATE TABLE tblTable (
 	tableID			INT IDENTITY(00001,1) PRIMARY KEY,
-	--tableQR			NVARCHAR(50) NOT NULL,
 	roomID			INT NOT NULL,
 	personCapacity	SMALLINT NOT NULL,
 	category		NVARCHAR(10) NOT NULL,
-	--available		BIT NOT NULL DEFAULT 0,
-	--reservable		BIT NOT NULL DEFAULT 0,
+
 
 	CONSTRAINT fk_TableRoom FOREIGN KEY (roomID) REFERENCES tblRoom(roomID)
 	)
@@ -76,9 +72,9 @@ CREATE TABLE tblBooking (
 	memberEmail3		NVARCHAR(40) DEFAULT ('No Email'),
 	memberEmail4		NVARCHAR(40) DEFAULT ('No Email'),
 	memberEmail5		NVARCHAR(40) DEFAULT ('No Email'),
-	checkinStatus		BIT NOT NULL DEFAULT (0)
+	checkinStatus		BIT NOT NULL DEFAULT (0),
 
-
+		
 		CONSTRAINT fk_gettheTableID FOREIGN KEY (tableID) REFERENCES tblTable(tableID)
 	)
 	
@@ -112,15 +108,15 @@ CREATE TABLE tblSession (
 go
 
 --sets default value of tablesAvailable as tableQty when a room is created
-CREATE TRIGGER tblRoom_AfterInsert_TRG
-  ON tblRoom
-AFTER INSERT
-AS
-  UPDATE tblRoom
-  SET tblRoom.tablesAvailable = tblRoom.tableQty
-  FROM Inserted AS i
-  WHERE tblRoom.roomID = i.roomID ;
-go
+--CREATE TRIGGER tblRoom_AfterInsert_TRG
+--  ON tblRoom
+--AFTER INSERT
+--AS
+--  UPDATE tblRoom
+--  SET tblRoom.tablesAvailable = tblRoom.tableQty
+--  FROM Inserted AS i
+--  WHERE tblRoom.roomID = i.roomID ;
+--go
 
 --Test values
 INSERT INTO tblBuilding(buildingName, buildingLabel, roomQty, street, suburb, provence, country)
