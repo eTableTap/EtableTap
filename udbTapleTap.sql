@@ -74,7 +74,7 @@ CREATE TABLE tblBooking (
 	memberEmail5		NVARCHAR(40) DEFAULT ('No Email'),
 	checkinStatus		BIT NOT NULL DEFAULT (0),
 
-		
+		--CONSTRAINT fk_getEmail FOREIGN KEY (emailAddress) REFERENCES tblUser(emailAddress)
 		CONSTRAINT fk_gettheTableID FOREIGN KEY (tableID) REFERENCES tblTable(tableID)
 	)
 	
@@ -82,8 +82,8 @@ CREATE TABLE tblIncidence(
     incidenceID INT IDENTITY(1000001,1) PRIMARY KEY,
     incDate DATE NOT NULL,
 	info VARCHAR(300) NOT NULL,
-	tableID INT,
-	roomID INT,
+	tableID INT DEFAULT 0,
+	roomID INT DEFAULT 0,
 	buildingID INT NOT NUll,
 	userID INT NOT NULL,
 	incLevel BIT NOT NULL,  -- determines who sees the notification
