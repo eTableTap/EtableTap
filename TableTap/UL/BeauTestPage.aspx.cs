@@ -128,33 +128,7 @@ namespace TableTap.UL
 
         protected void createImageTable(int tableNumber)
         {
-            string url = ConfigurationManager.AppSettings["UnsecurePath"] + "Table.aspx?id=" + tableNumber;
-            /////////////////
-            Image imageTable = new Image();
-            imageTable.ID = "imgBox" + tableNumber.ToString();
-            imageTable.Attributes.Add("height", "42");
-            imageTable.Attributes.Add("width", "42");
-
-            imageTable.Attributes.Add("style", "border-radius:14px;margin-bottom:20px; ");
-
-            HyperLink imageHL = new HyperLink();
-            imageHL.ID = "hLink" + tableNumber.ToString();
-            imageHL.Attributes.Add("style", "margin-left:20px; ");
-
-            //imageHL.Text = "hLink" + tableNumber.ToString();
-
-            imageHL.Controls.Add(imageTable);//adds image to the hyperlink
-            if (TableBL.checkTableStatus(tableNumber))
-            {
-                imageTable.BackColor = System.Drawing.Color.Green;
-                imageHL.NavigateUrl = url; //will only genertate url if table is available
-            }
-            else
-            {
-                imageTable.BackColor = System.Drawing.Color.Red;
-            }
-
-            div1.Controls.Add(imageHL);
+            
         }
     }
 }
