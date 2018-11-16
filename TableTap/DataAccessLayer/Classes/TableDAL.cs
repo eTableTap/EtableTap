@@ -115,7 +115,7 @@ namespace TableTap.DataAccessLayer.Classes
 
         public static bool CheckTableHourAvailability(int TableID, int Hour, DateTime date)
         {
-           
+           //returns true if the hour is not available
 
             string sTest = null;
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);

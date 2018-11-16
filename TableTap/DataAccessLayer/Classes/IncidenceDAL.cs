@@ -332,6 +332,7 @@ namespace TableTap.DataAccessLayer.Classes
 
         public static void EditIncidentStatusByID(int ID)
         {
+            //will update the incident to true, with the date when the edit button is clicked
             DateTime date = DateTime.Now;
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
 
