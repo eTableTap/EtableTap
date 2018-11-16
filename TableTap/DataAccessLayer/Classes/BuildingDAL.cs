@@ -10,6 +10,10 @@ namespace TableTap.DataAccessLayer.Classes
 {
     public class BuildingDAL
     {
+
+        /// <summary>
+        /// adds new building to database via building model
+        /// </summary>
         public static void AddNewBuilding(BuildingModel building)
         {
             BuildingModel newBuilding = building;
@@ -36,6 +40,11 @@ namespace TableTap.DataAccessLayer.Classes
 
         }
 
+
+        /// <summary>
+        /// returns complete list of all records in building table
+        /// as a list of building models
+        /// </summary>
         public static List<BuildingModel> loadBuildingList()
         {
             List<BuildingModel> buildings = new List<BuildingModel>();
@@ -70,6 +79,11 @@ namespace TableTap.DataAccessLayer.Classes
             return buildings;
         }
 
+
+        /// <summary>
+        /// Loads a building record by building ID
+        /// returns as a building Model
+        /// </summary>
         public static BuildingModel loadBuildingByID(int id)
         {
             BuildingModel building = new BuildingModel();

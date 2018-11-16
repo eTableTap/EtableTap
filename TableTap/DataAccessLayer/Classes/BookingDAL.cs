@@ -11,6 +11,9 @@ namespace TableTap.DataAccessLayer.Classes
     public class BookingDAL
     {
 
+        /// <summary>
+        /// Deletes users by emailaddress
+        /// </summary>
         public static void BookingAllUserDelete(string emailAddress)
         {
 
@@ -30,9 +33,14 @@ namespace TableTap.DataAccessLayer.Classes
             }
         }
 
+
+        /// <summary>
+        /// gets bookingID by booking Model (tableID)
+        /// returns BookingID
+        /// </summary>
         public static int GetBookingIDByBookingModel(BookingModel bookingModel)
         {
-            //when a booking is made the ID is auto generated. This uses data that created the booking to get the ID 
+            // when a booking is made the ID is auto generated. This uses data that created the booking to get the ID 
             // so we can go to the recipt page
             int iTest = 0;
 
@@ -68,6 +76,11 @@ namespace TableTap.DataAccessLayer.Classes
             return iTest;
         }
 
+
+        /// <summary>
+        /// Fetches booking associated with bookingID
+        /// returns booking as booking model
+        /// </summary>
         public static BookingModel CheckBooking(int bookingIDE)
         {
             //gives back a booking from the ID given
@@ -111,6 +124,13 @@ namespace TableTap.DataAccessLayer.Classes
     
         }
 
+
+
+        /// <summary>
+        /// Creates a booking by Booking Model
+        /// Returns bool true if successful
+        /// else retuns false
+        /// </summary>
         public static bool CreateCalanderBookTable(BookingModel bookingModel)
         {
             //creates a booking for a specific time given
@@ -153,6 +173,11 @@ namespace TableTap.DataAccessLayer.Classes
             }
         }
 
+
+        /// <summary>
+        /// Loads all bookings for current time
+        /// returns list of bookings
+        /// </summary>
         public static List<BookingModel> loadBookingListattime()
         {
             List<BookingModel> bookings = new List<BookingModel>();
@@ -198,11 +223,15 @@ namespace TableTap.DataAccessLayer.Classes
             return bookings;
         }
 
+
+        /// <summary>
+        /// Checks if a table is able to be check into. Will check in if able.
+        /// Returns false if it checks in
+        /// Returns true if it is unable to check in
+        /// </summary>
         public static bool CheckCheckin(BookingModel bookingModel)
         {
-            //Checks if a table is able to be check into. Will check in if able.
-            //Returns false if it checks in
-            //Returns true if it is unable to check in
+
             string sTest = null;
 
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);

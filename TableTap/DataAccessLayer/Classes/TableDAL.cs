@@ -19,6 +19,11 @@ namespace TableTap.DataAccessLayer.Classes
     public class TableDAL
     {
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="table"></param>
         public static void AddNewTable(TableModel table)
         {
             TableModel newTable = table;
