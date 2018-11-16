@@ -9,6 +9,26 @@ namespace TableTap.BusinessLayer.Classes
 {
     public class IncidenceBL
     {
+        public static List<IncidentModel> GetIncidentList()
+        {
+            List<IncidentModel> incidences = new List<IncidentModel>();
+
+            incidences = IncidenceDAL.loadIncidentList();
+
+            return incidences;
+        }
+
+        public static void DeleteRow(int i)
+        {
+            IncidenceDAL.DeleteIncidentByID(i);
+ 
+        }
+
+        public static void EditStatus(int i)
+        {
+            IncidenceDAL.EditIncidentStatusByID(i);
+
+        }
 
         public static void datalayerpassadd(IncidentModel incident)
         {

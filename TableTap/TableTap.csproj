@@ -20,7 +20,8 @@
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44390</IISExpressSSLPort>
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -155,6 +156,7 @@
     <Content Include="Resources\Images\LoginBtn.png" />
     <Content Include="Resources\Images\MapBtn.png" />
     <Content Include="Resources\Images\SorryFlower.png" />
+    <Content Include="UL\AdminIncidence.aspx" />
     <Content Include="UL\AdminTaskScheduler.aspx" />
     <Content Include="UL\BookingReceipt.aspx" />
     <Content Include="UL\GoogleLogin.aspx" />
@@ -293,6 +295,13 @@
     <Compile Include="BusinessLayer\Classes\IncidenceBL.cs" />
     <Compile Include="DataAccessLayer\Classes\IncidenceDAL.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="UL\AdminIncidence.aspx.cs">
+      <DependentUpon>AdminIncidence.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UL\AdminIncidence.aspx.designer.cs">
+      <DependentUpon>AdminIncidence.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UL\AdminTaskScheduler.aspx.cs">
       <DependentUpon>AdminTaskScheduler.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

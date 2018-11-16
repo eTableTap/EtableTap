@@ -298,6 +298,8 @@ namespace TableTap.DataAccessLayer.Classes
                         incident.UserID = int.Parse(dr["userID"].ToString());
                         incident.IncLevel = Convert.ToBoolean(dr["incLevel"]);
                         incident.IncENDDate = Convert.ToDateTime(dr["incENDDate"]);
+
+                        incidentList.Add(incident);
                     }
                     dr.Close();
                 }
@@ -305,6 +307,49 @@ namespace TableTap.DataAccessLayer.Classes
             }
 
             return incidentList;
+        }
+
+
+        public static void DeleteIncidentByID(int ID)
+        {
+
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+
+            using (conn)
+            {
+                conn.Open();
+
+
+                using (SqlCommand command = new SqlCommand(
+                "DELETE FROM tblIncidence WHERE incidenceID =" + ID.ToString(), conn))
+                {
+                    command.ExecuteNonQuery();
+                }
+                conn.Close();
+            }
+
+        }
+
+        public static void EditIncidentStatusByID(int ID)
+        {
+            DateTime date = DateTime.Now;
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+
+            using (conn)
+            {
+                conn.Open();
+
+
+                using (SqlCommand command = new SqlCommand(
+                "UPDATE tblIncidence " +
+                "SET incLevel = 1, incENDDate = " + "'" + date.ToString("yyyy-MM-hh") + "'" +
+                " FROM tblIncidence WHERE incidenceID = " + ID.ToString(), conn))
+                {
+                    command.ExecuteNonQuery();
+                }
+                conn.Close();
+            }
+
         }
 
 
