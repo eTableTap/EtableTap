@@ -205,7 +205,6 @@
     <Content Include="UL\PrintPage.aspx" />
     <Content Include="UL\Register.aspx" />
     <Content Include="UL\Room.aspx" />
-    <Content Include="UL\Scan.aspx" />
     <Content Include="UL\Site.Master" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
@@ -466,13 +465,6 @@
     </Compile>
     <Compile Include="UL\Room.aspx.designer.cs">
       <DependentUpon>Room.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="UL\Scan.aspx.cs">
-      <DependentUpon>Scan.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UL\Scan.aspx.designer.cs">
-      <DependentUpon>Scan.aspx</DependentUpon>
     </Compile>
     <Compile Include="UL\Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>

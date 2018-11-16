@@ -21,9 +21,8 @@ namespace TableTap.DataAccessLayer.Classes
 
 
         /// <summary>
-        /// 
+        /// Adds new table record to databse by table Model
         /// </summary>
-        /// <param name="table"></param>
         public static void AddNewTable(TableModel table)
         {
             TableModel newTable = table;
@@ -50,6 +49,11 @@ namespace TableTap.DataAccessLayer.Classes
 
         }
        
+
+        /// <summary>
+        /// loads all tables by associated roomID
+        /// returns a list of table models
+        /// </summary>
         public static List<TableModel> LoadTableList(int id)
         {
             List<TableModel> tables = new List<TableModel>();
@@ -83,7 +87,12 @@ namespace TableTap.DataAccessLayer.Classes
 
             return tables;
         }
+        
 
+        /// <summary>
+        /// Load table by tableID 
+        /// returns as tablemodel
+        /// </summary>
         public static TableModel LoadTableByID(int id)
         {
 
@@ -118,6 +127,11 @@ namespace TableTap.DataAccessLayer.Classes
             return table;
         }
 
+
+        /// <summary>
+        /// checks avalibility of table by tableID, Hour and Date via TableDAL.CheckTableHourAvailability(TableID, Hour, dateTime);
+        /// returns bool if avaliable or not
+        /// </summary>
         public static bool CheckTableHourAvailability(int TableID, int Hour, DateTime date)
         {
            //returns true if the hour is not available
@@ -156,6 +170,11 @@ namespace TableTap.DataAccessLayer.Classes
             return false;
         }
         
+
+        /// <summary>
+        /// checks if booking exists via booking model (tableID)
+        /// </summary>
+
         public static bool CheckTableStatus(BookingModel bookingModel)
         {
 
@@ -196,15 +215,15 @@ namespace TableTap.DataAccessLayer.Classes
 
             return false; // = table is already booked
         }
-        
-        
-       
 
+
+
+        /// <summary>
+        ///  For accessing table data, returns list full of table info
+        /// </summary>
         public static List<string> LoadTable(string tableID)
         {
-            /// <summary>
-            ///  For accessing table data, returns list full of table info
-            /// </summary>
+
             List<string> tableRecord = new List<string>();
 
 
@@ -257,12 +276,14 @@ namespace TableTap.DataAccessLayer.Classes
 
         }
 
+
+        /// <summary>
+        /// Modifys table record from associated tableID passed in
+        /// Uses list (tabledata) to store all data
+        /// </summary>
         public static void ModifyTable(List<string> tableData)
         {
-            /// <summary>
-            /// Modifys table record from associated tableID passed in
-            /// Uses list (tabledata) to store all data
-            /// </summary>
+
             string tableID = tableData[0];
             string roomID = tableData[1];
             string personCapacity = tableData[2];
@@ -284,11 +305,14 @@ namespace TableTap.DataAccessLayer.Classes
 
         }
 
+
+
+        /// <summary>
+        /// deletes table associated with tableID
+        /// </summary>
         public static void deleteTable(string tableID)
         {
-            /// <summary>
-            /// deletes table associated with tableID
-            /// </summary>
+
             UserModel newUser = new UserModel();
 
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
