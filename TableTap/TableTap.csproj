@@ -150,7 +150,6 @@
   <ItemGroup>
     <Content Include="Resources\Images\favicon.ico" />
     <Content Include="UL\AdminAddRoom.aspx" />
-    <Content Include="Content\MobileMaster.css" />
     <Content Include="google8de9dcc8df485c7e.html" />
     <Content Include="Resources\Images\LoginBtn.png" />
     <Content Include="Resources\Images\MapBtn.png" />
@@ -201,7 +200,6 @@
     <Content Include="UL\AdminError.aspx" />
     <Content Include="UL\AdminHome.aspx" />
     <Content Include="UL\AdminPrintQR.aspx" />
-    <Content Include="UL\BeauTestPage.aspx" />
     <Content Include="UL\Building.aspx" />
     <Content Include="UL\Home.aspx" />
     <Content Include="UL\Login.aspx" />
@@ -209,7 +207,6 @@
     <Content Include="UL\Map.aspx" />
     <Content Include="UL\MapTest.aspx" />
     <Content Include="UL\PrintPage.aspx" />
-    <Content Include="UL\QRtest.aspx" />
     <Content Include="UL\Register.aspx" />
     <Content Include="UL\Room.aspx" />
     <Content Include="UL\Scan.aspx" />
@@ -232,7 +229,6 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="UL\Site.Mobile.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -413,13 +409,6 @@
     <Compile Include="UL\AdminPrintQR.aspx.designer.cs">
       <DependentUpon>AdminPrintQR.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UL\BeauTestPage.aspx.cs">
-      <DependentUpon>BeauTestPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UL\BeauTestPage.aspx.designer.cs">
-      <DependentUpon>BeauTestPage.aspx</DependentUpon>
-    </Compile>
     <Compile Include="UL\Building.aspx.cs">
       <DependentUpon>Building.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -469,13 +458,6 @@
     <Compile Include="UL\PrintPage.aspx.designer.cs">
       <DependentUpon>PrintPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UL\QRtest.aspx.cs">
-      <DependentUpon>QRtest.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UL\QRtest.aspx.designer.cs">
-      <DependentUpon>QRtest.aspx</DependentUpon>
-    </Compile>
     <Compile Include="UL\Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -503,13 +485,6 @@
     </Compile>
     <Compile Include="UL\Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
-    </Compile>
-    <Compile Include="UL\Site.Mobile.Master.cs">
-      <DependentUpon>Site.Mobile.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UL\Site.Mobile.Master.designer.cs">
-      <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="UL\Table.aspx.cs">
       <DependentUpon>Table.aspx</DependentUpon>
