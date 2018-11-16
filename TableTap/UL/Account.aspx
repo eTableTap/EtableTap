@@ -3,3 +3,12 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 </asp:Content>
+
+ <!-- INFT 3970 - IT Major Project - Implementation
+         Hayden Bartlett – C3185636
+         Beau Maund – C3163068
+
+         Source File Purpose:
+         - Serves as a placeholder for later project extensibility, for features that may include 
+           account customisation and management.
+    -->
