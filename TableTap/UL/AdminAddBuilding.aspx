@@ -61,13 +61,10 @@
                         <!-- Submits the information for processing into the database -->
 						<div class="form-group ">
 							<asp:Button type="button" Text="Add Building" class="btn btn-primary btn-lg btn-block login-button" id="addButton" OnClick="addBuildingButton_Click" runat="server" />
-						</div>
-						
+						</div>						
 					</form>
 				</div>
 			</div>
-
-
         </div>
     </div>
 </asp:Content>
