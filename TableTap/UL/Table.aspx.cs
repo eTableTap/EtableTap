@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TableTap.BusinessLayer.Classes;
-using TableTap.BusinessLayer; //UserBL is not in the namespace Businesslayer.Classes, need to fix and change all references
 using TableTap.Models;
 using System.Configuration;
 
@@ -28,17 +27,17 @@ namespace TableTap.UL
 
 
             
-            /////For New System///Checks
-
+            
+            //updates the dropdown list for book Today section
             List<string> hoursList = new List<String>();
-            int x = Convert.ToInt32(today.ToString("HH")); ; //set y to current hour
+            int x = Convert.ToInt32(today.ToString("HH")); ; 
             RoomModel thisRoom = RoomBL.getRoomByID(TableBL.GetTableByID(ID).RoomID);
-            if (x >= thisRoom.ClosingTime.TotalHours)
+            if (x >= thisRoom.ClosingTime.TotalHours) //check if room is closed
             {
                 btnBook.Enabled = false;
 
             }
-            while (x < thisRoom.ClosingTime.TotalHours)      //will loop until the end of the day's booking aka 2300. Can change to room closing time     
+            while (x < thisRoom.ClosingTime.TotalHours) //will loop each hour until the end of the room's closing time     
             {
                 if (!TableBL.CheckTableHourAvailability(Int32.Parse(Request.QueryString["ID"]), x, today))
                 {
@@ -92,6 +91,7 @@ namespace TableTap.UL
         }
         protected void MyCalendar_SelectionChanged(object sender, EventArgs e)
         {
+            //Updates the calander section whenever a new selection is made
             lblCalCheck.Text = "You selected date: ";
             CalHourDropDown.Visible = true;
             lblHourHelper.Visible = true;
@@ -138,9 +138,6 @@ namespace TableTap.UL
             }
             
 
-            ///for new system
-            ///
-
             int ID = Int32.Parse(Request.QueryString["ID"]);
             string sHour = hourDropdown.SelectedValue.ToString();
             sHour = new string(sHour.TakeWhile(Char.IsDigit).ToArray());
@@ -156,6 +153,7 @@ namespace TableTap.UL
             newBooking.memberEmail4 = InputEmail4.Value;
             newBooking.memberEmail5 = InputEmail5.Value;
 
+            //if bool returns true, booking is successfully made - so we need to send emails to groupmembers below
             if (BookingBL.ProcessCalanderBookTable(newBooking))
             {
                 lblHeading.Text = "Table was booked";
@@ -226,8 +224,8 @@ namespace TableTap.UL
             newBooking.memberEmail4 = InputCalEmail4.Value;
             newBooking.memberEmail5 = InputCalEmail5.Value;
 
-            //bool btest = TableBL.processCalanderBookTable(newGroupBooking);
-            if(BookingBL.ProcessCalanderBookTable(newBooking))
+            //if bool returns true, booking is successfully made - so we need to send emails to groupmembers below
+            if (BookingBL.ProcessCalanderBookTable(newBooking))
             {
                 lblHeading.Text = "Table was booked";
 
@@ -267,6 +265,7 @@ namespace TableTap.UL
 
         protected void notifyGroup(string email, int tableID,DateTime date, string sHour)
         {
+            //The details that are send to the group members
             NotifyBL.startNotifyGroupMember(UserBL.passUserSearch(Session["login"].ToString()).FirstName.ToString(),
             email,
             TableBL.GetTableByID(tableID).TableID.ToString(),
@@ -277,7 +276,7 @@ namespace TableTap.UL
         }
         protected void showInputBoxes(int x)
         {
-            
+            //messy way to make the UL neater
             if(x >= 1)
             {
                 InputEmail1.Visible = true;
@@ -367,7 +366,6 @@ namespace TableTap.UL
             int ID = Int32.Parse(Request.QueryString["ID"]);
             string sHour = hourDropdown.SelectedValue.ToString();
             sHour = new string(sHour.TakeWhile(Char.IsDigit).ToArray());
-            //DateTime date = DateTime.Now;
             BookingModel newCheckin = new BookingModel();
             newCheckin.tableID = ID;
             newCheckin.bookingDate = DateTime.Now;
@@ -375,7 +373,7 @@ namespace TableTap.UL
             newCheckin.bookingHour = Int32.Parse(sHour);
 
             lblCheckinResult.Text = BookingBL.ProcessTableCheckin(newCheckin);
-            
+            //Checking returns a string telling if it was successful or not
 
 
         }

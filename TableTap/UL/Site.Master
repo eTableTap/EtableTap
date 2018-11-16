@@ -29,7 +29,7 @@
             <a class="nav-link" href="Home.aspx">Home <span class="sr-only">(current)</span></a>
           </li>
            <li class="nav-item">
-            <asp:Hyperlink class="nav-link" runat="server"  id="adminNavigate" href="Account.aspx">Account</asp:Hyperlink>
+            <asp:Hyperlink class="nav-link" runat="server"  id="adminNavigate" href="AdminHome.aspx">Admin Control</asp:Hyperlink>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="Map.aspx">Find Table</a>
