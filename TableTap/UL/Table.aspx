@@ -12,11 +12,10 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
-        <div class="jumbotron">            
-            
+        <div class="jumbotron">     
             <asp:ScriptManager id="ScriptManager1" runat="server">
             </asp:ScriptManager>
-            <script type="text/javascript"> <!--From https://stackoverflow.com/questions/25200152/prevent-double-clicking-asp-net-button-->
+            <script type="text/javascript"> <!--SRC: https://stackoverflow.com/questions/25200152/prevent-double-clicking-asp-net-button-->
                var submit = 0;
                 function CheckDouble()
                 {
@@ -27,55 +26,58 @@
                     }
                 }
              </script>
+
+            <!-- Displays all table characteristics -->
             <div class="row">
-					<div class="col mx-auto">
-                        <asp:Label runat="server" Text="Table ID:"></asp:Label><br />
-                        <asp:Label runat="server" Text="Category"></asp:Label><br />
-                        <asp:Label runat="server" Text="Seating Capacity:"></asp:Label><br />
-                    </div>
-                    <div class="col mx-auto">
-                        <asp:Label ID="lblgetID" runat="server" Text="getID"></asp:Label><br />
-                        <asp:Label ID="lblgetCategory" runat="server" Text="getCategory"></asp:Label><br />
-                        <asp:Label ID="lblgetSeatingCapacity" runat="server" Text="getSeatingCapacity"></asp:Label><br />
-                    </div>
+				<div class="col mx-auto">
+                    <asp:Label runat="server" Text="Table ID:"></asp:Label><br />
+                    <asp:Label runat="server" Text="Category"></asp:Label><br />
+                    <asp:Label runat="server" Text="Seating Capacity:"></asp:Label><br />
+                </div>
+                <div class="col mx-auto">
+                    <asp:Label ID="lblgetID" runat="server" Text="getID"></asp:Label><br />
+                    <asp:Label ID="lblgetCategory" runat="server" Text="getCategory"></asp:Label><br />
+                    <asp:Label ID="lblgetSeatingCapacity" runat="server" Text="getSeatingCapacity"></asp:Label><br />
+                </div>
             </div>
             <br />
             <br />
+
+            <!-- Select booking type (i.e. Now / Later) -->
             <div class="row">
-                    <div class="col mx-auto">
-                        <asp:Button ID="btnBookToday" Text="Book table for today" runat="server" class="btn btn-primary btn-md btn-block login-button" onclick="btnBookNowSection_Click"/><br />
-                    </div>
-                    <div class="col mx-auto">
-                        <asp:Button ID="Button1" Text="Book table for future" runat="server" class="btn btn-success btn-md btn-block login-button" onclick="btnCalanderSection_Click"/><br />
-                    </div>
-                    <div class="col mx-auto">
-                        <asp:Button ID="Button2" Text="Check In" runat="server" class="btn btn-primary btn-md btn-block login-button" onclick="btnCheckinSection_Click" /><br />
-                    </div>
+                <div class="col mx-auto">
+                    <asp:Button ID="btnBookToday" Text="Book table for today" runat="server" class="btn btn-primary btn-md btn-block login-button" onclick="btnBookNowSection_Click"/><br />
+                </div>
+                <div class="col mx-auto">
+                    <asp:Button ID="Button1" Text="Book table for future" runat="server" class="btn btn-success btn-md btn-block login-button" onclick="btnCalanderSection_Click"/><br />
+                </div>
+                <div class="col mx-auto">
+                    <asp:Button ID="Button2" Text="Check In" runat="server" class="btn btn-primary btn-md btn-block login-button" onclick="btnCheckinSection_Click" /><br />
+                </div>
+                </div>
             </div>
-            </div>
+
+            <!-- Select time for booking -->
             <div class="jumbotron" runat="server" id="BookNowSection" visible="false">
             <div class="row">
-					<div class="mx-auto">
-                        <asp:Label runat="server" id="lblHeading" text="Heading"></asp:Label>
-                        <asp:DropDownList runat="server" ID="hourDropdown" onselectedindexchanged="hourDropdown_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
-                    <asp:UpdatePanel ID="upBookingInfo" runat="server">
-                                        <ContentTemplate>
-							                
-                                            <div class="form-group">
-                                                <!--<asp:Label runat="server" ID="lblStatus" class="cols-sm-2 control-label" text="will update"></asp:Label>-->
-                                                <asp:Button type="button" ID="btnDirections" Text="Get Directions" onclick="btnDirections_Click" visible="false" runat="server" />
-                                                
-					
-			                                </div>
-                                        </ContentTemplate>
-                                    
-                                        <Triggers>
-                                                <asp:AsyncPostBackTrigger ControlID="hourDropdown" EventName="SelectedIndexChanged" />  
-                                        </Triggers>
-                   </asp:UpdatePanel>
-                        
-                </div>    
+				<div class="mx-auto">
+                <asp:Label runat="server" id="lblHeading" text="Heading"></asp:Label>
+                <asp:DropDownList runat="server" ID="hourDropdown" onselectedindexchanged="hourDropdown_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                <asp:UpdatePanel ID="upBookingInfo" runat="server">
+                    <ContentTemplate>							                
+                        <div class="form-group">
+                            <!--<asp:Label runat="server" ID="lblStatus" class="cols-sm-2 control-label" text="will update"></asp:Label>-->
+                            <asp:Button type="button" ID="btnDirections" Text="Get Directions" onclick="btnDirections_Click" visible="false" runat="server" />
+			            </div>
+                    </ContentTemplate>                                    
+                    <Triggers>
+                            <asp:AsyncPostBackTrigger ControlID="hourDropdown" EventName="SelectedIndexChanged" />  
+                    </Triggers>
+                </asp:UpdatePanel>
+            </div>    
 			</div>
+
+            <!--Input details for other users associated with the booking -->
             <div  class="row" >
                 <div id="bitToAddGroupMembers" class="mx-auto" runat="server">
                 <asp:Label ID="lblInviteHelp" runat="server" Text="You can invite group members or friends by entering their emails below:" class="cols-sm-2 control-label" visible ="false"></asp:Label>
@@ -98,55 +100,54 @@
                 </div>
             </div>
             <br />
-                <div class="row">
-                        <div class="col mx-auto">
-                        </div>
-                        <div class="col mx-auto">
-                            <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-                                <ContentTemplate>
-                             <asp:Button type="button" ID="btnBook" Text="Book Table" onclick="btnBook_Click" OnClientClick="return CheckDouble();" runat="server" class="btn btn-danger btn-lg btn-block login-button" />
-                                </ContentTemplate>
-                                <Triggers>
-                                                <asp:AsyncPostBackTrigger ControlID="hourDropdown" EventName="SelectedIndexChanged" />  
-                                </Triggers>
-                            </asp:UpdatePanel>
-                        </div>  
-                        <div class="col mx-auto">
-                        </div>
+
+             <!-- Book the table -->
+            <div class="row">
+                <div class="col mx-auto">
                 </div>
-           
-        </div>
-         <div class="jumbotron" runat="server" id="CalanderSection" visible="false">
-             <div class="form-group">
-             <div class="row">
-                 <div class="col">
-                    
-                    <asp:Label runat="server" ID="lblCalCheck" class="cols-sm-2 control-label" text="Select A Date:"></asp:Label>
-                     <br />
-                     <asp:Label runat="server" ID="lblHourHelper" class="cols-sm-2 control-label" text="Select An Hour:" Visible="false"></asp:Label>
-                     <br />
-                     <asp:DropDownList runat="server" ID="CalHourDropDown" onselectedindexchanged="calHourDropdown_SelectedIndexChanged" AutoPostBack="true" Visible="false"></asp:DropDownList>
-                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                                            <ContentTemplate>
-							                
-                                                <div class="form-group">
-
-			                                    </div>
-                                            </ContentTemplate>
-                                    
-                                            <Triggers>
-                                                    <asp:AsyncPostBackTrigger ControlID="CalHourDropDown" EventName="SelectedIndexChanged" />  
-                                            </Triggers>
-                       </asp:UpdatePanel>
-                 </div>
-                 <div class="col-10">
-                    <asp:Calendar runat="server" ID="Cal" OnSelectionChanged="MyCalendar_SelectionChanged" Width="100%"/>
+                <div class="col mx-auto">
+                    <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                        <ContentTemplate>
+                        <asp:Button type="button" ID="btnBook" Text="Book Table" onclick="btnBook_Click" OnClientClick="return CheckDouble();" runat="server" class="btn btn-danger btn-lg btn-block login-button" />
+                        </ContentTemplate>
+                        <Triggers>
+                             <asp:AsyncPostBackTrigger ControlID="hourDropdown" EventName="SelectedIndexChanged" />  
+                        </Triggers>
+                    </asp:UpdatePanel>
+                </div>  
+                <div class="col mx-auto">
                 </div>
-
-
+            </div>           
             </div>
-           </div>
+
+            <!-- Select a date for the booking -->
+             <div class="jumbotron" runat="server" id="CalanderSection" visible="false">
+                 <div class="form-group">
+                 <div class="row">
+                     <div class="col">
+                    
+                        <asp:Label runat="server" ID="lblCalCheck" class="cols-sm-2 control-label" text="Select A Date:"></asp:Label>
+                         <br />
+                         <asp:Label runat="server" ID="lblHourHelper" class="cols-sm-2 control-label" text="Select An Hour:" Visible="false"></asp:Label>
+                         <br />
+                         <asp:DropDownList runat="server" ID="CalHourDropDown" onselectedindexchanged="calHourDropdown_SelectedIndexChanged" AutoPostBack="true" Visible="false"></asp:DropDownList>
+                         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                            <ContentTemplate>   
+                                <div class="form-group">
+			                    </div>
+                            </ContentTemplate>\
+                            <Triggers>
+                                    <asp:AsyncPostBackTrigger ControlID="CalHourDropDown" EventName="SelectedIndexChanged" />  
+                            </Triggers>
+                           </asp:UpdatePanel>
+                     </div>
+                     <div class="col-10">
+                        <asp:Calendar runat="server" ID="Cal" OnSelectionChanged="MyCalendar_SelectionChanged" Width="100%"/>
+                    </div>
+                </div>
+            </div>
              
+            <!-- Invite other people to the booking -->
             <div  class="row" >
                 <div id="Div1" class="mx-auto" runat="server">
                 <asp:Label ID="lblCalInviteHelp" runat="server" Text="You can invite group members or friends by entering their emails below:" class="cols-sm-2 control-label" visible ="false"></asp:Label>
@@ -169,7 +170,7 @@
                 </div>
             </div>       
                     
-                 
+            <!-- Complete booking -->     
             <br />
             <div class="row">
                         <div class="col mx-auto">
@@ -184,19 +185,19 @@
                                 </Triggers>
                             </asp:UpdatePanel>
                         </div>  
-                        <div class="col mx-auto">
-                        </div>
+                    <div class="col mx-auto">
+                </div>
             </div>
         </div>
-       <div class="jumbotron" runat="server" id="CheckinSection" visible="false">
-           <div class="row">
+        <div class="jumbotron" runat="server" id="CheckinSection" visible="false">
+            <div class="row">
                         <div class="col mx-auto">
                         </div>
                         <div class="col mx-auto">
                             <asp:Label ID="lblCheckinResult" runat="server" Text="Should update"></asp:Label>
                         </div>  
-                        <div class="col mx-auto">
-                        </div>
+                    <div class="col mx-auto">
+                 </div>
+            </div>
         </div>
-     </div>
 </asp:Content>

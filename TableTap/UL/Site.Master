@@ -6,49 +6,57 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <link href="../Content/Master.css" rel="stylesheet" />
+<!-- INFT 3970 - IT Major Project - Implementation
+        Hayden Bartlett – C3185636
+        Beau Maund – C3163068
+
+        Source File Purpose:
+        - Master page for ASP.NET application manages all interactions between other ASPX pages, the SQL database and othe relevant functionalities
+     -->
+
 <html>
 <head runat="server">
     <title></title>
-    
-    
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-
 <body>
 
-<nav class="navbar navbar-dark bg-dark">
-      <asp:Label class="navbar-brand" runat="server" Text="TableTap" ID="lblNavText"></asp:Label>
-      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    <!-- Navigation Bar sectoin -->
+    <nav class="navbar navbar-dark bg-dark">
+          <asp:Label class="navbar-brand" runat="server" Text="TableTap" ID="lblNavText"></asp:Label>
+          <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
-      <div class="navbar-collapse collapse" id="navbarsExample01" style="">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="Home.aspx">Home <span class="sr-only">(current)</span></a>
-          </li>
-           <li class="nav-item">
-            <asp:Hyperlink class="nav-link" runat="server"  id="adminNavigate" href="AdminHome.aspx">Admin Control</asp:Hyperlink>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="Map.aspx">Find Table</a>
-          </li>
-          <li class="nav-item">
-            <asp:Hyperlink class="nav-link" runat="server"  id="loginNavigate" href="Login.aspx">Login</asp:Hyperlink>
-          </li>
-          <li class="nav-item">
-            <asp:Hyperlink class="nav-link" runat="server"  id="accountNavigate" href="Account.aspx">Account</asp:Hyperlink>
-          </li>
-          <li class="nav-item">
-            <asp:Hyperlink class="nav-link" runat="server" id="logoutNavigate" href="Logout.aspx">Logout</asp:Hyperlink>
-          </li>
-          
-        </ul>
-        
-      </div>
+          <!-- Home -->
+          <div class="navbar-collapse collapse" id="navbarsExample01" style="">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="Home.aspx">Home <span class="sr-only">(current)</span></a>
+              </li>
+               <li class="nav-item">
+                <asp:Hyperlink class="nav-link" runat="server"  id="adminNavigate" href="AdminHome.aspx">Admin Control</asp:Hyperlink>
+              </li>
+              <!-- Find Table -->
+              <li class="nav-item">
+                <a class="nav-link" href="Map.aspx">Find Table</a>
+              </li>                
+              <!-- Login -->
+              <li class="nav-item">
+                <asp:Hyperlink class="nav-link" runat="server"  id="loginNavigate" href="Login.aspx">Login</asp:Hyperlink>
+              </li>                    
+              <!-- Account -->
+              <li class="nav-item">
+                <asp:Hyperlink class="nav-link" runat="server"  id="accountNavigate" href="Account.aspx">Account</asp:Hyperlink>
+              </li>                    
+              <!-- Logout -->
+              <li class="nav-item">
+                <asp:Hyperlink class="nav-link" runat="server" id="logoutNavigate" href="Logout.aspx">Logout</asp:Hyperlink>
+              </li>
+            </ul>
+          </div>
     </nav>
-
 
     <form id="form1" runat="server">
         <div>
