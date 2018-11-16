@@ -159,7 +159,6 @@
     <Content Include="UL\BookingReceipt.aspx" />
     <Content Include="UL\GoogleLogin.aspx" />
     <Content Include="Resources\Images\Spiteful_Spirit.jpg" />
-    <Content Include="Resources\Images\TestImage.png" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -183,9 +182,6 @@
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="UL\404Page.aspx" />
     <Content Include="UL\Error.aspx" />
-    <Content Include="Resources\Images\Huxley Library.png" />
-    <Content Include="Resources\Images\Auchumty Library.png" />
-    <Content Include="Resources\Images\ICT Building.png" />
     <None Include="packages.config" />
     <Content Include="bin\MessagingToolkit.QRCode.dll" />
     <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
@@ -323,7 +319,6 @@
     <Compile Include="BusinessLayer\Classes\NotifyBL.cs" />
     <Compile Include="BusinessLayer\Classes\RoomBL.cs" />
     <Compile Include="BusinessLayer\Classes\TableBL.cs" />
-    <Compile Include="BusinessLayer\Classes\TableManager.cs" />
     <Compile Include="BusinessLayer\Classes\UserBL.cs" />
     <Compile Include="DataAccessLayer\Classes\BuildingDAL.cs" />
     <Compile Include="DataAccessLayer\Classes\RoomDAL.cs" />

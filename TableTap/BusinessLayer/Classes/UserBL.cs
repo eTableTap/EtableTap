@@ -13,6 +13,12 @@ namespace TableTap.BusinessLayer.Classes
 {
     public class UserBL
     {
+
+        /// <summary>
+        /// fetches complete list of records in user table 
+        /// via UserDAL.LoadUsersList();
+        /// returns a list of usermodels
+        /// </summary>
         public static List<UserModel> FillUsersList()
         {
             List<UserModel> users = new List<UserModel>();
@@ -22,6 +28,11 @@ namespace TableTap.BusinessLayer.Classes
             return users;
         }
 
+
+        /// <summary>
+        /// fetches user record by userID via UserDAL.loadUserByID(id)
+        /// returns a usermodel of associated userID
+        /// </summary>
         public static UserModel getUserByID(int id)
         {
             UserModel user = UserDAL.loadUserByID(id);
@@ -29,6 +40,10 @@ namespace TableTap.BusinessLayer.Classes
             return user;
         }
 
+        /// <summary>
+        /// Fetches user record by Email and Password via UserDAL.loadUserByEmailAndPassword(email, password)
+        /// returns UserModel
+        /// </summary>
         public static UserModel getUserByEmailAndPassword(string email, string password)
         {
             UserModel user = UserDAL.loadUserByEmailAndPassword(email, password);
@@ -36,19 +51,33 @@ namespace TableTap.BusinessLayer.Classes
             return user;
         }
 
+
+        /// <summary>
+        /// Passes User Model to adding user method in DAL 
+        /// UserDAL.AddNewUser(user);
+        /// </summary>
         public static void ProcessAddNewUser(UserModel user)
         {
             UserModel newUser = user;
             try
-            { }
+            {
+                UserDAL.AddNewUser(user);
+            }
                 catch
             { }
-            UserDAL.AddNewUser(user);
+            
 
         }
 
 
-        
+
+        /// <summary>
+        /// detects if email already exists in database by email via
+        /// contacting AdminUserEditCheck
+        /// Returns boolean if email exists returns true
+        /// else returns false
+        /// 
+        /// </summary>
 
         public static bool emailDuplicateCheck(string email)
         {
@@ -79,12 +108,12 @@ namespace TableTap.BusinessLayer.Classes
         }
 
 
-        
+        /// <summary>
+        /// passes list from fed from input (adminedituser) to ModifyUser class
+        /// </summary>   
         public static bool PassInModifyString(List<string> record)
         {
-            /// <summary>
-            /// passes list from fed from input (adminedituser) to ModifyUser class
-            /// </summary>
+
             bool success = false;
             try
             {
@@ -102,16 +131,16 @@ namespace TableTap.BusinessLayer.Classes
         }
 
 
-        
+        /// <summary>
+        /// Passes accesses data from data access layer
+        /// input a email
+        /// outputs list of user info associated with email
+        /// if no email found or in the event of a error returns null
         public static UserModel passUserSearch(string email)
         {
 
             UserModel loadeduser = new UserModel();
-            /// <summary>
-            /// Passes accesses data from data access layer
-            /// input a email
-            /// outputs list of user info associated with email
-            /// if no email found or in the event of a error returns null
+            
 
             try
             {
@@ -128,7 +157,13 @@ namespace TableTap.BusinessLayer.Classes
         }
 
 
-        
+        /// <summary>
+        /// Calls by user ID and User Email
+        /// IncidenceDAL.incAllUserDelete(userID);
+        /// BookingDAL.BookingAllUserDelete(user.Email);
+        /// UserDAL.deleteUser(userID);
+        /// to delete a user and all referances to the user in the database
+        /// </summary>
         public static void userDelete(int userID)
         {
 
@@ -154,6 +189,10 @@ namespace TableTap.BusinessLayer.Classes
                 return success = false;
             }*/
         }
+
+        /// <summary>
+        /// Checks administrative level via usermodel
+        /// </summary>
 
         public static int ProcessLogin(UserModel logUser)
         {
