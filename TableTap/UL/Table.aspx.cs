@@ -11,8 +11,7 @@ using System.Configuration;
 namespace TableTap.UL
 {
     public partial class Table : System.Web.UI.Page
-    {
-        
+    {   
         protected void Page_Load(object sender, EventArgs e)
         {
             int ID = Int32.Parse(Request.QueryString["ID"]);
@@ -23,10 +22,7 @@ namespace TableTap.UL
             lblgetSeatingCapacity.Text = ThisTable.PersonCapacity.ToString();
 
             DateTime today = DateTime.Now;   //HH = 24hours, hh = 12hours, M = month, m = minute, d = day, y = year.
-            lblHeading.Text = "Select Hour: ";
-
-
-            
+            lblHeading.Text = "Select Hour: ";            
             
             //updates the dropdown list for book Today section
             List<string> hoursList = new List<String>();
@@ -259,8 +255,6 @@ namespace TableTap.UL
                 string url = ConfigurationManager.AppSettings["UnsecurePath"] + "BookingReceipt.aspx?id=" + receipt;
                 Response.Redirect(url);
             }
-
-
         }
 
         protected void notifyGroup(string email, int tableID,DateTime date, string sHour)
@@ -308,7 +302,6 @@ namespace TableTap.UL
         }
         protected void showCalInputBoxes(int x)
         {
-
             if (x >= 1)
             {
                 InputCalEmail1.Visible = true;
@@ -338,6 +331,7 @@ namespace TableTap.UL
 
 
         }
+
         protected void btnBookNowSection_Click(object sender, EventArgs e)
         {
             BookNowSection.Visible = true;
@@ -374,8 +368,6 @@ namespace TableTap.UL
 
             lblCheckinResult.Text = BookingBL.ProcessTableCheckin(newCheckin);
             //Checking returns a string telling if it was successful or not
-
-
         }
     }
 }

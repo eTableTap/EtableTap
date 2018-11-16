@@ -1,10 +1,18 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UL/Site.Master" AutoEventWireup="true" CodeBehind="Table.aspx.cs" Inherits="TableTap.UL.Table" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
+
+    <!-- INFT 3970 - IT Major Project - Implementation
+        Hayden Bartlett – C3185636
+        Beau Maund – C3163068
+
+        Source File Purpose:
+        - Serves as a third page for booking, permits a user to select a table as part of the booking process
+     -->
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
-        <div class="jumbotron">
-            
+        <div class="jumbotron">            
             
             <asp:ScriptManager id="ScriptManager1" runat="server">
             </asp:ScriptManager>
