@@ -32,7 +32,7 @@ namespace TableTap.UL
         //Takes the event information from the button click in the user interaction layer and processes insertion into the database
         protected void addBuildingButton_Click(Object sender, EventArgs e)
         {
-            //Users ASP.NET function IsValid() to test user input and the current error state before proceeding
+            //Uses ASP.NET function IsValid() to test user input and the current error state before proceeding
             if (Page.IsValid)
             {          
                 BuildingModel newBuilding = new BuildingModel(); //Creates a new BuildingModel instance

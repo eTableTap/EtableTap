@@ -58,9 +58,9 @@
                                                 <asp:AsyncPostBackTrigger ControlID="buildingDropdown" EventName="SelectedIndexChanged" />  
                                         </Triggers>
                                     </asp:UpdatePanel>
-						    </div>
-					    </div>
-			    </div>
+						        </div>
+					        </div>
+			            </div>
 
                         <!-- User to select a category for the table -->
                         <div class="form-group">
@@ -87,13 +87,10 @@
                          <!-- User submits this information for processing into the database -->
 						<div class="form-group ">
 							<asp:Button type="button" Text="Add Table" class="btn btn-primary btn-lg btn-block login-button" id="addButton" OnClick="addTableButton_Click" runat="server" />
-						</div>
-						
+						</div>						
 					</form>
 				</div>
 			</div>
-
-
         </div>
     </div>
 </asp:Content>

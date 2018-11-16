@@ -75,13 +75,10 @@
                         <!-- User submits this information for processing into the database -->
 						<div class="form-group ">
 							<asp:Button type="button" Text="Add Room" class="btn btn-primary btn-lg btn-block login-button" id="addRoom" OnClick="addRoomButton_Click" runat="server" />
-						</div>
-						
+						</div>						
 					</form>
 				</div>
 			</div>
-
-
         </div>
     </div>
 </asp:Content>

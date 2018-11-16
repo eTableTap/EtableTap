@@ -28,8 +28,6 @@
                             <th class="auto-style2">
                                 <asp:Label ID="Label2" runat="server" Text="We don't seem to have that page. But! I drew you a flower!" Font-Bold="True" Font-Size="Large"></asp:Label>
                             </th>
-
-
                         </tr>
 
                        <tr>
@@ -50,11 +48,7 @@
                            </th>
                        </tr>
                     </table>
-
-                </div>
-            
+                </div>            
             </div>
-            </div>
-
-
+        </div>
 </asp:Content>
