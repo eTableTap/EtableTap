@@ -25,18 +25,21 @@
 	               	        </div>
 	                    </div> 
 						
+                        <!-- Selects a building from those already stored in the database -->
                         <div class="form-group">
 					            <label for="name" class="cols-sm-2 control-label">Select Building:</label>
 					            <div class="cols-sm-10">
 						            <div class="input-group">
 							            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
                             
+                                        <!-- Pulls current building items from the database -->
 							            <asp:DropDownList runat="server" ID="buildingDropdown" onselectedindexchanged="ddlbuildingDropDown_SelectedIndexChanged" AutoPostback="True" ></asp:DropDownList>
                                 
 						            </div>
 					            </div>
 			            </div>
 
+                        <!-- User inputs a room name-->
 						<div class="form-group">
 							<label for="name" class="cols-sm-2 control-label">Room Name</label>
 							<div class="cols-sm-10">
@@ -47,6 +50,7 @@
 							</div>
 						</div>
 
+                        <!-- User inputs a room label, later used for room identification -->
                         <div class="form-group">
 							<label for="name" class="cols-sm-2 control-label">Room Label</label>
 							<div class="cols-sm-10">
@@ -57,6 +61,7 @@
 							</div>
 						</div>
 
+                        <!-- User inputs the maximum number of tables -->
                         <div class="form-group">
 							<label for="name" class="cols-sm-2 control-label">Max Number of Tables</label>
 							<div class="cols-sm-10">
@@ -67,10 +72,7 @@
 							</div>
 						</div>
 
-                        
-						<!--Need and image uploader-->
-
-
+                        <!-- User submits this information for processing into the database -->
 						<div class="form-group ">
 							<asp:Button type="button" Text="Add Room" class="btn btn-primary btn-lg btn-block login-button" id="addRoom" OnClick="addRoomButton_Click" runat="server" />
 						</div>
