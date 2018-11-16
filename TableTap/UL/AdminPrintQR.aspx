@@ -1,11 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UL/Site.Master" AutoEventWireup="true" CodeBehind="AdminPrintQR.aspx.cs" Inherits="TableTap.UL.AdminPrintQR" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-        <!-- INFT 3970 - IT Major Project - Implementation
-    Hayden Bartlett – C3185636
-    Beau Maund – C3163068
+    <!-- INFT 3970 - IT Major Project - Implementation
+        Hayden Bartlett – C3185636
+        Beau Maund – C3163068
 
-    Source File Purpose:
-    - Included as an example of extensibility; permits an administrator user to manage all values regarding an incident in the system
+        Source File Purpose:
+        - Included as an example of extensibility; permits an administrator user to manage all values regarding an incident in the system
     -->
 </asp:Content>
 
