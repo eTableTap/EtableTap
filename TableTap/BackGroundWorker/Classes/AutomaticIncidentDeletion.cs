@@ -15,6 +15,9 @@ namespace TableTap.BackGroundWorker.Classes
 
         public static bool startIncidentDeletionSystem()
         {
+            // starts automatic deletion of old incidents in the incident
+            // table
+
             stopTask(); // prevents build up of tasks
 
             try
@@ -37,14 +40,17 @@ namespace TableTap.BackGroundWorker.Classes
 
         public static void incidentdeleter()
         {
+            // calls a IncidentDAL method deleting all old incidents
+
             IncidenceDAL.incOldIncDelete();
-
-
         }
 
 
         public static void stopTask()
         {
+            
+            // stops any existing job with ID 02 (the job ID of the incident deletion background task)
+
             RecurringJob.RemoveIfExists("02");
         }
 

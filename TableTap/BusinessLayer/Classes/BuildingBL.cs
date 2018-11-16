@@ -9,6 +9,11 @@ namespace TableTap.BusinessLayer.Classes
 {
     public class BuildingBL
     {
+        /// <summary>
+        /// Passes inputted building model
+        /// to the AddNewBuilding method in BuildingDAL
+        /// to be added to the database
+        /// </summary>
         public static void ProcessAddNewBuilding(BuildingModel building)
         {
             BuildingModel newBuilding = building;
@@ -17,6 +22,12 @@ namespace TableTap.BusinessLayer.Classes
 
         }
 
+
+        /// <summary>
+        /// calls BuildingDAL.loadBuildingList() to access all building
+        /// records
+        /// Returns a list of all buildingModels found in database
+        /// </summary>
         public static List<BuildingModel> fillBuildingsList()
         {
             List<BuildingModel> buildings = new List<BuildingModel>();
@@ -25,6 +36,13 @@ namespace TableTap.BusinessLayer.Classes
 
             return buildings;
         }
+
+
+        /// <summary>
+        /// calls BuildingDAL.loadBuildingByID(id) to search building table 
+        /// bu building ID
+        /// Returns a buildingModel found in database
+        /// </summary>
         public static BuildingModel getBuildingByID(int id)
         {
             BuildingModel building = new BuildingModel();

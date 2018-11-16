@@ -11,20 +11,14 @@ namespace TableTap
 {
     public class DirectionModuleBL
     {
-        public static BuildingModel TESTINGdata(int num)
-        {
-            BuildingModel building = new BuildingModel();
 
-            // testing placeholder
-            building.street = "ICT";
-            building.suburb = "Callaghan";
-            building.provence = "NSW";
-            building.country = "Australia";
-            return building;
-        }
-
+        /// <summary>
+        /// Method cals DAL search via buildingID,
+        /// returns a building model
+        /// </summary>
         public static BuildingModel data(int buildingID)
         {
+            
             BuildingModel building = new BuildingModel();
 
             try
@@ -42,6 +36,14 @@ namespace TableTap
         }
 
 
+
+        /// <summary>
+        /// Android OS specific method
+        /// takes input of buildingID
+        /// Calls data(int buildingID) for building model for buildingID
+        /// Converts address into android intent URL
+        /// returns URL
+        /// </summary>
         public static string anLogic(int buildingID)
         {
             //android method for opening google maps (using Intent for reliability)
@@ -56,6 +58,14 @@ namespace TableTap
             return URL;
         }
 
+
+        /// <summary>
+        /// Apple Iphone OS specific method
+        /// takes input of buildingID
+        /// Calls data(int buildingID) for building model for buildingID
+        /// Converts address into Iphone directions URL
+        /// returns URL
+        /// </summary>
         public static string iPLogic(int buildingID)
         {
             // Iphone method for opening google maps
@@ -68,6 +78,10 @@ namespace TableTap
             return URL;
         }
 
+
+        /// <summary>
+        /// Calls iPLogic method with buildingID
+        /// </summary>
         public static string iPadLogic(int buildingID)
         {
 
@@ -77,6 +91,14 @@ namespace TableTap
             return URL;
         }
 
+
+        /// <summary>
+        /// standard directions method
+        /// takes input of buildingID
+        /// Calls data(int buildingID) for building model for buildingID
+        /// Converts address into google navigation URL
+        /// returns URL
+        /// </summary>
         public static string otherlogic(int buildingID)
         {
 
@@ -92,7 +114,11 @@ namespace TableTap
 
 
 
-
+        /// <summary>
+        /// Takes input of buildingID
+        /// Checks UserAgent for the type of device
+        /// passes buildingID onto relevant device specific method
+        /// </summary>
         public static string start(int buildingID)
         {
             /// This method detects a device and sends it down correct code path
