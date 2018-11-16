@@ -12,6 +12,14 @@ using TableTap.BusinessLayer.Classes;
 using TableTap.Models;
 using System.Drawing.Imaging;
 
+/* 
+    INFT 3970 - IT Major Project - Implementation
+    Hayden Bartlett – C3185636
+    Beau Maund – C3163068
+
+    Source File Purpose:
+    - Serves as a the back-end for the administrator, and provides functionality for updating / managing incidents in the system
+ */
 
 namespace TableTap.UL
 {
@@ -23,6 +31,7 @@ namespace TableTap.UL
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Load data if user has initiated so, by button click.
             if ((string)Session["loggedUser"] != "admin") //stops non admins accessing page
             {
                 Response.Redirect("home.aspx");
@@ -30,7 +39,8 @@ namespace TableTap.UL
 
             buildings = BuildingBL.fillBuildingsList();
 
-            if (!IsPostBack) //need this to stop it reverting to the top value every button click ------------------!!!!!!!!!!!!!!!!!!!
+            //Update building information if user has initiated so, by button click.
+            if (!IsPostBack)
             {
                 buildingDropdown.DataSource = buildings;
                 buildingDropdown.DataValueField = "BuildingID";
@@ -40,113 +50,89 @@ namespace TableTap.UL
                 
         }
 
+        /// <summary>
+        /// Update list of buildings on change of content
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void ddlbuildingDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             BuildingModel bm = new BuildingModel();
 
-            bm = buildings.Where(b => b.BuildingID == Int32.Parse(buildingDropdown.Text)).FirstOrDefault(); //grabs single selected building
-
+            //Selects single selected building
+            bm = buildings.Where(b => b.BuildingID == Int32.Parse(buildingDropdown.Text)).FirstOrDefault(); 
             int id = bm.BuildingID;
 
-
+            //Pull all rooms from the database
             rooms = RoomBL.fillRoomsList(id);
-
             
-                roomDropdown.DataSource = rooms;
-                roomDropdown.DataValueField = "RoomID";
-                roomDropdown.DataTextField = "RoomName";
-                roomDropdown.DataBind();
-            
+            //Update values from user input
+            roomDropdown.DataSource = rooms;
+            roomDropdown.DataValueField = "RoomID";
+            roomDropdown.DataTextField = "RoomName";
+            roomDropdown.DataBind();            
         }
 
+        /// <summary>
+        /// Update list of rooms on change of content
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void ddlroomDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
             BuildingModel bm = new BuildingModel();
-
-            bm = buildings.Where(b => b.BuildingID == Int32.Parse(buildingDropdown.Text)).FirstOrDefault(); //grabs single selected building
+            //Selects single selected building
+            bm = buildings.Where(b => b.BuildingID == Int32.Parse(buildingDropdown.Text)).FirstOrDefault(); 
             int id = bm.BuildingID;
 
+            //Pull all rooms from the database
             rooms = RoomBL.fillRoomsList(id);
 
-            ///////////////////////////////// currently works but selecting a new building wont change the previous
-
             RoomModel rm = new RoomModel();
-
-            rm = rooms.Where(r => r.RoomID == Int32.Parse(roomDropdown.Text)).FirstOrDefault(); //grabs single selected building
+            //Selects single selected building
+            rm = rooms.Where(r => r.RoomID == Int32.Parse(roomDropdown.Text)).FirstOrDefault(); 
             int rid = rm.RoomID;
 
             tables = TableBL.FillTableList(rid);
 
+
+            //Update values from user input
             tableDropdown.DataSource = tables;
             tableDropdown.DataValueField = "TableID";
             tableDropdown.DataTextField = "TableID";
-            tableDropdown.DataBind();
-         
-            
-
-            
+            tableDropdown.DataBind();            
         }
 
         protected void generateButton_Click(object sender, EventArgs e)
         {
-
-
-            /*BuildingModel bm = new BuildingModel();
-
-            bm = buildings.Where(b => b.BuildingID == Int32.Parse(buildingDropdown.Text)).FirstOrDefault(); //grabs single selected building
-            int id = bm.BuildingID;
-
-            rooms = RoomBL.fillRoomsList(id);
-
-            ///////////////////////////////// currently works but selecting a new building wont change the previous
-
-            RoomModel rm = new RoomModel();
-
-            rm = rooms.Where(r => r.RoomID == Int32.Parse(roomDropdown.Text)).FirstOrDefault(); //grabs single selected building
-            int rid = rm.RoomID;
-
-            tables = TableBL.fillTableList(rid);
-            
-            tableDropdown.DataSource = tables;
-            //tableDropdown.DataValueField = "TableID";
-            //tableDropdown.DataTextField = "TableID";
-            tableDropdown.DataBind();
-            ////////////////////
-
-           
-
-            TableModel tm = new TableModel();
-
-            tm = tables.Where(t => t.TableID == Int32.Parse(tableDropdown.Text)).FirstOrDefault(); //grabs single selected building
-
-            int tid = tm.TableID;
-
-            generateButton.Text = tid.ToString();*/
+            //Create new instance of QRencoder
             QRCodeEncoder encoder = new QRCodeEncoder();
             generateButton.Text = tableDropdown.Text;
 
+            //Generate string of url
             string sGeneration = "www.etabletap.com/UL/" + "Table.aspx?id=" + tableDropdown.Text;
 
-
+            //Encodes image into bitmap format
             Bitmap img = encoder.Encode(sGeneration);
 
             Session["QRURL"] = sGeneration;
             Session["filename"] = makeFileName();
-            //   Response.ContentType = "image/png";
-            //     img.Save(Response.OutputStream, System.Drawing.Imaging.ImageFormat.Png);
-
-            //Change to your own location if you want to store a copy-- not needed
+          
+            //Dictates the storage location of the file
             string path = Server.MapPath("~/Resources/Images/QR/");
             generateButton.Text = path;
 
+            //Geneaterates the image
             img.Save(path + makeFileName() + ".Png", System.Drawing.Imaging.ImageFormat.Png);
-            // QRImage.ImageUrl = "LastQRCodeCreated.png";
 
+            //Redirects to the page to preview the QR
             Response.Redirect("PrintPage.aspx");
-
         }
 
+        /// <summary>
+        /// Create a filename
+        /// </summary>
+        /// <returns></returns>
         private string makeFileName()
         {
             string data = Session["login"].ToString();
@@ -155,7 +141,6 @@ namespace TableTap.UL
             data = data.Replace("@", "");
 
             string filename = data;
-
             return filename;
 
         }
