@@ -23,14 +23,15 @@ namespace TableTap.UL
 
             buildings = BuildingBL.fillBuildingsList();
 
-            if (!IsPostBack) //need this to stop it reverting to the top value every button click ------------------!!!!!!!!!!!!!!!!!!!
+            //Uses the ASP control IsPostBack to determine if a post-back or user actioned button click has been performed
+            if (!IsPostBack) 
             {
-                buildingDropdown.DataSource = buildings;
-                buildingDropdown.DataValueField = "BuildingID";
+                buildingDropdown.DataSource = buildings; //Fills the dropdown with all the buildings pulled from the database
+                buildingDropdown.DataValueField = "BuildingID"; 
                 buildingDropdown.DataTextField = "BuildingName";
-                buildingDropdown.DataBind();
+                buildingDropdown.DataBind(); //Binds the ID / Name in the dropdown for user selection
 
-                ddlbuildingDropDown_SelectedIndexChanged(sender, e);
+                ddlbuildingDropDown_SelectedIndexChanged(sender, e); //Forces actions to reflect on user visual layer
                 
             }
         }

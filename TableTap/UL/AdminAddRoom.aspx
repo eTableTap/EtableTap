@@ -2,6 +2,16 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+    <!-- INFT 3970 - IT Major Project - Implementation
+        Hayden Bartlett – C3185636
+        Beau Maund – C3163068
+
+        Source File Purpose:
+        - Permits an administrator user to add a new room to a building in the database, including information such as room name and table number. 
+          This data can be used in many other booking related instances in the project.
+    -->
+
     <div class="container-fluid">
         <div class="jumbotron">
             <div class="row main">
