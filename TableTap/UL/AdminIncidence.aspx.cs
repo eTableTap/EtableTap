@@ -91,7 +91,5 @@ namespace TableTap.UL
             IncidentGrid.DataSource = incidences;
             IncidentGrid.DataBind();
         }
-
-
     }
 }
