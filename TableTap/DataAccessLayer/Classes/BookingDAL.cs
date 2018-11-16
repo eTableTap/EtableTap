@@ -32,7 +32,8 @@ namespace TableTap.DataAccessLayer.Classes
 
         public static int GetBookingIDByBookingModel(BookingModel bookingModel)
         {
-
+            //when a booking is made the ID is auto generated. This uses data that created the booking to get the ID 
+            // so we can go to the recipt page
             int iTest = 0;
 
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
@@ -69,6 +70,7 @@ namespace TableTap.DataAccessLayer.Classes
 
         public static BookingModel CheckBooking(int bookingIDE)
         {
+            //gives back a booking from the ID given
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
 
             BookingModel booking = new BookingModel();
@@ -111,6 +113,8 @@ namespace TableTap.DataAccessLayer.Classes
 
         public static bool CreateCalanderBookTable(BookingModel bookingModel)
         {
+            //creates a booking for a specific time given
+            //both booking buttons ended up using this because it can be fed the current date
             try
             {
                 SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
@@ -196,7 +200,9 @@ namespace TableTap.DataAccessLayer.Classes
 
         public static bool CheckCheckin(BookingModel bookingModel)
         {
-
+            //Checks if a table is able to be check into. Will check in if able.
+            //Returns false if it checks in
+            //Returns true if it is unable to check in
             string sTest = null;
 
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
@@ -255,13 +261,6 @@ namespace TableTap.DataAccessLayer.Classes
                     {
                         SqlDataReader dr = command.ExecuteReader();
 
-                        /* while (dr.Read())
-                         {
-
-                             sTest = dr["emailAddress"].ToString();
-
-                         }
-                         dr.Close();*/
 
                     }
                     conn.Close();
