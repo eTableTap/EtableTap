@@ -86,7 +86,7 @@ CREATE TABLE tblIncidence(
 	roomID INT DEFAULT 0,
 	buildingID INT NOT NUll,
 	userID INT NOT NULL,
-	incLevel BIT NOT NULL,  -- determines who sees the notification
+	incLevel BIT NOT NULL DEFAULT 0,  -- determines who sees the notification
 	incENDDate DATE NOT NULL,
 	 
     CONSTRAINT fk_getabuildingID FOREIGN KEY (buildingID) REFERENCES tblBuilding(buildingID),
