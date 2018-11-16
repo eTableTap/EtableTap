@@ -156,7 +156,7 @@ namespace TableTap.UL
             newBooking.memberEmail4 = InputEmail4.Value;
             newBooking.memberEmail5 = InputEmail5.Value;
 
-            if (TableBL.ProcessCalanderBookTable(newBooking))
+            if (BookingBL.ProcessCalanderBookTable(newBooking))
             {
                 lblHeading.Text = "Table was booked";
 
@@ -185,7 +185,7 @@ namespace TableTap.UL
 
                 btnDirections.Visible = true;
 
-                int receipt = TableBL.GetBookingIDByBookingModel(newBooking); //booking ID is auto generated in DB so we need to grab it ourselves
+                int receipt = BookingBL.GetBookingIDByBookingModel(newBooking); //booking ID is auto generated in DB so we need to grab it ourselves
 
                 string url = ConfigurationManager.AppSettings["UnsecurePath"] + "BookingReceipt.aspx?id=" + receipt;
                 Response.Redirect(url);
@@ -227,7 +227,7 @@ namespace TableTap.UL
             newBooking.memberEmail5 = InputCalEmail5.Value;
 
             //bool btest = TableBL.processCalanderBookTable(newGroupBooking);
-            if(TableBL.ProcessCalanderBookTable(newBooking))
+            if(BookingBL.ProcessCalanderBookTable(newBooking))
             {
                 lblHeading.Text = "Table was booked";
 
@@ -256,7 +256,7 @@ namespace TableTap.UL
                 //(string email, int tableID,DateTime date, string sHour)
                 btnDirections.Visible = true;
 
-                int receipt = TableBL.GetBookingIDByBookingModel(newBooking);
+                int receipt = BookingBL.GetBookingIDByBookingModel(newBooking);
 
                 string url = ConfigurationManager.AppSettings["UnsecurePath"] + "BookingReceipt.aspx?id=" + receipt;
                 Response.Redirect(url);
@@ -374,7 +374,7 @@ namespace TableTap.UL
             newCheckin.emailAddress = Session["Login"].ToString();
             newCheckin.bookingHour = Int32.Parse(sHour);
 
-            lblCheckinResult.Text = TableBL.ProcessTableCheckin(newCheckin);
+            lblCheckinResult.Text = BookingBL.ProcessTableCheckin(newCheckin);
             
 
 

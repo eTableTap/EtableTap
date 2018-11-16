@@ -38,42 +38,7 @@ namespace TableTap.BusinessLayer.Classes
             return false;
         }
 
-
-        public static bool ProcessCalanderBookTable(BookingModel bookingModel)
-        {
-            bool bCheck = TableDAL.CheckTableStatus(bookingModel); //check if booking exists - return false if exists
-            if (bCheck == true)
-            {
-                if (TableDAL.CreateCalanderBookTable(bookingModel))
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        public static int GetBookingIDByBookingModel(BookingModel bookingModel) 
-        {
-            
-            int i = TableDAL.GetBookingIDByBookingModel(bookingModel);
-
-            return i;
-        }
-
-        public static string ProcessTableCheckin(BookingModel bookingModel)
-        {
-            bool bCheck = TableDAL.CheckCheckin(bookingModel); //check if booking exists - return false if exists
-            if (bCheck == false)
-            {
-                
-                    return bookingModel.emailAddress + " has successfully checked in!";
-                
-            }
-
-            return "Failed to check in";
-        }
-
+   
         public static void ProcessAddNewTable(TableModel table)
         {
             TableModel newTable = table;

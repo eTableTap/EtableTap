@@ -150,47 +150,7 @@ namespace TableTap.DataAccessLayer.Classes
 
             return false;
         }
-
-        public static bool CreateCalanderBookTable(BookingModel bookingModel)
-        {
-            try
-            {
-                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
-                BookingModel newBookingModel = bookingModel;
-
-                using (conn)
-                {
-                    conn.Open();
-
-                    using (SqlCommand command = new SqlCommand(
-
-                        "INSERT INTO tblBooking (TableID, bookingDate, emailAddress, bookingHour, memberEmail1, memberEmail2, memberEmail3, memberEmail4, memberEmail5) VALUES ("
-                        + "'" + newBookingModel.tableID + "'" + ", "
-                        + "'" + newBookingModel.bookingDate.ToString("yyyy-MM-d") + "'" + ", "
-                        + "'" + newBookingModel.emailAddress + "'" + ", "
-                        + "'" + newBookingModel.bookingHour + "'" + ", "
-                        + "'" + newBookingModel.memberEmail1 + "'" + ", "
-                        + "'" + newBookingModel.memberEmail2 + "'" + ", "
-                        + "'" + newBookingModel.memberEmail3 + "'" + ", "
-                        + "'" + newBookingModel.memberEmail4 + "'" + ", "
-                        + "'" + newBookingModel.memberEmail5 + "'" + ")"
-                        ,
-                        conn))
-                    {
-                        SqlDataReader dr = command.ExecuteReader();
-
-                        dr.Close();
-                    }
-                    conn.Close();
-                    return true;
-                }
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
+        
         public static bool CheckTableStatus(BookingModel bookingModel)
         {
 
@@ -231,126 +191,9 @@ namespace TableTap.DataAccessLayer.Classes
 
             return false; // = table is already booked
         }
-
-        public static bool CheckCheckin(BookingModel bookingModel)
-        {
-
-            string sTest = null;
-
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
-
-            using (conn)
-            {
-                conn.Open();
-
-                using (SqlCommand command = new SqlCommand(
-                    "SELECT * FROM tblBooking WHERE tableID=" + "'" + bookingModel.tableID.ToString() + "'"
-                    + " AND bookingDate=" + "'" + bookingModel.bookingDate.ToString("yyyy-MM-d") + "'"
-                    + " AND bookingHour=" + "'" + bookingModel.bookingHour.ToString() + "'"
-                    + " AND emailAddress=" + "'" + bookingModel.emailAddress + "'",
-                    conn))
-
-
-                {
-                    SqlDataReader dr = command.ExecuteReader();
-
-                    while (dr.Read())
-                    {
-
-                        sTest = dr["emailAddress"].ToString();
-
-                    }
-                    dr.Close();
-
-                }
-                conn.Close();
-
-            }
-
-            if (sTest == null)
-            {
-
-
-
-                return true; //  = not exist or wrong user
-            }
-            else
-            {
-
-
-                using (conn)
-                {
-                    conn.Open();
-
-                    using (SqlCommand command = new SqlCommand(
-                        "UPDATE tblBooking SET checkinStatus = 1 WHERE tableID=" + "'" + bookingModel.tableID.ToString() + "'"
-                        + " AND bookingDate=" + "'" + bookingModel.bookingDate.ToString("yyyy-MM-d") + "'"
-                        + " AND bookingHour=" + "'" + bookingModel.bookingHour.ToString() + "'"
-                        + " AND emailAddress=" + "'" + bookingModel.emailAddress + "'",
-                        conn))
-
-
-                    {
-                        SqlDataReader dr = command.ExecuteReader();
-
-                        /* while (dr.Read())
-                         {
-
-                             sTest = dr["emailAddress"].ToString();
-
-                         }
-                         dr.Close();*/
-
-                    }
-                    conn.Close();
-
-                    return false; // = table can be checked into
-                }
-
-            }
-
-            
-        }
         
-        //decalred but not use/////////////////////////////////////////////////////////////////////////////////////////////////
-            
-        public static int GetBookingIDByBookingModel(BookingModel bookingModel)
-        {
-
-            int iTest = 0;
-
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
-
-            using (conn)
-            {
-                conn.Open();
-
-                using (SqlCommand command = new SqlCommand(
-                    "SELECT bookingID FROM tblBooking WHERE tableID=" + "'" + bookingModel.tableID.ToString() + "'"
-                    + " AND bookingDate=" + "'" + bookingModel.bookingDate.ToString("yyyy-MM-d") + "'"
-                    + " AND bookingHour=" + "'" + bookingModel.bookingHour.ToString() + "'",
-                    conn))
-
-
-                {
-                    SqlDataReader dr = command.ExecuteReader();
-
-                    while (dr.Read())
-                    {
-                        iTest = Convert.ToInt32(dr["bookingID"].ToString());
-
-                    }
-                    dr.Close();
-
-                }
-                conn.Close();
-
-            }
-
-            
-            return iTest; 
-        }
         
+       
 
         public static List<string> LoadTable(string tableID)
         {
