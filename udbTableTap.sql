@@ -25,8 +25,6 @@ CREATE TABLE tblBuilding (
 	suburb			NVARCHAR (50),
 	provence		NVARCHAR (4),
 	country			NVARCHAR (30)
-
-	--buildingMap		IMAGE --temporarily Null since we haven't figured out how we're gonna make it interactive
 	)
 
 CREATE TABLE tblRoom (
@@ -74,7 +72,7 @@ CREATE TABLE tblBooking (
 	memberEmail5		NVARCHAR(40) DEFAULT ('No Email'),
 	checkinStatus		BIT NOT NULL DEFAULT (0),
 
-		--CONSTRAINT fk_getEmail FOREIGN KEY (emailAddress) REFERENCES tblUser(emailAddress)
+
 		CONSTRAINT fk_gettheTableID FOREIGN KEY (tableID) REFERENCES tblTable(tableID)
 	)
 	
@@ -95,19 +93,6 @@ CREATE TABLE tblIncidence(
 	CONSTRAINT fk_getaUserID FOREIGN KEY (userID) REFERENCES tblUser(userID)
 
   )
-
-
-
---sets default value of tablesAvailable as tableQty when a room is created
---CREATE TRIGGER tblRoom_AfterInsert_TRG
---  ON tblRoom
---AFTER INSERT
---AS
---  UPDATE tblRoom
---  SET tblRoom.tablesAvailable = tblRoom.tableQty
---  FROM Inserted AS i
---  WHERE tblRoom.roomID = i.roomID ;
---go
 
 --Test values
 INSERT INTO tblBuilding(buildingName, buildingLabel, roomQty, street, suburb, provence, country)
@@ -161,8 +146,3 @@ VALUES ('2018-09-14', 'I am a test incident level 0', 1, 0001, 001, 100002, 0, '
  ('2018-09-14', 'I am a test incident level 1', 1, 0001, 001, 100002, 0, '2018-09-14')
  go
 
-
-SELECT TableID FROM tblTable;
-SELECT COUNT (TableID) FROM tblTable;
-SELECT * FROM tblUser;
-SELECT * FROM tblIncidence;
