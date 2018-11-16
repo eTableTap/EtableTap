@@ -80,18 +80,18 @@ namespace TableTap.UL
             }
         }
 
+        /// <summary>
+        /// Updates dropdown menu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void ddlbuildingDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             BuildingModel bm = new BuildingModel();
 
-            bm = buildings.Where(b => b.BuildingID == Int32.Parse(buildingDropdown.Text)).FirstOrDefault(); //grabs single selected building
-
+            //Selects single selected building
+            bm = buildings.Where(b => b.BuildingID == Int32.Parse(buildingDropdown.Text)).FirstOrDefault();
             int id = bm.BuildingID;
-
-
-
-
         }
     }
 }
