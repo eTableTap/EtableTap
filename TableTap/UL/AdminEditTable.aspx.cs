@@ -15,18 +15,25 @@ namespace TableTap.UL
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if ((string)Session["loggedUser"] != "admin") //stops non admins accessing page
+            //Checks if a user is an administrator, and only grants an administrator access to this page
+            if ((string)Session["loggedUser"] != "admin")
             {
                 Response.Redirect("Login.aspx");
             }
         }
 
-
-
+        /// <summary>
+        /// Searches the database for the relevant value as defined by the user
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void searchButton_Click(Object sender, EventArgs e)
         {
             string tableID = inptable.Value;
+
             List<string> record = new List<string>();
+
+            //Sets relevant values from user input
             record = TableDAL.LoadTable(tableID);
             lblTableID.Text = record[0];
             INroomID.Value = record[1];
@@ -34,18 +41,32 @@ namespace TableTap.UL
             inCatagory.Value = record[3];
         }
 
+        /// <summary>
+        /// Deletes entry from the database
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void deleteButton_Click(Object sender, EventArgs e)
         {
             TableDAL.deleteTable(lblTableID.Text);
-
             lblStatus.Text = "deleted";
         }
 
+        /// <summary>
+        /// Cancels any pending changes to be made to the room 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void cancelButton_Click(Object sender, EventArgs e)
         {
             Response.Redirect("AdminHome.aspx");
         }
 
+        /// <summary>
+        /// Saves the changes made by the user and updates the database
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void saveButton_Click(object sender, EventArgs e)
         {
             string recordID = inptable.Value;
@@ -55,11 +76,13 @@ namespace TableTap.UL
 
             List<string> record = new List<string>();
 
+            //Sets relevant values from user input
             record.Add(recordID);
             record.Add(roomID);
             record.Add(capacity);
             record.Add(catagory);
 
+            //Updates the values in the database for the relevant entry
             TableDAL.ModifyTable(record);
 
         }
