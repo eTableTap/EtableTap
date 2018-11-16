@@ -10,6 +10,11 @@ namespace TableTap.DataAccessLayer.Classes
 {
     public class RoomDAL
     {
+
+        /// <summary>
+        /// Loads all rooms via associated buildingID
+        /// returns list of building models
+        /// </summary>
         public static List<RoomModel> loadRoomList(int id)
         {
             List<RoomModel> rooms = new List<RoomModel>();
@@ -43,6 +48,11 @@ namespace TableTap.DataAccessLayer.Classes
 
             return rooms;
         }
+
+        /// <summary>
+        /// Load room record by roomID
+        /// returns roomModel
+        /// </summary>
         public static RoomModel loadRoomByID(int id)
         {
             RoomModel room = new RoomModel();
@@ -79,6 +89,11 @@ namespace TableTap.DataAccessLayer.Classes
 
             return room;
         }
+
+
+        /// <summary>
+        /// Adds new room record to database via room Model
+        /// </summary>
         public static void AddNewRoom(RoomModel room)
         {
             RoomModel newRoom = room;

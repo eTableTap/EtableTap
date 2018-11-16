@@ -190,10 +190,11 @@ namespace TableTap.BusinessLayer.Classes
             }*/
         }
 
+
+
         /// <summary>
         /// Checks administrative level via usermodel
         /// </summary>
-
         public static int ProcessLogin(UserModel logUser)
         {
 
