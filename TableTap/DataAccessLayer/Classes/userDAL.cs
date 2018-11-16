@@ -10,6 +10,16 @@ namespace TableTap.DataAccessLayer.Classes
 {
     public class UserDAL
     {
+
+
+
+
+
+        /// <summary>
+        ///  fetches complete list of records in user table 
+        /// returns a list of usermodels
+        /// </summary>
+
         public static List<UserModel> LoadUsersList()
         {
             List<UserModel> users = new List<UserModel>();
@@ -47,6 +57,12 @@ namespace TableTap.DataAccessLayer.Classes
             return users;
         }
 
+
+
+        /// <summary>
+        /// fetches user record by userID
+        /// returns a usermodel of associated userID
+        /// </summary>
         public static UserModel loadUserByID(int id)
         {
             UserModel user = new UserModel();
@@ -84,6 +100,11 @@ namespace TableTap.DataAccessLayer.Classes
             return user;
         }
 
+
+        /// <summary>
+        /// Fetches user record by Email and Password
+        /// returns UserModel
+        /// </summary>
         public static UserModel loadUserByEmailAndPassword(string email, string password)
         {
             UserModel loadeduser = new UserModel();
@@ -132,6 +153,10 @@ namespace TableTap.DataAccessLayer.Classes
             return user;
         }
 
+
+        /// <summary>
+        /// Adds new user record to database
+        /// </summary>
         public static void AddNewUser(UserModel user)
         {
             UserModel newUser = user;
@@ -165,8 +190,6 @@ namespace TableTap.DataAccessLayer.Classes
 
 
 
-        /// <summary>
-        /// CREATED BY HAYDEN
         /// Takes input of email
         /// returns matching record as a usermodel
         public static UserModel EmailSearch(string email)
@@ -284,6 +307,10 @@ namespace TableTap.DataAccessLayer.Classes
 
         }
 
+        /// <summary>
+        /// Checks administrative level via usermodel
+        /// returns int 1 = admin 0 = user
+        /// </summary>
         public static int CheckLogin(UserModel logUser)
         {
             List<UserModel> userList = LoadUsersList();

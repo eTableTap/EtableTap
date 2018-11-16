@@ -193,7 +193,8 @@ namespace TableTap.BusinessLayer.Classes
 
 
         /// <summary>
-        /// Checks administrative level via usermodel
+        /// Checks administrative level by usermodel via
+        ///  UserDAL.CheckLogin(logUser);
         /// </summary>
         public static int ProcessLogin(UserModel logUser)
         {
