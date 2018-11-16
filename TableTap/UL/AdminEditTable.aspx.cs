@@ -6,8 +6,17 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using TableTap.BusinessLayer;
 using TableTap.Models;
-using TableTap.DataAccessLayer; //REMOVE
-using TableTap.DataAccessLayer.Classes; // REMOVE
+using TableTap.DataAccessLayer; 
+using TableTap.DataAccessLayer.Classes;
+
+/* 
+    INFT 3970 - IT Major Project - Implementation
+    Hayden Bartlett – C3185636
+    Beau Maund – C3163068
+
+    Source File Purpose:
+    - Serves as back-end processing when an administrator edits a table in the database
+ */
 
 namespace TableTap.UL
 {
