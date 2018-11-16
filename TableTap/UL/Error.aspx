@@ -2,8 +2,14 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <!-- INFT 3970 - IT Major Project - Implementation
+        Hayden Bartlett – C3185636
+        Beau Maund – C3163068
 
-
+        Source File Purpose:
+        - Serves as a user facing default error page in the instance of an unexpected or undefined 
+           problem in the normal project operation and associated user interaction.
+     -->
 
         <div class="container">
         <div class="jumbotron">
@@ -15,15 +21,13 @@
 	               	  </div>
 	            </div> 
 
+                <!-- A relevant error message is displayed -->
                 <table style="width:100%">
-                        <tr>
-                            <th class="auto-style2">
-                                <asp:Label ID="Label2" runat="server" Text="Something has gone wrong. But! I drew you a flower!" Font-Bold="True" Font-Size="Large"></asp:Label>
-                            </th>
-
-
-                        </tr>
-
+                    <tr>
+                        <th class="auto-style2">
+                            <asp:Label ID="Label2" runat="server" Text="Something has gone wrong. But! I drew you a flower!" Font-Bold="True" Font-Size="Large"></asp:Label>
+                        </th>
+                    </tr>
                        <tr>
                            <th class="auto-style2">
                                <asp:Image ID="imgLogin" runat="server" imageurl="~/Resources/Images/SorryFlower.png" Height ="30%"/>
@@ -40,11 +44,7 @@
                            </th>
                        </tr>
                     </table>
-
-                </div>
-            
+                </div>            
             </div>
-            </div>
-
-
+         </div>
 </asp:Content>
