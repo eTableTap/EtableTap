@@ -2,6 +2,15 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+   
+    <!-- INFT 3970 - IT Major Project - Implementation
+         Hayden Bartlett – C3185636
+         Beau Maund – C3163068
+
+         Source File Purpose:
+         - Serves as a user facing default error page in the instance of an unexpected or undefined 
+           problem in the normal project operation and associated user interaction.
+    -->
 
         <div class="container">
         <div class="jumbotron">
@@ -13,6 +22,7 @@
 	               	  </div>
 	            </div> 
 
+                <!-- A relevant error message is displayed -->
                 <table style="width:100%">
                         <tr>
                             <th class="auto-style2">
@@ -32,6 +42,8 @@
                                 <asp:Label ID="Label1" runat="server" Text="Now that you’ve forgiven us; Use this button to get back on track" Font-Bold="True" Font-Size="Large"></asp:Label>
                            </th>
                        </tr>
+                       
+                       <!-- Returns the user to the home button and promps for login if necessary -->
                        <tr>
                            <th class="auto-style2">
                                 <asp:Button type="button" Text="Go back to home" class="btn btn-primary btn-lg btn-block login-button" id="Button1" runat="server" />
