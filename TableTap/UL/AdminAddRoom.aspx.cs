@@ -54,7 +54,7 @@ namespace TableTap.UL
         /// <param name="e"></param>
         protected void addRoomButton_Click(Object sender, EventArgs e)
         {
-            //Users ASP.NET function IsValid() to test user input and the current error state before proceeding
+            //Uses ASP.NET function IsValid() to test user input and the current error state before proceeding
             if (Page.IsValid)
             {
                 BuildingModel bm = new BuildingModel(); //New buiding instance
