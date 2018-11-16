@@ -150,7 +150,6 @@
   <ItemGroup>
     <Content Include="Resources\Images\favicon.ico" />
     <Content Include="UL\AdminAddRoom.aspx" />
-    <Content Include="UL\AdminEditBuilding.aspx" />
     <Content Include="Content\MobileMaster.css" />
     <Content Include="google8de9dcc8df485c7e.html" />
     <Content Include="Resources\Images\LoginBtn.png" />
@@ -283,13 +282,6 @@
     </Compile>
     <Compile Include="UL\AdminAddRoom.aspx.designer.cs">
       <DependentUpon>AdminAddRoom.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="UL\AdminEditBuilding.aspx.cs">
-      <DependentUpon>AdminEditBuilding.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UL\AdminEditBuilding.aspx.designer.cs">
-      <DependentUpon>AdminEditBuilding.aspx</DependentUpon>
     </Compile>
     <Compile Include="BusinessLayer\Classes\DirectionModuleBL.cs" />
     <Compile Include="BusinessLayer\Classes\IncidenceBL.cs" />

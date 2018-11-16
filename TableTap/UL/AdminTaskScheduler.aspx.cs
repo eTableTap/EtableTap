@@ -12,7 +12,10 @@ namespace TableTap.UL
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if ((string)Session["loggedUser"] != "admin") //stops non admins accessing page
+            {
+                Response.Redirect("home.aspx");
+            }
         }
 
         protected void Button1_Click(object sender, EventArgs e)

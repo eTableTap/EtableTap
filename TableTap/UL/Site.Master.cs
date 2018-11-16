@@ -15,6 +15,7 @@ namespace TableTap.UL
             if ((string)Session["loggedUser"] == "user")
             {
                 loginNavigate.Visible = false;
+                adminNavigate.Visible = false;
                 logoutNavigate.Visible = true;
                 accountNavigate.Visible = true;
                 lblNavText.Text = Session["login"].ToString();
@@ -22,6 +23,7 @@ namespace TableTap.UL
             else if ((string)Session["loggedUser"] == "admin")
             {
                 loginNavigate.Visible = false;
+                adminNavigate.Visible = true;
                 logoutNavigate.Visible = true;
                 accountNavigate.Visible = true;
                 lblNavText.Text = Session["login"].ToString();
@@ -31,6 +33,7 @@ namespace TableTap.UL
                 loginNavigate.Visible = true;
                 logoutNavigate.Visible = false;
                 accountNavigate.Visible = false;
+                adminNavigate.Visible = false;
             }
             
         }
